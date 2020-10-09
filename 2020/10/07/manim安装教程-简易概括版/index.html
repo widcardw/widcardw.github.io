@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>manim安装教程(简要概括版) | widcardw</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="其实你读到后面会发现这篇文章真的是太烂了。  Linux 下安装(以 Ubuntu 为例) Windows 下安装 后记">
+  <meta name="description" content="其实你读到后面会发现这篇文章真的是太烂了。（写这么长根本不是简要概括啊喂） 无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索解决方案。  Linux 下安装（以 Ubuntu 为例） Windows 下安装 后记（其实不如说是前言）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="manim安装教程(简要概括版)">
 <meta property="og:url" content="http://example.com/2020/10/07/manim%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B-%E7%AE%80%E6%98%93%E6%A6%82%E6%8B%AC%E7%89%88/index.html">
 <meta property="og:site_name" content="widcardw">
-<meta property="og:description" content="其实你读到后面会发现这篇文章真的是太烂了。  Linux 下安装(以 Ubuntu 为例) Windows 下安装 后记">
+<meta property="og:description" content="其实你读到后面会发现这篇文章真的是太烂了。（写这么长根本不是简要概括啊喂） 无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索解决方案。  Linux 下安装（以 Ubuntu 为例） Windows 下安装 后记（其实不如说是前言）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-07T11:14:41.000Z">
-<meta property="article:modified_time" content="2020-10-08T15:21:50.437Z">
+<meta property="article:modified_time" content="2020-10-09T11:24:43.379Z">
 <meta property="article:author" content="widcardw">
 <meta property="article:tag" content="manim">
 <meta name="twitter:card" content="summary">
@@ -171,15 +171,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>其实你读到后面会发现这篇文章真的是太烂了。</p>
+        <p>其实你读到后面会发现这篇文章真的是太烂了。<del>（写这么长根本不是简要概括啊喂）</del></p>
+<p>无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索解决方案。</p>
 <ul>
-<li><a href="#1">Linux 下安装(以 Ubuntu 为例)</a></li>
+<li><a href="#1">Linux 下安装（以 Ubuntu 为例）</a></li>
 <li><a href="#2">Windows 下安装</a></li>
-<li><a href="#3">后记</a></li>
+<li><a href="#3">后记（其实不如说是前言）</a></li>
 </ul>
 <a id="more"></a>
 
-<h1 id="1"> Linux 下安装(以 Ubuntu 为例)</h1>
+<h1 id="1"> Linux 下安装（以 Ubuntu 为例）</h1>
 
 <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p><font size="2">这里的安装过程其实是从<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kv411i7zn">这个视频</a>里面看来的</font></p>
 <ul>
@@ -232,6 +233,7 @@
 </blockquote>
 </li>
 <li><p>安装<code>texlive-full</code>，可能又要等很久，毕竟这玩意 5 个 GB，没那么容易下。</p>
+<p>为什么我推荐安装完整版，因为之后就不需要再麻烦了。</p>
 <blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install texlive-full</span><br></pre></td></tr></table></figure>
 </blockquote>
@@ -242,11 +244,12 @@
 </blockquote>
 </li>
 </ul>
-<p>应该差不多了，安装大概就这么多步骤吧。<br><br></p>
+<p>应该差不多了，安装大概就这么多步骤吧。  </p>
 <h2 id="测试场景"><a href="#测试场景" class="headerlink" title="测试场景"></a>测试场景</h2><p>在刚刚克隆的 manim 文件夹下打开终端，尝试一下示例场景能否运行。注意，如果是克隆了我给出的仓库，请执行下面的命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 -m manim ./my_projects/Examples/example_scenes.py -pl</span><br></pre></td></tr></table></figure>
 
-<p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 LaTeX 没有装好，或者是 LaTeX 语法写错了，要不然就是调用了一些包必须将<code>CTEX_USE</code>改成<code>True</code>的情况吧。。<br><del>把 Grant 的 example 放到 my_projects 里面，这个人实在是太恶心了</del><br><br></p>
+<p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 LaTeX 没有装好，或者是 LaTeX 语法写错了，要不然就是调用了一些包必须将<code>CTEX_USE</code>改成<code>True</code>的情况吧。。  </p>
+<p><del>把 Grant 的 example 放到 my_projects 里面，这个人实在是太恶心了</del>  </p>
 <h1 id="2"> Windows 下安装</h1>
 
 <p>如果你是 Windows10 用户，那你还可以使用 WSL（Windows Subsystem for Linux）进行安装，那么安装步骤就跟上面的 Linux 下安装几乎一样了；如果你是 Windows7 用户，那可就只能按照常规方法安装了呢。</p>
@@ -265,7 +268,9 @@
 <li><p>接着安装 cairo。</p>
 <blockquote>
 <p>到<a target="_blank" rel="noopener" href="https://pypi.org/project/pycairo/#files">这个网站</a>去下载<code>cairo</code>，注意：python3.7 请下载<code>cp37</code>的版本，python3.8 请下载<code>cp38</code>的版本。你会得到一个<code>.whl</code>文件。<br>然后，在你下载这个<code>.whl</code>文件的目录下打开终端（cmd 或 powershell），使用下面的命令安装 pycairo。请注意自己的版本，不要盲目的直接复制下面的命令。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install pycairo-1.20.0-cp37-cp37m-win32.whl</span><br></pre></td></tr></table></figure></blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python <span class="literal">-m</span> pip install pycairo<span class="literal">-1</span>.<span class="number">20.0</span><span class="literal">-cp37</span><span class="literal">-cp37m</span><span class="literal">-win32</span>.whl</span><br></pre></td></tr></table></figure></blockquote>
+</li>
+</ul>
 </li>
 <li><p>安装 git，你可以直接在百度上搜索 Git for Windows，就可以按照要求安装。这里不详细展开。</p>
 </li>
@@ -282,10 +287,10 @@
 <li><p>通过 git 克隆 manim 仓库，并安装 python 的依赖。</p>
 <blockquote>
 <p>使用下面的命令在合适位置克隆 manim 的仓库。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/widcardw/manim.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/widcardw/manim.git</span><br></pre></td></tr></table></figure>
 
 <p>克隆完成之后，在 manim 文件夹下打开终端，使用 pip 安装依赖。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install <span class="literal">-r</span> requirements.txt <span class="literal">-i</span> https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
 
 <p>等待过程可能比较漫长，而且可能失败，可以多试几次。</p>
 </blockquote>
@@ -294,29 +299,42 @@
 <blockquote>
 <p>这一部分如果你安装完整版的话可能会相当的鸡肋，我曾经在这里卡了一个多月，翔哥卡的时间更长。我甚至怀疑是不是有随机性。你需要有足够的耐心以及不怕失败的心态。</p>
 <ul>
-<li>你可以选择安装<a target="_blank" rel="noopener" href="https://miktex.org/download#all">MikTeX</a><ul>
-<li>如果是选择 net Installer，并成功安装了完整版，那就祈祷测试时候不要发生什么错误吧。</li>
+<li>你可以选择安装 <a target="_blank" rel="noopener" href="https://miktex.org/download#all">MikTeX</a><ul>
+<li>如果是选择 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1W4411Z7Zt?p=4">net Installer</a> (视频链接中的0:13-2:48)，并成功安装了完整版，那就祈祷测试时候不要发生什么错误吧。</li>
 <li>如果是选择 basic Installer，那么你在测试时会碰到安装其它包的提示，这时候不用急，尽管点 install，报多少次点多少次。</li>
 </ul>
 </li>
-<li>你也可以选择安装<a target="_blank" rel="noopener" href="http://tug.org/texlive/">TeXlive</a><ul>
+<li>你也可以选择安装 <a target="_blank" rel="noopener" href="http://tug.org/texlive/">TeXlive</a><ul>
 <li>我没装过，不过应该跟 MikTeX 差不多。</li>
 </ul>
 </li>
 </ul>
 </blockquote>
 </li>
-<li><p>最后，祈祷不是 LaTeX 报错</p>
-</li>
-</ul>
+<li><p>最后，通过命令行，检查一下这些软件是否都安装成功</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> &gt; python -<span class="literal">-version</span></span><br><span class="line">Python <span class="number">3.7</span>.<span class="number">5</span>（仅示例）</span><br><span class="line"> &gt; dvisvgm -<span class="literal">-version</span></span><br><span class="line">dvisvgm <span class="number">2.6</span>.<span class="number">3</span></span><br><span class="line"> &gt; ffmpeg <span class="literal">-version</span></span><br><span class="line">ffmpeg version git<span class="literal">-xxx</span> Copyright (c)  （下面还有一长串就不写了）</span><br><span class="line"> &gt; sox -<span class="literal">-version</span></span><br><span class="line">SoX v14.<span class="number">4.2</span></span><br><span class="line"> &gt; pip list</span><br><span class="line">（这里会出现一堆库，看看是否含有requirements.txt里面的库）</span><br><span class="line">argparse</span><br><span class="line">colour</span><br><span class="line">numpy</span><br><span class="line">Pillow</span><br><span class="line">progressbar</span><br><span class="line">scipy</span><br><span class="line">tqdm</span><br><span class="line">opencv<span class="literal">-python</span></span><br><span class="line">pycairo</span><br><span class="line">pydub</span><br><span class="line">pygments</span><br><span class="line">pyreadline</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h2 id="测试部分"><a href="#测试部分" class="headerlink" title="测试部分"></a>测试部分</h2><p>在刚刚克隆的 manim 文件夹下打开终端，尝试一下示例场景能否运行。注意，如果是克隆了我给出的仓库，请执行下面的命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m manim ./my_projects/Examples/example_scenes.py -pl</span><br></pre></td></tr></table></figure>
 
-<p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 LaTeX 没有装好，或者是 LaTeX 语法写错了，要不然就是调用了一些包必须将<code>CTEX_USE</code>改成<code>True</code>的情况吧。<br>如果问题是后者，那只需要检查一下语法有没有写错，如果是前者，那就祈祷再安装的时候不报错吧。<br><br></p>
+<p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 LaTeX 没有装好，或者是 LaTeX 语法写错了，要不然就是调用了一些包必须将<code>CTEX_USE</code>改成<code>True</code>的情况吧。 </p>
+<p>如果问题是后者，那只需要检查一下语法有没有写错，如果是前者，那就祈祷再安装的时候不报错吧。</p>
 <h1 id="3">后记</h1>
-待补充，以后有空再写。
+<h3> 一些想说/吐槽的话 </h3>
+抱歉没写 MacOS 上的安装教程，因为没接触过 Mac ，而且感觉好像大部分操作跟 Linux 应该都差不多，所以就没写。
+
+<p>说实话，如果接触或熟练使用 Linux 的玩家，应该只需要确保足够的存储空间，找个目录，然后这么干</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br><span class="line">$ sudo apt-get install ffmpeg</span><br><span class="line">$ sudo apt-get install sox</span><br><span class="line">$ sudo apt-get install python3     (注意，python3同样需要3.7及以上版本)</span><br><span class="line">$ sudo apt-get install python3-pip</span><br><span class="line">$ sudo apt-get install libcairo2-dev</span><br><span class="line">$ git <span class="built_in">clone</span> https://gitee.com/widcardw/manim.git</span><br><span class="line">$ <span class="built_in">cd</span> manim</span><br><span class="line">$ pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">$ sudo apt-get install texlive-full</span><br></pre></td></tr></table></figure>
+
+<p>然后，就可以用了，就这么简单。所以，感觉 Linux 下的效率确实能高很多。  </p>
+<p>相比之下，Windows 下需要到处去找安装包，到处去下载，就没有那么方便了。<del>虽然我现在还在用Windows</del></p>
+<h3> 选计科并且使用 WSL 安装的同学请注意了</h3>
+
+<p>WSL（即 Windows Subsystem for Linux）使用的是64位机，并且在未安装<em>交叉编译</em>时是<strong>无法运行</strong>32位程序的！计科的同学将来肯定会学习计算机系统/计算机组成原理，老师会要求你们使用 IA-32 Linux 指令集完成实验，但实验时需要编译出的可执行文件中<strong>32位的可执行文件会无法运行，也无法使用 gdb 进行单步调试</strong>！</p>
+<p>据某个同学了解，微软官方也说 WSL 只支持 64 位的，那我们也没什么办法。我就是本来以为安装了 WSL 可以不装虚拟机 Ubuntu 的，结果最终还是装了虚拟机的那个。也就是说，你可能无法将你对计算机的一部分学习内容与 manim 放在同一屋檐下，还是有点可惜。</p>
+<p><font size="6"><b> The End.</b></font></p>
 
       
 
