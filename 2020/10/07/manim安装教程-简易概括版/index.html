@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>manim安装教程(简要概括版) | widcardw</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="其实你读到后面会发现这篇文章真的是太烂了。（写这么长根本不是简要概括啊喂） 无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索解决方案。  Linux 下安装（以 Ubuntu 为例） Windows 下安装 后记（其实不如说是前言）">
+  <meta name="description" content="其实你读到后面会发现这篇文章真的是太烂了。（写这么长根本不是简要概括啊喂） 无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索来寻找解决方案。  Linux 下安装（以 Ubuntu 为例） Windows 下安装 后记（其实不如说是前言）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="manim安装教程(简要概括版)">
 <meta property="og:url" content="http://example.com/2020/10/07/manim%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B-%E7%AE%80%E6%98%93%E6%A6%82%E6%8B%AC%E7%89%88/index.html">
 <meta property="og:site_name" content="widcardw">
-<meta property="og:description" content="其实你读到后面会发现这篇文章真的是太烂了。（写这么长根本不是简要概括啊喂） 无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索解决方案。  Linux 下安装（以 Ubuntu 为例） Windows 下安装 后记（其实不如说是前言）">
+<meta property="og:description" content="其实你读到后面会发现这篇文章真的是太烂了。（写这么长根本不是简要概括啊喂） 无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索来寻找解决方案。  Linux 下安装（以 Ubuntu 为例） Windows 下安装 后记（其实不如说是前言）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-07T11:14:41.000Z">
-<meta property="article:modified_time" content="2020-10-09T11:24:43.379Z">
+<meta property="article:modified_time" content="2020-10-11T05:21:38.601Z">
 <meta property="article:author" content="widcardw">
 <meta property="article:tag" content="manim">
 <meta name="twitter:card" content="summary">
@@ -172,7 +172,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>其实你读到后面会发现这篇文章真的是太烂了。<del>（写这么长根本不是简要概括啊喂）</del></p>
-<p>无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索解决方案。</p>
+<p>无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索来寻找解决方案。</p>
 <ul>
 <li><a href="#1">Linux 下安装（以 Ubuntu 为例）</a></li>
 <li><a href="#2">Windows 下安装</a></li>
@@ -183,12 +183,10 @@
 <h1 id="1"> Linux 下安装（以 Ubuntu 为例）</h1>
 
 <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p><font size="2">这里的安装过程其实是从<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kv411i7zn">这个视频</a>里面看来的</font></p>
-<ul>
-<li><p>首先先说明一下，Ubuntu18.04 版本用<code>sudo apt-get install python3</code>安装<code>python3</code>时，默认安装的是<code>python3.6.9</code>，可能会有一些问题，所以建议还是安装 <strong><code>python3.7</code></strong> 及以上的版本。</p>
-</li>
-<li><p>而 Ubuntu20.04 默认安装的是<code>python3.8.2</code>，这对于 manim 来说，应当是不会有太大问题的。<del>但是在其它方面可能会遇到各种未知的问题。</del></p>
-</li>
-</ul>
+<blockquote>
+<p>首先先说明一下，Ubuntu18.04 版本用<code>sudo apt-get install python3</code>安装<code>python3</code>时，默认安装的是<code>python3.6.9</code>，可能会有一些问题，所以建议还是安装 <strong><code>python3.7</code></strong> 及以上的版本。</p>
+<p>而 Ubuntu20.04 默认安装的是<code>python3.8.2</code>，这对于 manim 来说，应当是不会有太大问题的。<del>但是在其它方面可能会遇到各种未知的问题。</del></p>
+</blockquote>
 <p>为什么我把 Linux 安装放在最前面呢？因为在这上面安装最暴力，最简单。(这一部分可能写的有点乱，就大概看看琢磨一下吧)</p>
 <ul>
 <li><p><strong>首先你需要保证你的网速不差</strong>，其中也包括设置好镜像源，给 pip 换上合适的源。<del>就不要问为什么我下载了半天了怎么连一个 numpy 还没下完。</del></p>
@@ -248,8 +246,8 @@
 <h2 id="测试场景"><a href="#测试场景" class="headerlink" title="测试场景"></a>测试场景</h2><p>在刚刚克隆的 manim 文件夹下打开终端，尝试一下示例场景能否运行。注意，如果是克隆了我给出的仓库，请执行下面的命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 -m manim ./my_projects/Examples/example_scenes.py -pl</span><br></pre></td></tr></table></figure>
 
-<p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 LaTeX 没有装好，或者是 LaTeX 语法写错了，要不然就是调用了一些包必须将<code>CTEX_USE</code>改成<code>True</code>的情况吧。。  </p>
-<p><del>把 Grant 的 example 放到 my_projects 里面，这个人实在是太恶心了</del>  </p>
+<p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 LaTeX 没有装好，或者是 LaTeX 语法写错了，要不然就是调用了一些包（例如tikz）必须将<code>CTEX_USE</code>改成<code>False</code>的情况吧。  </p>
+<p><del>把 Grant 的 example 放到 my_projects 里面，这个人实在是太恶心了。</del>  </p>
 <h1 id="2"> Windows 下安装</h1>
 
 <p>如果你是 Windows10 用户，那你还可以使用 WSL（Windows Subsystem for Linux）进行安装，那么安装步骤就跟上面的 Linux 下安装几乎一样了；如果你是 Windows7 用户，那可就只能按照常规方法安装了呢。</p>
@@ -259,7 +257,7 @@
 <li><p><b>首先你的网速不能太差</b>，包括 pip 源等项目。接着你可以去看看<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14i4y1G7Yr">这个视频</a>使用包管理工具<code>scoop</code>来进行安装。如果你按照这个视频安装成功了，那下面的基本上也就不用看了。</p>
 </li>
 <li><p>如果你不想要使用包管理器来安装的话，那下面的方法就是按照<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1W4411Z7Zt">这个视频</a>进行安装。</p>
-<ul>
+</li>
 <li><p>首先，安装 python。</p>
 <blockquote>
 <p>注意选择 3.7 及以上的版本，或者你可以使用 anaconda3。在安装过程中，<strong>一定一定一定要把“<code>Add to Path</code>”勾选上</strong>！！！如果你是 conda 用户的话那就按照需求<del>照着百度</del>进行一些初始化等操作吧。同时，检查一下 pip 是否安装成功。</p>
@@ -267,16 +265,14 @@
 </li>
 <li><p>接着安装 cairo。</p>
 <blockquote>
-<p>到<a target="_blank" rel="noopener" href="https://pypi.org/project/pycairo/#files">这个网站</a>去下载<code>cairo</code>，注意：python3.7 请下载<code>cp37</code>的版本，python3.8 请下载<code>cp38</code>的版本。你会得到一个<code>.whl</code>文件。<br>然后，在你下载这个<code>.whl</code>文件的目录下打开终端（cmd 或 powershell），使用下面的命令安装 pycairo。请注意自己的版本，不要盲目的直接复制下面的命令。</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python <span class="literal">-m</span> pip install pycairo<span class="literal">-1</span>.<span class="number">20.0</span><span class="literal">-cp37</span><span class="literal">-cp37m</span><span class="literal">-win32</span>.whl</span><br></pre></td></tr></table></figure></blockquote>
-</li>
-</ul>
+<p>到<a target="_blank" rel="noopener" href="https://pypi.org/project/pycairo/#files">这个网站</a>去下载<code>cairo</code>，注意：python3.7 请下载<code>cp37</code>的版本，python3.8 请下载<code>cp38</code>的版本。你会得到一个<code>.whl</code>文件。<br>然后，在你下载这个<code>.whl</code>文件的目录下打开终端（cmd 或 powershell 或 git-bash），使用下面的命令安装 pycairo。请注意自己的版本，不要盲目的直接复制下面的命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install pycairo-1.20.0-cp37-cp37m-win32.whl</span><br></pre></td></tr></table></figure></blockquote>
 </li>
 <li><p>安装 git，你可以直接在百度上搜索 Git for Windows，就可以按照要求安装。这里不详细展开。</p>
 </li>
 <li><p>安装 ffmpeg</p>
 <blockquote>
-<p>你可以到<a target="_blank" rel="noopener" href="http://www.ffmpeg.org/download.html">官方下载页面</a>，前提是你看得懂怎么下载。<br>当然你去一些野鸡下载地址下载也是可以的，只要能用就行。<br>将下载包解压到一个合适的 <strong>不含中文（及日文、韩文等语言）</strong> 的目录下，并将它 <strong>添加（不是替换）</strong> 到环境变量的 Path 中去。具体操作不会的，还是百度一下吧。<br>注意：Path 中填入的路径必须含有 <code>ffmpeg.exe</code> 这个可执行程序。也就是说，如果你解压后没有去乱动这个包，那么路径最后一级应该为<code>bin</code>。</p>
+<p>你可以到<a target="_blank" rel="noopener" href="http://www.ffmpeg.org/download.html">官方下载页面</a>，前提是你看得懂怎么下载。<br>当然你去一些野鸡下载地址下载也是可以的，只要能用就行。<br>将下载包解压到一个合适的 <strong>不含中文（及日文、韩文等语言）</strong> 的目录下，并将它 <strong>添加（不是替换，尤其是 Win7 用户注意了，多个变量之间使用英文分号隔开）</strong> 到环境变量的 Path 中去。具体操作不会的，还是百度一下吧。<br>注意：Path 中填入的路径必须含有 <code>ffmpeg.exe</code> 这个可执行程序。也就是说，如果你解压后没有去乱动这个包，那么路径最后一级应该为<code>bin</code>。</p>
 </blockquote>
 </li>
 <li><p>安装 sox</p>
@@ -287,10 +283,10 @@
 <li><p>通过 git 克隆 manim 仓库，并安装 python 的依赖。</p>
 <blockquote>
 <p>使用下面的命令在合适位置克隆 manim 的仓库。</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/widcardw/manim.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/widcardw/manim.git</span><br></pre></td></tr></table></figure>
 
 <p>克隆完成之后，在 manim 文件夹下打开终端，使用 pip 安装依赖。</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install <span class="literal">-r</span> requirements.txt <span class="literal">-i</span> https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
 
 <p>等待过程可能比较漫长，而且可能失败，可以多试几次。</p>
 </blockquote>
@@ -312,14 +308,14 @@
 </blockquote>
 </li>
 <li><p>最后，通过命令行，检查一下这些软件是否都安装成功</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> &gt; python -<span class="literal">-version</span></span><br><span class="line">Python <span class="number">3.7</span>.<span class="number">5</span>（仅示例）</span><br><span class="line"> &gt; dvisvgm -<span class="literal">-version</span></span><br><span class="line">dvisvgm <span class="number">2.6</span>.<span class="number">3</span></span><br><span class="line"> &gt; ffmpeg <span class="literal">-version</span></span><br><span class="line">ffmpeg version git<span class="literal">-xxx</span> Copyright (c)  （下面还有一长串就不写了）</span><br><span class="line"> &gt; sox -<span class="literal">-version</span></span><br><span class="line">SoX v14.<span class="number">4.2</span></span><br><span class="line"> &gt; pip list</span><br><span class="line">（这里会出现一堆库，看看是否含有requirements.txt里面的库）</span><br><span class="line">argparse</span><br><span class="line">colour</span><br><span class="line">numpy</span><br><span class="line">Pillow</span><br><span class="line">progressbar</span><br><span class="line">scipy</span><br><span class="line">tqdm</span><br><span class="line">opencv<span class="literal">-python</span></span><br><span class="line">pycairo</span><br><span class="line">pydub</span><br><span class="line">pygments</span><br><span class="line">pyreadline</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"> &gt;</span><span class="bash"> python --version</span></span><br><span class="line">Python 3.7.5（仅示例）</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> dvisvgm --version</span></span><br><span class="line">dvisvgm 2.6.3</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> ffmpeg -version</span></span><br><span class="line">ffmpeg version git-xxx Copyright (c)  （下面还有一长串就不写了）</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> sox --version</span></span><br><span class="line">SoX v14.4.2</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> pip list</span></span><br><span class="line">（这里会出现一堆库，看看是否含有requirements.txt里面的库）</span><br><span class="line">argparse</span><br><span class="line">colour</span><br><span class="line">numpy</span><br><span class="line">Pillow</span><br><span class="line">progressbar</span><br><span class="line">scipy</span><br><span class="line">tqdm</span><br><span class="line">opencv-python</span><br><span class="line">pycairo</span><br><span class="line">pydub</span><br><span class="line">pygments</span><br><span class="line">pyreadline</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h2 id="测试部分"><a href="#测试部分" class="headerlink" title="测试部分"></a>测试部分</h2><p>在刚刚克隆的 manim 文件夹下打开终端，尝试一下示例场景能否运行。注意，如果是克隆了我给出的仓库，请执行下面的命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m manim ./my_projects/Examples/example_scenes.py -pl</span><br></pre></td></tr></table></figure>
 
-<p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 LaTeX 没有装好，或者是 LaTeX 语法写错了，要不然就是调用了一些包必须将<code>CTEX_USE</code>改成<code>True</code>的情况吧。 </p>
+<p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 LaTeX 没有装好，或者是 LaTeX 语法写错了，要不然就是调用了一些包（例如tikz）必须将<code>CTEX_USE</code>改成<code>False</code>的情况吧。 </p>
 <p>如果问题是后者，那只需要检查一下语法有没有写错，如果是前者，那就祈祷再安装的时候不报错吧。</p>
 <h1 id="3">后记</h1>
 <h3> 一些想说/吐槽的话 </h3>
@@ -546,11 +542,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">manim</a>
+                <a href="javascript:void(0)" class="js-tag color4">杂物箱</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">杂物箱</a>
+                <a href="javascript:void(0)" class="js-tag color1">manim</a>
               </li>
             
             <div class="clearfix"></div>
