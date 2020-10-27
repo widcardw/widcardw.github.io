@@ -168,64 +168,145 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>随机数</title>
         <style type="text/css">
-            .parent{
-                margin-right:-20px;
-                overflow:hidden;
+    .pa1{
+        margin-right:-20px;
+        overflow:hidden;
+    }
+    .dv1{
+        position:relative;
+        float:left;
+        width:300px;
+        height:300px;
+    }
+    .dv2{
+        position:relative;
+        float:left;
+        width:500px;
+        height:300px;
+        margin-left:20px;
+        line-height:0px;
+    }
+    .btnline{
+        position:relative;
+        width:300px;
+        height:30px;
+    }
+    .btnstyle{
+        float:left;
+        height:30px;
+        align-items: left;
+        margin-left: 0 auto
+    }
+    .btnstyle2{
+        float:right;
+        height:30px;
+        align-items: right;
+        margin-right: 0 auto
+    }
+</style>
+<script type="text/javascript">
+      window.onload=function(){
+        var inputFontSize=document.getElementById("inputFontSize");//字体大小
+        var inputRandomRange=document.getElementById("inputRandomRange");//范围
+        var btnOK=document.getElementById("btnOK");//生成按钮
+        var randomNumShow=document.getElementById("randomNumShow");//显示出的随机数
+        var blackListBox=document.getElementById("black");//不重复勾选
+        var restNumElement=document.getElementById("restNum");//剩余数量对象
+        var restNumValue=0;//剩余数量的值
+        var randIndex=0;//随机数的索引
+        var count=0;
+        var rangeValue=100;//范围数值
+        var randomValue=Number(inputRandomRange.value);//随机数数值
+        var candidateArray=[];
+        for (count=0; count<rangeValue;count++){
+          candidateArray[count]=count+1;
+        }
+        var fontSizeValue="250px";//字体大小数值
+        //输入范围时更新数组
+        inputRandomRange.oninput=function(){
+          rangeValue=Number(inputRandomRange.value);
+          candidateArray=[];
+          for (count=0; count<rangeValue;count++){
+            candidateArray[count]=count+1;
+          }
+        }
+        //取消勾选"不重复"时重置数组
+        blackListBox.onclick=function(){
+          if (blackListBox.checked==false){
+            candidateArray=[];
+            restNumElement.innerText="";
+            for (count=0; count<rangeValue;count++){
+              candidateArray[count]=count+1;
             }
-            .div_one{
-                position:relative;
-                float:left;
-                width:350px;
-                height:400px;
+          }
+        }
+        //输入字体大小时设置字体大小
+        inputFontSize.oninput=function(){
+          fontSizeValue=inputFontSize.value+"px";
+        }
+        //点击按钮时的响应
+        btnOK.onclick=function(){
+          if (candidateArray.length>0){
+            randIndex=Math.floor(Math.random()*candidateArray.length);
+            randomValue=candidateArray[randIndex];
+            randomNumShow.innerText=String(randomValue);
+            if (blackListBox.checked==true){
+              candidateArray.splice(randIndex,1);
+              restNumValue=candidateArray.length;
+              restNumElement.innerText="剩余数量："+restNumValue;
             }
-            .div_two{        
-                position:relative;
-                float:left;
-                width:500px;
-                height:400px;
-                line-height:0px;
-            }
-        </style>
-        <script type="text/javascript">
-            window.onload=function(){
-                var inputText=document.getElementById("range");
-                var btnOK=document.getElementById("OK");
-                var numText=document.getElementById("num");
-                var fontSizeText=document.getElementById("editSize")
-                var range=1;
-                var randomNumber=0;
-                var editFontSize="300px";
-                btnOK.onclick=function(){
-                    range=Number(inputText.value);
-                    randomNumber=Math.floor(Math.random()*range+1);
-                    numText.innerText=String(randomNumber);
-                    editFontSize=fontSizeText.value+"px";
-                    numText.style.fontSize=editFontSize;
-                    //numText.style.lineHeight="0px";
-                }
-            }
-        </script>
-    </head>
-    <body>
-        <div class="parent">
-            <div class="div_one">
-                <h1>随机数生成器</h1>
-                <p></p><h3>字体大小</h3><p></p>
-                <input type="text" id="editSize" value="300">
-                <p></p><h2>在下面输入范围</h2><p></p>
-                <p><input type="text" id="range" value="100"></p>
-                <p><input type="button" id="OK" value="生成"></p>
-            </div>
-            <div class="div_two">
-                <h1 id="num"></h1>
-            </div>
-            </div></body></html>
+          }
+          else{
+            randomNumShow.innerText="终";
+          }
+          randomNumShow.style.fontSize=fontSizeValue;
+        }
+      }
+    </script>
+<div class="pa1">
+  <div class="dv1">
+    <p>
+      </p><h1>随机数生成器</h1>
+    <p></p>
+    <div class="btnline">
+      <p>
+        <div class="btnstyle">
+          字体大小
+        </div>
+        <div class="btnstyle2">
+          <input type="text" id="inputFontSize" value="250" oninput="this.value=this.value.replace(/\D|^[0]/g,'')" onafterpaste="this.value=this.value.replace(/\D|^[0]/g,'')">
+        </div>
+      </p>
+    </div>
+    <div class="btnline">
+      <p>
+        <div class="btnstyle">
+          随机范围
+        </div>
+        <div class="btnstyle2">
+          <input type="text" id="inputRandomRange" value="100" oninput="this.value=this.value.replace(/\D|^[0]/g,'')" onafterpaste="this.value=this.value.replace(/\D|^[0]/g,'')">
+        </div>
+      </p>
+    </div>
+    <div class="btnline">
+      <p>
+        <div class="btnstyle">
+          <input type="checkbox" id="black">不重复
+        </div>
+        <div class="btnstyle2">
+          <input type="button" id="btnOK" value="生成" style="width:80px">
+        </div>
+      </p>
+    </div>
+    <dvi class="btnline">
+      <p id="restNum"></p>
+    </dvi>
+  </div>
+  <div class="dv2">
+    <h1 id="randomNumShow"></h1>
+  </div>
+</div>
         
           <a class="article-more-a" href="/2020/10/22/%E5%88%9D%E8%AF%86JS/#more">more >></a>
         
@@ -614,11 +695,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">manim</a>
+                <a href="javascript:void(0)" class="js-tag color4">杂物箱</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">杂物箱</a>
+                <a href="javascript:void(0)" class="js-tag color1">manim</a>
               </li>
              
               <li class="article-tag-list-item">
