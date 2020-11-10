@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>初识JS | widcardw</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content=".pa1{         margin-right:-20px;         overflow:hidden;     }     .dv1{         position:relative;         float:left;         width:300px;         height:300px;     }     .dv2{         positi">
+  <meta name="description" content=".ext {   display: flex;   flex-wrap:wrap;   padding: 25px;   background-color: rgb(255, 246, 233);   border-radius: 20px;   box-shadow: 0px 0px 5px lightsalmon;   margin: 20px; }  .lele {   display:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识JS">
 <meta property="og:url" content="http://example.com/2020/10/22/%E5%88%9D%E8%AF%86JS/index.html">
 <meta property="og:site_name" content="widcardw">
-<meta property="og:description" content=".pa1{         margin-right:-20px;         overflow:hidden;     }     .dv1{         position:relative;         float:left;         width:300px;         height:300px;     }     .dv2{         positi">
+<meta property="og:description" content=".ext {   display: flex;   flex-wrap:wrap;   padding: 25px;   background-color: rgb(255, 246, 233);   border-radius: 20px;   box-shadow: 0px 0px 5px lightsalmon;   margin: 20px; }  .lele {   display:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-22T13:06:22.000Z">
-<meta property="article:modified_time" content="2020-10-27T09:32:24.826Z">
+<meta property="article:modified_time" content="2020-11-10T13:26:44.701Z">
 <meta property="article:author" content="widcardw">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -172,151 +172,158 @@
     <div class="article-entry" itemprop="articleBody">
       
         <style type="text/css">
-    .pa1{
-        margin-right:-20px;
-        overflow:hidden;
-    }
-    .dv1{
-        position:relative;
-        float:left;
-        width:300px;
-        height:300px;
-    }
-    .dv2{
-        position:relative;
-        float:left;
-        width:500px;
-        height:300px;
-        margin-left:20px;
-        line-height:0px;
-    }
-    .btnline{
-        position:relative;
-        width:300px;
-        height:30px;
-    }
-    .btnstyle{
-        float:left;
-        height:30px;
-        align-items: left;
-        margin-left: 0 auto
-    }
-    .btnstyle2{
-        float:right;
-        height:30px;
-        align-items: right;
-        margin-right: 0 auto
-    }
+.ext {
+  display: flex;
+  flex-wrap:wrap;
+  padding: 25px;
+  background-color: rgb(255, 246, 233);
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px lightsalmon;
+  margin: 20px;
+}
+
+.lele {
+  display: block;
+  float: left;
+  position:relative;
+  /* background-color: lightgreen; */
+}
+
+.rele {
+  position:relative;
+  display: block;
+  /* text-align: center; */
+  padding-left: 20px;
+  padding-top: 50px;
+  padding-bottom:20px;
+  float: left;
+  /* background-color: lightpink; */
+  font-size: 128px;
+  font-weight: bold;
+}
+
+.ltext {
+  /* display: inline; */
+  float: left;
+  padding-bottom: 10px;
+}
+
+.rbtn {
+  /* display: inline; */
+  float: right;
+  padding-bottom: 10px;
+}
+
 </style>
-<script type="text/javascript">
-      window.onload=function(){
-        var inputFontSize=document.getElementById("inputFontSize");//字体大小
-        var inputRandomRange=document.getElementById("inputRandomRange");//范围
-        var btnOK=document.getElementById("btnOK");//生成按钮
-        var randomNumShow=document.getElementById("randomNumShow");//显示出的随机数
-        var blackListBox=document.getElementById("black");//不重复勾选
-        var restNumElement=document.getElementById("restNum");//剩余数量对象
-        var restNumValue=0;//剩余数量的值
-        var randIndex=0;//随机数的索引
-        var count=0;
-        var rangeValue=100;//范围数值
-        var randomValue=Number(inputRandomRange.value);//随机数数值
-        var candidateArray=[];
-        for (count=0; count<rangeValue;count++){
-          candidateArray[count]=count+1;
-        }
-        var fontSizeValue="250px";//字体大小数值
-        //输入范围时更新数组
-        inputRandomRange.oninput=function(){
-          rangeValue=Number(inputRandomRange.value);
-          candidateArray=[];
-          for (count=0; count<rangeValue;count++){
-            candidateArray[count]=count+1;
-          }
-        }
-        //取消勾选"不重复"时重置数组
-        blackListBox.onclick=function(){
-          if (blackListBox.checked==false){
-            candidateArray=[];
-            restNumElement.innerText="";
-            for (count=0; count<rangeValue;count++){
-              candidateArray[count]=count+1;
-            }
-          }
-        }
-        //输入字体大小时设置字体大小
-        inputFontSize.oninput=function(){
-          fontSizeValue=inputFontSize.value+"px";
-        }
-        //点击按钮时的响应
-        btnOK.onclick=function(){
-          if (candidateArray.length>0){
-            randIndex=Math.floor(Math.random()*candidateArray.length);
-            randomValue=candidateArray[randIndex];
-            randomNumShow.innerText=String(randomValue);
-            if (blackListBox.checked==true){
-              candidateArray.splice(randIndex,1);
-              restNumValue=candidateArray.length;
-              restNumElement.innerText="剩余数量："+restNumValue;
-            }
-          }
-          else{
-            randomNumShow.innerText="终";
-          }
-          randomNumShow.style.fontSize=fontSizeValue;
-        }
-      }
-    </script>
-<div class="pa1">
-  <div class="dv1">
-    <p>
-      </p><h1>随机数生成器</h1>
-    <p></p>
-    <div class="btnline">
-      <p>
-        <div class="btnstyle">
-          字体大小
+
+<div class="ext">
+        <div class="lele">
+            <h1>随机数生成器</h1>
+            <div>
+                <div class="ltext">随机范围</div>
+                <div class="rbtn">
+                    <input type="text" id="inputRange" value="100" oninput="this.value=this.value.replace(/\D|^[0]/g,'')" onafterpaste="this.value=this.value.replace(/\D|^[0]/g,'')">
+                </div>
+            </div>
+            <div>
+                <div class="ltext">
+                    <label><input type="checkbox" id="unrepeated">不重复</label>
+                    <div id="remain">剩余数量：∞</div>
+                </div>
+                <div class="rbtn">
+                    <input type="button" id="OKBtn" value="生成" style="height:3em;">
+                </div>
+            </div>
         </div>
-        <div class="btnstyle2">
-          <input type="text" id="inputFontSize" value="250" oninput="this.value=this.value.replace(/\D|^[0]/g,'')" onafterpaste="this.value=this.value.replace(/\D|^[0]/g,'')">
-        </div>
-      </p>
-    </div>
-    <div class="btnline">
-      <p>
-        <div class="btnstyle">
-          随机范围
-        </div>
-        <div class="btnstyle2">
-          <input type="text" id="inputRandomRange" value="100" oninput="this.value=this.value.replace(/\D|^[0]/g,'')" onafterpaste="this.value=this.value.replace(/\D|^[0]/g,'')">
-        </div>
-      </p>
-    </div>
-    <div class="btnline">
-      <p>
-        <div class="btnstyle">
-          <input type="checkbox" id="black">不重复
-        </div>
-        <div class="btnstyle2">
-          <input type="button" id="btnOK" value="生成" style="width:80px">
-        </div>
-      </p>
-    </div>
-    <dvi class="btnline">
-      <p id="restNum"></p>
-    </dvi>
-  </div>
-  <div class="dv2">
-    <h1 id="randomNumShow"></h1>
-  </div>
+        <div class="rele" id="numShow">&nbsp;</div>
 </div>
+<script type="text/javascript">
+const inputRange = document.getElementById("inputRange");
+const unrepeated = document.getElementById("unrepeated");
+const remain = document.getElementById("remain");
+const OKBtn = document.getElementById("OKBtn");
+const numShow = document.getElementById("numShow");
+var rangeValue = 100;
+var randIndex = 0;
+var remainValue = 0;
+var count = 0;
+var arr = [];
+var randomValue = 0;
+var brr = [];
+// 更新数据较小时的数组
+function updateArray() {
+  arr = [];
+  for (count = 0; count < rangeValue; count++) {
+    arr[count] = count + 1;
+  }
+}
+window.onload=()=>{
+  //更新数组
+  updateArray();
+  console.log(inputRange);
+  inputRange.oninput =function(){
+    rangeValue = inputRange.value;
+    if (rangeValue < 10000) {
+      updateArray();
+    }
+  };
+  unrepeated.onclick =function(){
+    if (unrepeated.checked == false) {
+      remain.innerText = "剩余数量：∞";
+    }
+  };
+  //当数组比较小的时候,采用这种方法
+  OKBtn.onclick =function(){
+    count = 0;
+    console.log("ok");
+    if (rangeValue < 10000) {
+      count = arr.length;
+      if (count > 0) {
+        randIndex = Math.floor(Math.random() * count);
+        randomValue = arr[randIndex];
+        numShow.innerText = String(randomValue);
+        if (unrepeated.checked == true) {
+          arr.splice(randIndex, 1);
+          remainValue = arr.length;
+          remain.innerText = "剩余数量：" + remainValue;
+        }
+      } else {
+        numShow.innerText = "End";
+      }
+    } else {
+      largeRange();
+    }
+  };
+};
+function largeRange() {
+  randomValue = Math.floor(Math.random() * rangeValue + 1);
+  if (unrepeated.checked == true) {
+    if (brr.length > rangeValue / 10) {
+      numShow.innerText = "点的手酸吗";
+      numShow.style.fontSize = "6vw";
+      return;
+    }
+    while (brr.indexOf(randomValue) != -1) {
+      randomValue = Math.floor(Math.random() * rangeValue + 1);
+      console.log("re");
+      // count++;
+    }
+    brr.push(randomValue);
+    console.log(brr);
+    remainValue = rangeValue - brr.length;
+    remain.innerText = "剩余数量：" + remainValue;
+    numShow.innerText = String(randomValue);
+  } else {
+    numShow.innerText = String(randomValue);
+  }
+}
+</script>
 
 <a id="more"></a>
-<h2 id="这算是我写的第一个比较满意的前端程序了吧"><a href="#这算是我写的第一个比较满意的前端程序了吧" class="headerlink" title="这算是我写的第一个比较满意的前端程序了吧"></a>这算是我写的第一个比较满意的前端程序了吧</h2><p>我想随机数生成器大家应该都会用，所以使用说明也不用我来说了吧。</p>
-<p>之前写的那个版本非常的难看，毕竟也只是稍微用html写了写，界面不怎么行，也没有文档说明。在这里的话我就稍微完善以下这个网页吧。</p>
-<p>想看代码的话可以直接按F12，当然也可以看下面的代码。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> inputFontSize=<span class="built_in">document</span>.getElementById(<span class="string">&quot;inputFontSize&quot;</span>);<span class="comment">//字体大小</span></span><br><span class="line">  <span class="keyword">var</span> inputRandomRange=<span class="built_in">document</span>.getElementById(<span class="string">&quot;inputRandomRange&quot;</span>);<span class="comment">//范围</span></span><br><span class="line">  <span class="keyword">var</span> btnOK=<span class="built_in">document</span>.getElementById(<span class="string">&quot;btnOK&quot;</span>);<span class="comment">//生成按钮</span></span><br><span class="line">  <span class="keyword">var</span> randomNumShow=<span class="built_in">document</span>.getElementById(<span class="string">&quot;randomNumShow&quot;</span>);<span class="comment">//显示出的随机数</span></span><br><span class="line">  <span class="keyword">var</span> blackListBox=<span class="built_in">document</span>.getElementById(<span class="string">&quot;black&quot;</span>);<span class="comment">//不重复勾选</span></span><br><span class="line">  <span class="keyword">var</span> restNumElement=<span class="built_in">document</span>.getElementById(<span class="string">&quot;restNum&quot;</span>);<span class="comment">//剩余数量对象</span></span><br><span class="line">  <span class="keyword">var</span> restNumValue=<span class="number">0</span>;<span class="comment">//剩余数量的值</span></span><br><span class="line">  <span class="keyword">var</span> randIndex=<span class="number">0</span>;<span class="comment">//随机数的索引</span></span><br><span class="line">  <span class="keyword">var</span> count=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> rangeValue=<span class="number">100</span>;<span class="comment">//范围数值</span></span><br><span class="line">  <span class="keyword">var</span> randomValue=<span class="built_in">Number</span>(inputRandomRange.value);<span class="comment">//随机数数值</span></span><br><span class="line">  <span class="keyword">var</span> candidateArray=[];</span><br><span class="line">  <span class="keyword">for</span> (count=<span class="number">0</span>; count&lt;rangeValue;count++)&#123;</span><br><span class="line">    candidateArray[count]=count+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> fontSizeValue=<span class="string">&quot;250px&quot;</span>;<span class="comment">//字体大小数值</span></span><br><span class="line">  <span class="comment">//输入范围时更新数组</span></span><br><span class="line">  inputRandomRange.oninput=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    rangeValue=<span class="built_in">Number</span>(inputRandomRange.value);</span><br><span class="line">    candidateArray=[];</span><br><span class="line">    <span class="keyword">for</span> (count=<span class="number">0</span>; count&lt;rangeValue;count++)&#123;</span><br><span class="line">      candidateArray[count]=count+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//取消勾选&quot;不重复&quot;时重置数组</span></span><br><span class="line">  blackListBox.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (blackListBox.checked==<span class="literal">false</span>)&#123;</span><br><span class="line">      candidateArray=[];</span><br><span class="line">      restNumElement.innerText=<span class="string">&quot;&quot;</span>;</span><br><span class="line">      <span class="keyword">for</span> (count=<span class="number">0</span>; count&lt;rangeValue;count++)&#123;</span><br><span class="line">        candidateArray[count]=count+<span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//输入字体大小时设置字体大小</span></span><br><span class="line">  inputFontSize.oninput=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    fontSizeValue=inputFontSize.value+<span class="string">&quot;px&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//点击按钮时的响应</span></span><br><span class="line">  btnOK.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (candidateArray.length&gt;<span class="number">0</span>)&#123;</span><br><span class="line">      randIndex=<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*candidateArray.length);</span><br><span class="line">      randomValue=candidateArray[randIndex];</span><br><span class="line">      randomNumShow.innerText=<span class="built_in">String</span>(randomValue);</span><br><span class="line">      <span class="keyword">if</span> (blackListBox.checked==<span class="literal">true</span>)&#123;</span><br><span class="line">        candidateArray.splice(randIndex,<span class="number">1</span>);</span><br><span class="line">        restNumValue=candidateArray.length;</span><br><span class="line">        restNumElement.innerText=<span class="string">&quot;剩余数量：&quot;</span>+restNumValue;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      randomNumShow.innerText=<span class="string">&quot;终&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    randomNumShow.style.fontSize=fontSizeValue;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="这算是我写的第一个比较满意的前端程序了吧"><a href="#这算是我写的第一个比较满意的前端程序了吧" class="headerlink" title="这算是我写的第一个比较满意的前端程序了吧"></a>这算是我写的第一个比较满意的前端程序了吧</h2><p>我想随机数生成器大家应该都会用，所以使用说明也不用我来说了吧。</p>
+<p>之前写的那个版本非常的难看，毕竟也只是稍微用 html 写了写，界面不怎么行，也没有文档说明。在这里的话我就稍微完善以下这个网页吧。</p>
+<p>想看代码的话可以直接按 F12，当然也可以看下面的代码。</p>
 <p>基本逻辑：首先，生成一个枚举型的 Array，即数组的数值等于它的索引加一。接着，通过随机数抽取索引对应的数，并将该索引的元素移出数组，数组大小自减。最后数组长度为 0 时，停止抽取。</p>
 <p>这是我认为相对来说比较方便的算法了，如果有大佬能够提供更好的想法，欢迎留言。</p>
 <p>注意事项：当重新输入范围，勾选或取消勾选“不重复”都会重置数组，也就是说，会从给定的范围内重新抽取。这是我个人觉得应该加入的一些想法，不知道大家怎么想。</p>
@@ -537,11 +544,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">manim</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">manim</a>
               </li>
             
             <div class="clearfix"></div>
