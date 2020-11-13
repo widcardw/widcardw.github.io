@@ -296,7 +296,7 @@ window.onload=()=>{
 function largeRange() {
   randomValue = Math.floor(Math.random() * rangeValue + 1);
   if (unrepeated.checked == true) {
-    if (brr.length > rangeValue / 10) {
+    if (brr.length > rangeValue / 10 || brr.length > 10000) {
       numShow.innerText = "点的手酸吗";
       numShow.style.fontSize = "6vw";
       return;
@@ -708,11 +708,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">manim</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">manim</a>
               </li>
             
             <div class="clearfix"></div>
