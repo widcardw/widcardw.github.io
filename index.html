@@ -269,6 +269,9 @@ window.onload=()=>{
     if (unrepeated.checked == false) {
       remain.innerText = "剩余数量：∞";
     }
+    if (rangeValue < 10000){
+      updateArray();
+    }
   };
   //当数组比较小的时候,采用这种方法
   OKBtn.onclick =function(){

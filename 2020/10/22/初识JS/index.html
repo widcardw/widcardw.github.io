@@ -16,7 +16,7 @@
 <meta property="og:description" content=".ext {   display: flex;   flex-wrap:wrap;   padding: 25px;   background-color: rgb(255, 246, 233);   border-radius: 20px;   box-shadow: 0px 0px 5px lightsalmon;   margin: 20px; }  .lele {   display:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-22T13:06:22.000Z">
-<meta property="article:modified_time" content="2020-11-13T15:37:09.254Z">
+<meta property="article:modified_time" content="2020-12-12T05:20:08.609Z">
 <meta property="article:author" content="widcardw">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -272,6 +272,9 @@ window.onload=()=>{
     if (unrepeated.checked == false) {
       remain.innerText = "剩余数量：∞";
     }
+    if (rangeValue < 10000){
+      updateArray();
+    }
   };
   //当数组比较小的时候,采用这种方法
   OKBtn.onclick =function(){
@@ -320,7 +323,6 @@ function largeRange() {
 }
 </script>
 
-
 <a id="more"></a>
 
 <h2 id="这算是我写的第一个比较满意的前端程序了吧"><a href="#这算是我写的第一个比较满意的前端程序了吧" class="headerlink" title="这算是我写的第一个比较满意的前端程序了吧"></a>这算是我写的第一个比较满意的前端程序了吧</h2><p>我想随机数生成器大家应该都会用，所以使用说明也不用我来说了吧。</p>
@@ -335,8 +337,8 @@ function largeRange() {
 <p>所以，数据范围大于一万的时候，我就只允许你抽取数据范围的十分之一，或者只允许你抽取一万次。我相信不会有人真的拿个连点器专门用来测我这垃圾玩意。</p>
 <p>这是我认为相对来说比较方便的算法了，如果有大佬能够提供更好的想法，欢迎留言。</p>
 <p>注意事项：当重新输入范围，勾选或取消勾选“不重复”都会重置数组，也就是说，会从给定的范围内重新抽取。这是我个人觉得应该加入的一些想法，不知道大家怎么想。</p>
-<p>另外，为了写这玩意我还特意临时去学了 CSS，发现这玩意真的是不写不知道，一写吓一跳。在有些方面，这玩意挺方便的，主要是用于排版，但是不知道后续会不会遇到比较麻烦的问题（我觉得可能主要是浏览器和手机端的适配，到时候有 BUG 了我再改，比如把范围调大之后抽取的数就会上下反复横跳，因为我加了flex-wrap，为了适应屏幕宽度而换行，结果效果还是很差，到时候如果有机会的话再改吧）。</p>
-<p>对了，之前一个自定义字体大小被我删了，很抱歉，手机端的话可能就没法抽取很大的数了，因为会显示不下。<del>（这就是CSS吗？i了i了）</del></p>
+<p>另外，为了写这玩意我还特意临时去学了 CSS，发现这玩意真的是不写不知道，一写吓一跳。在有些方面，这玩意挺方便的，主要是用于排版，但是不知道后续会不会遇到比较麻烦的问题（我觉得可能主要是浏览器和手机端的适配，到时候有 BUG 了我再改，比如把范围调大之后抽取的数就会上下反复横跳，因为我加了 flex-wrap，为了适应屏幕宽度而换行，结果效果还是很差，到时候如果有机会的话再改吧）。</p>
+<p>对了，之前一个自定义字体大小被我删了，很抱歉，手机端的话可能就没法抽取很大的数了，因为会显示不下。<del>（这就是 CSS 吗？i 了 i 了）</del></p>
 <p>那就这样了。</p>
 
       
