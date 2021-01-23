@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MPV的使用心得 › widcardw</title>
+  <meta name="author" content="widcardw">
+  
+  <meta name="description" content="我与MPV最初接触到 MPV 是在 Elteoremadebeethoven 的视频。当时也只是看到了，也并没有去刻意的关注，毕竟跨平台的音视频播放器应该来说还是蛮多的。而且我们也没有什么特别的需求要在自己的电脑上安装过多不同种类的播放器，毕竟常用的一般都不会超过 3 个。有了一个 PotPlayer 不就够了吗。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="MPV的使用心得"/>
+  <meta property="og:site_name" content="widcardw"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="widcardw" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">widcardw</a></h1>
+  <h2><a href="/"></a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/2020/10/07/MyFirstBlog/">About</a></li>
+      
+      <li><a href="/links">Link</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">MPV的使用心得</h1>
+  
+
+      
+        <time datetime="2021-01-23T11:26:08.000Z">2021-01-23</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="我与MPV"><a href="#我与MPV" class="headerlink" title="我与MPV"></a>我与MPV</h1><p>最初接触到 MPV 是在 Elteoremadebeethoven 的视频。当时也只是看到了，也并没有去刻意的关注，毕竟跨平台的音视频播放器应该来说还是蛮多的。而且我们也没有什么特别的需求要在自己的电脑上安装过多不同种类的播放器，毕竟常用的一般都不会超过 3 个。有了一个 PotPlayer 不就够了吗。</p>
+<a id="more"></a>
+<p>之前有浏览过关于 FFmpeg 耻辱柱的信息，而 PotPlayer 的前身居然也在这上面。再加上现在国内似乎去不了 PotPlayer 的官网，想要下载到较为原装版本的 PotPlayer 似乎就变得有点困难。<strong>但是</strong>，当我回想起几年前接触到一个剪辑软件 Aviutl 的时候，教程中指导我们安装<strong>完美解码</strong>，而完美解码的安装包中就恰好有几款颇受大众推崇的播放器：PotPlayer，MPC-HC，MPC-BE。或许这也是在国内获取到 PotPlayer 的一种途径吧。</p>
+<p>这时，我开始关注开源软件，去关注 github 上的那些高“星”项目。以此为契机，我打算去了解一下 FFmpeg 和 MPV <del>虽然到现在为止我还没有克隆过这两个仓库</del>。在 2017 年，我就因 <a target="_blank" rel="noopener" href="https://github.com/lmintlcx">Lmintlcx</a> 的教程了解到了 FFmpeg，不过这也仅仅是为了给视频进行压制而学习的一点点技能。通过命令行进行操作，让我这个计算机系学生的某些“特征”得以展现出来。MPV 可以通过命令行进行操作，或许这也是我开始接触它的一个原因。</p>
+<h1 id="软件的安装"><a href="#软件的安装" class="headerlink" title="软件的安装"></a>软件的安装</h1><p>这是 MPV 的官网：<a target="_blank" rel="noopener" href="https://mpv.io/">mpv.io</a></p>
+<p>这款软件和 FFmpeg 有一个共同之处，就是 Windows 用户只能使用其他用户编译的版本。也就是说，它是没有直接可用的安装包，并且我们需要手动的把它的路径写入Path。而 Linux 用户可以通过命令 <code>sudo apt-get install mpv</code> 来进行安装，由此可见在一定程度上 Windows 确实不太适合程序员。</p>
+<p>具体安装过程不在这里展开。</p>
+<h1 id="初次接触"><a href="#初次接触" class="headerlink" title="初次接触"></a>初次接触</h1><p>当我第一次使用这个播放器，我心中积压了满满的不快。右键暂停，占据了菜单的位置；一张满是快捷键的图，这真的是人能背下来的吗？播放结束自动关闭，这似乎不太符合我之前的习惯……因为这些原因，我差点直接把它删了。</p>
+<p>网上教程零碎，英文文档令人头疼，但我却偏偏喜欢将时间花在这种事情上。自定义属性和快捷键，或许是 MPV 的一个小亮点，等到终于配置完成之后，操作终于能够渐渐熟悉起来。</p>
+<p>这是我的一些配置，存放在 <code>%APPDATA%/Roaming/mpv</code> 当中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># mpv.conf  属性设置</span><br><span class="line"></span><br><span class="line">no-border       # 无边框</span><br><span class="line">keep-open&#x3D;yes   # 播放结束时不直接关闭</span><br><span class="line"># Subtitle settings  字幕设置</span><br><span class="line">sub-auto&#x3D;fuzzy</span><br><span class="line">sub-font-size&#x3D;50</span><br><span class="line">sub-ass-force-margins</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#input.conf  快捷键设设置</span><br><span class="line"></span><br><span class="line">&#x2F;        set  video-aspect 1.7777  # 16:9</span><br><span class="line">?        set  video-aspect 1.3333  # 4:3</span><br><span class="line">b        add  video-rotate 15      # 旋转15度</span><br><span class="line">n        set  video-rotate 0       # 重置旋转角度</span><br><span class="line">c        seek 0 absolute-percent ; set pause no  # 重新播放</span><br></pre></td></tr></table></figure>
+
+<h1 id="再次研究"><a href="#再次研究" class="headerlink" title="再次研究"></a>再次研究</h1><p>mpv 作为一个能够使用命令行进行操作的播放器，当然要有其特殊之处。但我却没有想到，这个播放器竟然能播放在线的视频。后来在搜索中发现，原来在 Linux 上安装 mpv 时，它会自动安装 youtube-dl 库，用来抓取网络上的视频。如果再使用 you-get 库，在命令中添加属性 <code>-p</code> 来指定播放器，同样能够在线观看视频。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mpv https://b23.tv/av666  </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> you-get -p mpv https://b23.tv/av170001</span></span><br></pre></td></tr></table></figure>
+<p>这样即可直接抓取视频在本地播放，这一功能着实令人惊讶，也让我感叹爬虫与反爬之间的激烈竞争。<del>不会爬虫还在这儿说，爪巴</del></p>
+<h1 id="再多-BB-两句"><a href="#再多-BB-两句" class="headerlink" title="再多 BB 两句"></a>再多 BB 两句</h1><p>之后有机会一定要好好了解视频到底是怎样一个事物。C++ 已经学完了，但其中最基本的“流”概念都不知道，或许是真的可悲了。</p>
+
+      
+    </div>
+      
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/software/">software</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+      </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:example.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2021/01/23/MPV的使用心得/">MPV的使用心得</a>
+      </li>
+    
+      <li>
+        <a href="/2020/10/22/初识JS/">初识JS</a>
+      </li>
+    
+      <li>
+        <a href="/2020/10/16/垃圾箱-01/">垃圾箱#01</a>
+      </li>
+    
+      <li>
+        <a href="/2020/10/07/manim安装教程-简易概括版/">manim安装教程(简要概括版)</a>
+      </li>
+    
+      <li>
+        <a href="/2020/10/07/MyFirstBlog/">第一篇博客</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>1</small></li>
+  
+    <li><a href="/categories/manim/">manim</a><small>1</small></li>
+  
+    <li><a href="/categories/牢骚/">牢骚</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/manim/" style="font-size: 10px;">manim</a> <a href="/tags/software/" style="font-size: 10px;">software</a> <a href="/tags/%E6%9D%82%E7%89%A9%E7%AE%B1/" style="font-size: 20px;">杂物箱</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 widcardw
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+</body>
+</html>
+
