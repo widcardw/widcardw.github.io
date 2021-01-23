@@ -85,8 +85,18 @@
     height:110px;
     margin:0.5em;
     border-radius: 120px;
-    box-shadow: 0px 0px 20px rgb(150, 180, 255);
+    box-shadow: 0px 0px 10px rgb(150, 180, 255);
     float:left;
+    transition: 1s;
+}
+.avatar:hover{
+    transform:rotate(360deg);
+    -ms-transform:rotate(360deg);     /* IE 9 */
+    -moz-transform:rotate(360deg);     /* Firefox */
+    -webkit-transform:rotate(360deg); /* Safari 和 Chrome */
+    -o-transform:rotate(360deg);     /* Opera */
+    box-shadow: 0px 0px 20px rgb(100, 160, 255);
+    transition:1s;
 }
 .discription{
     margin-left:1.5em;
@@ -107,17 +117,7 @@
     margin-bottom:0.2em;
     /* box-shadow: 0px 0px 20px rgb(150, 180, 255); */
 }
-img{
-    transition:1s;
-}
-img:hover{
-    transform:rotate(360deg);
-    -ms-transform:rotate(360deg);     /* IE 9 */
-    -moz-transform:rotate(360deg);     /* Firefox */
-    -webkit-transform:rotate(360deg); /* Safari 和 Chrome */
-    -o-transform:rotate(360deg);     /* Opera */
-    transition:1s;
-}
+
 </style>
 <div class="oneperson">
     <img class="avatar" src="/links/index/../avatar.jpg">

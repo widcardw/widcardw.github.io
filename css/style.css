@@ -4,12 +4,6 @@
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: "SourceHanSerifMedium";
-  src: url("../font/SourceHanSerifSC-Medium.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
 * {
   margin: 0;
   padding: 0;
@@ -17,7 +11,7 @@
 body {
   background: #f1f1f1;
   color: #444;
-  font-family: "Latin", "SourceHanSerifMedium", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-family: "Latin Modern Math", "Latin", "思源宋体 Medium", "Helvetica Neue", "Helvetica", Arial, sans-serif;
   font-size: 18px;
   text-shadow: 0 0 1px transparent;
 }
@@ -32,7 +26,7 @@ body {
   }
 }
 input {
-  font-family: "Latin", "SourceHanSerifMedium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 1em;
 }
 h1,
@@ -41,7 +35,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Latin", "SourceHanSerifMedium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 h1 {
   font-size: 1.8em;
@@ -278,7 +272,7 @@ article header .icon:before {
 }
 article header time {
   color: #999;
-  font: 0.8em "Latin", "SourceHanSerifMedium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.8em "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   margin-bottom: 5px;
   display: block;
   line-height: 2.5;
@@ -315,7 +309,7 @@ article .entry blockquote {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   font-style: normal;
-  font-family: "Latin", "SourceHanSerifMedium", "Georgia", serif;
+  font-family: "Latin Modern Math", "Latin", "思源宋体 Medium", "Georgia", serif;
   font-size: 1em;
   padding: 0 30px 15px;
   text-align: left;
@@ -335,7 +329,7 @@ article .entry blockquote footer cite:before {
 }
 article .entry code,
 article .entry pre {
-  font-family: Courier New, "SourceHanSerifMedium", Menlo, Consolas, monospace;
+  font-family: Courier New, "思源宋体 Medium", Menlo, Consolas, monospace;
 }
 article .entry code {
   background: #eee;
@@ -509,7 +503,7 @@ article footer .addthis iframe {
   padding: 5px 10px;
   background: #ddd;
   color: #999;
-  font-family: "Latin", "SourceHanSerifMedium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
   margin-bottom: 50px;
 }
@@ -565,7 +559,7 @@ article footer .addthis iframe {
 }
 .archive span {
   color: #999;
-  font: 0.8em "Latin", "SourceHanSerifMedium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.8em "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   margin-top: 5px;
   margin-right: 10px;
   margin-bottom: 5px;
@@ -628,7 +622,7 @@ article footer .addthis iframe {
 }
 #sidebar .search input {
   background: #fff;
-  font-family: "Latin", "SourceHanSerifMedium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-style: italic;
   font-size: 1em;
   padding: 10px 15px;
@@ -676,7 +670,7 @@ article footer .addthis iframe {
 #footer {
   color: #999;
   margin-bottom: 50px;
-  font: 0.9em/1.6 "Latin", "SourceHanSerifMedium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.9em/1.6 "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
 }
 .entry .gist {
@@ -702,7 +696,7 @@ article footer .addthis iframe {
 }
 .entry .gist .gist-file .gist-data pre {
   padding: 0 !important;
-  font-family: Courier New, "SourceHanSerifMedium", Menlo, Consolas, monospace;
+  font-family: Courier New, "思源宋体 Medium", Menlo, Consolas, monospace;
 }
 .entry .gist .gist-file .gist-meta {
   background: none;
