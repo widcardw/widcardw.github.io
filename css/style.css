@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Latin";
-  src: url("../font/latinmodern-math.otf") format("opentype");
+  src: url("https://gitee.com/widcardw/VSCode_Projects_Homework_for_CPP/blob/master/fonts/LATINMODERN-MATH.OTF") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
