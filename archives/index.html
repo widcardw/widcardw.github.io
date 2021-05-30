@@ -26,6 +26,7 @@
 
 
 <body>
+  <div id="fake-head"></div>
   <header id="header"><div class="meta inner">
   <h1><a href="/">widcardw</a></h1>
   <h2><a href="/"></a></h2>
@@ -175,10 +176,21 @@
   
 </div>
 <div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
 
 
 
 </body>
+<script>
+  var header = document.querySelector("#header")
+  document.onmousewheel = function(event) {
+    // console.log(event.wheelDelta)
+    if (event.wheelDelta > 0) {
+      header.className = "head-show"
+    } else if (event.wheelDelta < 0) {
+      header.className = "head-hide"
+    }
+  }
+</script>
 </html>
 

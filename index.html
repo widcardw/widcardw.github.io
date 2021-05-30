@@ -26,6 +26,7 @@
 
 
 <body>
+  <div id="fake-head"></div>
   <header id="header"><div class="meta inner">
   <h1><a href="/">widcardw</a></h1>
   <h2><a href="/"></a></h2>
@@ -201,11 +202,13 @@ function updateArray() {
 window.onload=()=>{
   //更新数组
   updateArray();
-  console.log(inputRange);
+  // console.log(inputRange);
   inputRange.oninput =function(){
     rangeValue = inputRange.value;
     if (rangeValue < 10000) {
       updateArray();
+    } else {
+      brr = [];
     }
   };
   unrepeated.onclick =function(){
@@ -253,7 +256,7 @@ function largeRange() {
       // count++;
     }
     brr.push(randomValue);
-    console.log(brr);
+    // console.log(brr);
     remainValue = rangeValue - brr.length;
     remain.innerText = "剩余数量：" + remainValue;
     numShow.innerText = String(randomValue);
@@ -474,10 +477,21 @@ function largeRange() {
   
 </div>
 <div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
 
 
 
 </body>
+<script>
+  var header = document.querySelector("#header")
+  document.onmousewheel = function(event) {
+    // console.log(event.wheelDelta)
+    if (event.wheelDelta > 0) {
+      header.className = "head-show"
+    } else if (event.wheelDelta < 0) {
+      header.className = "head-hide"
+    }
+  }
+</script>
 </html>
 

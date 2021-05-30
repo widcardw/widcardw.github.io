@@ -30,6 +30,7 @@
 
 
 <body>
+  <div id="fake-head"></div>
   <header id="header"><div class="meta inner">
   <h1><a href="/">widcardw</a></h1>
   <h2><a href="/"></a></h2>
@@ -74,7 +75,7 @@
 <p>当年买了块数位板，就是为了画画的，也稍微有了几张作品，在 Github 的仓库里有。目前只会画大头，习惯很差，希望以后能稍微多学一点人体之类，把一件事做到底吧。<del>肯定不是为了干什么奇怪的事情</del></p>
 <p>装备控，反正就喜欢各种各样的装备，不管是穿戴还是技术设备。</p>
 <h1 id="性格"><a href="#性格" class="headerlink" title="性格"></a>性格</h1><p>由内向强行转变为的“开朗”，装出来的耐心和乐于助人。容易因为情绪而做出一些出格的事情，所以可能会看到我暴躁、病态的一面。</p>
-<h1 id="manim"><a href="#manim" class="headerlink" title="manim"></a>manim</h1><p>在 2019 年 10 月我接触到了 <a target="_blank" rel="noopener" href="https://github.com/3b1b/ma">manim</a> 这个库，并爱上了这种可视化的风格。由于国内的发展还是很少，所以我在 2020 年暑假开始制作 <a target="_blank" rel="noopener" href="https://space.bilibili.com/31976300/channel/detail?cid=150999">updater 系列教程</a>，为后人铺下一点路。</p>
+<h1 id="manim"><a href="#manim" class="headerlink" title="manim"></a>manim</h1><p>在 2019 年 10 月我接触到了 <a target="_blank" rel="noopener" href="https://github.com/3b1b/manim">manim</a> 这个库，并爱上了这种可视化的风格。由于国内的发展还是很少，所以我在 2020 年暑假开始制作 <a target="_blank" rel="noopener" href="https://space.bilibili.com/31976300/channel/detail?cid=150999">updater 系列教程</a>，为后人铺下一点路。</p>
 <p>2019 年 11 月 29 日加入了 <a target="_blank" rel="noopener" href="https://github.com/manim-kindergarten">manim kindergarten</a> 这个组织，一起讨论、做视频，给这个库加一点新东西。在这里遇到了不少值得共同学习的朋友。</p>
 <p>2021 年 1 月，因为对自己的视频感觉并不是很满意，所以开始新一轮的教程制作。</p>
 <p>由于我本身有点追求视觉效果，所以经常会去追求一种“美”，但也因此花费了很多时间，个人认为在一定程度上有点不太值。</p>
@@ -172,10 +173,21 @@
   
 </div>
 <div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
 
 
 
 </body>
+<script>
+  var header = document.querySelector("#header")
+  document.onmousewheel = function(event) {
+    // console.log(event.wheelDelta)
+    if (event.wheelDelta > 0) {
+      header.className = "head-show"
+    } else if (event.wheelDelta < 0) {
+      header.className = "head-hide"
+    }
+  }
+</script>
 </html>
 
