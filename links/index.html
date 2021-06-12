@@ -238,6 +238,7 @@
 </aside>
     <div class="clearfix"></div>
   </div>
+  <div id="back-to-top" class="back-hide"></div>
   <footer id="footer" class="inner"><div class="alignleft">
   
   &copy; 2021 widcardw
@@ -251,6 +252,8 @@
 </body>
 <script>
   var header = document.querySelector("#header")
+  var fake = document.querySelector("#fake-head");
+  var btn_back = document.querySelector("#back-to-top");
   document.onmousewheel = function(event) {
     // console.log(event.wheelDelta)
     if (event.wheelDelta > 0) {
@@ -258,7 +261,31 @@
     } else if (event.wheelDelta < 0) {
       header.className = "head-hide"
     }
+    if (document.documentElement.scrollTop > 10) {
+      btn_back.className = "back-show"
+    } else {
+      btn_back.className = "back-hide"
+    }
   }
+  btn_back.addEventListener("click", function (event) {
+    // document.body.scrollTop = 0;
+    // document.documentElement.scrollTop = 0;
+    scrollToptimer = setInterval(function () {
+      var top = document.body.scrollTop || document.documentElement.scrollTop;
+      var speed = top / 4;
+      if (document.body.scrollTop!=0) {
+          document.body.scrollTop -= speed / 4;
+      }else {
+          document.documentElement.scrollTop -= speed / 4;
+      }
+      if (top == 0) {
+          clearInterval(scrollToptimer);
+      }
+    }, 10);
+    header.className = "head-show"
+    btn_back.className = "back-hide"
+  })
+  
 </script>
 </html>
 

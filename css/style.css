@@ -175,7 +175,82 @@ a:hover {
 #fake-head {
   height: 55px;
   width: 100%;
-  top: 0;
+}
+#back-to-top {
+  text-align: center;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  background-color: #fff;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+}
+#back-to-top::before {
+  content: '\eab7';
+}
+.back-show {
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  width: 50px;
+  height: 30px;
+  font-size: 20px;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+  line-height: 30px;
+}
+.back-hide {
+  width: 0px;
+  height: 0px;
+  line-height: 0px;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  font-size: 0px;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+}
+#back-to-top:hover {
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+@media screen and (max-width: 900px) {
+  #back-to-top {
+    border-radius: 50%;
+  }
+  .back-hide {
+    width: 0px;
+    height: 0px;
+    line-height: 0px;
+    font-size: 0px;
+  }
+  .back-show {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 15px;
+  }
 }
 article {
   position: relative;
