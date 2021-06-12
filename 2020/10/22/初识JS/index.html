@@ -6,67 +6,7 @@
   <title>初识JS › widcardw</title>
   <meta name="author" content="widcardw">
   
-  <meta name="description" content=".ext {
-  display: flex;
-  flex-wrap:wrap;
-  padding: 25px;
-  background-color: rgb(233, 246, 255);
-  border-radius: 20px;
-  box-shadow: 0px 0px 20px rgb(150, 180, 255);
-  margin: 20px;
-}
-
-.lele {
-  display: block;
-  float: left;
-  position:relative;
-  /* background-color: lightgreen; */
-}
-
-.rele {
-  position:relative;
-  display: block;
-  pointer-events: none;
-  /* text-align: center; */
-  padding-left: 20px;
-  /* padding-top: 50px;
-  padding-bottom:20px; */
-  float: left;
-  /* background-color: lightpink; */
-  font-size: 128px;
-  font-weight: bold;
-}
-
-.ltext {
-  /* display: inline; */
-  float: left;
-}
-
-.rbtn {
-  /* display: inline; */
-  float: right;
-  text-align: center;
-}
-.gnrtbtn:before{
-  float: right;
-  content: &#34;生成&#34;;
-  position: relative;
-  padding: 0.5em;
-  border-radius: 5px;
-  background-color: rgb(219, 233, 252);
-}
-.gnrtbtn:hover:before{
-  background-color: rgb(207, 230, 249);
-}
-.gnrtbtn:active:before{
-  background-color: rgb(151, 207, 246);
-}
-
-
-
-
-        
-            随机数生成器
+  <meta name="description" content="随机数生成器
             
                 随机范围
                 
@@ -85,6 +25,7 @@
         
         &amp;nbsp;
         &amp;nbsp;
+
 
 
 const inputRange = document.getElementById(&#34;inputRange&#34;);
@@ -170,6 +111,65 @@ function largeRange() {
   } else {
     numShow.innerText = String(randomValue);
   }
+}
+
+
+
+
+.ext {
+  display: flex;
+  flex-wrap:wrap;
+  padding: 25px;
+  background-color: rgb(233, 246, 255);
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px rgb(150, 180, 255);
+  margin: 20px;
+}
+
+.lele {
+  display: block;
+  float: left;
+  position:relative;
+  /* background-color: lightgreen; */
+}
+
+.rele {
+  position:relative;
+  display: block;
+  pointer-events: none;
+  /* text-align: center; */
+  padding-left: 20px;
+  /* padding-top: 50px;
+  padding-bottom:20px; */
+  float: left;
+  /* background-color: lightpink; */
+  font-size: 128px;
+  font-weight: bold;
+}
+
+.ltext {
+  /* display: inline; */
+  float: left;
+}
+
+.rbtn {
+  /* display: inline; */
+  float: right;
+  text-align: center;
+}
+.gnrtbtn:before{
+  float: right;
+  content: &#34;生成&#34;;
+  position: relative;
+  padding: 0.5em;
+  border-radius: 5px;
+  background-color: rgb(219, 233, 252);
+}
+.gnrtbtn:hover:before{
+  background-color: rgb(207, 230, 249);
+}
+.gnrtbtn:active:before{
+  background-color: rgb(151, 207, 246);
 }">
   
   
@@ -228,66 +228,7 @@ function largeRange() {
     </header>
     <div class="entry">
       
-        <style type="text/css">
-.ext {
-  display: flex;
-  flex-wrap:wrap;
-  padding: 25px;
-  background-color: rgb(233, 246, 255);
-  border-radius: 20px;
-  box-shadow: 0px 0px 20px rgb(150, 180, 255);
-  margin: 20px;
-}
-
-.lele {
-  display: block;
-  float: left;
-  position:relative;
-  /* background-color: lightgreen; */
-}
-
-.rele {
-  position:relative;
-  display: block;
-  pointer-events: none;
-  /* text-align: center; */
-  padding-left: 20px;
-  /* padding-top: 50px;
-  padding-bottom:20px; */
-  float: left;
-  /* background-color: lightpink; */
-  font-size: 128px;
-  font-weight: bold;
-}
-
-.ltext {
-  /* display: inline; */
-  float: left;
-}
-
-.rbtn {
-  /* display: inline; */
-  float: right;
-  text-align: center;
-}
-.gnrtbtn:before{
-  float: right;
-  content: "生成";
-  position: relative;
-  padding: 0.5em;
-  border-radius: 5px;
-  background-color: rgb(219, 233, 252);
-}
-.gnrtbtn:hover:before{
-  background-color: rgb(207, 230, 249);
-}
-.gnrtbtn:active:before{
-  background-color: rgb(151, 207, 246);
-}
-
-</style>
-
-<div class="ext">
+        <div class="ext">
         <div class="lele">
             <div style="font-size:2em;font-weight:bold;margin-top:0.3em;">随机数生成器</div>
             <div>
@@ -309,6 +250,7 @@ function largeRange() {
         <div class="ltext" style="font-size:0px;">&nbsp;</div>
         <div class="rele" id="numShow">&nbsp;</div>
 </div>
+
 <script type="text/javascript">
 const inputRange = document.getElementById("inputRange");
 const unrepeated = document.getElementById("unrepeated");
@@ -396,8 +338,67 @@ function largeRange() {
 }
 </script>
 
-<a id="more"></a>
 
+<style type="text/css">
+.ext {
+  display: flex;
+  flex-wrap:wrap;
+  padding: 25px;
+  background-color: rgb(233, 246, 255);
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px rgb(150, 180, 255);
+  margin: 20px;
+}
+
+.lele {
+  display: block;
+  float: left;
+  position:relative;
+  /* background-color: lightgreen; */
+}
+
+.rele {
+  position:relative;
+  display: block;
+  pointer-events: none;
+  /* text-align: center; */
+  padding-left: 20px;
+  /* padding-top: 50px;
+  padding-bottom:20px; */
+  float: left;
+  /* background-color: lightpink; */
+  font-size: 128px;
+  font-weight: bold;
+}
+
+.ltext {
+  /* display: inline; */
+  float: left;
+}
+
+.rbtn {
+  /* display: inline; */
+  float: right;
+  text-align: center;
+}
+.gnrtbtn:before{
+  float: right;
+  content: "生成";
+  position: relative;
+  padding: 0.5em;
+  border-radius: 5px;
+  background-color: rgb(219, 233, 252);
+}
+.gnrtbtn:hover:before{
+  background-color: rgb(207, 230, 249);
+}
+.gnrtbtn:active:before{
+  background-color: rgb(151, 207, 246);
+}
+
+</style>
+
+<a id="more"></a>
 <h2 id="这算是我写的第一个比较满意的前端程序了吧"><a href="#这算是我写的第一个比较满意的前端程序了吧" class="headerlink" title="这算是我写的第一个比较满意的前端程序了吧"></a>这算是我写的第一个比较满意的前端程序了吧</h2><p>我想随机数生成器大家应该都会用，所以使用说明也不用我来说了吧。</p>
 <p>之前写的那个版本非常的难看，毕竟也只是稍微用 html 写了写，界面不怎么行，也没有文档说明。在这里的话我就稍微完善以下这个网页吧。</p>
 <p>想看代码的话可以直接按 F12，在这里我也就不想放详细的代码了。</p>
@@ -518,6 +519,21 @@ function largeRange() {
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 <script>
   var header = document.querySelector("#header")

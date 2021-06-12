@@ -238,6 +238,8 @@ a:hover {
 @media screen and (max-width: 900px) {
   #back-to-top {
     border-radius: 50%;
+    right: 20px;
+    bottom: 20px;
   }
   .back-hide {
     width: 0px;

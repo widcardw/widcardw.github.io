@@ -77,7 +77,6 @@ Windows 下安装
 <li><a href="#3">后记（其实不如说是前言）</a></li>
 </ul>
 <a id="more"></a>
-
 <h1 id="1"> Linux 下安装（以 Ubuntu 为例）</h1>
 
 <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>这里的安装过程其实是从<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kv411i7zn">这个视频</a>里面看来的</p>
@@ -93,7 +92,6 @@ Windows 下安装
 <li><p>安装 git，并克隆 manim 的仓库</p>
 <blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure>
-
 <p>安装完成之后找个合适的地方，克隆 manim 仓库。这里就直接使用我个人 fork 过的仓库了，因为国内克隆可以稍微快一点。<del>夹带私货</del></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://gitee.com/widcardw/manim.git</span><br></pre></td></tr></table></figure>
 </blockquote>
@@ -106,10 +104,8 @@ Windows 下安装
 <li><p>在终端中输入以下命令，确认你是否安装了合适版本的 python（即 3.7 及以上版本）</p>
 <blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 --version</span><br></pre></td></tr></table></figure>
-
 <p>如果没有安装合适版本的 python，请执行下面的命令的<strong>其中之一</strong>，安装合适版本的 python3</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install python3.7</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install python3.8</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
@@ -144,15 +140,9 @@ Windows 下安装
 <p>应该差不多了，安装大概就这么多步骤吧。 </p>
 <p><span id="font_tip"><b>等下，别先急着测试</b></span>，由于我将 LaTeX 的默认中文字体使用改成了<code>思源宋体</code>，所以你可能需要下载全套的思源宋体才能正常使用带中文的 LaTeX 生成文字。这个自己去找资源，我认为安装字体应该也不用教了吧。</p>
 <p>或者你还有另外一种方法，就是将下面<code>ctex_template.tex</code>中的一行代码注释，达到在 LaTeX 中不启用思源宋体的效果。</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">setCJKmainfont</span><span class="string">&#123;SourceHanSerifSC-Medium.otf&#125;</span></span></span><br><span class="line">↓</span><br><span class="line"><span class="comment">%\setCJKmainfont&#123;SourceHanSerifSC-Medium.otf&#125;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\setCJKmainfont</span>&#123;SourceHanSerifSC-Medium.otf&#125;</span><br><span class="line">↓</span><br><span class="line"><span class="comment">%\setCJKmainfont&#123;SourceHanSerifSC-Medium.otf&#125;</span></span><br></pre></td></tr></table></figure>
 <h2 id="测试场景"><a href="#测试场景" class="headerlink" title="测试场景"></a>测试场景</h2><p>在刚刚克隆的 manim 文件夹下打开终端，尝试一下示例场景能否运行。注意，如果是克隆了我给出的仓库，请执行下面的命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 -m manim ./my_projects/Examples/example_scenes.py -pl</span><br></pre></td></tr></table></figure>
-
 <p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 LaTeX 没有装好，或者是 LaTeX 语法写错了，要不然就是调用了一些包（例如tikz）必须将<code>CTEX_USE</code>改成<code>False</code>的情况吧。  </p>
 <p><del>把 Grant 的 example 放到 my_projects 里面，这个人实在是太恶心了。</del>  </p>
 <h1 id="2"> Windows 下安装</h1>
@@ -170,8 +160,7 @@ Windows 下安装
 <p>注意选择 3.7 及以上的版本，或者你可以使用 anaconda3。在安装过程中，<strong>一定一定一定要把“<code>Add to Path</code>”勾选上</strong>！！！如果你是 conda 用户的话那就按照需求<del>照着百度</del>进行一些初始化等操作吧。同时，检查一下 pip 是否安装成功。</p>
 </blockquote>
 </li>
-<li><p>接着安装 cairo。</p>
-<blockquote>
+<li>接着安装 cairo。<blockquote>
 <p>到<a target="_blank" rel="noopener" href="https://pypi.org/project/pycairo/#files">这个网站</a>去下载<code>cairo</code>，注意：python3.7 请下载<code>cp37</code>的版本，python3.8 请下载<code>cp38</code>的版本。你会得到一个<code>.whl</code>文件。<br>然后，在你下载这个<code>.whl</code>文件的目录下打开终端（cmd 或 powershell 或 git-bash），使用下面的命令安装 pycairo。请注意自己的版本，不要盲目的直接复制下面的命令。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install pycairo-1.20.0-cp37-cp37m-win32.whl</span><br></pre></td></tr></table></figure></blockquote>
 </li>
@@ -191,10 +180,8 @@ Windows 下安装
 <blockquote>
 <p>使用下面的命令在合适位置克隆 manim 的仓库。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/widcardw/manim.git</span><br></pre></td></tr></table></figure>
-
 <p>克隆完成之后，在 manim 文件夹下打开终端，使用 pip 安装依赖。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
-
 <p>等待过程可能比较漫长，而且可能失败，可以多试几次。</p>
 </blockquote>
 </li>
@@ -216,30 +203,30 @@ Windows 下安装
 </li>
 <li><p>最后，通过命令行，检查一下这些软件是否都安装成功</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"> &gt;</span><span class="bash"> python --version</span></span><br><span class="line">Python 3.7.5（仅示例）</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> dvisvgm --version</span></span><br><span class="line">dvisvgm 2.6.3</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> ffmpeg -version</span></span><br><span class="line">ffmpeg version git-xxx Copyright (c)  （下面还有一长串就不写了）</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> sox --version</span></span><br><span class="line">SoX v14.4.2</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> pip list</span></span><br><span class="line">（这里会出现一堆库，看看是否含有requirements.txt里面的库）</span><br><span class="line">argparse</span><br><span class="line">colour</span><br><span class="line">numpy</span><br><span class="line">Pillow</span><br><span class="line">progressbar</span><br><span class="line">scipy</span><br><span class="line">tqdm</span><br><span class="line">opencv-python</span><br><span class="line">pycairo</span><br><span class="line">pydub</span><br><span class="line">pygments</span><br><span class="line">pyreadline</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <p>同样的，你可能没有安装<code>思源宋体</code>，所以 LaTeX 的中文生成可能会有一点问题。点击<a href="#font_tip">这里</a>查看上面的解决方案。</p>
 <h2 id="测试部分"><a href="#测试部分" class="headerlink" title="测试部分"></a>测试部分</h2><p>在刚刚克隆的 manim 文件夹下打开终端，尝试一下示例场景能否运行。注意，如果是克隆了我给出的仓库，请执行下面的命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m manim ./my_projects/Examples/example_scenes.py -pl</span><br></pre></td></tr></table></figure>
-
 <p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 LaTeX 没有装好，或者是 LaTeX 语法写错了，要不然就是调用了一些包（例如tikz）必须将<code>CTEX_USE</code>改成<code>False</code>的情况吧。 </p>
 <p>如果问题是后者，那只需要检查一下语法有没有写错，如果是前者，那就祈祷再安装的时候不报错吧。</p>
-<h1 id="3">后记</h1>
+<p></p><h1 id="3">后记</h1><p></p>
 <h3> 一些想说/吐槽的话 </h3>
 抱歉没写 MacOS 上的安装教程，因为没接触过 Mac ，而且感觉好像大部分操作跟 Linux 应该都差不多，可以使用 homebrew 来安装，所以就没写。
 
-<p>说实话，如果接触或熟练使用 Linux 的玩家，应该只需要确保足够的存储空间，找个目录，然后这么干</p>
+说实话，如果接触或熟练使用 Linux 的玩家，应该只需要确保足够的存储空间，找个目录，然后这么干
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br><span class="line">$ sudo apt-get install ffmpeg</span><br><span class="line">$ sudo apt-get install sox</span><br><span class="line">$ sudo apt-get install python3     (注意，python3同样需要3.7及以上版本)</span><br><span class="line">$ sudo apt-get install python3-pip</span><br><span class="line">$ sudo apt-get install libcairo2-dev</span><br><span class="line">$ git <span class="built_in">clone</span> https://gitee.com/widcardw/manim.git</span><br><span class="line">$ <span class="built_in">cd</span> manim</span><br><span class="line">$ pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">$ sudo apt-get install texlive-full</span><br></pre></td></tr></table></figure>
 
-<p>然后，就可以用了，就这么简单。所以，感觉 Linux 下的效率确实能高很多。  </p>
-<p>相比之下，Windows 下需要到处去找安装包，到处去下载，就没有那么方便了。<del>虽然我现在还在用Windows</del></p>
+然后，就可以用了，就这么简单。所以，感觉 Linux 下的效率确实能高很多。  
+
+相比之下，Windows 下需要到处去找安装包，到处去下载，就没有那么方便了。~~虽然我现在还在用Windows~~
+
 <h3> 选计科并且使用 WSL 安装的同学请注意了</h3>
 
 <p>WSL（即 Windows Subsystem for Linux）使用的是64位机，并且在未安装<em>交叉编译</em>时是<strong>无法运行</strong>32位程序的！计科的同学将来肯定会学习计算机系统/计算机组成原理，老师会要求你们使用 IA-32 Linux 指令集完成实验，但实验时需要编译出的可执行文件中<strong>32位的可执行文件会无法运行，也无法使用 gdb 进行单步调试</strong>！</p>
 <p>据某个同学了解，微软官方也说 WSL 只支持 64 位的，那我们也没什么办法。我就是本来以为安装了 WSL 可以不装虚拟机 Ubuntu 的，结果最终还是装了虚拟机的那个。也就是说，你可能无法将你对计算机的一部分学习内容与 manim 放在同一屋檐下，还是有点可惜。</p>
-<p><font size="6"><b> The End.</b></font></p>
-
+<font size="6"><b> The End.</b></font>
       
     </div>
       
@@ -344,6 +331,21 @@ Windows 下安装
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 <script>
   var header = document.querySelector("#header")

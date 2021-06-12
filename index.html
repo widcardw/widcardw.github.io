@@ -63,7 +63,7 @@
     </header>
     <div class="entry">
       
-        <h1 id="我与MPV"><a href="#我与MPV" class="headerlink" title="我与MPV"></a>我与MPV</h1><p>最初接触到 MPV 是在 Elteoremadebeethoven 的视频。当时也只是看到了，也并没有去刻意的关注，毕竟跨平台的音视频播放器应该来说还是蛮多的。而且我们也没有什么特别的需求要在自己的电脑上安装过多不同种类的播放器，毕竟常用的一般都不会超过 3 个。有了一个 PotPlayer 不就够了吗。</p>
+        <h1 id="我与MPV"><a href="#我与MPV" class="headerlink" title="我与MPV"></a>我与MPV</h1><p>最初接触到 MPV 是在 Elteoremadebeethoven 的视频。当时也只是看到了，也并没有去刻意的关注，毕竟跨平台的音视频播放器应该来说还是蛮多的。而且我们也没有什么特别的需求要在自己的电脑上安装过多不同种类的播放器，毕竟常用的一般都不会超过 3 个。有了一个 PotPlayer 不就够了吗。<br></p>
       
     </div>
       
@@ -98,66 +98,7 @@
     </header>
     <div class="entry">
       
-        <style type="text/css">
-.ext {
-  display: flex;
-  flex-wrap:wrap;
-  padding: 25px;
-  background-color: rgb(233, 246, 255);
-  border-radius: 20px;
-  box-shadow: 0px 0px 20px rgb(150, 180, 255);
-  margin: 20px;
-}
-
-.lele {
-  display: block;
-  float: left;
-  position:relative;
-  /* background-color: lightgreen; */
-}
-
-.rele {
-  position:relative;
-  display: block;
-  pointer-events: none;
-  /* text-align: center; */
-  padding-left: 20px;
-  /* padding-top: 50px;
-  padding-bottom:20px; */
-  float: left;
-  /* background-color: lightpink; */
-  font-size: 128px;
-  font-weight: bold;
-}
-
-.ltext {
-  /* display: inline; */
-  float: left;
-}
-
-.rbtn {
-  /* display: inline; */
-  float: right;
-  text-align: center;
-}
-.gnrtbtn:before{
-  float: right;
-  content: "生成";
-  position: relative;
-  padding: 0.5em;
-  border-radius: 5px;
-  background-color: rgb(219, 233, 252);
-}
-.gnrtbtn:hover:before{
-  background-color: rgb(207, 230, 249);
-}
-.gnrtbtn:active:before{
-  background-color: rgb(151, 207, 246);
-}
-
-</style>
-
-<div class="ext">
+        <div class="ext">
         <div class="lele">
             <div style="font-size:2em;font-weight:bold;margin-top:0.3em;">随机数生成器</div>
             <div>
@@ -179,6 +120,7 @@
         <div class="ltext" style="font-size:0px;">&nbsp;</div>
         <div class="rele" id="numShow">&nbsp;</div>
 </div>
+
 <script type="text/javascript">
 const inputRange = document.getElementById("inputRange");
 const unrepeated = document.getElementById("unrepeated");
@@ -265,6 +207,66 @@ function largeRange() {
   }
 }
 </script>
+
+
+<style type="text/css">
+.ext {
+  display: flex;
+  flex-wrap:wrap;
+  padding: 25px;
+  background-color: rgb(233, 246, 255);
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px rgb(150, 180, 255);
+  margin: 20px;
+}
+
+.lele {
+  display: block;
+  float: left;
+  position:relative;
+  /* background-color: lightgreen; */
+}
+
+.rele {
+  position:relative;
+  display: block;
+  pointer-events: none;
+  /* text-align: center; */
+  padding-left: 20px;
+  /* padding-top: 50px;
+  padding-bottom:20px; */
+  float: left;
+  /* background-color: lightpink; */
+  font-size: 128px;
+  font-weight: bold;
+}
+
+.ltext {
+  /* display: inline; */
+  float: left;
+}
+
+.rbtn {
+  /* display: inline; */
+  float: right;
+  text-align: center;
+}
+.gnrtbtn:before{
+  float: right;
+  content: "生成";
+  position: relative;
+  padding: 0.5em;
+  border-radius: 5px;
+  background-color: rgb(219, 233, 252);
+}
+.gnrtbtn:hover:before{
+  background-color: rgb(207, 230, 249);
+}
+.gnrtbtn:active:before{
+  background-color: rgb(151, 207, 246);
+}
+
+</style>
       
     </div>
       
@@ -482,6 +484,21 @@ function largeRange() {
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 <script>
   var header = document.querySelector("#header")
