@@ -148,7 +148,7 @@ window.onload=()=>{
   inputRange.oninput = function(){
     this.value=this.value.replace(/\D|^[0]/g,'')
     rangeValue = inputRange.value;
-    if (rangeValue < 1000) {
+    if (rangeValue < 10000) {
       updateArray();
     } else {
       brr = [];
@@ -161,7 +161,7 @@ window.onload=()=>{
     if (unrepeated.checked == false) {
       remain.innerText = "剩余数量：∞";
     }
-    if (rangeValue < 1000){
+    if (rangeValue < 10000){
       updateArray();
     }
   };
@@ -169,7 +169,7 @@ window.onload=()=>{
   OKBtn.onclick =function(){
     count = 0;
     console.log("ok");
-    if (rangeValue < 1000) {
+    if (rangeValue < 10000) {
       count = arr.length;
       if (count > 0) {
         randIndex = Math.floor(Math.random() * count);
