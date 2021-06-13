@@ -51,7 +51,8 @@ window.onload=()=&gt;{
   //更新数组
   updateArray();
   // console.log(inputRange);
-  inputRange.oninput =function(){
+  inputRange.oninput = function(){
+    this.value=this.value.replace(/\D|^[0]/g,&#39;&#39;)
     rangeValue = inputRange.value;
     if (rangeValue &lt; 1000) {
       updateArray();
@@ -59,6 +60,9 @@ window.onload=()=&gt;{
       brr = [];
     }
   };
+  inputRange.onafterpaste=function(){
+    this.value=this.value.replace(/\D|^[0]/g,&#39;&#39;)
+  }
   unrepeated.onclick =function(){
     if (unrepeated.checked == false) {
       remain.innerText = &#34;剩余数量：∞&#34;;
@@ -91,6 +95,10 @@ window.onload=()=&gt;{
   };
 };
 function largeRange() {
+  if (rangeValue &gt;= 1e20) {
+    alert(&#34;别玩的过火了&#34;);
+    return;
+  }
   randomValue = Math.floor(Math.random() * rangeValue + 1);
   if (unrepeated.checked == true) {
     if (brr.length &gt; rangeValue / 10 || brr.length &gt; 10000) {
@@ -234,7 +242,7 @@ function largeRange() {
             <div>
                 <div class="ltext">随机范围</div>
                 <div class="rbtn">
-                    <input type="text" id="inputRange" value="100" oninput="this.value=this.value.replace(/\D|^[0]/g,'')" onafterpaste="this.value=this.value.replace(/\D|^[0]/g,'')" style="max-width:8.8em;">
+                    <input type="text" id="inputRange" value="100" style="max-width:8.8em;">
                 </div>
             </div>
             <div>
@@ -275,7 +283,8 @@ window.onload=()=>{
   //更新数组
   updateArray();
   // console.log(inputRange);
-  inputRange.oninput =function(){
+  inputRange.oninput = function(){
+    this.value=this.value.replace(/\D|^[0]/g,'')
     rangeValue = inputRange.value;
     if (rangeValue < 1000) {
       updateArray();
@@ -283,6 +292,9 @@ window.onload=()=>{
       brr = [];
     }
   };
+  inputRange.onafterpaste=function(){
+    this.value=this.value.replace(/\D|^[0]/g,'')
+  }
   unrepeated.onclick =function(){
     if (unrepeated.checked == false) {
       remain.innerText = "剩余数量：∞";
@@ -315,6 +327,10 @@ window.onload=()=>{
   };
 };
 function largeRange() {
+  if (rangeValue >= 1e20) {
+    alert("别玩的过火了");
+    return;
+  }
   randomValue = Math.floor(Math.random() * rangeValue + 1);
   if (unrepeated.checked == true) {
     if (brr.length > rangeValue / 10 || brr.length > 10000) {
