@@ -77,7 +77,8 @@
     </header>
     <div class="entry">
       
-        <div class="oneperson">
+        <div class="friend">
+<div class="oneperson">
     <img class="avatar" src="/links/index/../avatar.jpg" alt="widcardw">
     <div class="discription">
         <a class="username" target="_blank" rel="noopener" href="https://widcardw.github.io">widcardw</a><br>
@@ -122,14 +123,22 @@
         <a class="line" target="_blank" rel="noopener" href="https://space.bilibili.com/24046148">bilibili</a>
     </div>
 </div>
+</div>
 
 <style type="text/css">
+.friend{
+    display:grid;
+    grid-template-columns: 50% 50%;
+}
 .oneperson{
+    /* float:left; */
     padding: 1em;
     margin-top: 1em;
+    margin-right: 1em;
     border-radius: 20px;
     box-shadow: 0px 0px 10px rgb(150, 200, 255);
     transition:0.5s;
+    /* width: 43%; */
 }
 .oneperson:hover{
     box-shadow: 0px 0px 20px rgb(100, 160, 255);
@@ -173,7 +182,11 @@
     white-space: nowrap;
     /* box-shadow: 0px 0px 20px rgb(150, 180, 255); */
 }
-
+@media screen and (max-width: 1165px) {
+    .friend {
+        display: block;
+    }
+}
 </style>
       
     </div>

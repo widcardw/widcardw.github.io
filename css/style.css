@@ -11,7 +11,7 @@
 body {
   background: #f1f1f1;
   color: #444;
-  font-family: "Latin Modern Math", "Latin", "思源宋体 Medium", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-family: "Latin", "Latin Modern Math", "思源宋体 Medium", "Helvetica Neue", "Helvetica", Arial, sans-serif;
   font-size: 18px;
   text-shadow: 0 0 1px transparent;
 }
@@ -26,7 +26,7 @@ body {
   }
 }
 input {
-  font-family: "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 1em;
 }
 h1,
@@ -35,7 +35,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 h1 {
   font-size: 1.8em;
@@ -375,7 +375,7 @@ article header .icon:before {
 }
 article header time {
   color: #999;
-  font: 0.8em "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.8em "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   margin-bottom: 5px;
   display: block;
   line-height: 2.5;
@@ -412,7 +412,7 @@ article .entry blockquote {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   font-style: normal;
-  font-family: "Latin Modern Math", "Latin", "思源宋体 Medium", "Georgia", serif;
+  font-family: "Latin", "Latin Modern Math", "思源宋体 Medium", "Georgia", serif;
   font-size: 1em;
   padding: 0 30px 15px;
   text-align: left;
@@ -435,7 +435,7 @@ article .entry pre {
   font-family: Courier New, "思源宋体 Medium", Menlo, Consolas, monospace;
 }
 article .entry code {
-  background: #eee;
+  background: #f8f8f8;
   color: #666;
   padding: 0 5px;
   margin: 0 2px;
@@ -444,7 +444,7 @@ article .entry code {
   border-radius: 3px;
 }
 article .entry pre {
-  background: #eee;
+  background: #f8f8f8;
   border: 1px solid #ddd;
   margin-top: 15px;
   overflow: auto;
@@ -575,11 +575,13 @@ article footer .tags:before {
   font: 1.1em font-icon;
 }
 article footer .categories:before {
+  font-family: "Latin";
   content: '\f07b';
   top: 2px;
   left: 1px;
 }
 article footer .tags:before {
+  font-family: "Latin";
   content: '\f02b';
   top: 3px;
   left: 2px;
@@ -606,7 +608,7 @@ article footer .addthis iframe {
   padding: 5px 10px;
   background: #ddd;
   color: #999;
-  font-family: "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
   margin-bottom: 50px;
 }
@@ -649,9 +651,11 @@ article footer .addthis iframe {
   text-decoration: none;
 }
 .archive-post.tag:before {
+  font-family: "Latin";
   content: '\f02b';
 }
 .archive-post.category:before {
+  font-family: "Latin";
   content: '\f07b';
 }
 .archive {
@@ -662,7 +666,7 @@ article footer .addthis iframe {
 }
 .archive span {
   color: #999;
-  font: 0.8em "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.8em "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   margin-top: 5px;
   margin-right: 10px;
   margin-bottom: 5px;
@@ -725,7 +729,7 @@ article footer .addthis iframe {
 }
 #sidebar .search input {
   background: #fff;
-  font-family: "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-style: italic;
   font-size: 1em;
   padding: 10px 15px;
@@ -773,7 +777,7 @@ article footer .addthis iframe {
 #footer {
   color: #999;
   margin-bottom: 50px;
-  font: 0.9em/1.6 "Latin Modern Math", "Latin", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.9em/1.6 "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
 }
 .entry .gist {
@@ -816,7 +820,7 @@ article footer .addthis iframe {
   color: #258fb8;
 }
 figure.highlight {
-  background: #eee;
+  background: #f8f8f8;
   border: 1px solid #ddd;
   margin-top: 15px;
   padding: 7px 15px;

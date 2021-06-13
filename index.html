@@ -147,7 +147,7 @@ window.onload=()=>{
   // console.log(inputRange);
   inputRange.oninput =function(){
     rangeValue = inputRange.value;
-    if (rangeValue < 10000) {
+    if (rangeValue < 1000) {
       updateArray();
     } else {
       brr = [];
@@ -157,7 +157,7 @@ window.onload=()=>{
     if (unrepeated.checked == false) {
       remain.innerText = "剩余数量：∞";
     }
-    if (rangeValue < 10000){
+    if (rangeValue < 1000){
       updateArray();
     }
   };
@@ -165,7 +165,7 @@ window.onload=()=>{
   OKBtn.onclick =function(){
     count = 0;
     console.log("ok");
-    if (rangeValue < 10000) {
+    if (rangeValue < 1000) {
       count = arr.length;
       if (count > 0) {
         randIndex = Math.floor(Math.random() * count);
