@@ -265,9 +265,6 @@ article {
     margin: 8px -10px 15px -10px;
   }
 }
-article.page {
-  padding-left: 20px;
-}
 article.page .icon {
   display: none;
 }

@@ -118,9 +118,18 @@
     <img class="avatar" src="https://hk-shao.github.io/img/avatar.png" alt="HK-SHAO">
     <div class="discription">
         <a class="username" target="_blank" rel="noopener" href="https://hk-shao.github.io/">烧风</a><br>
-        <div class="line">兴趣广泛</div>
+        <div class="line">A human.</div>
         <a class="line" target="_blank" rel="noopener" href="https://github.com/hk-shao">github</a>&nbsp;
         <a class="line" target="_blank" rel="noopener" href="https://space.bilibili.com/24046148">bilibili</a>
+    </div>
+</div>
+<div class="oneperson">
+    <img class="avatar" src="https://blog.flwfdd.xyz/favicon.png" alt="flwfdd">
+    <div class="discription">
+        <a class="username" target="_blank" rel="noopener" href="https://flwfdd.xyz/">范滇东</a><br>
+        <div class="line">三体 x 摄影 x 造物</div>
+        <a class="line" target="_blank" rel="noopener" href="https://github.com/flwfdd">github</a>&nbsp;
+        <a class="line" target="_blank" rel="noopener" href="https://space.bilibili.com/27482524">bilibili</a>
     </div>
 </div>
 </div>
@@ -129,20 +138,23 @@
 .friend{
     display:grid;
     grid-template-columns: 50% 50%;
+    /* grid-template-columns: 33.3% 33.3% 33.3%; */
 }
 .oneperson{
     /* float:left; */
-    padding: 1em;
-    margin-top: 1em;
-    margin-right: 1em;
+    padding: 0.5em;
+    /* margin-top: 1em; */
+    /* margin-right: 1em; */
     border-radius: 20px;
-    box-shadow: 0px 0px 10px rgb(150, 200, 255);
+    /* box-shadow: 0px 0px 10px rgb(150, 200, 255); */
     transition:0.5s;
     /* width: 43%; */
 }
 .oneperson:hover{
-    box-shadow: 0px 0px 20px rgb(100, 160, 255);
-    transition:0.5s;
+    box-shadow: 0px 0px 5px rgb(150, 200, 255);
+    transform: scale(1.05);
+    /* background-color: rgb(225, 240, 255); */
+    transition:0.3s;
 }
 .avatar{
     width:70px;
@@ -169,7 +181,7 @@
 }
 .username{
     /* float:top; */
-    padding-top:2em;
+    /* padding-top:2em; */
     font-weight:bold;
     font-size:1.7em;
     /* box-shadow: 0px 0px 20px rgb(150, 180, 255); */
@@ -187,6 +199,12 @@
         display: block;
     }
 }
+/* @media screen and (max-width: 1260px) {
+    .friend {
+        display:grid;
+        grid-template-columns: 50% 50%;
+    }
+} */
 </style>
       
     </div>
