@@ -83,7 +83,6 @@
 
 
 
-
   <article class="post">
   <div class="post-content">
     <header>
@@ -294,7 +293,6 @@ function largeRange() {
 
 
 
-
   <article class="post">
   <div class="post-content">
     <header>
@@ -333,7 +331,6 @@ function largeRange() {
 
 
 
-
   <article class="post">
   <div class="post-content">
     <header>
@@ -348,13 +345,9 @@ function largeRange() {
     </header>
     <div class="entry">
       
-        <p>其实你读到后面会发现这篇文章真的是太烂了。<del>（写这么长根本不是简要概括啊喂）</del></p>
+        <p><em>本文档仅适用于旧版 <code>cairo-backend</code> 分支下的 <code>manim</code>，新版请参照官方文档 <a target="_blank" rel="noopener" href="https://manim.wiki">https://manim.wiki</a></em></p>
+<p>其实你读到后面会发现这篇文章真的是太烂了。<del>（写这么长根本不是简要概括啊喂）</del></p>
 <p>无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索来寻找解决方案。</p>
-<ul>
-<li><a href="#1">Linux 下安装（以 Ubuntu 为例）</a></li>
-<li><a href="#2">Windows 下安装</a></li>
-<li><a href="#3">后记（其实不如说是前言）</a></li>
-</ul>
       
     </div>
       
@@ -370,7 +363,6 @@ function largeRange() {
       </footer>
   </div>
 </article>
-
 
 
 
@@ -407,7 +399,6 @@ function largeRange() {
       </footer>
   </div>
 </article>
-
 
 
 
@@ -478,6 +469,17 @@ function largeRange() {
   </div>
 </div>
 
+
+  <div class="widget tag relative" id="mytoc">
+  <h3 class="title">
+      目录
+  </h3>
+  <ul class="entry">
+    
+  </ul>
+</div>
+
+
 </aside>
     <div class="clearfix"></div>
   </div>
@@ -492,28 +494,21 @@ function largeRange() {
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 <script>
   var header = document.querySelector("#header")
   var fake = document.querySelector("#fake-head");
   var btn_back = document.querySelector("#back-to-top");
+  var toc = document.querySelector("#mytoc");
+    
   document.onmousewheel = function(event) {
     // console.log(event.wheelDelta)
+    if (document.documentElement.scrollTop <= 765) {
+      toc.className = "widget tag relative"
+    } else {
+      toc.className = "widget tag fixed"
+    }
+    // console.log(document.documentElement.scrollTop)
     if (event.wheelDelta > 0) {
       header.className = "head-show"
     } else if (event.wheelDelta < 0) {
@@ -525,6 +520,7 @@ function largeRange() {
       btn_back.className = "back-hide"
     }
   }
+
   btn_back.addEventListener("click", function (event) {
     // document.body.scrollTop = 0;
     // document.documentElement.scrollTop = 0;
@@ -542,6 +538,18 @@ function largeRange() {
     }, 10);
     header.className = "head-show"
     btn_back.className = "back-hide"
+    toc.className = "widget tag relative"
+  })
+
+  toc.addEventListener("click", function () {
+    // console.log("toc")
+    setTimeout(function () {
+      if (document.documentElement.scrollTop <= 765) {
+        toc.className = "widget tag relative"
+      } else {
+        toc.className = "widget tag fixed"
+      }
+    }, 5)
   })
   
 </script>

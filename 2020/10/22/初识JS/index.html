@@ -430,7 +430,7 @@ function largeRange() {
 <p>另外，为了写这玩意我还特意临时去学了 CSS，发现这玩意真的是不写不知道，一写吓一跳。在有些方面，这玩意挺方便的，主要是用于排版，但是不知道后续会不会遇到比较麻烦的问题（我觉得可能主要是浏览器和手机端的适配，到时候有 BUG 了我再改，比如把范围调大之后抽取的数就会上下反复横跳，因为我加了 flex-wrap，为了适应屏幕宽度而换行，结果效果还是很差，到时候如果有机会的话再改吧）。</p>
 <p>对了，之前一个自定义字体大小被我删了，很抱歉，手机端的话可能就没法抽取很大的数了，因为会显示不下。<del>（这就是 CSS 吗？i 了 i 了）</del></p>
 <p>那就这样了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 本代码块仅用于测试博客的代码生成和高亮</span></span><br><span class="line"><span class="comment">// 当范围小于 10000 时, 直接生成指定长度的数组</span></span><br><span class="line"><span class="keyword">var</span> rangeValue;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateArray</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  arr = [];</span><br><span class="line">  <span class="keyword">for</span> (count = <span class="number">0</span>; count &lt; rangeValue; count++) &#123;</span><br><span class="line">    arr[count] = count + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">inputRange.oninput = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  rangeValue = inputRange.value;</span><br><span class="line">  <span class="keyword">if</span> (rangeValue &lt; <span class="number">10000</span>) &#123;</span><br><span class="line">    updateArray();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    brr = [];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 对于不重复的抽取, 从这个 arr 中取数, 并将这个数删除</span></span><br><span class="line">OKBtn.onclick =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (rangeValue &lt; <span class="number">10000</span>) &#123;</span><br><span class="line">    count = arr.length;</span><br><span class="line">    <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      randIndex = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * count);</span><br><span class="line">      randomValue = arr[randIndex];</span><br><span class="line">      numShow.innerText = <span class="built_in">String</span>(randomValue);</span><br><span class="line">      <span class="keyword">if</span> (unrepeated.checked === <span class="literal">true</span>) &#123;  <span class="comment">// 对于不重复抽取, 采用这种处理方式</span></span><br><span class="line">        arr.splice(randIndex, <span class="number">1</span>);</span><br><span class="line">        remainValue = arr.length;</span><br><span class="line">        remain.innerText = <span class="string">&quot;剩余数量：&quot;</span> + remainValue;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      numShow.innerText = <span class="string">&quot;End&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    largeRange();  <span class="comment">// 用于处理从大范围中取随机数</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 对于大范围的数, 直接生成对应长度的数组会直接卡住, 所以就不如直接从这个范围内取随机数</span></span><br><span class="line"><span class="comment">// 将抽过的存入数组, 用于检测是否重复</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">largeRange</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  randomValue = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * rangeValue + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">if</span> (unrepeated.checked === <span class="literal">true</span>) &#123;  <span class="comment">// 不重复抽取处理</span></span><br><span class="line">    <span class="keyword">if</span> (brr.length &gt; rangeValue / <span class="number">10</span> || brr.length &gt; <span class="number">10000</span>) &#123;</span><br><span class="line">      numShow.innerText = <span class="string">&quot;点的手酸吗&quot;</span>;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (brr.indexOf(randomValue) !== -<span class="number">1</span>) &#123;</span><br><span class="line">      randomValue = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * rangeValue + <span class="number">1</span>);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;re&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    brr.push(randomValue);</span><br><span class="line">    remainValue = rangeValue - brr.length;</span><br><span class="line">    remain.innerText = <span class="string">&quot;剩余数量：&quot;</span> + remainValue;</span><br><span class="line">    numShow.innerText = <span class="built_in">String</span>(randomValue);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    numShow.innerText = <span class="built_in">String</span>(randomValue);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="部分代码呈现"><a href="#部分代码呈现" class="headerlink" title="部分代码呈现"></a>部分代码呈现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 本代码块仅用于测试博客的代码生成和高亮</span></span><br><span class="line"><span class="comment">// 当范围小于 10000 时, 直接生成指定长度的数组</span></span><br><span class="line"><span class="keyword">var</span> rangeValue;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateArray</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  arr = [];</span><br><span class="line">  <span class="keyword">for</span> (count = <span class="number">0</span>; count &lt; rangeValue; count++) &#123;</span><br><span class="line">    arr[count] = count + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">inputRange.oninput = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  rangeValue = inputRange.value;</span><br><span class="line">  <span class="keyword">if</span> (rangeValue &lt; <span class="number">10000</span>) &#123;</span><br><span class="line">    updateArray();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    brr = [];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 对于不重复的抽取, 从这个 arr 中取数, 并将这个数删除</span></span><br><span class="line">OKBtn.onclick =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (rangeValue &lt; <span class="number">10000</span>) &#123;</span><br><span class="line">    count = arr.length;</span><br><span class="line">    <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      randIndex = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * count);</span><br><span class="line">      randomValue = arr[randIndex];</span><br><span class="line">      numShow.innerText = <span class="built_in">String</span>(randomValue);</span><br><span class="line">      <span class="keyword">if</span> (unrepeated.checked === <span class="literal">true</span>) &#123;  <span class="comment">// 对于不重复抽取, 采用这种处理方式</span></span><br><span class="line">        arr.splice(randIndex, <span class="number">1</span>);</span><br><span class="line">        remainValue = arr.length;</span><br><span class="line">        remain.innerText = <span class="string">&quot;剩余数量：&quot;</span> + remainValue;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      numShow.innerText = <span class="string">&quot;End&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    largeRange();  <span class="comment">// 用于处理从大范围中取随机数</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 对于大范围的数, 直接生成对应长度的数组会直接卡住, 所以就不如直接从这个范围内取随机数</span></span><br><span class="line"><span class="comment">// 将抽过的存入数组, 用于检测是否重复</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">largeRange</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  randomValue = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * rangeValue + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">if</span> (unrepeated.checked === <span class="literal">true</span>) &#123;  <span class="comment">// 不重复抽取处理</span></span><br><span class="line">    <span class="keyword">if</span> (brr.length &gt; rangeValue / <span class="number">10</span> || brr.length &gt; <span class="number">10000</span>) &#123;</span><br><span class="line">      numShow.innerText = <span class="string">&quot;点的手酸吗&quot;</span>;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (brr.indexOf(randomValue) !== -<span class="number">1</span>) &#123;</span><br><span class="line">      randomValue = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * rangeValue + <span class="number">1</span>);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;re&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    brr.push(randomValue);</span><br><span class="line">    remainValue = rangeValue - brr.length;</span><br><span class="line">    remain.innerText = <span class="string">&quot;剩余数量：&quot;</span> + remainValue;</span><br><span class="line">    numShow.innerText = <span class="built_in">String</span>(randomValue);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    numShow.innerText = <span class="built_in">String</span>(randomValue);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
       
@@ -453,7 +453,6 @@ function largeRange() {
       </footer>
   </div>
 </article>
-
 
 <section id="comment">
   
@@ -521,6 +520,17 @@ function largeRange() {
   </div>
 </div>
 
+
+  <div class="widget tag relative" id="mytoc">
+  <h3 class="title">
+      目录
+  </h3>
+  <ul class="entry">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E7%AE%97%E6%98%AF%E6%88%91%E5%86%99%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%AF%94%E8%BE%83%E6%BB%A1%E6%84%8F%E7%9A%84%E5%89%8D%E7%AB%AF%E7%A8%8B%E5%BA%8F%E4%BA%86%E5%90%A7"><span class="toc-text">这算是我写的第一个比较满意的前端程序了吧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81%E5%91%88%E7%8E%B0"><span class="toc-text">部分代码呈现</span></a></li></ol>
+  </ul>
+</div>
+
+
 </aside>
     <div class="clearfix"></div>
   </div>
@@ -535,28 +545,21 @@ function largeRange() {
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 <script>
   var header = document.querySelector("#header")
   var fake = document.querySelector("#fake-head");
   var btn_back = document.querySelector("#back-to-top");
+  var toc = document.querySelector("#mytoc");
+    
   document.onmousewheel = function(event) {
     // console.log(event.wheelDelta)
+    if (document.documentElement.scrollTop <= 765) {
+      toc.className = "widget tag relative"
+    } else {
+      toc.className = "widget tag fixed"
+    }
+    // console.log(document.documentElement.scrollTop)
     if (event.wheelDelta > 0) {
       header.className = "head-show"
     } else if (event.wheelDelta < 0) {
@@ -568,6 +571,7 @@ function largeRange() {
       btn_back.className = "back-hide"
     }
   }
+
   btn_back.addEventListener("click", function (event) {
     // document.body.scrollTop = 0;
     // document.documentElement.scrollTop = 0;
@@ -585,6 +589,18 @@ function largeRange() {
     }, 10);
     header.className = "head-show"
     btn_back.className = "back-hide"
+    toc.className = "widget tag relative"
+  })
+
+  toc.addEventListener("click", function () {
+    // console.log("toc")
+    setTimeout(function () {
+      if (document.documentElement.scrollTop <= 765) {
+        toc.className = "widget tag relative"
+      } else {
+        toc.className = "widget tag fixed"
+      }
+    }, 5)
   })
   
 </script>

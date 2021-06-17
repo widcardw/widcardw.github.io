@@ -473,7 +473,7 @@ article .entry dl dl {
 }
 article .entry h1,
 article .entry h2 {
-  font-weight: normal;
+  font-weight: bold;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
   margin-top: 20px;
@@ -482,7 +482,7 @@ article .entry h3,
 article .entry h4,
 article .entry h5,
 article .entry h6 {
-  font-weight: normal;
+  font-weight: bold;
 }
 article .entry img,
 article .entry video {
@@ -930,4 +930,17 @@ pre .clojure .title {
 }
 pre .deletion {
   color: #dc322f;
+}
+.fixed {
+  position: fixed;
+  top: 60px;
+  width: 270px;
+}
+.relative {
+  position: relative;
+}
+@media screen and (max-width: 900px) {
+  #mytoc {
+    display: none;
+  }
 }

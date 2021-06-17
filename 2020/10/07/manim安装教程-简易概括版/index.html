@@ -6,12 +6,9 @@
   <title>manim安装教程(简要概括版) › widcardw</title>
   <meta name="author" content="widcardw">
   
-  <meta name="description" content="其实你读到后面会发现这篇文章真的是太烂了。（写这么长根本不是简要概括啊喂）
-无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索来寻找解决方案。
-
-Linux 下安装（以 Ubuntu 为例）
-Windows 下安装
-后记（其实不如说是前言）">
+  <meta name="description" content="本文档仅适用于旧版 cairo-backend 分支下的 manim，新版请参照官方文档 https://manim.wiki
+其实你读到后面会发现这篇文章真的是太烂了。（写这么长根本不是简要概括啊喂）
+无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索来寻找解决方案。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -69,17 +66,11 @@ Windows 下安装
     </header>
     <div class="entry">
       
-        <p>其实你读到后面会发现这篇文章真的是太烂了。<del>（写这么长根本不是简要概括啊喂）</del></p>
+        <p><em>本文档仅适用于旧版 <code>cairo-backend</code> 分支下的 <code>manim</code>，新版请参照官方文档 <a target="_blank" rel="noopener" href="https://manim.wiki">https://manim.wiki</a></em></p>
+<p>其实你读到后面会发现这篇文章真的是太烂了。<del>（写这么长根本不是简要概括啊喂）</del></p>
 <p>无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索来寻找解决方案。</p>
-<ul>
-<li><a href="#1">Linux 下安装（以 Ubuntu 为例）</a></li>
-<li><a href="#2">Windows 下安装</a></li>
-<li><a href="#3">后记（其实不如说是前言）</a></li>
-</ul>
 <a id="more"></a>
-<h1 id="1"> Linux 下安装（以 Ubuntu 为例）</h1>
-
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>这里的安装过程其实是从<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kv411i7zn">这个视频</a>里面看来的</p>
+<h1 id="Linux-下安装"><a href="#Linux-下安装" class="headerlink" title="Linux 下安装"></a>Linux 下安装</h1><h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>这里的安装过程其实是从<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kv411i7zn">这个视频</a>里面看来的</p>
 <blockquote>
 <p>首先先说明一下，Ubuntu18.04 版本用<code>sudo apt-get install python3</code>安装<code>python3</code>时，默认安装的是<code>python3.6.9</code>，可能会有一些问题，所以建议还是安装 <strong><code>python3.7</code></strong> 及以上的版本。</p>
 <p>而 Ubuntu20.04 默认安装的是<code>python3.8.2</code>，这对于 manim 来说，应当是不会有太大问题的。</p>
@@ -145,12 +136,10 @@ Windows 下安装
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 -m manim ./my_projects/Examples/example_scenes.py -pl</span><br></pre></td></tr></table></figure>
 <p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 $\LaTeX$ 没有装好，或者是 $\LaTeX$ 语法写错了，要不然就是调用了一些包（例如tikz）必须将<code>CTEX_USE</code>改成<code>False</code>的情况吧。  </p>
 <p><del>把 Grant 的 example 放到 my_projects 里面，这个人实在是太恶心了。</del>  </p>
-<h1 id="2"> Windows 下安装</h1>
-
-<p>如果你是 Windows 10 用户，那你还可以使用 WSL（Windows Subsystem for Linux）进行安装，那么安装步骤就跟上面的 Linux 下安装几乎一样了；如果你是 Windows 7 用户，那可就只能按照常规方法安装了呢。</p>
+<h1 id="Windows-下安装"><a href="#Windows-下安装" class="headerlink" title="Windows 下安装"></a>Windows 下安装</h1><p>如果你是 Windows 10 用户，那你还可以使用 WSL（Windows Subsystem for Linux）进行安装，那么安装步骤就跟上面的 Linux 下安装几乎一样了；如果你是 Windows 7 用户，那可就只能按照常规方法安装了呢。</p>
 <p>如果你已经了解过 WSL，那也应该懂得怎样去安装以及配置一些环境等等。如果你还不会，推荐去看<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TZ4y1s7qh"><em>该视频已被删除</em></a>。</p>
 <p>装好 WSL 之后，回到上面，看<a href="#1"> Linux 下安装</a>去，或者也可以选择看这个<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kv411i7zn"> 视频BV1Kv411i7zn</a>。</p>
-<h2 id="以下是-Windows-下常规安装方法"><a href="#以下是-Windows-下常规安装方法" class="headerlink" title="以下是 Windows 下常规安装方法"></a>以下是 Windows 下常规安装方法</h2><ul>
+<h2 id="Windows-下常规安装方法"><a href="#Windows-下常规安装方法" class="headerlink" title="Windows 下常规安装方法"></a>Windows 下常规安装方法</h2><ul>
 <li><p><strong>首先你的网速不能太差</strong>，包括 pip 源等项目。接着你可以去看看<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14i4y1G7Yr"> 视频BV14i4y1G7Yr </a>使用包管理工具<code>scoop</code>来进行安装。如果你按照这个视频安装成功了，那下面的基本上也就不用看了。</p>
 </li>
 <li><p>如果你不想要使用包管理器来安装的话，那下面的方法就是按照<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1W4411Z7Zt"> 视频BV1W4411Z7Zt </a>进行安装。</p>
@@ -210,19 +199,16 @@ Windows 下安装
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m manim ./my_projects/Examples/example_scenes.py -pl</span><br></pre></td></tr></table></figure>
 <p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 $\LaTeX$ 没有装好，或者是 $\LaTeX$ 语法写错了，要不然就是调用了一些包（例如tikz）必须将<code>CTEX_USE</code>改成<code>False</code>的情况吧。 </p>
 <p>如果问题是后者，那只需要检查一下语法有没有写错，如果是前者，那就祈祷再安装的时候不报错吧。</p>
-<p></p><h1 id="3">后记</h1><p></p>
-<h3> 一些想说/吐槽的话 </h3>
+<h1 id="3">后记</h1>
 
-<p>抱歉没写 MacOS 上的安装教程，因为没接触过 Mac ，而且感觉好像大部分操作跟 Linux 应该都差不多，可以使用 homebrew 来安装，所以就没写。</p>
+<h2 id="一些想说-吐槽的话"><a href="#一些想说-吐槽的话" class="headerlink" title="一些想说/吐槽的话"></a>一些想说/吐槽的话</h2><p>抱歉没写 MacOS 上的安装教程，因为没接触过 Mac ，而且感觉好像大部分操作跟 Linux 应该都差不多，可以使用 homebrew 来安装，所以就没写。</p>
 <p>说实话，如果接触或熟练使用 Linux 的玩家，应该只需要确保足够的存储空间，找个目录，然后这么干</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br><span class="line">$ sudo apt-get install ffmpeg</span><br><span class="line">$ sudo apt-get install sox</span><br><span class="line">$ sudo apt-get install python3     (注意，python3同样需要3.7及以上版本)</span><br><span class="line">$ sudo apt-get install python3-pip</span><br><span class="line">$ sudo apt-get install libcairo2-dev</span><br><span class="line">$ git <span class="built_in">clone</span> https://gitee.com/widcardw/manim.git</span><br><span class="line">$ <span class="built_in">cd</span> manim</span><br><span class="line">$ pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">$ sudo apt-get install texlive-full</span><br></pre></td></tr></table></figure>
 <p>然后，就可以用了，就这么简单。所以，感觉 Linux 下的效率确实能高很多。  </p>
 <p>相比之下，Windows 下需要到处去找安装包，到处去下载，就没有那么方便了。<del>虽然我现在还在用Windows</del></p>
-<h3> 选计科并且使用 WSL 安装的同学请注意了</h3>
-
-<p>WSL（即 Windows Subsystem for Linux）使用的是64位机，并且在未安装<em>交叉编译</em>时是<strong>无法运行</strong>32位程序的！计科的同学将来肯定会学习计算机系统/计算机组成原理，老师会要求你们使用 IA-32 Linux 指令集完成实验，但实验时需要编译出的可执行文件中<strong>32位的可执行文件会无法运行，也无法使用 gdb 进行单步调试</strong>！</p>
+<h2 id="选计科并且使用-WSL-安装的同学请注意了"><a href="#选计科并且使用-WSL-安装的同学请注意了" class="headerlink" title="选计科并且使用 WSL 安装的同学请注意了"></a>选计科并且使用 WSL 安装的同学请注意了</h2><p>WSL（即 Windows Subsystem for Linux）使用的是64位机，并且在未安装<em>交叉编译</em>时是<strong>无法运行</strong>32位程序的！计科的同学将来肯定会学习计算机系统/计算机组成原理，老师会要求你们使用 IA-32 Linux 指令集完成实验，但实验时需要编译出的可执行文件中<strong>32位的可执行文件会无法运行，也无法使用 gdb 进行单步调试</strong>！</p>
 <p>据某个同学了解，微软官方也说 WSL 只支持 64 位的，那我们也没什么办法。我就是本来以为安装了 WSL 可以不装虚拟机 Ubuntu 的，结果最终还是装了虚拟机的那个。也就是说，你可能无法将你对计算机的一部分学习内容与 manim 放在同一屋檐下，还是有点可惜。</p>
-<font size="6"><b> The End.</b></font>
+<h1 id="The-End"><a href="#The-End" class="headerlink" title="The End."></a>The End.</h1>
       
     </div>
       
@@ -245,7 +231,6 @@ Windows 下安装
       </footer>
   </div>
 </article>
-
 
 <section id="comment">
   
@@ -313,6 +298,17 @@ Windows 下安装
   </div>
 </div>
 
+
+  <div class="widget tag relative" id="mytoc">
+  <h3 class="title">
+      目录
+  </h3>
+  <ul class="entry">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="toc-text">Linux 下安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF"><span class="toc-text">测试场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Windows-%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="toc-text">Windows 下安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-%E4%B8%8B%E5%B8%B8%E8%A7%84%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95"><span class="toc-text">Windows 下常规安装方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E9%83%A8%E5%88%86"><span class="toc-text">测试部分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3"><span class="toc-text">后记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%83%B3%E8%AF%B4-%E5%90%90%E6%A7%BD%E7%9A%84%E8%AF%9D"><span class="toc-text">一些想说&#x2F;吐槽的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E8%AE%A1%E7%A7%91%E5%B9%B6%E4%B8%94%E4%BD%BF%E7%94%A8-WSL-%E5%AE%89%E8%A3%85%E7%9A%84%E5%90%8C%E5%AD%A6%E8%AF%B7%E6%B3%A8%E6%84%8F%E4%BA%86"><span class="toc-text">选计科并且使用 WSL 安装的同学请注意了</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-End"><span class="toc-text">The End.</span></a></li></ol>
+  </ul>
+</div>
+
+
 </aside>
     <div class="clearfix"></div>
   </div>
@@ -327,28 +323,21 @@ Windows 下安装
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 <script>
   var header = document.querySelector("#header")
   var fake = document.querySelector("#fake-head");
   var btn_back = document.querySelector("#back-to-top");
+  var toc = document.querySelector("#mytoc");
+    
   document.onmousewheel = function(event) {
     // console.log(event.wheelDelta)
+    if (document.documentElement.scrollTop <= 765) {
+      toc.className = "widget tag relative"
+    } else {
+      toc.className = "widget tag fixed"
+    }
+    // console.log(document.documentElement.scrollTop)
     if (event.wheelDelta > 0) {
       header.className = "head-show"
     } else if (event.wheelDelta < 0) {
@@ -360,6 +349,7 @@ Windows 下安装
       btn_back.className = "back-hide"
     }
   }
+
   btn_back.addEventListener("click", function (event) {
     // document.body.scrollTop = 0;
     // document.documentElement.scrollTop = 0;
@@ -377,6 +367,18 @@ Windows 下安装
     }, 10);
     header.className = "head-show"
     btn_back.className = "back-hide"
+    toc.className = "widget tag relative"
+  })
+
+  toc.addEventListener("click", function () {
+    // console.log("toc")
+    setTimeout(function () {
+      if (document.documentElement.scrollTop <= 765) {
+        toc.className = "widget tag relative"
+      } else {
+        toc.className = "widget tag fixed"
+      }
+    }, 5)
   })
   
 </script>

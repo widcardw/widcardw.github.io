@@ -101,7 +101,6 @@ NNU计算机专业普普通通的一名学生，成绩也就那样。
   </div>
 </article>
 
-
 <section id="comment">
   
 </section>
@@ -168,6 +167,17 @@ NNU计算机专业普普通通的一名学生，成绩也就那样。
   </div>
 </div>
 
+
+  <div class="widget tag relative" id="mytoc">
+  <h3 class="title">
+      目录
+  </h3>
+  <ul class="entry">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Self-Introduction"><span class="toc-text">Self Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#My-First-Blog"><span class="toc-text">My First Blog</span></a></li></ol>
+  </ul>
+</div>
+
+
 </aside>
     <div class="clearfix"></div>
   </div>
@@ -182,28 +192,21 @@ NNU计算机专业普普通通的一名学生，成绩也就那样。
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 <script>
   var header = document.querySelector("#header")
   var fake = document.querySelector("#fake-head");
   var btn_back = document.querySelector("#back-to-top");
+  var toc = document.querySelector("#mytoc");
+    
   document.onmousewheel = function(event) {
     // console.log(event.wheelDelta)
+    if (document.documentElement.scrollTop <= 765) {
+      toc.className = "widget tag relative"
+    } else {
+      toc.className = "widget tag fixed"
+    }
+    // console.log(document.documentElement.scrollTop)
     if (event.wheelDelta > 0) {
       header.className = "head-show"
     } else if (event.wheelDelta < 0) {
@@ -215,6 +218,7 @@ NNU计算机专业普普通通的一名学生，成绩也就那样。
       btn_back.className = "back-hide"
     }
   }
+
   btn_back.addEventListener("click", function (event) {
     // document.body.scrollTop = 0;
     // document.documentElement.scrollTop = 0;
@@ -232,6 +236,18 @@ NNU计算机专业普普通通的一名学生，成绩也就那样。
     }, 10);
     header.className = "head-show"
     btn_back.className = "back-hide"
+    toc.className = "widget tag relative"
+  })
+
+  toc.addEventListener("click", function () {
+    // console.log("toc")
+    setTimeout(function () {
+      if (document.documentElement.scrollTop <= 765) {
+        toc.className = "widget tag relative"
+      } else {
+        toc.className = "widget tag fixed"
+      }
+    }, 5)
   })
   
 </script>

@@ -124,10 +124,10 @@
     </div>
 </div>
 <div class="oneperson">
-    <img class="avatar" src="https://blog.flwfdd.xyz/favicon.png" alt="flwfdd">
+    <img class="avatar" src="/links/index/../flwfdd.png" alt="flwfdd">
     <div class="discription">
         <a class="username" target="_blank" rel="noopener" href="https://flwfdd.xyz/">范滇东</a><br>
-        <div class="line">三体 x 摄影 x 造物</div>
+        <div class="line">三体 $\times$ 摄影 $\times$ 造物</div>
         <a class="line" target="_blank" rel="noopener" href="https://github.com/flwfdd">github</a>&nbsp;
         <a class="line" target="_blank" rel="noopener" href="https://space.bilibili.com/27482524">bilibili</a>
     </div>
@@ -161,7 +161,7 @@
     height:70px;
     margin:0.5em;
     border-radius: 50%;
-    box-shadow: 0px 0px 10px rgb(150, 180, 255);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     float:left;
     transition: 1s;
 }
@@ -218,7 +218,6 @@
       </footer>
   </div>
 </article>
-
 
 <section id="comment">
   
@@ -286,6 +285,17 @@
   </div>
 </div>
 
+
+  <div class="widget tag relative" id="mytoc">
+  <h3 class="title">
+      目录
+  </h3>
+  <ul class="entry">
+    
+  </ul>
+</div>
+
+
 </aside>
     <div class="clearfix"></div>
   </div>
@@ -300,28 +310,21 @@
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 <script>
   var header = document.querySelector("#header")
   var fake = document.querySelector("#fake-head");
   var btn_back = document.querySelector("#back-to-top");
+  var toc = document.querySelector("#mytoc");
+    
   document.onmousewheel = function(event) {
     // console.log(event.wheelDelta)
+    if (document.documentElement.scrollTop <= 765) {
+      toc.className = "widget tag relative"
+    } else {
+      toc.className = "widget tag fixed"
+    }
+    // console.log(document.documentElement.scrollTop)
     if (event.wheelDelta > 0) {
       header.className = "head-show"
     } else if (event.wheelDelta < 0) {
@@ -333,6 +336,7 @@
       btn_back.className = "back-hide"
     }
   }
+
   btn_back.addEventListener("click", function (event) {
     // document.body.scrollTop = 0;
     // document.documentElement.scrollTop = 0;
@@ -350,6 +354,18 @@
     }, 10);
     header.className = "head-show"
     btn_back.className = "back-hide"
+    toc.className = "widget tag relative"
+  })
+
+  toc.addEventListener("click", function () {
+    // console.log("toc")
+    setTimeout(function () {
+      if (document.documentElement.scrollTop <= 765) {
+        toc.className = "widget tag relative"
+      } else {
+        toc.className = "widget tag fixed"
+      }
+    }, 5)
   })
   
 </script>
