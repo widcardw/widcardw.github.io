@@ -213,38 +213,43 @@
   var fake = document.querySelector("#fake-head");
   var btn_back = document.querySelector("#back-to-top");
   var toc = document.querySelector("#mytoc");
-    
-  document.addEventListener('touchmove', function (event) {
-    console.log("touchmove")
-    rollevent(event);
+  var startY = 0;
+
+  document.addEventListener('scroll', function (event) {
+    // 目录是否固定
+    if (document.documentElement.scrollTop <= 765) {
+      toc.className = "widget tag relative"
+    } else {
+      toc.className = "widget tag fixed"
+    }
+    // 是否显示网页头
+    if (scrollY < startY) {
+      header.className = "head-show"
+    } else if (scrollY > startY) {
+      header.className = "head-hide"
+    }
+    startY = scrollY;
+    // 是否显示回到顶部
+    if (document.documentElement.scrollTop > 10) {
+      btn_back.className = "back-show"
+    } else {
+      btn_back.className = "back-hide"
+    }
   })
 
-  document.onmousewheel = function(event) {
-    rollevent(event);
-  }
-
   btn_back.addEventListener("click", function (event) {
-    // document.body.scrollTop = 0;
-    // document.documentElement.scrollTop = 0;
-    scrollToptimer = setInterval(function () {
-      var top = document.body.scrollTop || document.documentElement.scrollTop;
-      var speed = top / 4;
-      if (document.body.scrollTop!=0) {
-          document.body.scrollTop -= speed / 4;
-      }else {
-          document.documentElement.scrollTop -= speed / 4;
-      }
-      if (top == 0) {
-          clearInterval(scrollToptimer);
-      }
-    }, 10);
+    // 回到顶部点击事件
+    document.documentElement.scrollTo({
+      behavior: "smooth",
+      top: 0,
+    });
     header.className = "head-show"
     btn_back.className = "back-hide"
     toc.className = "widget tag relative"
   })
 
   toc.addEventListener("click", function () {
-    // console.log("toc")
+    // 对于点击目录跳转的优化
     setTimeout(function () {
       if (document.documentElement.scrollTop <= 765) {
         toc.className = "widget tag relative"
@@ -253,25 +258,6 @@
       }
     }, 5)
   })
-
-  function rollevent (event) {
-    if (document.documentElement.scrollTop <= 765) {
-      toc.className = "widget tag relative"
-    } else {
-      toc.className = "widget tag fixed"
-    }
-    // console.log(document.documentElement.scrollTop)
-    if (event.wheelDelta > 0) {
-      header.className = "head-show"
-    } else if (event.wheelDelta < 0) {
-      header.className = "head-hide"
-    }
-    if (document.documentElement.scrollTop > 10) {
-      btn_back.className = "back-show"
-    } else {
-      btn_back.className = "back-hide"
-    }
-  }
   
 </script>
 </html>
