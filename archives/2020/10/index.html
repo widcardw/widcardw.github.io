@@ -182,6 +182,21 @@
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 <script>
   var header = document.querySelector("#header")
@@ -189,24 +204,13 @@
   var btn_back = document.querySelector("#back-to-top");
   var toc = document.querySelector("#mytoc");
     
+  document.addEventListener('touchmove', function (event) {
+    console.log("touchmove")
+    rollevent(event);
+  })
+
   document.onmousewheel = function(event) {
-    // console.log(event.wheelDelta)
-    if (document.documentElement.scrollTop <= 765) {
-      toc.className = "widget tag relative"
-    } else {
-      toc.className = "widget tag fixed"
-    }
-    // console.log(document.documentElement.scrollTop)
-    if (event.wheelDelta > 0) {
-      header.className = "head-show"
-    } else if (event.wheelDelta < 0) {
-      header.className = "head-hide"
-    }
-    if (document.documentElement.scrollTop > 10) {
-      btn_back.className = "back-show"
-    } else {
-      btn_back.className = "back-hide"
-    }
+    rollevent(event);
   }
 
   btn_back.addEventListener("click", function (event) {
@@ -239,6 +243,25 @@
       }
     }, 5)
   })
+
+  function rollevent (event) {
+    if (document.documentElement.scrollTop <= 765) {
+      toc.className = "widget tag relative"
+    } else {
+      toc.className = "widget tag fixed"
+    }
+    // console.log(document.documentElement.scrollTop)
+    if (event.wheelDelta > 0) {
+      header.className = "head-show"
+    } else if (event.wheelDelta < 0) {
+      header.className = "head-hide"
+    }
+    if (document.documentElement.scrollTop > 10) {
+      btn_back.className = "back-show"
+    } else {
+      btn_back.className = "back-hide"
+    }
+  }
   
 </script>
 </html>
