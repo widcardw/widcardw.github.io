@@ -944,3 +944,45 @@ pre .deletion {
     display: none;
   }
 }
+#toc-menu {
+  display: none;
+  position: fixed;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  right: 20px;
+  bottom: 60px;
+  font-size: 15px;
+  opacity: 0.4;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  filter: alpha(opacity=40);
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+}
+#toc-menu::before {
+  content: '\eb94';
+}
+#toc-menu:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+}
+@media screen and (max-width: 900px) {
+  #toc-menu {
+    display: block;
+  }
+}
