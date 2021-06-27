@@ -4,6 +4,7 @@
   font-weight: normal;
   font-style: normal;
 }
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +12,7 @@
 body {
   background: #f1f1f1;
   color: #444;
-  font-family: "Latin", "Latin Modern Math", "思源宋体 Medium", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-family: "Latin", "Latin Modern Math", 'Noto Serif SC', "思源宋体 Medium", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
   font-size: 18px;
   text-shadow: 0 0 1px transparent;
 }
@@ -26,7 +27,7 @@ body {
   }
 }
 input {
-  font-family: "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Latin", "Latin Modern Math", 'Noto Serif SC', "思源宋体 Medium", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
   font-size: 1em;
 }
 h1,
@@ -35,7 +36,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Latin", "Latin Modern Math", 'Noto Serif SC', "思源宋体 Medium", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
 }
 h1 {
   font-size: 1.8em;
@@ -107,6 +108,12 @@ a:hover {
 }
 #content {
   margin-top: 20px;
+}
+details {
+  margin-top: 1em;
+}
+img {
+  margin-top: 1em;
 }
 #header {
   height: 55px;
@@ -372,7 +379,7 @@ article header .icon:before {
 }
 article header time {
   color: #999;
-  font: 0.8em "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.8em "Latin", "Latin Modern Math", 'Noto Serif SC', "思源宋体 Medium", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
   margin-bottom: 5px;
   display: block;
   line-height: 2.5;
@@ -409,7 +416,7 @@ article .entry blockquote {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   font-style: normal;
-  font-family: "Latin", "Latin Modern Math", "思源宋体 Medium", "Georgia", serif;
+  font-family: "Latin", "Latin Modern Math", 'Noto Serif SC', "思源宋体 Medium", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
   font-size: 1em;
   padding: 0 30px 15px;
   text-align: left;
@@ -429,7 +436,7 @@ article .entry blockquote footer cite:before {
 }
 article .entry code,
 article .entry pre {
-  font-family: Courier New, "思源宋体 Medium", Menlo, Consolas, monospace;
+  font-family: Courier New, Menlo, Consolas, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', monospace;
 }
 article .entry code {
   background: #f8f8f8;
@@ -605,7 +612,7 @@ article footer .addthis iframe {
   padding: 5px 10px;
   background: #ddd;
   color: #999;
-  font-family: "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Latin", "Latin Modern Math", 'Noto Serif SC', "思源宋体 Medium", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
   text-shadow: 0 0 1px #fff;
   margin-bottom: 50px;
 }
@@ -663,7 +670,7 @@ article footer .addthis iframe {
 }
 .archive span {
   color: #999;
-  font: 0.8em "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.8em "Latin", "Latin Modern Math", 'Noto Serif SC', "思源宋体 Medium", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
   margin-top: 5px;
   margin-right: 10px;
   margin-bottom: 5px;
@@ -726,7 +733,7 @@ article footer .addthis iframe {
 }
 #sidebar .search input {
   background: #fff;
-  font-family: "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Latin", "Latin Modern Math", 'Noto Serif SC', "思源宋体 Medium", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
   font-style: italic;
   font-size: 1em;
   padding: 10px 15px;
@@ -774,7 +781,7 @@ article footer .addthis iframe {
 #footer {
   color: #999;
   margin-bottom: 50px;
-  font: 0.9em/1.6 "Latin", "Latin Modern Math", "思源宋体 Medium", "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.9em/1.6 "Latin", "Latin Modern Math", 'Noto Serif SC', "思源宋体 Medium", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
   text-shadow: 0 0 1px #fff;
 }
 .entry .gist {
@@ -800,7 +807,7 @@ article footer .addthis iframe {
 }
 .entry .gist .gist-file .gist-data pre {
   padding: 0 !important;
-  font-family: Courier New, "思源宋体 Medium", Menlo, Consolas, monospace;
+  font-family: Courier New, Menlo, Consolas, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', monospace;
 }
 .entry .gist .gist-file .gist-meta {
   background: none;
@@ -933,7 +940,7 @@ pre .deletion {
 }
 .fixed {
   position: fixed;
-  top: 60px;
+  top: 80px;
   width: 270px;
 }
 .relative {

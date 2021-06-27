@@ -58,6 +58,26 @@
         <div class="post-content">
           <header>
             
+              <h2 class="archive-post"><span datetime="2021-06-24T14:26:13.000Z">2021-06-24</span><a href="/2021/06/24/manim中的矢量图/">manim中的矢量图</a></h1>
+            
+          </header>
+        </div>
+      </article>
+    
+      <article class="post">
+        <div class="post-content">
+          <header>
+            
+              <h2 class="archive-post"><span datetime="2021-06-24T11:12:39.000Z">2021-06-24</span><a href="/2021/06/24/manimgl安装记录/">manimgl安装记录</a></h1>
+            
+          </header>
+        </div>
+      </article>
+    
+      <article class="post">
+        <div class="post-content">
+          <header>
+            
               <h2 class="archive-post"><span datetime="2021-06-21T13:19:18.000Z">2021-06-21</span><a href="/2021/06/21/方法论思考/">方法论思考</a></h1>
             
           </header>
@@ -131,6 +151,14 @@
   <ul class="entry">
     
       <li>
+        <a href="/2021/06/24/manim中的矢量图/">manim中的矢量图</a>
+      </li>
+    
+      <li>
+        <a href="/2021/06/24/manimgl安装记录/">manimgl安装记录</a>
+      </li>
+    
+      <li>
         <a href="/2021/06/21/方法论思考/">方法论思考</a>
       </li>
     
@@ -140,14 +168,6 @@
     
       <li>
         <a href="/2020/10/22/初识JS/">初识JS</a>
-      </li>
-    
-      <li>
-        <a href="/2020/10/16/垃圾箱-01/">垃圾箱#01</a>
-      </li>
-    
-      <li>
-        <a href="/2020/10/07/manim安装教程-简易概括版/">manim安装教程(简要概括版)</a>
       </li>
     
   </ul>
@@ -161,13 +181,13 @@
   
     <li><a href="/categories/JavaScript/">JavaScript</a><small>1</small></li>
   
-    <li><a href="/categories/manim/">manim</a><small>1</small></li>
+    <li><a href="/categories/manim/">manim</a><small>3</small></li>
   
     <li><a href="/categories/software/">software</a><small>1</small></li>
   
     <li><a href="/categories/异想天开/">异想天开</a><small>1</small></li>
   
-    <li><a href="/categories/杂物箱/">杂物箱</a><small>1</small></li>
+    <li><a href="/categories/杂物箱/">杂物箱</a><small>2</small></li>
   
   </ul>
 </div>
@@ -177,7 +197,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/manim/" style="font-size: 10px;">manim</a> <a href="/tags/software/" style="font-size: 10px;">software</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%80%9D%E7%BB%B4/" style="font-size: 10px;">思维</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 10px;">方法论</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 20px;">日常</a> <a href="/tags/%E6%9D%82%E7%89%A9%E7%AE%B1/" style="font-size: 10px;">杂物箱</a> <a href="/tags/%E7%89%A2%E9%AA%9A/" style="font-size: 10px;">牢骚</a>
+    <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/manim/" style="font-size: 20px;">manim</a> <a href="/tags/software/" style="font-size: 10px;">software</a> <a href="/tags/updater/" style="font-size: 10px;">updater</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%80%9D%E7%BB%B4/" style="font-size: 10px;">思维</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 10px;">教程</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 10px;">方法论</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 20px;">日常</a> <a href="/tags/%E7%89%A2%E9%AA%9A/" style="font-size: 10px;">牢骚</a> <a href="/tags/%E7%9F%A2%E9%87%8F%E5%9B%BE/" style="font-size: 10px;">矢量图</a>
   </div>
 </div>
 
@@ -228,10 +248,11 @@
   var btn_back = document.querySelector("#back-to-top");
   var toc = document.querySelector("#mytoc");
   var startY = 0;
+  var toctop = toc.offsetTop;
 
   document.addEventListener('scroll', function (event) {
     // 目录是否固定
-    if (document.documentElement.scrollTop <= 765) {
+    if (document.documentElement.scrollTop <= toctop) {
       toc.className = "widget tag relative"
     } else {
       toc.className = "widget tag fixed"
@@ -265,7 +286,7 @@
   toc.addEventListener("click", function () {
     // 对于点击目录跳转的优化
     setTimeout(function () {
-      if (document.documentElement.scrollTop <= 765) {
+      if (document.documentElement.scrollTop <= toctop) {
         toc.className = "widget tag relative"
       } else {
         toc.className = "widget tag fixed"
