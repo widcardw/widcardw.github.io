@@ -946,6 +946,11 @@ pre .deletion {
 .relative {
   position: relative;
 }
+#mytoc {
+  max-height: calc(100% - 250px);
+  overflow: scroll;
+  overflow-x: hidden;
+}
 @media screen and (max-width: 900px) {
   #mytoc {
     display: none;
@@ -992,4 +997,7 @@ pre .deletion {
   #toc-menu {
     display: block;
   }
+}
+::-webkit-scrollbar {
+  width: 15px;
 }
