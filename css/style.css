@@ -596,14 +596,14 @@ article footer .addthis {
 article footer .addthis iframe {
   margin-top: 0;
 }
-#comment {
+#vcomment {
   padding: 20px;
   background: #fff;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
   margin-bottom: 50px;
 }
-#comment .title {
+#vcomment .title {
   font-weight: normal;
   margin-bottom: 15px;
 }
@@ -998,6 +998,6 @@ pre .deletion {
     display: block;
   }
 }
-::-webkit-scrollbar {
+#mytoc::-webkit-scrollbar {
   width: 15px;
 }
