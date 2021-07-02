@@ -6,7 +6,8 @@
   <title>MPV的使用心得 › widcardw</title>
   <meta name="author" content="widcardw">
   
-  <meta name="description" content="我与MPV最初接触到 MPV 是在 Elteoremadebeethoven 的视频。当时也只是看到了，也并没有去刻意的关注，毕竟跨平台的音视频播放器应该来说还是蛮多的。而且我们也没有什么特别的需求要在自己的电脑上安装过多不同种类的播放器，毕竟常用的一般都不会超过 3 个。有了一个 PotPlayer 不就够了吗。">
+  <meta name="description" content="我与MPV
+最初接触到 MPV 是在 Elteoremadebeethoven 的视频。当时也只是看到了，也并没有去刻意的关注，毕竟跨平台的音视频播放器应该来说还是蛮多的。而且我们也没有什么特别的需求要在自己的电脑上安装过多不同种类的播放器，毕竟常用的一般都不会超过 3 个。有了一个 PotPlayer 不就够了吗。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -24,7 +25,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
 
 
 <body>
@@ -66,20 +67,27 @@
     </header>
     <div class="entry">
       
-        <h1 id="我与MPV"><a href="#我与MPV" class="headerlink" title="我与MPV"></a>我与MPV</h1><p>最初接触到 MPV 是在 Elteoremadebeethoven 的视频。当时也只是看到了，也并没有去刻意的关注，毕竟跨平台的音视频播放器应该来说还是蛮多的。而且我们也没有什么特别的需求要在自己的电脑上安装过多不同种类的播放器，毕竟常用的一般都不会超过 3 个。有了一个 PotPlayer 不就够了吗。<br><a id="more"></a><br>之前有浏览过关于 FFmpeg 耻辱柱的信息，而 PotPlayer 的前身居然也在这上面。再加上现在国内似乎去不了 PotPlayer 的官网，想要下载到较为原装版本的 PotPlayer 似乎就变得有点困难。<strong>但是</strong>，当我回想起几年前接触到一个剪辑软件 Aviutl 的时候，教程中指导我们安装<strong>完美解码</strong>，而完美解码的安装包中就恰好有几款颇受大众推崇的播放器：PotPlayer，MPC-HC，MPC-BE。或许这也是在国内获取到 PotPlayer 的一种途径吧。</p>
-<p>这时，我开始关注开源软件，去关注 github 上的那些高“星”项目。以此为契机，我打算去了解一下 FFmpeg 和 MPV <del>虽然到现在为止我还没有克隆过这两个仓库</del>。在 2017 年，我就因 <a target="_blank" rel="noopener" href="https://github.com/lmintlcx">Lmintlcx</a> 的教程了解到了 FFmpeg，不过这也仅仅是为了给视频进行压制而学习的一点点技能。通过命令行进行操作，让我这个计算机系学生的某些“特征”得以展现出来。MPV 可以通过命令行进行操作，或许这也是我开始接触它的一个原因。</p>
-<h1 id="软件的安装"><a href="#软件的安装" class="headerlink" title="软件的安装"></a>软件的安装</h1><p>这是 MPV 的官网：<a target="_blank" rel="noopener" href="https://mpv.io">mpv.io</a></p>
+        <h1>我与MPV</h1>
+<p>最初接触到 MPV 是在 Elteoremadebeethoven 的视频。当时也只是看到了，也并没有去刻意的关注，毕竟跨平台的音视频播放器应该来说还是蛮多的。而且我们也没有什么特别的需求要在自己的电脑上安装过多不同种类的播放器，毕竟常用的一般都不会超过 3 个。有了一个 PotPlayer 不就够了吗。</p>
+<a id="more"></a>
+<p>之前有浏览过关于 FFmpeg 耻辱柱的信息，而 PotPlayer 的前身居然也在这上面。再加上现在国内似乎去不了 PotPlayer 的官网，想要下载到较为原装版本的 PotPlayer 似乎就变得有点困难。<strong>但是</strong>，当我回想起几年前接触到一个剪辑软件 Aviutl 的时候，教程中指导我们安装<strong>完美解码</strong>，而完美解码的安装包中就恰好有几款颇受大众推崇的播放器：PotPlayer，MPC-HC，MPC-BE。或许这也是在国内获取到 PotPlayer 的一种途径吧。</p>
+<p>这时，我开始关注开源软件，去关注 github 上的那些高“星”项目。以此为契机，我打算去了解一下 FFmpeg 和 MPV <s>虽然到现在为止我还没有克隆过这两个仓库</s>。在 2017 年，我就因 <a target="_blank" rel="noopener" href="https://github.com/lmintlcx">Lmintlcx</a> 的教程了解到了 FFmpeg，不过这也仅仅是为了给视频进行压制而学习的一点点技能。通过命令行进行操作，让我这个计算机系学生的某些“特征”得以展现出来。MPV 可以通过命令行进行操作，或许这也是我开始接触它的一个原因。</p>
+<h1>软件的安装</h1>
+<p>这是 MPV 的官网：<a target="_blank" rel="noopener" href="https://mpv.io">mpv.io</a></p>
 <p>这款软件和 FFmpeg 有一个共同之处，就是 Windows 用户只能使用其他用户编译的版本。也就是说，它是没有直接可用的安装包，并且我们需要手动的把它的路径写入Path。而 Linux 用户可以通过命令 <code>sudo apt-get install mpv</code> 来进行安装，由此可见在一定程度上 Windows 确实不太适合程序员。</p>
 <p>具体安装过程不在这里展开。</p>
-<h1 id="初次接触"><a href="#初次接触" class="headerlink" title="初次接触"></a>初次接触</h1><p>当我第一次使用这个播放器，我心中积压了满满的不快。右键暂停，占据了菜单的位置；一张满是快捷键的图，这真的是人能背下来的吗？播放结束自动关闭，这似乎不太符合我之前的习惯……因为这些原因，我差点直接把它删了。</p>
+<h1>初次接触</h1>
+<p>当我第一次使用这个播放器，我心中积压了满满的不快。右键暂停，占据了菜单的位置；一张满是快捷键的图，这真的是人能背下来的吗？播放结束自动关闭，这似乎不太符合我之前的习惯……因为这些原因，我差点直接把它删了。</p>
 <p>网上教程零碎，英文文档令人头疼，但我却偏偏喜欢将时间花在这种事情上。自定义属性和快捷键，或许是 MPV 的一个小亮点，等到终于配置完成之后，操作终于能够渐渐熟悉起来。</p>
 <p>这是我的一些配置，存放在 <code>%APPDATA%/Roaming/mpv</code> 当中。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># mpv.conf  属性设置</span><br><span class="line"></span><br><span class="line">no-border       # 无边框</span><br><span class="line">keep-open&#x3D;yes   # 播放结束时不直接关闭</span><br><span class="line"># Subtitle settings  字幕设置</span><br><span class="line">sub-auto&#x3D;fuzzy</span><br><span class="line">sub-font-size&#x3D;50</span><br><span class="line">sub-ass-force-margins</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#input.conf  快捷键设设置</span><br><span class="line"></span><br><span class="line">&#x2F;        set  video-aspect 1.7777  # 16:9</span><br><span class="line">?        set  video-aspect 1.3333  # 4:3</span><br><span class="line">b        add  video-rotate 15      # 旋转15度</span><br><span class="line">n        set  video-rotate 0       # 重置旋转角度</span><br><span class="line">c        seek 0 absolute-percent ; set pause no  # 重新播放</span><br></pre></td></tr></table></figure>
-<h1 id="再次研究"><a href="#再次研究" class="headerlink" title="再次研究"></a>再次研究</h1><p>mpv 作为一个能够使用命令行进行操作的播放器，当然要有其特殊之处。但我却没有想到，这个播放器竟然能播放在线的视频。后来在搜索中发现，原来在 Linux 上安装 mpv 时，它会自动安装 youtube-dl 库，用来抓取网络上的视频。如果再使用 you-get 库，在命令中添加属性 <code>-p</code> 来指定播放器，同样能够在线观看视频。</p>
+<h1>再次研究</h1>
+<p>mpv 作为一个能够使用命令行进行操作的播放器，当然要有其特殊之处。但我却没有想到，这个播放器竟然能播放在线的视频。后来在搜索中发现，原来在 Linux 上安装 mpv 时，它会自动安装 youtube-dl 库，用来抓取网络上的视频。如果再使用 you-get 库，在命令中添加属性 <code>-p</code> 来指定播放器，同样能够在线观看视频。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mpv https://b23.tv/av666</span>  </span><br><span class="line"><span class="meta">$</span><span class="bash"> you-get -p mpv https://b23.tv/av170001</span></span><br></pre></td></tr></table></figure>
-<p>这样即可直接抓取视频在本地播放，这一功能着实令人惊讶，也让我感叹爬虫与反爬之间的激烈竞争。<del>不会爬虫还在这儿说，爪巴</del></p>
-<h1 id="再多-BB-两句"><a href="#再多-BB-两句" class="headerlink" title="再多 BB 两句"></a>再多 BB 两句</h1><p>之后有机会一定要好好了解视频到底是怎样一个事物。C++ 已经学完了，但其中最基本的“流”概念都不知道，或许是真的可悲了。</p>
+<p>这样即可直接抓取视频在本地播放，这一功能着实令人惊讶，也让我感叹爬虫与反爬之间的激烈竞争。<s>不会爬虫还在这儿说，爪巴</s></p>
+<h1>再多 BB 两句</h1>
+<p>之后有机会一定要好好了解视频到底是怎样一个事物。C++ 已经学完了，但其中最基本的“流”概念都不知道，或许是真的可悲了。</p>
 
       
     </div>
@@ -137,6 +145,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2021/07/02/数据库复习/">数据库复习</a>
+      </li>
+    
+      <li>
         <a href="/2021/06/24/manim中的矢量图/">manim中的矢量图</a>
       </li>
     
@@ -150,10 +162,6 @@
     
       <li>
         <a href="/2021/01/23/MPV的使用心得/">MPV的使用心得</a>
-      </li>
-    
-      <li>
-        <a href="/2020/10/22/初识JS/">初识JS</a>
       </li>
     
   </ul>
@@ -183,7 +191,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/manim/" style="font-size: 20px;">manim</a> <a href="/tags/software/" style="font-size: 10px;">software</a> <a href="/tags/updater/" style="font-size: 10px;">updater</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%80%9D%E7%BB%B4/" style="font-size: 10px;">思维</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 10px;">教程</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 10px;">方法论</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 20px;">日常</a> <a href="/tags/%E7%89%A2%E9%AA%9A/" style="font-size: 10px;">牢骚</a> <a href="/tags/%E7%9F%A2%E9%87%8F%E5%9B%BE/" style="font-size: 10px;">矢量图</a>
+    <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/manim/" style="font-size: 20px;">manim</a> <a href="/tags/software/" style="font-size: 10px;">software</a> <a href="/tags/updater/" style="font-size: 10px;">updater</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">学习</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%80%9D%E7%BB%B4/" style="font-size: 10px;">思维</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 10px;">教程</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 10px;">方法论</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 20px;">日常</a> <a href="/tags/%E7%89%A2%E9%AA%9A/" style="font-size: 10px;">牢骚</a> <a href="/tags/%E7%9F%A2%E9%87%8F%E5%9B%BE/" style="font-size: 10px;">矢量图</a>
   </div>
 </div>
 
@@ -193,7 +201,7 @@
       目录
   </h3>
   <ul class="entry">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E4%B8%8EMPV"><span class="toc-text">我与MPV</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-text">软件的安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E6%AC%A1%E6%8E%A5%E8%A7%A6"><span class="toc-text">初次接触</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%8D%E6%AC%A1%E7%A0%94%E7%A9%B6"><span class="toc-text">再次研究</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%8D%E5%A4%9A-BB-%E4%B8%A4%E5%8F%A5"><span class="toc-text">再多 BB 两句</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">我与MPV</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">软件的安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">初次接触</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">再次研究</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">再多 BB 两句</span></a></li></ol>
   </ul>
 </div>
 
@@ -212,21 +220,6 @@
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 <script>
   var header = document.querySelector("#header")

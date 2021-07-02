@@ -26,7 +26,7 @@
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
 
 
 <body>
@@ -69,10 +69,12 @@
     <div class="entry">
       
         <p><em>本文档仅适用于旧版 <code>cairo-backend</code> 分支下的 <code>manim</code>，新版请参照官方文档 <a target="_blank" rel="noopener" href="https://manim.wiki">https://manim.wiki</a></em></p>
-<p>其实你读到后面会发现这篇文章真的是太烂了。<del>（写这么长根本不是简要概括啊喂）</del></p>
+<p>其实你读到后面会发现这篇文章真的是太烂了。<s>（写这么长根本不是简要概括啊喂）</s></p>
 <p>无图警告：本篇博文没有任何一张图片，全部为操作的描述，如果遇到不会操作的，请根据给出的视频链接或百度搜索来寻找解决方案。</p>
 <a id="more"></a>
-<h1 id="Linux-下安装"><a href="#Linux-下安装" class="headerlink" title="Linux 下安装"></a>Linux 下安装</h1><h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>这里的安装过程其实是从<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kv411i7zn">这个视频</a>里面看来的</p>
+<h1>Linux 下安装</h1>
+<h2 id="installation">Installation</h2>
+<p>这里的安装过程其实是从<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kv411i7zn">这个视频</a>里面看来的</p>
 <blockquote>
 <p>首先先说明一下，Ubuntu18.04 版本用<code>sudo apt-get install python3</code>安装<code>python3</code>时，默认安装的是<code>python3.6.9</code>，可能会有一些问题，所以建议还是安装 <strong><code>python3.7</code></strong> 及以上的版本。</p>
 <p>而 Ubuntu20.04 默认安装的是<code>python3.8.2</code>，这对于 manim 来说，应当是不会有太大问题的。</p>
@@ -80,21 +82,25 @@
 </blockquote>
 <p>为什么我把 Linux 安装放在最前面呢？因为在这上面安装最暴力，最简单。(这一部分可能写的有点乱，就大概看看琢磨一下吧)</p>
 <ul>
-<li><p><strong>首先你需要保证你的网速不差</strong>，其中也包括设置好镜像源，给 pip 换上合适的源。<del>就不要问为什么我下载了半天了怎么连一个 numpy 还没下完。</del></p>
+<li>
+<p><strong>首先你需要保证你的网速不差</strong>，其中也包括设置好镜像源，给 pip 换上合适的源。<s>就不要问为什么我下载了半天了怎么连一个 numpy 还没下完。</s></p>
 </li>
-<li><p>安装 git，并克隆 manim 的仓库</p>
+<li>
+<p>安装 git，并克隆 manim 的仓库</p>
 <blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure>
-<p>安装完成之后找个合适的地方，克隆 manim 仓库。这里就直接使用我个人 fork 过的仓库了，因为国内克隆可以稍微快一点。<del>夹带私货</del></p>
+<p>安装完成之后找个合适的地方，克隆 manim 仓库。这里就直接使用我个人 fork 过的仓库了，因为国内克隆可以稍微快一点。<s>夹带私货</s></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://gitee.com/widcardw/manim.git</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
-<li><p>安装<code>libcairo2-dev</code></p>
+<li>
+<p>安装<code>libcairo2-dev</code></p>
 <blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install libcairo2-dev</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
-<li><p>在终端中输入以下命令，确认你是否安装了合适版本的 python（即 3.7 及以上版本）</p>
+<li>
+<p>在终端中输入以下命令，确认你是否安装了合适版本的 python（即 3.7 及以上版本）</p>
 <blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 --version</span><br></pre></td></tr></table></figure>
 <p>如果没有安装合适版本的 python，请执行下面的命令的<strong>其中之一</strong>，安装合适版本的 python3</p>
@@ -102,72 +108,96 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install python3.8</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
-<li><p>查看是否安装了 pip3，如果没有请使用下面的命令安装 pip3</p>
+<li>
+<p>查看是否安装了 pip3，如果没有请使用下面的命令安装 pip3</p>
 <blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install python3-pip</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
-<li><p>进入到刚刚克隆的 manim 的文件夹里面，应该会看到有一个文件叫做<code>requirements.txt</code>，这里面写了一些依赖的库。在此处打开终端，用下面的命令安装这些库。</p>
+<li>
+<p>进入到刚刚克隆的 manim 的文件夹里面，应该会看到有一个文件叫做<code>requirements.txt</code>，这里面写了一些依赖的库。在此处打开终端，用下面的命令安装这些库。</p>
 <blockquote>
-<p><code>-i</code>及之后的可以选择性的添加，只是针对一些从外国源下载速度慢的情况，换成清华源可以稍微快一些。<del>可能会等的比较久，如果中途失败了，多试几次</del></p>
+<p><code>-i</code>及之后的可以选择性的添加，只是针对一些从外国源下载速度慢的情况，换成清华源可以稍微快一些。<s>可能会等的比较久，如果中途失败了，多试几次</s></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
-<li><p>安装<code>ffmpeg</code></p>
+<li>
+<p>安装<code>ffmpeg</code></p>
 <blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install ffmpeg</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
-<li><p>安装<code>texlive-full</code>，可能又要等很久，毕竟这玩意 5 个 GB，没那么容易下。</p>
+<li>
+<p>安装<code>texlive-full</code>，可能又要等很久，毕竟这玩意 5 个 GB，没那么容易下。</p>
 <p>为什么我推荐安装完整版，因为之后就不需要再麻烦了。</p>
 <blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install texlive-full</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
-<li><p>安装<code>sox</code></p>
+<li>
+<p>安装<code>sox</code></p>
 <blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install sox</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 </ul>
-<p>应该差不多了，安装大概就这么多步骤吧。 </p>
-<p><span id="font_tip"><b>等下，别先急着测试</b></span>，由于我将 $\LaTeX$ 的默认中文字体使用改成了<code>思源宋体</code>，所以你可能需要下载全套的思源宋体才能正常使用带中文的 $\LaTeX$ 生成文字。这个自己去找资源，我认为安装字体应该也不用教了吧。</p>
-<p>或者你还有另外一种方法，就是将下面<code>ctex_template.tex</code>中的一行代码注释，达到在 $\LaTeX$ 中不启用思源宋体的效果。<br><em>注: 在 $\LaTeX$ 中更换字体的操作来自暗星姐姐的视频 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1D5411s7bR">BV1D5411s7bR</a></em></p>
+<p>应该差不多了，安装大概就这么多步骤吧。</p>
+<p><span id="font_tip"><b>等下，别先急着测试</b></span>，由于我将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> 的默认中文字体使用改成了<code>思源宋体</code>，所以你可能需要下载全套的思源宋体才能正常使用带中文的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> 生成文字。这个自己去找资源，我认为安装字体应该也不用教了吧。</p>
+<p>或者你还有另外一种方法，就是将下面<code>ctex_template.tex</code>中的一行代码注释，达到在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> 中不启用思源宋体的效果。<br>
+<em>注: 在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> 中更换字体的操作来自暗星姐姐的视频 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1D5411s7bR">BV1D5411s7bR</a></em></p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\setCJKmainfont</span>&#123;SourceHanSerifSC-Medium.otf&#125;</span><br><span class="line">↓</span><br><span class="line"><span class="comment">%\setCJKmainfont&#123;SourceHanSerifSC-Medium.otf&#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="测试场景"><a href="#测试场景" class="headerlink" title="测试场景"></a>测试场景</h2><p>在刚刚克隆的 manim 文件夹下打开终端，尝试一下示例场景能否运行。注意，如果是克隆了我给出的仓库，请执行下面的命令。</p>
+<h2 id="测试场景">测试场景</h2>
+<p>在刚刚克隆的 manim 文件夹下打开终端，尝试一下示例场景能否运行。注意，如果是克隆了我给出的仓库，请执行下面的命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 -m manim ./my_projects/Examples/example_scenes.py -pl</span><br></pre></td></tr></table></figure>
-<p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 $\LaTeX$ 没有装好，或者是 $\LaTeX$ 语法写错了，要不然就是调用了一些包（例如tikz）必须将<code>CTEX_USE</code>改成<code>False</code>的情况吧。  </p>
-<p><del>把 Grant 的 example 放到 my_projects 里面，这个人实在是太恶心了。</del>  </p>
-<h1 id="Windows-下安装"><a href="#Windows-下安装" class="headerlink" title="Windows 下安装"></a>Windows 下安装</h1><p>如果你是 Windows 10 用户，那你还可以使用 WSL（Windows Subsystem for Linux）进行安装，那么安装步骤就跟上面的 Linux 下安装几乎一样了；如果你是 Windows 7 用户，那可就只能按照常规方法安装了呢。</p>
+<p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> 没有装好，或者是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> 语法写错了，要不然就是调用了一些包（例如tikz）必须将<code>CTEX_USE</code>改成<code>False</code>的情况吧。</p>
+<p><s>把 Grant 的 example 放到 my_projects 里面，这个人实在是太恶心了。</s></p>
+<h1>Windows 下安装</h1>
+<p>如果你是 Windows 10 用户，那你还可以使用 WSL（Windows Subsystem for Linux）进行安装，那么安装步骤就跟上面的 Linux 下安装几乎一样了；如果你是 Windows 7 用户，那可就只能按照常规方法安装了呢。</p>
 <p>如果你已经了解过 WSL，那也应该懂得怎样去安装以及配置一些环境等等。如果你还不会，推荐去看<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TZ4y1s7qh"><em>该视频已被删除</em></a>。</p>
 <p>装好 WSL 之后，回到上面，看<a href="#1"> Linux 下安装</a>去，或者也可以选择看这个<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kv411i7zn"> 视频BV1Kv411i7zn</a>。</p>
-<h2 id="Windows-下常规安装方法"><a href="#Windows-下常规安装方法" class="headerlink" title="Windows 下常规安装方法"></a>Windows 下常规安装方法</h2><ul>
-<li><p><strong>首先你的网速不能太差</strong>，包括 pip 源等项目。接着你可以去看看<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14i4y1G7Yr"> 视频BV14i4y1G7Yr </a>使用包管理工具<code>scoop</code>来进行安装。如果你按照这个视频安装成功了，那下面的基本上也就不用看了。</p>
+<h2 id="windows-下常规安装方法">Windows 下常规安装方法</h2>
+<ul>
+<li>
+<p><strong>首先你的网速不能太差</strong>，包括 pip 源等项目。接着你可以去看看<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14i4y1G7Yr"> 视频BV14i4y1G7Yr </a>使用包管理工具<code>scoop</code>来进行安装。如果你按照这个视频安装成功了，那下面的基本上也就不用看了。</p>
 </li>
-<li><p>如果你不想要使用包管理器来安装的话，那下面的方法就是按照<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1W4411Z7Zt"> 视频BV1W4411Z7Zt </a>进行安装。</p>
+<li>
+<p>如果你不想要使用包管理器来安装的话，那下面的方法就是按照<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1W4411Z7Zt"> 视频BV1W4411Z7Zt </a>进行安装。</p>
 </li>
-<li><p>首先，安装 python。</p>
+<li>
+<p>首先，安装 python。</p>
 <blockquote>
-<p>注意选择 3.7 及以上的版本，或者你可以使用 anaconda3。在安装过程中，<strong>一定一定一定要把“<code>Add to Path</code>”勾选上</strong>！！！如果你是 conda 用户的话那就按照需求<del>照着百度</del>进行一些初始化等操作吧。同时，检查一下 pip 是否安装成功。</p>
+<p>注意选择 3.7 及以上的版本，或者你可以使用 anaconda3。在安装过程中，<strong>一定一定一定要把“<code>Add to Path</code>”勾选上</strong>！！！如果你是 conda 用户的话那就按照需求<s>照着百度</s>进行一些初始化等操作吧。同时，检查一下 pip 是否安装成功。</p>
 </blockquote>
 </li>
-<li>接着安装 cairo。<blockquote>
-<p>到 <a target="_blank" rel="noopener" href="https://pypi.org/project/pycairo/#files">https://pypi.org/project/pycairo/#files</a> 去下载<code>cairo</code>，注意：python3.7 请下载<code>cp37</code>的版本，python3.8 请下载<code>cp38</code>的版本。你会得到一个<code>.whl</code>文件。<br>然后，在你下载这个<code>.whl</code>文件的目录下打开终端（cmd 或 powershell 或 git-bash），使用下面的命令安装 pycairo。请注意自己的版本，不要盲目的直接复制下面的命令。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install pycairo-1.20.0-cp37-cp37m-win32.whl</span><br></pre></td></tr></table></figure></blockquote>
-</li>
-<li><p>安装 git，你可以直接在百度上搜索 Git for Windows，就可以按照要求安装。这里不详细展开。</p>
-</li>
-<li><p>安装 ffmpeg</p>
+<li>
+<p>接着安装 cairo。</p>
 <blockquote>
-<p>你可以到<a target="_blank" rel="noopener" href="http://www.ffmpeg.org/download.html">官方下载页面</a>，前提是你看得懂怎么下载。<br>当然你去一些野鸡下载地址下载也是可以的，只要能用就行。<br>将下载包解压到一个合适的 <strong>不含中文（及日文、韩文等语言）</strong> 的目录下，并将它 <strong>添加（不是替换，尤其是 Win7 用户注意了，多个变量之间使用英文分号隔开）</strong> 到环境变量的 Path 中去。具体操作不会的，还是百度一下吧。<br>注意：Path 中填入的路径必须含有 <code>ffmpeg.exe</code> 这个可执行程序。也就是说，如果你解压后没有去乱动这个包，那么路径最后一级应该为<code>bin</code>。</p>
+<p>到 <a target="_blank" rel="noopener" href="https://pypi.org/project/pycairo/#files">https://pypi.org/project/pycairo/#files</a> 去下载<code>cairo</code>，注意：python3.7 请下载<code>cp37</code>的版本，python3.8 请下载<code>cp38</code>的版本。你会得到一个<code>.whl</code>文件。<br>
+然后，在你下载这个<code>.whl</code>文件的目录下打开终端（cmd 或 powershell 或 git-bash），使用下面的命令安装 pycairo。请注意自己的版本，不要盲目的直接复制下面的命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install pycairo-1.20.0-cp37-cp37m-win32.whl</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
-<li><p>安装 sox</p>
+<li>
+<p>安装 git，你可以直接在百度上搜索 Git for Windows，就可以按照要求安装。这里不详细展开。</p>
+</li>
+<li>
+<p>安装 ffmpeg</p>
 <blockquote>
-<p>直接百度搜就行了，然后下载页面应该是 sourceforge，下载完成后也请把它手动添加到环境变量的 Path 中去。<br>sox 其实是用于在动画中插入声音的，如果不是特别需求的话其实用的不多。</p>
+<p>你可以到<a target="_blank" rel="noopener" href="http://www.ffmpeg.org/download.html">官方下载页面</a>，前提是你看得懂怎么下载。<br>
+当然你去一些野鸡下载地址下载也是可以的，只要能用就行。<br>
+将下载包解压到一个合适的 <strong>不含中文（及日文、韩文等语言）</strong> 的目录下，并将它 <strong>添加（不是替换，尤其是 Win7 用户注意了，多个变量之间使用英文分号隔开）</strong> 到环境变量的 Path 中去。具体操作不会的，还是百度一下吧。<br>
+注意：Path 中填入的路径必须含有 <code>ffmpeg.exe</code> 这个可执行程序。也就是说，如果你解压后没有去乱动这个包，那么路径最后一级应该为<code>bin</code>。</p>
 </blockquote>
 </li>
-<li><p>通过 git 克隆 manim 仓库，并安装 python 的依赖。</p>
+<li>
+<p>安装 sox</p>
+<blockquote>
+<p>直接百度搜就行了，然后下载页面应该是 sourceforge，下载完成后也请把它手动添加到环境变量的 Path 中去。<br>
+sox 其实是用于在动画中插入声音的，如果不是特别需求的话其实用的不多。</p>
+</blockquote>
+</li>
+<li>
+<p>通过 git 克隆 manim 仓库，并安装 python 的依赖。</p>
 <blockquote>
 <p>使用下面的命令在合适位置克隆 manim 的仓库。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/widcardw/manim.git</span><br></pre></td></tr></table></figure>
@@ -176,41 +206,48 @@
 <p>等待过程可能比较漫长，而且可能失败，可以多试几次。</p>
 </blockquote>
 </li>
-<li><p>安装 $\LaTeX$ 相关支持</p>
+<li>
+<p>安装 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> 相关支持</p>
 <blockquote>
 <p>这一部分如果你安装完整版的话可能会相当的鸡肋，我曾经在这里卡了一个多月，翔哥卡的时间更长。我甚至怀疑是不是有随机性。你需要有足够的耐心以及不怕失败的心态。</p>
 <ul>
-<li>你可以选择安装 <a target="_blank" rel="noopener" href="https://miktex.org/download#all">Mik$\TeX$</a><ul>
+<li>你可以选择安装 <a target="_blank" rel="noopener" href="https://miktex.org/download#all">Mik<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>TeX</mtext></mrow><annotation encoding="application/x-tex">\TeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></a>
+<ul>
 <li>如果是选择 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1W4411Z7Zt?p=4">net Installer</a> (视频链接中的0:13-2:48)，并成功安装了完整版，那就祈祷测试时候不要发生什么错误吧。</li>
 <li>如果是选择 basic Installer，那么你在测试时会碰到安装其它包的提示，这时候不用急，尽管点 install，报多少次点多少次。</li>
 </ul>
 </li>
-<li>你也可以选择安装 <a target="_blank" rel="noopener" href="http://tug.org/texlive/">$\TeX$live</a><ul>
-<li>我没装过，不过应该跟 Mik$\TeX$ 差不多。</li>
+<li>你也可以选择安装 <a target="_blank" rel="noopener" href="http://tug.org/texlive/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>TeX</mtext></mrow><annotation encoding="application/x-tex">\TeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span>live</a>
+<ul>
+<li>我没装过，不过应该跟 Mik<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>TeX</mtext></mrow><annotation encoding="application/x-tex">\TeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span> 差不多。</li>
 </ul>
 </li>
 </ul>
 </blockquote>
 </li>
-<li><p>最后，通过命令行，检查一下这些软件是否都安装成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"> &gt;</span><span class="bash"> python --version</span></span><br><span class="line">Python 3.7.5（仅示例）</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> dvisvgm --version</span></span><br><span class="line">dvisvgm 2.6.3</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> ffmpeg -version</span></span><br><span class="line">ffmpeg version git-xxx Copyright (c)  （下面还有一长串就不写了）</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> sox --version</span></span><br><span class="line">SoX v14.4.2</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> pip list</span></span><br><span class="line">（这里会出现一堆库，看看是否含有requirements.txt里面的库）</span><br><span class="line">argparse</span><br><span class="line">colour</span><br><span class="line">numpy</span><br><span class="line">Pillow</span><br><span class="line">progressbar</span><br><span class="line">scipy</span><br><span class="line">tqdm</span><br><span class="line">opencv-python</span><br><span class="line">pycairo</span><br><span class="line">pydub</span><br><span class="line">pygments</span><br><span class="line">pyreadline</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<li>
+<p>最后，通过命令行，检查一下这些软件是否都安装成功</p>
 </li>
 </ul>
-<p>同样的，你可能没有安装<code>思源宋体</code>，所以 $\LaTeX$ 的中文生成可能会有一点问题。点击<a href="#font_tip">这里</a>查看上面的解决方案。</p>
-<h2 id="测试部分"><a href="#测试部分" class="headerlink" title="测试部分"></a>测试部分</h2><p>在刚刚克隆的 manim 文件夹下打开终端，尝试一下示例场景能否运行。注意，如果是克隆了我给出的仓库，请执行下面的命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"> &gt;</span><span class="bash"> python --version</span></span><br><span class="line">Python 3.7.5（仅示例）</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> dvisvgm --version</span></span><br><span class="line">dvisvgm 2.6.3</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> ffmpeg -version</span></span><br><span class="line">ffmpeg version git-xxx Copyright (c)  （下面还有一长串就不写了）</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> sox --version</span></span><br><span class="line">SoX v14.4.2</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> pip list</span></span><br><span class="line">（这里会出现一堆库，看看是否含有requirements.txt里面的库）</span><br><span class="line">argparse</span><br><span class="line">colour</span><br><span class="line">numpy</span><br><span class="line">Pillow</span><br><span class="line">progressbar</span><br><span class="line">scipy</span><br><span class="line">tqdm</span><br><span class="line">opencv-python</span><br><span class="line">pycairo</span><br><span class="line">pydub</span><br><span class="line">pygments</span><br><span class="line">pyreadline</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>同样的，你可能没有安装<code>思源宋体</code>，所以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> 的中文生成可能会有一点问题。点击<a href="#font_tip">这里</a>查看上面的解决方案。</p>
+<h2 id="测试部分">测试部分</h2>
+<p>在刚刚克隆的 manim 文件夹下打开终端，尝试一下示例场景能否运行。注意，如果是克隆了我给出的仓库，请执行下面的命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m manim ./my_projects/Examples/example_scenes.py -pl</span><br></pre></td></tr></table></figure>
-<p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 $\LaTeX$ 没有装好，或者是 $\LaTeX$ 语法写错了，要不然就是调用了一些包（例如tikz）必须将<code>CTEX_USE</code>改成<code>False</code>的情况吧。 </p>
+<p>如果里面的 5 个场景都能生成，那么说明安装成功了。如果当中出现<code>xelatex error</code>，那么大概率是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> 没有装好，或者是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span> 语法写错了，要不然就是调用了一些包（例如tikz）必须将<code>CTEX_USE</code>改成<code>False</code>的情况吧。</p>
 <p>如果问题是后者，那只需要检查一下语法有没有写错，如果是前者，那就祈祷再安装的时候不报错吧。</p>
 <h1 id="3">后记</h1>
-
-<h2 id="一些想说-吐槽的话"><a href="#一些想说-吐槽的话" class="headerlink" title="一些想说/吐槽的话"></a>一些想说/吐槽的话</h2><p>抱歉没写 MacOS 上的安装教程，因为没接触过 Mac ，而且感觉好像大部分操作跟 Linux 应该都差不多，可以使用 homebrew 来安装，所以就没写。</p>
+<h2 id="一些想说-吐槽的话">一些想说/吐槽的话</h2>
+<p>抱歉没写 MacOS 上的安装教程，因为没接触过 Mac ，而且感觉好像大部分操作跟 Linux 应该都差不多，可以使用 homebrew 来安装，所以就没写。</p>
 <p>说实话，如果接触或熟练使用 Linux 的玩家，应该只需要确保足够的存储空间，找个目录，然后这么干</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br><span class="line">$ sudo apt-get install ffmpeg</span><br><span class="line">$ sudo apt-get install sox</span><br><span class="line">$ sudo apt-get install python3     (注意，python3同样需要3.7及以上版本)</span><br><span class="line">$ sudo apt-get install python3-pip</span><br><span class="line">$ sudo apt-get install libcairo2-dev</span><br><span class="line">$ git <span class="built_in">clone</span> https://gitee.com/widcardw/manim.git</span><br><span class="line">$ <span class="built_in">cd</span> manim</span><br><span class="line">$ pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">$ sudo apt-get install texlive-full</span><br></pre></td></tr></table></figure>
-<p>然后，就可以用了，就这么简单。所以，感觉 Linux 下的效率确实能高很多。  </p>
-<p>相比之下，Windows 下需要到处去找安装包，到处去下载，就没有那么方便了。<del>虽然我现在还在用Windows</del></p>
-<h2 id="选计科并且使用-WSL-安装的同学请注意了"><a href="#选计科并且使用-WSL-安装的同学请注意了" class="headerlink" title="选计科并且使用 WSL 安装的同学请注意了"></a>选计科并且使用 WSL 安装的同学请注意了</h2><p>WSL（即 Windows Subsystem for Linux）使用的是64位机，并且在未安装<em>交叉编译</em>时是<strong>无法运行</strong>32位程序的！计科的同学将来肯定会学习计算机系统/计算机组成原理，老师会要求你们使用 IA-32 Linux 指令集完成实验，但实验时需要编译出的可执行文件中<strong>32位的可执行文件会无法运行，也无法使用 gdb 进行单步调试</strong>！</p>
+<p>然后，就可以用了，就这么简单。所以，感觉 Linux 下的效率确实能高很多。</p>
+<p>相比之下，Windows 下需要到处去找安装包，到处去下载，就没有那么方便了。<s>虽然我现在还在用Windows</s></p>
+<h2 id="选计科并且使用-wsl-安装的同学请注意了">选计科并且使用 WSL 安装的同学请注意了</h2>
+<p>WSL（即 Windows Subsystem for Linux）使用的是64位机，并且在未安装<em>交叉编译</em>时是<strong>无法运行</strong>32位程序的！计科的同学将来肯定会学习计算机系统/计算机组成原理，老师会要求你们使用 IA-32 Linux 指令集完成实验，但实验时需要编译出的可执行文件中<strong>32位的可执行文件会无法运行，也无法使用 gdb 进行单步调试</strong>！</p>
 <p>据某个同学了解，微软官方也说 WSL 只支持 64 位的，那我们也没什么办法。我就是本来以为安装了 WSL 可以不装虚拟机 Ubuntu 的，结果最终还是装了虚拟机的那个。也就是说，你可能无法将你对计算机的一部分学习内容与 manim 放在同一屋檐下，还是有点可惜。</p>
-<h1 id="The-End"><a href="#The-End" class="headerlink" title="The End."></a>The End.</h1>
+<h1>The End.</h1>
+
       
     </div>
       
@@ -267,6 +304,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2021/07/02/数据库复习/">数据库复习</a>
+      </li>
+    
+      <li>
         <a href="/2021/06/24/manim中的矢量图/">manim中的矢量图</a>
       </li>
     
@@ -280,10 +321,6 @@
     
       <li>
         <a href="/2021/01/23/MPV的使用心得/">MPV的使用心得</a>
-      </li>
-    
-      <li>
-        <a href="/2020/10/22/初识JS/">初识JS</a>
       </li>
     
   </ul>
@@ -313,7 +350,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/manim/" style="font-size: 20px;">manim</a> <a href="/tags/software/" style="font-size: 10px;">software</a> <a href="/tags/updater/" style="font-size: 10px;">updater</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%80%9D%E7%BB%B4/" style="font-size: 10px;">思维</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 10px;">教程</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 10px;">方法论</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 20px;">日常</a> <a href="/tags/%E7%89%A2%E9%AA%9A/" style="font-size: 10px;">牢骚</a> <a href="/tags/%E7%9F%A2%E9%87%8F%E5%9B%BE/" style="font-size: 10px;">矢量图</a>
+    <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/manim/" style="font-size: 20px;">manim</a> <a href="/tags/software/" style="font-size: 10px;">software</a> <a href="/tags/updater/" style="font-size: 10px;">updater</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">学习</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%80%9D%E7%BB%B4/" style="font-size: 10px;">思维</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 10px;">教程</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 10px;">方法论</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 20px;">日常</a> <a href="/tags/%E7%89%A2%E9%AA%9A/" style="font-size: 10px;">牢骚</a> <a href="/tags/%E7%9F%A2%E9%87%8F%E5%9B%BE/" style="font-size: 10px;">矢量图</a>
   </div>
 </div>
 
@@ -323,7 +360,7 @@
       目录
   </h3>
   <ul class="entry">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="toc-text">Linux 下安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF"><span class="toc-text">测试场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Windows-%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="toc-text">Windows 下安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-%E4%B8%8B%E5%B8%B8%E8%A7%84%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95"><span class="toc-text">Windows 下常规安装方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E9%83%A8%E5%88%86"><span class="toc-text">测试部分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3"><span class="toc-text">后记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%83%B3%E8%AF%B4-%E5%90%90%E6%A7%BD%E7%9A%84%E8%AF%9D"><span class="toc-text">一些想说&#x2F;吐槽的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E8%AE%A1%E7%A7%91%E5%B9%B6%E4%B8%94%E4%BD%BF%E7%94%A8-WSL-%E5%AE%89%E8%A3%85%E7%9A%84%E5%90%8C%E5%AD%A6%E8%AF%B7%E6%B3%A8%E6%84%8F%E4%BA%86"><span class="toc-text">选计科并且使用 WSL 安装的同学请注意了</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-End"><span class="toc-text">The End.</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Linux 下安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#installation"><span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%9C%BA%E6%99%AF"><span class="toc-text">测试场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Windows 下安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#windows-%E4%B8%8B%E5%B8%B8%E8%A7%84%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95"><span class="toc-text">Windows 下常规安装方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E9%83%A8%E5%88%86"><span class="toc-text">测试部分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3"><span class="toc-text">后记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%83%B3%E8%AF%B4-%E5%90%90%E6%A7%BD%E7%9A%84%E8%AF%9D"><span class="toc-text">一些想说&#x2F;吐槽的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E8%AE%A1%E7%A7%91%E5%B9%B6%E4%B8%94%E4%BD%BF%E7%94%A8-wsl-%E5%AE%89%E8%A3%85%E7%9A%84%E5%90%8C%E5%AD%A6%E8%AF%B7%E6%B3%A8%E6%84%8F%E4%BA%86"><span class="toc-text">选计科并且使用 WSL 安装的同学请注意了</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">The End.</span></a></li></ol>
   </ul>
 </div>
 
@@ -342,21 +379,6 @@
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 <script>
   var header = document.querySelector("#header")
