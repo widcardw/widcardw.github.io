@@ -273,6 +273,43 @@ th,
 td {
   padding: 0.3em;
 }
+.katex-block {
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+.katex-block::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: #eee;
+}
+.katex-block::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #ccc;
+}
+.highlight {
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+.highlight::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: #eee;
+}
+.highlight::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #ccc;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: #eee;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #ccc;
+}
 article {
   position: relative;
   background: #fff;
@@ -872,6 +909,7 @@ figure.highlight .gutter {
   text-align: right;
 }
 figure.highlight .code {
+  width: 100%;
   padding-left: 15px;
   border-left: 1px solid #fff;
   color: #666;
@@ -961,7 +999,17 @@ pre .deletion {
 #mytoc {
   max-height: calc(100% - 250px);
   overflow: scroll;
-  overflow-x: hidden;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+#mytoc::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: #eee;
+}
+#mytoc::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #ccc;
 }
 @media screen and (max-width: 900px) {
   #mytoc {
@@ -1009,7 +1057,4 @@ pre .deletion {
   #toc-menu {
     display: block;
   }
-}
-#mytoc::-webkit-scrollbar {
-  width: 15px;
 }
