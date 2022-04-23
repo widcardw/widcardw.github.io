@@ -30,7 +30,7 @@ NNU计算机专业普普通通的一名学生，成绩也就那样。
 
 2020年8月16日，我重新在B站上投上了我“第一个”稿件，并决定将这一个稿件加入manim [updater系列教程](https://space.bilibili.com/31976300/channel/detail?cid=150999)。
 
-![别傻傻的以为这个图片点进去就能打开视频,这只是个截图](./MyFirstBlog/screenshot00.png)
+![[public/posts/screenshot00.png]]
 
 作为一个[manim-kindergarten](https://github.com/manim-kindergarten)的成员，已经咕了很久，一直都没有更新，而且很多工作都是[cigar666](https://space.bilibili.com/66806831)、[鹤翔万里](https://space.bilibili.com/171431343)等肝帝做的。我的话也就仅仅是做一小部分的工作，希望能在之后抽出一些空余时间来制作一些米青采彡的视频吧。
 
