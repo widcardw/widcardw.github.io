@@ -1,7 +1,11 @@
 import { defineHopeConfig } from "vuepress-theme-hope";
 import themeConfig from "./themeConfig";
+import { path } from "@vuepress/utils";
 
 export default defineHopeConfig({
+  alias: {
+    "@MyComponent": path.resolve(__dirname, "components/FriendComponent.vue"),
+  },
   lang: "zh-CN",
   title: "widcardw",
   description: "widcardw 的博客",
