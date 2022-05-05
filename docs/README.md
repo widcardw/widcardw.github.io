@@ -18,5 +18,10 @@ projects:
     desc: 这里聚集了一群大佬
     link: /pages/links
 
+  - icon: note
+    name: 笔记
+    desc: 一些随堂笔记
+    link: https://my-notes-widcardw.vercel.app
+
 footer: Powered by <a href="https://vuepress-theme-hope.github.io/v2/zh/guide/blog/home/">VuePress Theme Hope</a>
 ---

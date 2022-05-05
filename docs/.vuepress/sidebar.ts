@@ -21,14 +21,14 @@ export default defineSidebarConfig([
         icon: "discover",
         prefix: "trials/",
         collapsable: true,
-        children: ["MPV-use-notes"]
+        children: ["MPV-use-notes", "SublimeLinter"]
       },
       {
         text: "笔记",
         icon: "note",
         prefix: "notes/",
         collapsable: true,
-        children: ["database-review", "manimgl-installation", "vectorized-mobject"]
+        children: ["database-review", "manimgl-installation", "vectorized-mobject", "quadratic_bezier_shader"]
       },
       {
         text: "垃圾箱",

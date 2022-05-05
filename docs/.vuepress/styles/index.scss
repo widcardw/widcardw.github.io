@@ -1,0 +1,19 @@
+kbd {
+    background: radial-gradient(var(--bg-color-back), var(--c-bg));
+    border: solid 0.15rem var(--c-border);
+    border-bottom: solid 0.25rem var(--c-border);
+    border-radius: 0.15rem;
+    padding: 0 0.15em;
+    box-shadow: 0 2px 3px var(--box-shadow);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+:root {
+    --font-family-code: 'Jetbrains Mono', Monaco, Consolas, "Andale Mono", "Ubuntu Mono", 'Courier New', Courier, --apple-system, monospace;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
