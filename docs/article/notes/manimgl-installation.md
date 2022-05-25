@@ -26,7 +26,7 @@ article: true
 
 ### 一些说明
 
-其实已经有不少人都写过安装教程了（例如 [GZTime 的博客](https://blog.gztime.cc/posts/2021/758c52ab/), <https://docs.manim.org.cn/shaders>），~~我完全可以不写的~~。但许多人还是遇到了不少问题。
+其实已经有不少人都写过安装教程了（例如 [GZTime 的博客](https://blog.gztime.cc/posts/2021/758c52ab/), <https://docs.manim.org.cn>），~~我完全可以不写的~~。但许多人还是遇到了不少问题。
 
 另外，暂时不是特别推荐使用 Windows Subsystem for Linux 来进行安装，因为没有图形化的界面对于**需要生成窗口的 Pyglet Window 模块**是相当尴尬的，同时有不少人也尝试安装图形界面，但解决这个问题的人好像真的不多。
 
@@ -147,6 +147,18 @@ $ python manimlib/__main__.py example_scenes.py --config_file custom_config.yml
 - 使用 `manimgl xxx.py` 渲染报错的原因
 
   因为 `manimgl` 命令会将环境切换到和你当前想要渲染的文件的同级目录下，也就是说如果当前文件和 `manim_sandbox` 的路径不同，那么就无法根据相对路径来索引到 `manim_sandbox` 文件夹，因此会出现路径错误。
+
+### 关于引入 ManimGL-MathJax
+
+目前 GitHub 上 [ManimGL-MathJax](https://github.com/manim-kindergarten/ManimGL-MathJax) 的最新版本是 0.1.2 (2022/04/13)，但 https://pypi.org 上还没更新，直接用 pip install 可能会报错，因此建议手动克隆这个仓库，然后手动安装
+
+```bash
+$ git clone https://github.com/manim-kindergarten/ManimGL-MathJax.git
+$ cd ManimGL-MathJax
+$ pip install -e .
+$ cd manimgl-mathjax
+$ pnpm install   # 安装 asciimath-js 和 mathjax-full 依赖
+```
 
 ## 附录 
 

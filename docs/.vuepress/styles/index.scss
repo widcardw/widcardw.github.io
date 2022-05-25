@@ -11,9 +11,35 @@ kbd {
 
 :root {
     --font-family-code: 'Jetbrains Mono', Monaco, Consolas, "Andale Mono", "Ubuntu Mono", 'Courier New', Courier, --apple-system, monospace;
+    --theme-color-mark: rgba(62, 175, 124, .25)
 }
 
-p > img {
+p>img {
     display: block;
     margin: 0 auto;
+}
+
+mark {
+    background-color: var(--theme-color-mark);
+    color: var(--text-color);
+}
+
+:root.theme-orange {
+    --theme-color-mark: rgba(243, 156, 18, .25);
+}
+
+:root.theme-red {
+    --theme-color-mark: rgba(231, 76, 60, .25);
+}
+
+:root.theme-blue {
+    --theme-color-mark: rgba(52, 152, 219, .25);
+}
+
+:root.theme-green {
+    --theme-color-mark: rgba(62, 175, 124, .25)
+}
+
+:root.theme-purple {
+    --theme-color-mark: rgba(142, 68, 173, .25)
 }
