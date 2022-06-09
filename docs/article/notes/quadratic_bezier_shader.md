@@ -11,7 +11,7 @@ article: true
 
 大三下学期好巧不巧的选了一个数据可视化的课，然后就借此机会学了一点点 OpenGL 的知识。于是就想借着这份兴趣，把没人去研究的 manimgl shader 部分稍微研究一下，也可以作为自己的一点学习经验吧。
 
-虽说选上的这门课很无聊，而且选这门课的人只有 20 多位，可想而知这是有多劝退啊。但从另一方面想，其实也应该算是一个比较好的契机，毕竟之前大二寒假学的 glsl 也只能瞎画画，做不了什么比较出色的作品。同时，我也 fork 了一个[OpenGL 开发环境的仓库](https://github.com/yocover/start-learning-opengl)，它是搭建在 Windows 端的，而我也一步步踩坑，才成功搭起了 macOS 的开发环境 ~~总之搭环境真累~~ 。[仓库指路](https://github.com/widcardw/start-learning-opengl)
+虽说选上的这门课很无聊，而且选这门课的人只有 20 多位，可想而知这是有多劝退啊。但从另一方面想，其实也应该算是一个比较好的契机，毕竟之前大二寒假学的 glsl 也只能瞎画画，做不了什么比较出色的作品。同时，我也 fork 了一个 [OpenGL 开发环境的仓库](https://github.com/yocover/start-learning-opengl)，它是搭建在 Windows 端的，而我也一步步踩坑，才成功搭起了 macOS 的开发环境 ~~总之搭环境真累~~ 。[仓库指路](https://github.com/widcardw/start-learning-opengl)
 
 ```ad-example
 title: 吐槽

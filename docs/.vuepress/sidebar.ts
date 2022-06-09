@@ -28,7 +28,7 @@ export default defineSidebarConfig([
         icon: "note",
         prefix: "notes/",
         collapsable: true,
-        children: ["database-review", "manimgl-installation", "vectorized-mobject", "quadratic_bezier_shader", "mongodb-notes"]
+        children: ["database-review", "manimgl-installation", "vectorized-mobject", "quadratic_bezier_shader", "mongodb-notes", "vite-rsw"]
       },
       {
         text: "垃圾箱",
