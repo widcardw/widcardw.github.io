@@ -88,11 +88,14 @@ mark {
         border-top-left-radius: var(--callout-radius);
         border-top-right-radius: var(--callout-radius);
 
-        &::marker, &::-webkit-details-marker {
+        &::marker {
             content: '';
         }
         &::before {
             margin-right: 0.5rem;
+        }
+        &::-webkit-details-marker {
+            display: none;
         }
 
         display: flex;
