@@ -1,6 +1,9 @@
 import { defineHopeConfig } from "vuepress-theme-hope";
 import themeConfig from "./themeConfig";
 import { path } from "@vuepress/utils";
+import callout from "./plugins/callout";
+import doubleBracketLink from "./plugins/double-bracket-link";
+import doubleBracketMedia from "./plugins/double-bracket-media";
 
 export default defineHopeConfig({
   alias: {
@@ -27,7 +30,8 @@ export default defineHopeConfig({
   themeConfig,
 
   extendsMarkdown: md => {
-    md.use(require("./plugins/double-bracket-media.js"));
-    md.use(require("./plugins/admonition-translator.js"), 'ad');
+    md.use(doubleBracketMedia);
+    md.use(doubleBracketLink);
+    md.use(callout);
   }
 });
