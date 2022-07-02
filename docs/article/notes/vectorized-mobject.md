@@ -1,7 +1,7 @@
 ---
 title: manim中的矢量图
 date: 2021-06-24
-tag: ['manim','updater','教程','矢量图']
+tag: ['manim','教程','矢量图']
 category: manim
 article: true
 ---
@@ -32,35 +32,33 @@ article: true
 
 如果我们以文本格式打开一个矢量图（以 svg 为例），那么就会看到类似这样的内容。
 
-```ad-example
-title: 摘自菜鸟教程，详见 https://www.runoob.com/svg/svg-path.html
-
-~~~html
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-  <path id="lineAB" d="M 100 350 l 150 -300" stroke="red"
-  stroke-width="3" fill="none" />
-  <path id="lineBC" d="M 250 50 l 150 300" stroke="red"
-  stroke-width="3" fill="none" />
-  <path d="M 175 200 l 150 0" stroke="green" stroke-width="3"
-  fill="none" />
-  <path d="M 100 350 q 150 -300 300 0" stroke="blue"
-  stroke-width="5" fill="none" />
-  <!-- Mark relevant points -->
-  <g stroke="black" stroke-width="3" fill="black">
-    <circle id="pointA" cx="100" cy="350" r="3" />
-    <circle id="pointB" cx="250" cy="50" r="3" />
-    <circle id="pointC" cx="400" cy="350" r="3" />
-  </g>
-  <!-- Label the points -->
-  <g font-size="30" font="sans-serif" fill="black" stroke="none"
-  text-anchor="middle">
-    <text x="100" y="350" dx="-30">A</text>
-    <text x="250" y="50" dy="-10">B</text>
-    <text x="400" y="350" dx="30">C</text>
-  </g>
-</svg>
-~~~
-```
+> [!example] 摘自菜鸟教程，详见 https://www.runoob.com/svg/svg-path.html
+> 
+> ~~~html
+> <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+>   <path id="lineAB" d="M 100 350 l 150 -300" stroke="red"
+>   stroke-width="3" fill="none" />
+>   <path id="lineBC" d="M 250 50 l 150 300" stroke="red"
+>   stroke-width="3" fill="none" />
+>   <path d="M 175 200 l 150 0" stroke="green" stroke-width="3"
+>   fill="none" />
+>   <path d="M 100 350 q 150 -300 300 0" stroke="blue"
+>   stroke-width="5" fill="none" />
+>   <!-- Mark relevant points -->
+>   <g stroke="black" stroke-width="3" fill="black">
+>     <circle id="pointA" cx="100" cy="350" r="3" />
+>     <circle id="pointB" cx="250" cy="50" r="3" />
+>     <circle id="pointC" cx="400" cy="350" r="3" />
+>   </g>
+>   <!-- Label the points -->
+>   <g font-size="30" font="sans-serif" fill="black" stroke="none"
+>   text-anchor="middle">
+>     <text x="100" y="350" dx="-30">A</text>
+>     <text x="250" y="50" dy="-10">B</text>
+>     <text x="400" y="350" dx="30">C</text>
+>   </g>
+> </svg>
+> ~~~
 
 可以看到，文件的内容大致都是**坐标**，**颜色**，**路径**，**填充**等内容。也正是因为这一个因素，在一些动画软件如 Flash, Animation 中能够对矢量图进行图形的**补间**操作。而**补间**的本质，就是**插值(interpolate)**。这一部分将会在之后的**动画**模块里面详细阐述。
 
@@ -106,34 +104,32 @@ $$B(t)=\sum_{i=0}^{n}\binom{n}{i}P_{i}(1-t)^{i}t^{n-i},t\in[0,1]$$
 > - A = elliptical Arc
 > - Z = closepath
 
-```ad-example
-title: w3school 绘制曲线的例子
-~~~html
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
-"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-<svg width="100%" height="100%" version="1.1"
-xmlns="http://www.w3.org/2000/svg">
-
-<path d="M153 334
-C153 334 151 334 151 334
-C151 339 153 344 156 344
-C164 344 171 339 171 334
-C171 322 164 314 156 314
-C142 314 131 322 131 334
-C131 350 142 364 156 364
-C175 364 191 350 191 334
-C191 311 175 294 156 294
-C131 294 111 311 111 334
-C111 361 131 384 156 384
-C186 384 211 361 211 334
-C211 300 186 274 156 274"
-style="fill:white;stroke:red;stroke-width:2"/>
-
-</svg>
-~~~
-```
+> [!example] w3school 绘制曲线的例子
+> ~~~html
+> <?xml version="1.0" standalone="no"?>
+> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+> "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+> 
+> <svg width="100%" height="100%" version="1.1"
+> xmlns="http://www.w3.org/2000/svg">
+> 
+> <path d="M153 334
+> C153 334 151 334 151 334
+> C151 339 153 344 156 344
+> C164 344 171 339 171 334
+> C171 322 164 314 156 314
+> C142 314 131 322 131 334
+> C131 350 142 364 156 364
+> C175 364 191 350 191 334
+> C191 311 175 294 156 294
+> C131 294 111 311 111 334
+> C111 361 131 384 156 384
+> C186 384 211 361 211 334
+> C211 300 186 274 156 274"
+> style="fill:white;stroke:red;stroke-width:2"/>
+> 
+> </svg>
+> ~~~
 
 这里出现了我们的老朋友贝塞尔曲线。如果我们打开一个由 manim 生成的 Text 的 svg 文件，那么就会看到有大量的 `C x1 y1 x2 y2 x3 y3`，这就对应了二阶贝塞尔曲线中的三个二维坐标，回到上面的[动图](#bezier-generate)，看一眼它的生成过程，再体会一下用**很多段二阶贝塞尔曲线拼接成**一段完整的路径。
 
@@ -210,22 +206,20 @@ $$B(t)=\sum_{i=0}^{n}\binom{n}{i}P_{i}(1-t)^{i}t^{n-i},t\in[0,1]$$
 
 ![[public/posts/line.png]]
 
-```ad-example
-title: 关于在三个点在同一直线上 **拉扯** 的问题
-
-在测试中，也出现了这样的 bug，发生原因大致是 shaders 上色之前使用了 interpolate 对坐标、颜色等属性进行了补间，导致出现了一些偏差。
-
-使用下面的代码，会发现直线的粗细会有一些问题，甚至出现断裂。
-
-图中数字为锚点的位置和编号。
-
-~~~python
-v = VMobject()
-v.set_points(np.array([[-1, 0, 0], [3, 0, 0], [1, 0, 0]]))
-~~~
-
-![[public/posts/problem-of-handle.jpg]]
-```
+> [!example] 关于在三个点在同一直线上 **拉扯** 的问题
+> 
+> 在测试中，也出现了这样的 bug，发生原因大致是 shaders 上色之前使用了 interpolate 对坐标、颜色等属性进行了补间，导致出现了一些偏差。
+> 
+> 使用下面的代码，会发现直线的粗细会有一些问题，甚至出现断裂。
+> 
+> 图中数字为锚点的位置和编号。
+> 
+> ~~~python
+> v = VMobject()
+> v.set_points(np.array([[-1, 0, 0], [3, 0, 0], [1, 0, 0]]))
+> ~~~
+> 
+> ![[public/posts/problem-of-handle.jpg]]
 
 
 ### 从直线到曲线

@@ -179,8 +179,25 @@ $ pnpm run watch
 $ pnpm run dev
 ```
 
-```ad-warning
-title: 注意
+> [!warning] 注意
+> 
+> 两个命令行需要分别开启，因为上面一个是监看 Rust 项目的，下面那个是监听 vite 前端项目的
 
-两个命令行需要分别开启，因为上面一个是监看 Rust 项目的，下面那个是监听 vite 前端项目的
+### 7. 补充
+
+对于需要访问内存的操作，根据教程尝试了下面的方法，但是不行。这样做在 DOM 中仍然会报错，说没有 memory 这个模块作为导出。
+
+```ts
+import { memory } from 'rsw-hello/rsw_hello_bg.wasm'
 ```
+
+经过翻阅 [lencx](https://github.com/lencx) 的源码，发现可以这么做
+
+```ts
+import init from 'rsw-hello'
+
+const wasmInit = await init()
+
+const memory = wasm.memory
+```
+
