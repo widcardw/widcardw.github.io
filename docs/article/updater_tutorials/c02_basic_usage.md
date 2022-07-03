@@ -1,19 +1,19 @@
 ---
-title: updater 文档 | 第 2 章 基本使用
+title: updater 文档 | 第 2 节 基本使用
 date: 2022-07-01
 tag: ['manim','updater','教程']
 category: manim
 article: true
 ---
 
-# 第 2 章 基本使用
+# 第 2 节 基本使用
 
 ## updater 是什么
 
 请不要尝试用“更新器”来理解这个工具，毕竟用这种方式来理解并不方便。而又有群友提出了这样一种见解：
 
 > [!quote] 来自 manim kindergarten 群友
-> updater 可以看作是一种以==副作用==驱动的策略或手段。
+> updater 可以看作是一种以==副作用==驱动的动画编写策略。
 
 ## updater 怎么用
 
@@ -38,9 +38,68 @@ class BasicExample(Scene):
 
 ## 实际上它是如何工作的
 
+在使用 `add_updater` 方法给物件添加更新的时候，它会将传入的参数保存到一个成员列表中，这一操作是为了在动画中，能够方便调用物件的更新。
+
+```python
+    def add_updater(self,
+        update_function: Updater,
+        index: int | None = None,
+        call_updater: bool = True
+    ):
+        # 带有 dt
+        if "dt" in get_parameters(update_function):
+            # 基于时间的 updater 列表的引用
+            updater_list = self.time_based_updaters
+        else:
+            # 普通的 updater 列表的引用
+            updater_list = self.non_time_updaters
+
+        # 向列表的引用中添加传入的更新函数
+        if index is None:
+            updater_list.append(update_function)
+        else:
+            updater_list.insert(index, update_function)
+
+        # 更新是否含有 updater 的状态
+        self.refresh_has_updater_status()
+        for parent in self.parents:
+            parent.has_updaters = True
+        if call_updater:
+            self.update(dt=0)
+        return self
+```
+
 还记得上一节提到的 `update_mobject` 方法吗，Scene 的 `play` 方法每一帧都会遍历添加到场景中的物件，并且计算出这一帧它应该更新到哪一个状态。前面的“副作用”的错觉，其实相当于是动画引擎在静默的帮你处理所有隐含的动画和更新。应此我认为“副作用”这一说法也没有任何错。
 
-这是这样大多数情况下，当有物件添加了 updater ，那么整个执行的流程大致就是如下的样子：
+```python {8,17,18,20,21}
+# scene.py
+class Scene(object):
+    # ...
+    def update_mobjects(self, dt: float) -> None:
+        # 遍历场景中的 mobject
+        for mobject in self.mobjects:
+            # 逐一更新
+            mobject.update(dt)
+
+# mobject.py
+class Mobject(object):
+    # ...
+    def update(self, dt: float = 0, recurse: bool = True):
+        if not self.has_updaters or self.updating_suspended:
+            return self
+        # 遍历含 dt 的更新
+        for updater in self.time_based_updaters:
+            updater(self, dt)
+        # 遍历不含 dt 的更新
+        for updater in self.non_time_updaters:
+            updater(self)
+        if recurse:
+            for submob in self.submobjects:
+                submob.update(dt, recurse)
+        return self
+```
+
+这是这样大多数情况下，当有物件添加了 updater ，那么整个执行的流程大致就是如下的样子（更多的内容还是建议看源码）：
 
 ```mermaid
 graph TD
@@ -48,12 +107,12 @@ graph TD
 subgraph Scene
     a[添加updater] --> b[play]
     subgraph Animation
-        c["update mobjects"] --> d["interpolate"]
-        d --> e["interpolate_mobject<br>根据插值更新"]
+        c["update mobjects"] --> d["interpolate<br>动画插值变换"]
+        d --> e["interpolate_mobject<br>根据插值变换物件"]
     end
     subgraph Updater
         f["update frames"] --> g["update mobjects"]
-        g --> h["mobject.update(dt)<br>根据updater列表更新"]
+        g --> h["mobject.update(dt)<br>根据updater列表更新物件"]
     end
 end
 
@@ -62,16 +121,38 @@ b --> f
 
 ```
 
+## 编写规范
+
+在 `add_updater` 方法中，传入的参数是一个函数，当然也可以查看它的类型定义，它接受一个 Mobject 。
+
+```python
+TimeBasedUpdater = Callable[["Mobject", float], None]
+NonTimeUpdater = Callable[["Mobject"], None]
+Updater = Union[TimeBasedUpdater, NonTimeUpdater]
+```
+
+因此，我们可以这样写一个 updater
+
+```python
+def my_updater(m: Mobject):
+    m.next_to(other_mobject, RIGHT)
+    m.rotate(1 * DEGREES)
+
+mob.add_updater(my_updater)
+```
+
+当然，对于一些比较简单的单行函数，也可以用 lambda 匿名函数来简化。
+
 ## 更多的例子
 
 > [!caution] 注意
 > 2022-07-01 版本的 manimgl 在使用 updater 组合上 become 会失效，具体原因未知
 
-这一部分其实我想作为一个练习，让读者自己实现。在实现之后，再来看看编者是如何实现的。
+这一部分作为一个练习，读者可以先尝试自己动手实现。在实现之后，再来看看编者是如何实现的。
 
 ##### 1. 绘制一条线段 $AB$，并绘制它的垂直平分线，使得当线段 $AB$ 移动、旋转的时候，中垂线始终能够垂直平分这条线段。
 
-> [!example] 解答
+> [!example] 参考解答
 > 
 > ```python
 > class PerpendicularBisectorExample(Scene):
@@ -108,7 +189,7 @@ b --> f
 
 > 这个样例暂时没有办法写，在先前版本是可以实现的
 
-> [!example] 解答
+> [!example] 参考解答
 > ```python
 > class ArcExample(Scene):
 >     def construct(self):
@@ -130,7 +211,7 @@ b --> f
 
 ##### 3. 绘制一条数轴，在上面添加一个点，使用 `ValueTracker` 类来控制点的位置，同时使用 `DecimalNumber` 来显示点所代表的数值。
 
-> [!example] 解答
+> [!example] 参考解答
 > 
 > ```python
 > class NumberLineScene(Scene):
@@ -167,8 +248,7 @@ b --> f
 
 ##### 4. 在坐标系上绘制一条函数 $y=\sin(x+\varphi)$，使用你觉得方便的方法，使得改变 $\varphi$ 值的时候，图像也能动态改变。
 
-
-> [!example] 解答
+> [!example] 参考解答
 > 
 > ```python
 > class SineGraphScene(Scene):
@@ -216,3 +296,4 @@ b --> f
 > 
 > 
 
+如果上面的这些例子读者都能写出来，并且能够举一反三，那么 updater 的基础使用应当是没有什么问题的了。

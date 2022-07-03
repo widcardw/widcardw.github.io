@@ -31,11 +31,11 @@ export default defineSidebarConfig([
         children: ["database-review", "manimgl-installation", "vectorized-mobject", "quadratic_bezier_shader", "mongodb-notes", "vite-rsw"]
       },
       {
-        text: "manim updater 样例文档",
+        text: "manim updater 教程文档",
         icon: "edit",
         prefix: "updater_tutorials/",
         collapsable: true,
-        children: ["c01_front_knowledge", "c02_basic_usage"]
+        children: ["c01_front_knowledge", "c02_basic_usage", "c03_time_based_updater"]
       },
       {
         text: "垃圾箱",

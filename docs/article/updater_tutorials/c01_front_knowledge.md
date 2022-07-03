@@ -1,6 +1,6 @@
 ---
 title: updater 文档 | 第 1 章 前置知识
-date: 2022-07-01
+date: 2022-06-30
 tag: ['manim','updater','教程']
 category: manim
 article: true
@@ -90,7 +90,7 @@ class ExampleScene(Scene):
 
 书写动画这么照着分析，可以分成两个过程
 
-- `Write(text)` 看上去是一个函数调用，其实应当是创建了一个 `Write` 的实例，`Write` 的对象就是 `text`
+- `Write(text)` 看上去是一个函数调用，其实应当是创建了一个 `Write` 的实例
 - Scene 通过 `play` 方法执行这个动画的实例，生成了书写的动画
 
 而在第一步过程中，其实已经做了不少处理。如果我们去阅读 `Animation` 的源码，发现它定义了很多的方法，但是并没有直接在类当中连接起来，相互调用，形成动画。这是因为所有的动画，其实都应当依托于 `Scene` 这个“大容器”，只有在场景中，动画才能播放的起来。
@@ -195,7 +195,7 @@ class Animation(object):
 > 
 > 这个动画其实分为两个过程：绘制轮廓、淡入填充。下面对其实现细节进行分析
 > 
-> ```python
+> ```python {6}
 > def begin(self) -> None:
 >     # Trigger triangulation calculation
 >     for submob in self.mobject.get_family():
@@ -209,7 +209,7 @@ class Animation(object):
 > 
 > 在 `begin` 方法中，首先需要拷贝一份物件的轮廓，而后才能开启动画。其中 `lock_data` 的作用是对动画的执行效率进行了一些优化
 > 
-> ```python
+> ```python {19-22}
 > def interpolate_submobject(
 >     self,
 >     submob: VMobject,
