@@ -9,7 +9,8 @@ article: true
 # 第 1 节 前置知识
 
 > [!caution] 注意
-> 该文档为 widcardw 个人理解，如有任何描述不得体，或分析错误的地方，欢迎读者指出。
+> 该文档为 widcardw 个人理解，如有任何描述不得体，或分析错误的地方，欢迎读者指出。\
+> 另外，欢迎读者到 B 站观看编者在很早以前做的[讲解视频](https://space.bilibili.com/31976300/channel/collectiondetail?sid=79029&ctype=0)，或许对大家的理解有帮助
 
 ## Mobject
 
@@ -170,16 +171,16 @@ class Animation(object):
 >         # 正方形的锚点索引
 >         square_points = VGroup(*[
 >             Integer(i, color=GOLD)
->             .set_backstroke()
->             .scale(0.5).move_to(p)
+>                 .set_backstroke()
+>                 .scale(0.5).move_to(p)
 >             for (i, p) in enumerate(square.get_points())
 >         ])
 > 
 >         # 圆的锚点索引
 >         circle_points = VGroup(*[
 >             Integer(i, color=GOLD)
->             .set_backstroke()
->             .scale(0.5).move_to(p)
+>                 .set_backstroke()
+>                 .scale(0.5).move_to(p)
 >             for (i, p) in enumerate(circle.get_points())
 >         ])
 > 
