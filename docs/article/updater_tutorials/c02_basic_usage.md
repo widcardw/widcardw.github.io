@@ -152,6 +152,8 @@ mob.add_updater(my_updater)
 
 ##### 1. 绘制一条线段 $AB$，并绘制它的垂直平分线，使得当线段 $AB$ 移动、旋转的时候，中垂线始终能够垂直平分这条线段。
 
+![[public/updater/PerpendicularBisectorExample.mp4]]
+
 > [!example] 参考解答
 > 
 > ```python
@@ -178,11 +180,7 @@ mob.add_updater(my_updater)
 >         ))
 >         # 旋转直线
 >         self.play(Rotate(line, PI / 2))
-> 
 > ```
-> 
-> ![[public/updater/PerpendicularBisectorExample.mp4]]
-> 
 
 
 ##### 2. 绘制一段圆弧，使用两个 `ValueTracker` 分别控制它的弧度和半径。
@@ -210,6 +208,9 @@ mob.add_updater(my_updater)
 
 
 ##### 3. 绘制一条数轴，在上面添加一个点，使用 `ValueTracker` 类来控制点的位置，同时使用 `DecimalNumber` 来显示点所代表的数值。
+
+![[public/updater/NumberLineScene.mp4]]
+
 
 > [!example] 参考解答
 > 
@@ -242,11 +243,10 @@ mob.add_updater(my_updater)
 >         self.play(v.animate.set_value(5), run_time=2)
 >         self.play(v.animate.set_value(-4), run_time=3)
 > ```
-> 
-> ![[public/updater/NumberLineScene.mp4]]
-> 
 
 ##### 4. 在坐标系上绘制一条函数 $y=\sin(x+\varphi)$，使用你觉得方便的方法，使得改变 $\varphi$ 值的时候，图像也能动态改变。
+
+![[public/updater/SineGraphScene.mp4]]
 
 > [!example] 参考解答
 > 
@@ -292,7 +292,6 @@ mob.add_updater(my_updater)
 >         self.play(phi.animate.set_value(4), run_time=3)
 > ```
 > 
-> ![[public/updater/SineGraphScene.mp4]]
 > 
 > 
 

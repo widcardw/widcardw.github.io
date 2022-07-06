@@ -175,6 +175,8 @@ self.wait(10)
 
 ##### 2. 李萨如曲线：让一个物件按照李撒如图形的轨迹持续运动。李萨如图形的参数可自己给定。
 
+![[public/updater/LissajousExample.mp4]]
+
 > [!example] 参考解答
 > 在这里同样也用了 `self.time` 这个变量，处理更加方便一些
 > 
@@ -211,6 +213,7 @@ self.wait(10)
 
 ##### 3. 追逐曲线：一个正三角形的三个顶点分别以一定速度靠近同一侧相邻的顶点，画出每一帧三角形的位置。
 
+![[public/updater/TracingCurveExample.mp4]]
 
 > [!example] 参考解答
 >
@@ -310,7 +313,8 @@ self.wait(10)
 ![[public/updater/danmaku02.png]]
 
 > [!example] 参考解答
-> 其实只需要改第 6 行就可以了。只要发射角的变化是非线性的，就可以达到这样的效果。
+> 其实只需要改第 6 行就可以了。只要发射角的变化是非线性的，就可以达到这样的效果。当然，如果觉得子弹还不够密集（因为 60 帧下每秒只有 60 颗）可以再加几组。
+> 
 > ```python {6}
 > class Danmaku01(Scene):
 >     def construct(self):

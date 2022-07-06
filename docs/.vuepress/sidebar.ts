@@ -35,7 +35,7 @@ export default defineSidebarConfig([
         icon: "edit",
         prefix: "updater_tutorials/",
         collapsable: true,
-        children: ["c01_front_knowledge", "c02_basic_usage", "c03_time_based_updater"]
+        children: ["c01_front_knowledge", "c02_basic_usage", "c03_time_based_updater", "c04_update_from_func", "c05_write_your_own_anim"]
       },
       {
         text: "垃圾箱",
