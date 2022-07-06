@@ -10,17 +10,17 @@ article: true
 
 > [!caution] 注意
 > 该文档为 widcardw 个人理解，如有任何描述不得体，或分析错误的地方，欢迎读者指出。\
-> 另外，欢迎读者到 B 站观看编者在很早以前做的[讲解视频](https://space.bilibili.com/31976300/channel/collectiondetail?sid=79029&ctype=0)，或许对大家的理解有帮助
+> 另外，欢迎读者到 B 站观看笔者在很早以前做的[讲解视频](https://space.bilibili.com/31976300/channel/collectiondetail?sid=79029&ctype=0)，或许对大家的理解有帮助
 
 ## Mobject
 
 manim 中，能够呈现在屏幕上的所有物件，包括基本图形、文字、坐标系等等，这些都是继承于 Mobject 类的。
 
-不管是 cairo 版本还是 gl 版本，它们都会在创建 Mobject 实例的时候进行一系列的初始化，在这初始化的过程中，其实就有一小部分涉及到了==图形接口==。虽然两种版本的接口有所不同，但大体上都是初始化锚点、颜色等等（gl 版本也增加了一些事件侦听、shader data 之类的元素）。在做好物件**自身数据**相关的初始化之后，就需要将这一“管道”连接到图形接口上，在这些流程走完后，才能将我们所想要的画面呈现在屏幕上。
+不管是 cairo 版本还是 gl 版本，它们都会在创建 Mobject 实例的时候进行一系列的初始化，在这初始化的过程中，其实就有一小部分涉及到了==图形接口==。虽然两种版本的接口有所不同，但大体上都是初始化锚点、颜色等等（gl 版本增加了一些事件侦听、 shader data 之类的元素）。在做好物件 **自身数据** 相关的初始化之后，就需要将这一“管道”连接到图形接口上，在这些流程走完后，才能将我们所想要的画面呈现在屏幕上。
 
 wid 曾无数次劝新手通过看源码来学习 manim ，因为写教程的人真的太少了 `¯\_(ツ)_/¯` 在有编程基础的情况下，反而看源码成了效率最高的学习方式。
 
-然而，我们看源码也是挺头疼的，有时还会忽略一些要点
+然而，我们看源码也是挺头疼的，有时还会忽略一些要点。
 
 ```python {6}
 class Mobject(object):
@@ -38,7 +38,7 @@ class Mobject(object):
                 self.apply_depth_test()
 ```
 
-没错，就是这个 `init_updaters` 方法。它的具体代码是这样的
+没错，就是这个 `init_updaters` 方法。它的具体代码是这样的：
 
 ```python
 def init_updaters(self):
@@ -70,7 +70,7 @@ def update(self, dt: float = 0, recurse: bool = True):
 
 动画是 manim 中一项极为惊艳的特征，因为这些动画看上去相当优雅，很有观赏性。正因为它的效果震住了我们， 于是我们也就理所应当地认为动画的实现很复杂。
 
-然而事实上不是这样的，它的实现其实反而出乎意料的简单。
+然而事实上不是这样的，它的代码实现其实反而出乎意料的简单。
 
 > [!note] 一些动画的概念
 > 首先，动画其实也是有 finite 和 infinite 的区分，也就是说，动画可以分为==有始有终==的动画和==无限播放==的动画。
@@ -188,7 +188,7 @@ class Animation(object):
 > 
 > ```
 
-之所以要创建初始物件的拷贝，其实也是为了能够在插值的过程中，可以方便调用。在该过程中，物件自身会随着动画不断的变化，而 `starting_submobject` 永远不变，为生成中间物件做准备。
+之所以要创建初始物件的拷贝，其实也是为了能够在插值的过程中，可以方便调用。在动画运行的过程中，物件自身会随着动画不断的变化，而 `starting_submobject` 永远不变，为生成中间物件做准备。
 
 对于像是 `Write` 之类的看上去比较高级的动画效果，不过是在实现上加了一点点细节罢了，其本质依然是生成补间动画。
 
@@ -265,7 +265,7 @@ class Animation(object):
 >     return [*super().get_all_mobjects(), self.outline]
 > ```
 > 
-> 如果用 PyCharm 打开 manim 工程，会发现 `Write` 的这个方法有警告，确实是黑魔法
+> 如果用 PyCharm 打开 manim 工程，会发现 `Write` 的这个方法有警告，确实是黑魔法。
 
 ## Scene
 
@@ -304,7 +304,7 @@ def progress_through_animations(self, animations: Iterable[Animation]) -> None:
         self.emit_frame()
 ```
 
-除此之外，Scene 还实现了一些与 updater 有关的方法
+除此之外，Scene 还实现了一些与 updater 有关的方法：
 
 ```python
 def update_mobjects(self, dt: float) -> None:
@@ -314,4 +314,6 @@ def update_mobjects(self, dt: float) -> None:
 
 这个方法的作用就是遍历场景中的所有物件，并根据他们自身 updater list 成员变量进行更新。这个方法的调用者其实也有不少，包括 `play` 方法和 `wait` 方法等。
 
-其他的部分，与本文档要叙述的部分关联并非十分紧密，暂时只是一笔带过了。
+有了这些基础，就可以将这一份份建材磊起来，创造 manim 的动画了。
+
+其他的部分，与本文档要叙述的部分关联并非十分紧密，暂时只是一笔带过。
