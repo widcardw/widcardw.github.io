@@ -12,8 +12,6 @@ article: true
 
 同时，我也在很早以前将这个教程做成了视频，不过一直都没有写博客。视频传送门 [BV1364y1y71n](https://www.bilibili.com/video/BV1364y1y71n)
 
-<!-- more -->
-
 ## 矢量图
 
 ### 网站推荐
@@ -33,8 +31,7 @@ article: true
 如果我们以文本格式打开一个矢量图（以 svg 为例），那么就会看到类似这样的内容。
 
 > [!example] 摘自菜鸟教程，详见 https://www.runoob.com/svg/svg-path.html
-> 
-> ~~~html
+> ```html
 > <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 >   <path id="lineAB" d="M 100 350 l 150 -300" stroke="red"
 >   stroke-width="3" fill="none" />
@@ -58,7 +55,7 @@ article: true
 >     <text x="400" y="350" dx="30">C</text>
 >   </g>
 > </svg>
-> ~~~
+> ```
 
 可以看到，文件的内容大致都是**坐标**，**颜色**，**路径**，**填充**等内容。也正是因为这一个因素，在一些动画软件如 Flash, Animation 中能够对矢量图进行图形的**补间**操作。而**补间**的本质，就是**插值(interpolate)**。这一部分将会在之后的**动画**模块里面详细阐述。
 
