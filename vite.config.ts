@@ -99,7 +99,7 @@ export default defineConfig({
     Unocss(),
 
     Markdown({
-      wrapperComponent: 'postvue',
+      wrapperComponent: 'Postvue',
       headEnabled: true,
       markdownItSetup(md) {
         // https://prismjs.com/

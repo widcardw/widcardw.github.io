@@ -5,9 +5,9 @@
 import { isDark } from '~/composables'
 
 useHead({
-  title: 'Blog template',
+  title: 'widcardw',
   meta: [
-    { name: 'description', content: 'Blog template 一个博客模板' },
+    { name: 'description', content: 'widcard.win' },
     {
       name: 'theme-color',
       content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
