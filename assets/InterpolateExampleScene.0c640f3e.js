@@ -1,0 +1,1 @@
+const e="/updater/InterpolateExampleScene.png";export{e as _};
