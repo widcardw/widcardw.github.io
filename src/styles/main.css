@@ -1,0 +1,23 @@
+@import './markdown.css';
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+[data-darkmode="dark"] body {
+  background: #242424;
+}
+
+.font-serif {
+  font-family: KaTeX_Main, serif !important;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    font-size: small;
+  }
+}

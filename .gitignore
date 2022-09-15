@@ -1,7 +1,11 @@
-
-node_modules/
-docs/.vuepress/.cache/
-docs/.vuepress/.temp/
-docs/.vuepress/dist/
-docs/.obsidian
 .DS_Store
+.vite-ssg-dist
+.vite-ssg-temp
+*.local
+dist
+dist-ssr
+node_modules
+.idea/
+*.log
+auto-imports.d.ts
+components.d.ts

@@ -1,0 +1,3 @@
+## Blogs
+
+<ListPosts />
