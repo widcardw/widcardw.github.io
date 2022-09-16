@@ -4,6 +4,7 @@ date: 2022-07-03
 tags: ['manim','updater','教程']
 category: manim
 article: true
+abstract: '从数学的角度了解补间'
 ---
 
 # 第 4 节 Alpha 在动画中的作用

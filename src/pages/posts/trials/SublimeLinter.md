@@ -5,9 +5,13 @@ tags:
   - linter
 category: software
 article: true
+abstract: 后来发现基于 LSP 的 pyright 好像要更好一些
 ---
 
 # SublimeLinter 使用记录
+
+> [!tip] 注意
+> 其实使用 Sublime-lsp 和 pyright 会更好一些，本文讲的 linter 还得手动配置
 
 ## 1. 安装
 

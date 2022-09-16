@@ -1,11 +1,15 @@
 ---
-title: manimgl安装记录
 date: 2021-06-24
 tags: 
   - manim
 category: manim
 article: true
 ---
+
+# manimgl 安装记录
+
+> [!caution] 注意
+> 本博客大部分配置依旧生效，但最好还是去官网 <https://docs.manim.org.cn> 查看具体的安装教程。
 
 ## 关于 manimgl
 
@@ -37,7 +41,7 @@ article: true
     - Windows 用户依然是去 [Mik$\TeX$](https://www.miktex.org) 官网或 [$\TeX$Live](http://tug.org/texlive/) 官网下载安装器，并安装基本的 $\LaTeX$ 包，我在这里建议安装完整的包。
     - Linux 用户直接用下面的命令行安装 $\TeX$Live Full.
         ```bash
-        $ sudo apt-get install texlive-full
+        sudo apt-get install texlive-full
         ```
     - Mac OS 用户可以选择 [Mac $\TeX$](http://www.tug.org/mactex/)，同样可以搜索后进行安装。
 
@@ -47,13 +51,13 @@ article: true
     
         > 如果直接下载 zip 包，则不会包含 `.git` 文件夹里面的一些必要环境，所以最好还是采用克隆。如果嫌慢，可以采用 `gitee` 进行  中转，或者采用下面的国内镜像进行克隆。
         > ```bash
-        > $ git clone https://github.com.cnpmjs.org/3b1b/manim.git
+        > git clone https://github.com.cnpmjs.org/3b1b/manim.git
         > ```
       
       - 进入该文件夹，使用命令行安装运行环境。
       
         ```bash
-        $ pip install -e .  # 注意，最后有一个点
+        pip install -e .  # 注意，最后有一个点
         ```
     
          > 此时可能会遇到下面的报错（该部分来自 *manimgl 常见问题*）
@@ -78,7 +82,7 @@ article: true
 在刚刚的目录下运行下面的命令，即测试 Grant 给的场景。
 
 ```bash
-$ manimgl example_scenes.py OpeningManimExample
+manimgl example_scenes.py OpeningManimExample
 ```
 
 如果能正常打开一个窗口并能使得动画播放完，那么就是安装成功了。
@@ -114,7 +118,7 @@ $ manimgl example_scenes.py OpeningManimExample
 在配置完脚本之后，点击绿色的小三角运行，就相当于运行了下面的命令，同时，该方法也适用于打断点 debug，但是从性能来看似乎是不如直接敲命令的。
 
 ```bash
-$ python manimlib/__main__.py example_scenes.py --config_file custom_config.yml
+python manimlib/__main__.py example_scenes.py --config_file custom_config.yml
 ```
 
 ### 关于在 `xxx.py` 中引入 `manim_sandbox` 的内容
@@ -139,7 +143,7 @@ $ python manimlib/__main__.py example_scenes.py --config_file custom_config.yml
   然后，可以继续用上面提到的**使用 VSCode 的脚本进行操作**来进行预览和输出文件，或者用它的命令来运行。
   
   ```bash
-  $ python manimlib xxx.py
+  python manimlib xxx.py
   ```
 - 使用 `manimgl xxx.py` 渲染报错的原因
 
@@ -150,11 +154,11 @@ $ python manimlib/__main__.py example_scenes.py --config_file custom_config.yml
 目前 GitHub 上 [ManimGL-MathJax](https://github.com/manim-kindergarten/ManimGL-MathJax) 的最新版本是 0.1.2 (2022/04/13)，但 https://pypi.org 上还没更新，直接用 pip install 可能会报错，因此建议手动克隆这个仓库，然后手动安装
 
 ```bash
-$ git clone https://github.com/manim-kindergarten/ManimGL-MathJax.git
-$ cd ManimGL-MathJax
-$ pip install -e .
-$ cd manimgl-mathjax
-$ pnpm install   # 安装 asciimath-js 和 mathjax-full 依赖
+git clone https://github.com/manim-kindergarten/ManimGL-MathJax.git
+cd ManimGL-MathJax
+pip install -e .
+cd manimgl-mathjax
+pnpm install   # 安装 asciimath-js 和 mathjax-full 依赖
 ```
 
 ## 附录 

@@ -4,6 +4,7 @@ date: 2022-07-01
 tags: ['manim','updater','教程']
 category: manim
 article: true
+abstract: updater 难道不是和 up 约会的人吗？
 ---
 
 # 第 2 节 基本使用
@@ -14,6 +15,11 @@ article: true
 
 > [!quote] 来自 manim kindergarten 群友
 > updater 可以看作是一种以==副作用==驱动的动画编写策略。
+
+还有群友是这样认为的
+
+> [!quote] Xx
+> updater 不是和 up 约会的人吗？
 
 ## updater 怎么用
 

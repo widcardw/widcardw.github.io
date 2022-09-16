@@ -4,6 +4,7 @@ date: 2022-07-02
 tags: ['manim','updater','教程']
 category: manim
 article: true
+abstract: '从时间轴的角度，直接控制 manim 动画的流程'
 ---
 
 # 第 3 节 基于时间的更新

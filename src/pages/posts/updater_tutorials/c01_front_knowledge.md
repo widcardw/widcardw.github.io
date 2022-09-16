@@ -4,6 +4,7 @@ date: 2022-06-30
 tags: ['manim','updater','教程']
 category: manim
 article: true
+abstract: '从 Mobject 到 Animation 再到 Scene，分析 manim 是如何构建动画的'
 ---
 
 # 第 1 节 前置知识
