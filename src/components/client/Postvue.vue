@@ -36,7 +36,7 @@ function renderGiscus(): VNode {
 </script>
 
 <template>
-  <div class="heti heti--classic prose-style m-auto text-left">
+  <div class="heti heti--classic m-auto text-left p-2">
     <slot />
     <p v-if="route.path !== '/'">
       <a
