@@ -32,6 +32,10 @@
     border-style: solid;
     border-radius: var(--callout-radius);
     margin: 1rem 0;
+    --tw-shadow: 0 1px 3px 0 rgb(0 0 0/0.1),0 1px 2px -1px rgb(0 0 0/0.1);
+    --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color);
+    -webkit-box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+    box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
 }
 
 .custom-callout[open]>summary>.callout-fold {
@@ -70,12 +74,23 @@
     color: var(--prism-foreground);
     border-left: none;
     margin: 0 !important;
-    padding: 0.25rem 1rem;
 }
 
 .custom-callout>blockquote>p {
     color: var(--prism-foreground);
     margin: 8px 0;
+}
+
+.custom-callout>blockquote>pre {
+    margin: 1.25rem -1rem 1.25rem -1rem;
+}
+
+.custom-callout>blockquote>pre:first-child {
+    margin-top: -0.75rem;
+}
+
+.custom-callout>blockquote>pre:last-child {
+    margin-bottom: -0.75rem;
 }
 
 .custom-callout.note,
