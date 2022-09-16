@@ -19,7 +19,7 @@ function renderGiscus(): VNode {
     category: 'Announcements',
     categoryid: 'DIC_kwDOHOA75M4COuTG',
     term: 'Welcome to giscus!',
-    mapping: 'pathname',
+    mapping: 'url',
     reactionsenabled: '1',
     emitmetadata: '0',
     inputposition: 'bottom',
