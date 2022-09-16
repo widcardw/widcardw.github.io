@@ -1,5 +1,4 @@
 @import './markdown.css';
-@import 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.15.3/katex.min.css';
 
 html,
 body,
@@ -9,26 +8,16 @@ body,
   padding: 0;
 }
 
-html.dark {
-  background: #121212;
-  color-scheme: dark;
-}
-
-#nprogress {
-  pointer-events: none;
+[data-darkmode="dark"] body {
+  background: #242424;
 }
 
 .font-serif {
   font-family: KaTeX_Main, serif !important;
 }
 
-#nprogress .bar {
-  background: rgb(13,148,136);
-  opacity: 0.75;
-  position: fixed;
-  z-index: 1031;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
+@media screen and (max-width: 500px) {
+  body {
+    font-size: small;
+  }
 }

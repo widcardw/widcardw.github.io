@@ -3,7 +3,7 @@ const props = withDefaults(defineProps<{
   src: string
   errSrc?: string
 }>(), {
-  errSrc: '/avatar/noface.gif',
+  errSrc: '/noface.gif',
 })
 
 const realSrc = ref(props.src)

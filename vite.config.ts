@@ -1,21 +1,18 @@
-import path, { resolve } from 'path'
+/// <reference types="vitest" />
+
 import fs from 'fs'
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
-import generateSitemap from 'vite-ssg-sitemap'
-import Layouts from 'vite-plugin-vue-layouts'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import Markdown from 'vite-plugin-vue-markdown'
-import { VitePWA } from 'vite-plugin-pwa'
-import VueI18n from '@intlify/vite-plugin-vue-i18n'
-import Inspect from 'vite-plugin-inspect'
-import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
-import Shiki from 'markdown-it-shiki'
+import Layouts from 'vite-plugin-vue-layouts'
+import Markdown from 'vite-plugin-vue-markdown'
+import Prism from 'markdown-it-prism'
 import matter from 'gray-matter'
-
+import LinkAttributes from 'markdown-it-link-attributes'
 // @ts-expect-error declaration
 import markdownItKatex from 'markdown-it-new-katex'
 import markdownItAnchor from 'markdown-it-anchor'
@@ -27,14 +24,14 @@ import markdownCallouts from 'vitepress-plugin-callout'
 import doubleBracketLink from './src/composables/plugins/double-bracket-link'
 import doubleBracketMedia from './src/composables/plugins/double-bracket-media'
 import { mermaidPlugin } from './src/composables/plugins/mermaid'
+import type { MyRouteMeta } from './src/composables/types'
 
 export default defineConfig({
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, 'src')}/`,
+      '~/': `${resolve(__dirname, 'src')}/`,
     },
   },
-
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/],
@@ -63,35 +60,32 @@ export default defineConfig({
 
             else throw new Error('Post without title!')
           }
-          route.meta = Object.assign(route.meta || {}, { frontmatter: data })
+          route.meta = Object.assign(route.meta || {}, { frontmatter: data }) as MyRouteMeta
         }
 
         return route
       },
     }),
 
-    // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
     Layouts(),
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: [
         'vue',
-        'vue-router',
-        'vue-i18n',
         'vue/macros',
-        '@vueuse/head',
+        'vue-router',
         '@vueuse/core',
+        '@vueuse/head',
       ],
-      dts: 'src/auto-imports.d.ts',
+      dts: true,
       dirs: [
-        'src/composables',
-        'src/store',
+        './src/composables',
       ],
       vueTemplate: true,
     }),
 
-    // https://github.com/antfu/unplugin-vue-components
+    // https://github.com/antfu/vite-plugin-components
     Components({
       // allow auto load markdown components under `./src/components/`
       extensions: ['vue', 'md'],
@@ -104,20 +98,12 @@ export default defineConfig({
     // see unocss.config.ts for config
     Unocss(),
 
-    // https://github.com/antfu/vite-plugin-vue-markdown
-    // Don't need this? Try vitesse-lite: https://github.com/antfu/vitesse-lite
     Markdown({
       wrapperComponent: 'Postvue',
       headEnabled: true,
       markdownItSetup(md) {
-        md.use(markdownCallouts)
         // https://prismjs.com/
-        md.use(Shiki, {
-          theme: {
-            light: 'vitesse-light',
-            dark: 'vitesse-dark',
-          },
-        })
+        md.use(Prism)
         md.use(LinkAttributes, {
           matcher: (link: string) => /^https?:\/\//.test(link),
           attrs: {
@@ -128,6 +114,7 @@ export default defineConfig({
         md.use(markdownItKatex)
         md.use(markdownItMark)
         md.use(markdownItAnchor)
+        md.use(markdownCallouts)
         md.use(doubleBracketLink)
         md.use(doubleBracketMedia)
         md.use(markdownItTableOfContents, {
@@ -137,66 +124,5 @@ export default defineConfig({
         md.use(mermaidPlugin)
       },
     }),
-
-    // https://github.com/antfu/vite-plugin-pwa
-    VitePWA({
-      registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
-      manifest: {
-        name: 'Vitesse',
-        short_name: 'Vitesse',
-        theme_color: '#ffffff',
-        icons: [
-          {
-            src: '/pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-          {
-            src: '/pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable',
-          },
-        ],
-      },
-    }),
-
-    // https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n
-    VueI18n({
-      runtimeOnly: true,
-      compositionOnly: true,
-      include: [path.resolve(__dirname, 'locales/**')],
-    }),
-
-    // https://github.com/antfu/vite-plugin-inspect
-    // Visit http://localhost:3333/__inspect/ to see the inspector
-    Inspect(),
   ],
-
-  // https://github.com/vitest-dev/vitest
-  test: {
-    include: ['test/**/*.test.ts'],
-    environment: 'jsdom',
-    deps: {
-      inline: ['@vue', '@vueuse', 'vue-demi'],
-    },
-  },
-
-  // https://github.com/antfu/vite-ssg
-  ssgOptions: {
-    script: 'async',
-    formatting: 'minify',
-    onFinished() { generateSitemap() },
-  },
-
-  ssr: {
-    // TODO: workaround until they support native ESM
-    noExternal: ['workbox-window', /vue-i18n/],
-  },
 })

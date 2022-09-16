@@ -1,6 +1,6 @@
 .heti code {
     padding: 0.2rem 0.2rem;
-    border-radius: 0.2rem;
+    border-radius: 0.1rem;
     background-color: rgba(0, 0, 0, 0.054);
 }
 
@@ -12,16 +12,4 @@
 
 .heti a {
     color: #4387f4;
-}
-
-.heti blockquote>p {
-  margin-block-end: 12px;
-}
-
-.heti img {
-  margin: 0 auto;
-}
-
-.shiki-container>pre {
-  padding: 1rem;
 }

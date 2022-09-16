@@ -26,7 +26,7 @@ const routes: Post[] = router.getRoutes()
   }))
 
 const posts = computed(() => (props.posts || routes))
-const page = usePage()
+const currentPage = useStorage('w-currentPage', 1)
 const pageSize = ref(10)
 </script>
 
@@ -37,7 +37,7 @@ const pageSize = ref(10)
     </div>
   </template>
   <div
-    v-for="route in posts.slice((page.savedPageNum - 1) * pageSize, page.savedPageNum * pageSize)"
+    v-for="route in posts.slice((currentPage - 1) * pageSize, currentPage * pageSize)"
     :key="route.path"
   >
     <PostLink
@@ -49,5 +49,5 @@ const pageSize = ref(10)
       :abstract="route.abstract"
     />
   </div>
-  <Pagenation v-model:cur="page.savedPageNum" :size="pageSize" :total="posts.length" />
+  <Pagenation v-model:cur="currentPage" :size="pageSize" :total="posts.length" />
 </template>

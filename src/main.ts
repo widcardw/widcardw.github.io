@@ -1,25 +1,25 @@
-import { ViteSSG } from 'vite-ssg'
+import { createApp } from 'vue'
+import { createRouter, createWebHistory } from 'vue-router'
+import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:generated-layouts'
+import { createHead } from '@vueuse/head'
 import App from './App.vue'
-import type { UserModule } from './types'
-import generatedRoutes from '~pages'
 
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
-import 'uno.css'
 import './styles/callouts.css'
 import './styles/heti-ext.css'
+import 'uno.css'
 import './styles/heti.css'
 
 const routes = setupLayouts(generatedRoutes)
 
-// https://github.com/antfu/vite-ssg
-export const createApp = ViteSSG(
-  App,
-  { routes, base: import.meta.env.BASE_URL },
-  (ctx) => {
-    // install all modules under `modules/`
-    Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
-      .forEach(i => i.install?.(ctx))
-  },
-)
+const app = createApp(App)
+const head = createHead()
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes,
+})
+app.use(router).use(head)
+app.mount('#app')
+
