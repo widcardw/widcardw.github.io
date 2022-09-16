@@ -1,6 +1,7 @@
 // from slidevjs/slidev
 
 import { clearUndefined } from '@antfu/utils'
+import { decode } from 'js-base64'
 import mermaid from 'mermaid'
 import { customAlphabet } from 'nanoid'
 
@@ -21,7 +22,7 @@ function renderMermaid(code: string, options: any) {
 
   const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz1234', 10)
 
-  const code_ = decodeURIComponent(code)
+  const code_ = decode(code)
   const id = nanoid()
   const svg = mermaid.render(id, code_)
   cache.set(key, svg)

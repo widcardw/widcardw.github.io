@@ -6,7 +6,7 @@ withDefaults(defineProps<{
   desc?: string
 }>(), {
   name: 'noname',
-  avatar: '/favicon.svg',
+  avatar: '/noface.gif',
   url: '/',
   desc: '',
 })
@@ -18,10 +18,10 @@ withDefaults(defineProps<{
     class="hover:bg-zinc/10 transition-all cursor-pointer"
   >
     <MyImg class="w-4rem h-4rem rounded-full" :src="avatar" />
-    <div grid="~ rows-2">
-      <div text-xl font-bold self-end>
+    <div>
+      <a text-xl font-bold self-end :href="url">
         {{ name }}
-      </div>
+      </a>
       <div op-70>
         {{ desc }}
       </div>

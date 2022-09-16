@@ -1,3 +1,5 @@
+import { encode } from 'js-base64'
+
 function mermaidPlugin(md: markdownit) {
   const temp = md.renderer.rules.fence?.bind(md.renderer.rules)
   md.renderer.rules.fence = (tokens, index, options, env, slf) => {
@@ -6,7 +8,7 @@ function mermaidPlugin(md: markdownit) {
     if (token.info.trim() === 'mermaid') {
       try {
         const content = token.content.trim()
-        return `<Mermaid code="${encodeURIComponent(
+        return `<Mermaid code="${encode(
               content,
             )}"></Mermaid>`
       }
