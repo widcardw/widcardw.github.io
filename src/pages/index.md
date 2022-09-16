@@ -4,7 +4,7 @@
 
 I am widcardw, a student major in Computer Science. 
 
-Member of [Manim Kindergarten](https://manim.org.cn), contributor of [manim](https://github.com/3b1b/manim).  
+Member of [Manim Kindergarten](https://manim.org.cn).  
 Shotacon. 
 
 I like to try new things.  
