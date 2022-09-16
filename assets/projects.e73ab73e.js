@@ -1,0 +1,1 @@
+import{u as o,o as s,c,w as n,a as r,_}from"./index.6809ac17.js";const m=r("div",{class:"markdown-body"},null,-1),i=[],h={__name:"projects",setup(d,{expose:e}){const t={meta:[]};return e({frontmatter:t}),o({meta:[]}),(p,f)=>{const a=_;return s(),c(a,{frontmatter:t},{default:n(()=>[m]),_:1})}}};export{h as default,i as meta};
