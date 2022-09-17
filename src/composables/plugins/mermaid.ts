@@ -1,7 +1,7 @@
 import { encode } from 'js-base64'
 
 function mermaidPlugin(md: markdownit) {
-  const temp = md.renderer.rules.fence?.bind(md.renderer.rules)
+  const fence = md.renderer.rules.fence?.bind(md.renderer.rules)
   md.renderer.rules.fence = (tokens, index, options, env, slf) => {
     const token = tokens[index]
 
@@ -16,7 +16,7 @@ function mermaidPlugin(md: markdownit) {
         return `<pre>${err}</pre>`
       }
     }
-    return temp?.(tokens, index, options, env, slf) || ''
+    return fence!(tokens, index, options, env, slf) || ''
   }
 }
 

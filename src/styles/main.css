@@ -8,7 +8,7 @@ body,
   padding: 0;
 }
 
-[data-darkmode="dark"] body {
+.dark body {
   background: #242424;
 }
 

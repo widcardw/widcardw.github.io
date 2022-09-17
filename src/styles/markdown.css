@@ -6,7 +6,7 @@
   padding: 0.75rem 0.75rem 4.5rem 0.75rem;
 }
 
-html:not([data-darkmode="dark"]) .prose-style {
+html:not(.dark) .prose-style {
   --prism-foreground: #393a34;
   --prism-background: #fbfbfb;
   --prism-comment: #a0ada0;
@@ -30,7 +30,7 @@ html:not([data-darkmode="dark"]) .prose-style {
   --un-prose-borders: #dddddd;
 }
 
-html[data-darkmode="dark"] .prose-style {
+html.dark .prose-style {
   --prism-foreground: #d4cfbf;
   --prism-background: #151515;
   --prism-comment: #758575;

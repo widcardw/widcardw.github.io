@@ -47,6 +47,7 @@ export default defineConfig({
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
       extensions: ['vue', 'md'],
+      dirs: 'pages',
       extendRoute(route) {
         const path = resolve(__dirname, route.component.slice(1))
 
@@ -121,8 +122,12 @@ export default defineConfig({
           includeLevel: [2, 3, 4],
           containerHeaderHtml: '<h3>目录</h3>',
         })
-        md.use(mermaidPlugin)
+        // md.use(mermaidPlugin)
       },
     }),
   ],
+  ssgOptions: {
+    formatting: 'minify',
+    format: 'cjs',
+  },
 })

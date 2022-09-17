@@ -241,7 +241,7 @@ font-face {
 
 /*
 
-[data-darkmode="dark"] .heti blockquote {
+.dark .heti blockquote {
   background-color: rgba(255, 255, 255, 0.054);
 }
 
@@ -275,7 +275,7 @@ font-face {
   background-color: #cccccc;
 }
 
-[data-darkmode="dark"] .heti hr {
+.dark .heti hr {
   background-color: #404040;
 }
 
@@ -312,7 +312,7 @@ font-face {
   background-color: rgba(0, 0, 0, 0.054);
 }
 
-[data-darkmode="dark"] .heti pre {
+.dark .heti pre {
   background-color: rgba(255, 255, 255, 0.054);
 }
 
@@ -455,7 +455,7 @@ font-face {
   word-break: break-word;
 }
 
-[data-darkmode="dark"] .heti table {
+.dark .heti table {
   border-color: #404040;
 }
 
@@ -476,7 +476,7 @@ font-face {
   border-color: #cccccc;
 }
 
-[data-darkmode="dark"] .heti th, [data-darkmode="dark"]
+.dark .heti th, .dark
 .heti td {
   border-color: #404040;
 }
@@ -566,7 +566,7 @@ font-face {
   color: inherit;
 }
 
-[data-darkmode="dark"] .heti mark {
+.dark .heti mark {
   background-color: rgba(77, 74, 0, 0.88);
 }
 
@@ -623,7 +623,7 @@ font-face {
   background-color: #dbedff;
 }
 
-[data-darkmode="dark"] .heti sup:target, [data-darkmode="dark"]
+.dark .heti sup:target, .dark
 .heti sup a:target {
   background-color: #3a6188;
 }
@@ -653,7 +653,7 @@ font-face {
   border-block-end-color: rgba(0, 0, 0, 0.54);
 }
 
-[data-darkmode="dark"] .heti u[title] {
+.dark .heti u[title] {
   border-block-end-color: rgba(255, 255, 255, 0.54);
 }
 
@@ -980,7 +980,7 @@ font-face {
   line-height: 24px;
 }
 
-[data-darkmode="dark"] .heti .heti-fn {
+.dark .heti .heti-fn {
   border-block-start-color: #404040;
 }
 
@@ -999,7 +999,7 @@ font-face {
   background-color: #dbedff;
 }
 
-[data-darkmode="dark"] .heti .heti-fn li:target {
+.dark .heti .heti-fn li:target {
   background-color: #3a6188;
 }
 

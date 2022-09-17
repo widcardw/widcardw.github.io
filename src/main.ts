@@ -1,8 +1,9 @@
-import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+// import { createApp } from 'vue'
+// import { createRouter, createWebHistory } from 'vue-router'
 import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:generated-layouts'
-import { createHead } from '@vueuse/head'
+// import { createHead } from '@vueuse/head'
+import { ViteSSG } from 'vite-ssg'
 import App from './App.vue'
 
 import '@unocss/reset/tailwind.css'
@@ -14,12 +15,16 @@ import './styles/heti.css'
 
 const routes = setupLayouts(generatedRoutes)
 
-const app = createApp(App)
-const head = createHead()
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
-})
-app.use(router).use(head)
-app.mount('#app')
+// const app = createApp(App)
+// const head = createHead()
+// const router = createRouter({
+//   history: createWebHistory(import.meta.env.BASE_URL),
+//   routes,
+// })
+// app.use(router).use(head)
+// app.mount('#app')
 
+export const createApp = ViteSSG(
+  App,
+  { routes, base: import.meta.env.BASE_URL },
+)

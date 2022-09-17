@@ -16,6 +16,7 @@ const router = useRouter()
     <div flex-1 />
     <div flex space-x-4 items-center>
       <a icon-btn i-ri-article-line title="blog" @click="router.push('/posts')" />
+      <a icon-btn i-ri-apps-line title="project" @click="router.push('/projects')" />
       <a icon-btn i-ri-link-m title="links" @click="router.push('/friends')" />
       <a href="https://slides.widcard.win" target="_blank" icon-btn i-ri-slideshow-2-line title="slides" />
       <a href="https://space.bilibili.com/31976300" target="_blank" icon-btn i-ri-bilibili-fill title="bilibili" />
