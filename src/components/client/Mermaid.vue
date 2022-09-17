@@ -11,12 +11,20 @@ const props = defineProps<{
 const vm = getCurrentInstance()
 const el = ref<ShadowRoot>()
 
-const svgObj = computed(() => renderMermaid(props.code || '', {
-  theme: props.theme || (isDark.value ? 'dark' : undefined),
-  ...vm?.attrs,
-}))
+function mf() {
+  try {
+    const svg = renderMermaid(props.code || '', {
+      theme: props.theme || (isDark.value ? 'dark' : undefined),
+      ...vm?.attrs,
+    })
+    return svg
+  }
+  catch (e) {
+    return ''
+  }
+}
 
-const html = computed(() => svgObj.value)
+const html = computed(() => mf())
 
 const actualHeight = ref<number>()
 
