@@ -17,9 +17,9 @@ withDefaults(defineProps<{
     p-4 flex space-x-2 rounded
     class="hover:bg-zinc/10 transition-all cursor-pointer"
   >
-    <MyImg class="w-4rem h-4rem rounded-full" :src="avatar" />
+    <MyImg class="w-3.25rem h-3.25rem rounded-full" :src="avatar" />
     <div flex-1>
-      <a text-xl font-bold self-end :href="url">
+      <a text-xl font-bold self-end :href="url" target="_blank">
         {{ name }}
       </a>
       <div op-70>
