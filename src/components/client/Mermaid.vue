@@ -20,7 +20,10 @@ function mf() {
     return svg
   }
   catch (e) {
-    return ''
+    // avoid error while building ssg
+    if ((e as ReferenceError).message.trim() === 'document is not defined')
+      return ''
+    throw e
   }
 }
 

@@ -1,6 +1,6 @@
 ---
 date: 2022-04-28
-tags: 
+tags:
   - sublime
   - linter
 category: software
