@@ -4,7 +4,7 @@ import { clearUndefined } from '@antfu/utils'
 import { decode } from 'js-base64'
 // @ts-expect-error delaration
 import mermaid from 'mermaid/dist/mermaid.js'
-import { customAlphabet } from 'nanoid'
+// import { nanoid } from 'nanoid'
 
 mermaid.startOnLoad = false
 mermaid.initialize({ startOnLoad: false })
@@ -21,10 +21,10 @@ function renderMermaid(code: string, options: any) {
     ...clearUndefined(options),
   })
 
-  const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz1234', 10)
+  const rand = Math.sin(Math.random() * 114514 + new Date().getMilliseconds()).toString().slice(3)
 
   const code_ = decode(code)
-  const id = `mermaid-${nanoid()}`
+  const id = `mermaid-${rand}`
   const svg = mermaid.render(id, code_)
   cache.set(key, svg)
   return svg
