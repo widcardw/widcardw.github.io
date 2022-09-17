@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/avatar/avatar-round.png" type="image/svg+xml"><title>widcardw</title><meta name="description" content="Opinionated Vite Starter Template"><script type="module" crossorigin="" src="/assets/app.ea5969df.js"></script><link rel="stylesheet" href="/assets/index.37cbf09b.css"><link rel="modulepreload" crossorigin="" href="/assets/SublimeLinter.b2524427.js"><meta name="description" content="widcard.win"><meta name="theme-color" content="#ffffff"><meta name="head:count" content="2"></head><body><div id="app" data-server-rendered="true"><main class="text-center text-gray-700 dark:text-gray-200 flex flex-col h-full"><div flex="" items-center="" p-4="" sm:p-6="" fixed="" w-full="" h-3rem="" sm:h-4rem="" backdrop-blur="" class="font-serif" z-999=""><a href="/" class="">widcardw</a><div flex-1=""></div><div flex="" space-x-4="" items-center=""><a icon-btn="" i-ri-article-line="" title="blog"></a><a icon-btn="" i-ri-apps-line="" title="project"></a><a icon-btn="" i-ri-link-m="" title="links"></a><a href="https://slides.widcard.win" target="_blank" icon-btn="" i-ri-slideshow-2-line="" title="slides"></a><a href="https://space.bilibili.com/31976300" target="_blank" icon-btn="" i-ri-bilibili-fill="" title="bilibili"></a><a href="https://www.zhihu.com/people/wu-hua-rou-68-55" target="_blank" icon-btn="" i-ri-zhihu-fill="" title="zhihu"></a><a href="https://github.com/widcardw" target="_blank" icon-btn="" i-ri-github-fill="" title="github"></a><div icon-btn=""><div i-ri-sun-line=""></div></div></div></div><div flex-1="" mt-3rem=""><div class="heti heti--classic prose-style m-auto text-left"><!--[--><div class="markdown-body"><h1 id="sublimelinter-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95" tabindex="-1">SublimeLinter 使用记录</h1><details class="custom-callout tip" open=""><summary class="callout-title"><div>注意</div><div class="callout-fold"></div></summary><blockquote><p>其实使用 Sublime-lsp 和 pyright 会更好一些，本文讲的 linter 还得手动配置</p></blockquote></details><h2 id="1.-%E5%AE%89%E8%A3%85" tabindex="-1">1. 安装</h2><p>Sublime Text 上安装插件还是相当方便的，只需 <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> 即可打开 Package Control，在其中搜索插件并安装所对应的插件就可以了。</p><p>首先我们需要安装 SublimeLinter 插件，然后再装上以 SublimeLinter 打头的对应的 linter 。此处就以 pylint 为例。</p><h2 id="2.-%E9%85%8D%E7%BD%AE" tabindex="-1">2. 配置</h2><h3 id="2.1.-path" tabindex="-1">2.1. PATH</h3><p>光是安装这两个插件还不够，因为 linter 是以 pip install 安装的 <mark>pylint 可执行程序</mark> 来驱动的。因此我们需要让 pylint 这个程序能够在 <code>PATH</code> 中找到，或者将它写到 SublimeLinter 设置中的 <code>paths</code> 参数中。此处使用后者的方案。</p><p><kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> 打开 Preferences: SublimeLinter settings</p><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"paths"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"linux"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"osx"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"/Users/leeocoy/Library/Python/3.9/bin"</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"windows"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>这样 SublimeLinter 就能找到 linter 的路径了。</p><h3 id="2.2.-linter" tabindex="-1">2.2. linter</h3><p>我们安装了 pylint，就需要在 linters 参数中写入我们所需要的 linter</p><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"linters"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"pylint"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">// 此处为 pylint</span>
+      <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"--disable=missing-class-docstring"</span><span class="token punctuation">,</span>
+        <span class="token string">"--disable=missing-function-docstring"</span><span class="token punctuation">,</span>
+        <span class="token string">"--disable=missing-module-docstring"</span><span class="token punctuation">,</span>
+        <span class="token string">"--disable=R0903,R0904,R0913,R0914,W0614,C0103"</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>以及，可以参照默认的规范，或者官方文档来修改参数。此处的配置屏蔽了一些警告，防止整个文件看起来很乱。</p><h2 id="3.-%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE" tabindex="-1">3. 完整配置</h2><pre class="language-json"><code class="language-json"><span class="token comment">// SublimeLinter Settings - User</span>
+<span class="token punctuation">{</span>
+  <span class="token property">"paths"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"linux"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"osx"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"/Users/leeocoy/Library/Python/3.9/bin"</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"windows"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"lint_mode"</span><span class="token operator">:</span> <span class="token string">"background"</span><span class="token punctuation">,</span>
+  <span class="token property">"linters"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"pylint"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"--disable=missing-class-docstring"</span><span class="token punctuation">,</span>
+        <span class="token string">"--disable=missing-function-docstring"</span><span class="token punctuation">,</span>
+        <span class="token string">"--disable=missing-module-docstring"</span><span class="token punctuation">,</span>
+        <span class="token string">"--disable=R0903,R0904,R0913,R0914,W0614,C0103"</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>对于其他的 linter，例如 eslint 等，都可以使用类似的操作。</p></div><!--]--><p><a href="#" class="font-mono no-underline opacity-50 hover:opacity-75">back</a></p><div>Loading...</div></div></div><div text="center zinc/50" p-4="" class="font-serif">widcardw © 2022 | Theme heti</div></main></div></body></html>
