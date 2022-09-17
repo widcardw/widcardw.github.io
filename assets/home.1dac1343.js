@@ -1,0 +1,1 @@
+import{z as c,o as s,i as a,d as e,a as n,A as r,m as _}from"./app.0c2ed0cb.js";const m={},l={class:"text-center text-gray-700 dark:text-gray-200 flex flex-col h-full"},d={"flex-1":"","mt-3rem":""};function f(i,x){const t=r,o=_("RouterView");return s(),a("main",l,[e(t),n("div",d,[e(o)])])}const u=c(m,[["render",f]]);export{u as default};
