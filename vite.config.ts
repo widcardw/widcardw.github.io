@@ -23,7 +23,7 @@ import markdownItMark from 'markdown-it-mark'
 import markdownCallouts from 'vitepress-plugin-callout'
 import doubleBracketLink from './src/composables/plugins/double-bracket-link'
 import doubleBracketMedia from './src/composables/plugins/double-bracket-media'
-import { mermaidPlugin } from './src/composables/plugins/mermaid'
+// import { mermaidPlugin } from './src/composables/plugins/mermaid'
 import type { MyRouteMeta } from './src/composables/types'
 
 export default defineConfig({
