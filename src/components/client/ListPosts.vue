@@ -25,7 +25,13 @@ const routes: Post[] = router.getRoutes()
     abstract: (i.meta.frontmatter as any).abstract,
   }))
 
-const posts = computed(() => (props.posts || routes))
+const fcate = ref('')
+const ftag = ref('')
+const posts = computed(
+  () => (props.posts || routes)
+    .filter(it => (fcate.value.trim() === '' && true) || it.category === fcate.value)
+    .filter(it => (ftag.value.trim() === '' && true) || it.tags?.includes(ftag.value)),
+)
 const currentPage = useStorage('w-currentPage', 1)
 const pageSize = ref(10)
 </script>
@@ -36,18 +42,38 @@ const pageSize = ref(10)
       Nothing here yet.
     </div>
   </template>
-  <div
-    v-for="route in posts.slice((currentPage - 1) * pageSize, currentPage * pageSize)"
-    :key="route.path"
-  >
+  <template v-else>
+    <div v-if="fcate.trim() !== '' || ftag.trim() !== ''" flex="~ wrap">
+      <span m="b-1 r-1">filter</span>
+      <Tag
+        v-if="fcate"
+        :label="fcate"
+        :closable="true"
+        @close="fcate = ''"
+      >
+        <div i-ri-book-mark-line />
+      </Tag>
+      <Tag
+        v-if="ftag"
+        :label="ftag"
+        :closable="true"
+        @close="ftag = ''"
+      >
+        <div i-ri-hashtag icon-btn />
+      </Tag>
+    </div>
     <PostLink
+      v-for="route in posts.slice((currentPage - 1) * pageSize, currentPage * pageSize)"
+      :key="route.path"
       :path="route.path"
       :title="route.title"
       :date="route.date"
       :category="route.category"
       :tags="route.tags"
       :abstract="route.abstract"
+      @update:fcate="(event: string) => { fcate = event; currentPage = 1; }"
+      @update:ftag="(event: string) => { ftag = event; currentPage = 1; }"
     />
-  </div>
-  <Pagenation v-model:cur="currentPage" :size="pageSize" :total="posts.length" />
+    <Pagenation v-model:cur="currentPage" :size="pageSize" :total="posts.length" />
+  </template>
 </template>

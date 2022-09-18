@@ -6,7 +6,11 @@ defineProps<{
   category?: string
   tags?: string[]
   abstract?: string
+  fcate?: string
+  ftag?: string
 }>()
+
+const emits = defineEmits(['update:fcate', 'update:ftag'])
 
 const router = useRouter()
 </script>
@@ -14,12 +18,11 @@ const router = useRouter()
 <template>
   <div
     p-4 rounded
-    class="hover:bg-zinc/10 transition-all cursor-pointer"
+    class="hover:bg-zinc/10 transition-all"
     space-y-1
-    @click="router.push(path)"
   >
     <div flex space-x-4 items-center>
-      <div text-lg font-bold>
+      <div text-lg font-bold icon-btn op-100 @click="router.push(path)">
         {{ title }}
       </div>
       <div flex-1 />
@@ -27,16 +30,14 @@ const router = useRouter()
         {{ new Date(date).toLocaleDateString() }}
       </div>
     </div>
-    <div flex space-x-3>
-      <div v-if="category" op-80 flex items-center space-x-1>
-        <div i-ri-book-mark-line icon-btn />
-        <span>{{ category }}</span>
-      </div>
+    <div flex="~ wrap">
+      <Tag v-if="category" :label="category" icon-btn op-80 @click="emits('update:fcate', category)">
+        <div i-ri-book-mark-line />
+      </Tag>
       <div v-for="tag in tags" :key="tag">
-        <div op-60 flex items-center>
-          <div i-ri-hashtag icon-btn />
-          <span>{{ tag }}</span>
-        </div>
+        <Tag :label="tag" icon-btn op-60 @click="emits('update:ftag', tag)">
+          <div i-ri-hashtag />
+        </Tag>
       </div>
     </div>
     <div v-if="abstract" op-40 text-sm>

@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { VNode } from 'vue'
 import { createTextVNode } from 'vue'
+import type { MyRouteMeta } from '~/composables/types'
+
+defineProps<{
+  frontmatter?: MyRouteMeta
+}>()
 
 // import Giscus from '@giscus/vue'
 const router = useRouter()
@@ -38,6 +43,16 @@ function renderGiscus(): VNode {
 <template>
   <div class="heti heti--classic prose-style m-auto text-left">
     <slot />
+    <div v-if="frontmatter?.category" flex>
+      <Tag :label="frontmatter?.category">
+        <div i-ri-book-mark-line />
+      </Tag>
+    </div>
+    <div v-if="frontmatter?.tags" flex>
+      <Tag v-for="tag in frontmatter?.tags" :key="tag" :label="tag">
+        <div i-ri-hashtag />
+      </Tag>
+    </div>
     <p v-if="route.path !== '/'">
       <a
         href="#" class="font-mono no-underline opacity-50 hover:opacity-75"
