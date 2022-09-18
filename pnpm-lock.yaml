@@ -41,7 +41,6 @@ specifiers:
   vite-plugin-vue-layouts: ^0.6.0
   vite-plugin-vue-markdown: ^0.22.1
   vite-ssg: ^0.20.2
-  vitepress-plugin-callout: ^0.0.1
   vitest: ^0.23.2
   vue: ^3.2.38
   vue-router: ^4.1.5
@@ -63,7 +62,6 @@ dependencies:
   nprogress: 0.2.0
   vite-plugin-vue-markdown: 0.22.1_vite@3.1.0
   vite-ssg: 0.20.2_ryi4fbu3kitsydym7dahf27c2i
-  vitepress-plugin-callout: 0.0.1
   vue: 3.2.38
   vue-router: 4.1.5_vue@3.2.38
 
@@ -5616,15 +5614,6 @@ packages:
       rollup: 2.78.1
     optionalDependencies:
       fsevents: 2.3.2
-
-  /vitepress-plugin-callout/0.0.1:
-    resolution: {integrity: sha512-QOhFjDRQlLHv/WHaERBrhn4sbndhQRnTRH+uUK/qrnn/skinmJdqMOhE85h4oVp4GUlxNLivA/srBG73pAzZeQ==}
-    peerDependencies:
-      vitepress: ^1.0.0-alpha.1
-    dependencies:
-      '@types/markdown-it': 12.2.3
-      markdown-it: 13.0.1
-    dev: false
 
   /vitest/0.23.2_jsdom@20.0.0:
     resolution: {integrity: sha512-kTBKp3ROPDkYC+x2zWt4znkDtnT08W1FQ6ngRFuqxpBGNuNVS+eWZKfffr8y2JGvEzZ9EzMAOcNaiqMj/FZqMw==}

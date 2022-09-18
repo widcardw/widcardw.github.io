@@ -236,10 +236,9 @@ font-face {
   padding-block-end: 12px;
   padding-inline-start: 16px;
   padding-inline-end: 16px;
-  /* background-color: rgba(0, 0, 0, 0.054); */
+  background-color: rgba(0, 0, 0, 0.054);
 }
 
-/*
 
 .dark .heti blockquote {
   background-color: rgba(255, 255, 255, 0.054);
@@ -251,7 +250,6 @@ font-face {
   }
 }
 
-*/
 
 .heti figure {
   display: block;

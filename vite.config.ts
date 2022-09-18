@@ -20,7 +20,7 @@ import markdownItAnchor from 'markdown-it-anchor'
 import markdownItTableOfContents from 'markdown-it-table-of-contents'
 // @ts-expect-error declaration
 import markdownItMark from 'markdown-it-mark'
-import markdownCallouts from 'vitepress-plugin-callout'
+import markdownCallouts from './src/composables/plugins/callouts'
 import doubleBracketLink from './src/composables/plugins/double-bracket-link'
 import doubleBracketMedia from './src/composables/plugins/double-bracket-media'
 import { mermaidPlugin } from './src/composables/plugins/mermaid'
