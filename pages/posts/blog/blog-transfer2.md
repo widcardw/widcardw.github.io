@@ -1,6 +1,6 @@
 ---
 date: 2022-09-17
-category: '杂物箱'
+category: '踩坑'
 tags: ['学习', '博客']
 abstract: 又是喜新厌旧的博客换主题
 ---

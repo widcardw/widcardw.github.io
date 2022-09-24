@@ -5,6 +5,7 @@ tags:
   - '学习'
   - '数据库'
 article: true
+category: '数据库'
 ---
 
 ## 说明
