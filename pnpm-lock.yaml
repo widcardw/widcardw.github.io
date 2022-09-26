@@ -43,6 +43,7 @@ specifiers:
   vite-ssg: ^0.20.2
   vitest: ^0.23.2
   vue: ^3.2.38
+  vue-glsl: ^1.1.27
   vue-router: ^4.1.5
   vue-tsc: ^0.40.8
 
@@ -92,6 +93,7 @@ devDependencies:
   vite-plugin-pages: 0.26.0_vite@3.1.0
   vite-plugin-vue-layouts: 0.6.0_a2sahflhi63saacouskatgpqeq
   vitest: 0.23.2_jsdom@20.0.0
+  vue-glsl: 1.1.27
   vue-tsc: 0.40.8_typescript@4.8.2
 
 packages:
@@ -1430,6 +1432,11 @@ packages:
 
   /console-control-strings/1.1.0:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
+    dev: true
+
+  /core-js/3.25.3:
+    resolution: {integrity: sha512-y1hvKXmPHvm5B7w4ln1S4uc9eV/O5+iFExSRUimnvIph11uaizFR8LFMdONN8hG3P2pipUfX4Y/fR8rAEtcHcQ==}
+    requiresBuild: true
     dev: true
 
   /cross-spawn/7.0.3:
@@ -5687,6 +5694,13 @@ packages:
       semver: 7.3.7
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /vue-glsl/1.1.27:
+    resolution: {integrity: sha512-qgj+m/j2e/g2PUKfFwahrQpDLq8S0JdWzT/m3un050aDrG56vBtxTBXILIBhfugadip+/rhFKZIHl0llPmDgAQ==}
+    dependencies:
+      core-js: 3.25.3
+      vue: 3.2.38
     dev: true
 
   /vue-router/4.1.5_vue@3.2.38:

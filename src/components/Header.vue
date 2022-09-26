@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { toggleMaze } from '~/composables/modules/mazeBackground'
+
 const router = useRouter()
 </script>
 
@@ -26,6 +28,7 @@ const router = useRouter()
         <div v-if="isDark" i-ri-moon-line />
         <div v-else i-ri-sun-line />
       </div>
+      <div icon-btn i-ri-grid-line title="toggle background" @click="toggleMaze()" />
     </div>
   </div>
 </template>

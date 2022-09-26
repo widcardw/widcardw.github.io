@@ -10,24 +10,23 @@ const props = defineProps<{
 }>()
 const vm = getCurrentInstance()
 const el = ref<ShadowRoot>()
+const svg = ref('')
+const inited = ref(false)
 
 function mf() {
-  try {
-    const svg = renderMermaid(props.code || '', {
-      theme: props.theme || (isDark.value ? 'dark' : undefined),
-      ...vm?.attrs,
-    })
-    return svg
-  }
-  catch (e) {
-    // avoid error while building ssg
-    if ((e as ReferenceError).message.trim() === 'document is not defined')
-      return ''
-    throw e
-  }
+  svg.value = renderMermaid(props.code || '', {
+    theme: props.theme || (isDark.value ? 'dark' : undefined),
+    ...vm?.attrs,
+  })
+  return svg.value
 }
 
-const html = computed(() => mf())
+onMounted(() => {
+  mf()
+  inited.value = true
+})
+
+const html = computed(() => inited.value ? mf() : '')
 
 const actualHeight = ref<number>()
 
