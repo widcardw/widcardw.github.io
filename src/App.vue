@@ -13,11 +13,21 @@ useHead({
     },
   ],
 })
+
+const instance = getCurrentInstance()
+const showBg = ref(false)
+
+onMounted (async () => {
+  // @ts-expect-error type declaration
+  const glsl = await import('vue-glsl')
+  instance?.appContext.app.use(glsl.default)
+  showBg.value = true
+})
 </script>
 
 <template>
   <ClientOnly>
-    <Maze v-if="enableMaze" />
+    <Maze v-if="enableMaze && showBg" />
   </ClientOnly>
   <router-view />
 </template>
