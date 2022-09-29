@@ -116,8 +116,8 @@ export default defineConfig({
         md.use(markdownItMark)
         md.use(markdownItAnchor)
         md.use(markdownCallouts)
-        md.use(doubleBracketLink)
-        md.use(doubleBracketMedia)
+        md.use(doubleBracketLink, { removePrefix: 'pages/' })
+        md.use(doubleBracketMedia, { removePrefix: 'public/' })
         md.use(markdownItTableOfContents, {
           includeLevel: [2, 3, 4],
           containerHeaderHtml: '<h3>目录</h3>',

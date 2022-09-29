@@ -1,4 +1,15 @@
-export default function (md: markdownit) {
+interface DoubleBracketMedia {
+  /**
+   * Remove the prefix of the url in double brackets
+   */
+  removePrefix?: string
+  /**
+   * After removing the provided prefix, param `addPrefix` will be added to the front of url
+   */
+  addPrefix?: string
+}
+
+export default function (md: markdownit, options: DoubleBracketMedia = {}) {
   md.block.ruler.before('paragraph', 'dbm', (state, startLine: number) => {
     let token
     const pos = state.bMarks[startLine] + state.tShift[startLine]
@@ -11,12 +22,15 @@ export default function (md: markdownit) {
 
     const text = state.src.substring(pos, max)
 
-    const regex = /^\!\[\[public\/(.*?)\]\]/
+    const regex = new RegExp(`^!\\[\\[${options.removePrefix || ''}(.*?)\\]\\]`)
 
     const match = text.match(regex)
 
     if (match && match.length) {
-      const media = match[1]
+      let media = match[1]
+
+      if (options.addPrefix)
+        media = options.addPrefix + media
 
       if (!media.match(/(.+?)\.([A-Za-z0-9]{1,4})/))
         return false

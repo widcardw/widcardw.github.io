@@ -42,7 +42,7 @@ sub-ass-force-margins
 ```
 
 ```text
-#input.conf  快捷键设设置
+# input.conf  快捷键设设置
 
 /        set  video-aspect 1.7777  # 16:9
 ?        set  video-aspect 1.3333  # 4:3

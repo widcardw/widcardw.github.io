@@ -1,5 +1,16 @@
 import type Token from 'markdown-it/lib/token'
 
+interface DoubleBracketLinkOptions {
+  /**
+   * Remove the prefix of the url in double brackets
+   */
+  removePrefix?: string
+  /**
+   * After removing the provided prefix, param `addPrefix` will be added to the front of url
+   */
+  addPrefix?: string
+}
+
 const processLink = (link: string): string => {
   const splits = link.split('#')
 
@@ -23,7 +34,7 @@ const processLink = (link: string): string => {
   return `/${path}#${title}`.toLocaleLowerCase()
 }
 
-export default function (md: markdownit) {
+export default function (md: markdownit, options: DoubleBracketLinkOptions = {}) {
   md.inline.ruler.before('emphasis', 'dbl', (state, silent) => {
     let match
     let pos
@@ -82,7 +93,17 @@ export default function (md: markdownit) {
       // 链接节点打开
       token = state.push('link_open', 'a', 1)
       token.markup = 'dblink'
-      const content = state.src.slice(start, match)
+      let content = state.src.slice(start, match)
+
+      // remove prefix
+      if (options.removePrefix) {
+        if (content.startsWith(options.removePrefix))
+          content = content.slice(options.removePrefix.length)
+      }
+
+      // add prefix
+      if (options.addPrefix)
+        content = options.addPrefix + content
 
       const [url, text] = content.split('|')
 

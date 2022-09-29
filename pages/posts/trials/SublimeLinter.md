@@ -3,7 +3,7 @@ date: 2022-04-28
 tags:
   - sublime
   - linter
-category: software
+category: linter
 article: true
 abstract: 后来发现基于 LSP 的 pyright 好像要更好一些
 ---
