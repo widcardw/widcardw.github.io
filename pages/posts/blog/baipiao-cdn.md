@@ -51,4 +51,6 @@ tags: ['CDN','静态部署']
 
 等待片刻后，就可以通过 <https://cdn.widcard.win/manim/favicon.svg> 这个路径来访问资源了
 
+> 在添加 CNAME 后，仓库中会添加一个 _CNAME_ 文件，因此后期修改的时候，还需要 pull 后 merge 一下
+
 

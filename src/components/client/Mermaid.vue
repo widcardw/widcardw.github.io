@@ -53,5 +53,5 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div ref="el" v-html="html" />
+  <ShadowRoot ref="el" :inner-html="html" @shadow="el = $event" />
 </template>
