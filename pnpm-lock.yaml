@@ -26,6 +26,9 @@ specifiers:
   markdown-it-new-katex: ^2.0.3
   markdown-it-prism: ^2.2.4
   markdown-it-table-of-contents: ^0.6.0
+  mdit-plg-double-bracket-link: ^0.0.1
+  mdit-plg-double-bracket-media: ^0.0.2
+  mdit-plugin-callouts: ^0.0.13
   mermaid: ^9.1.6
   nanoid: ^4.0.0
   nprogress: ^0.2.0
@@ -82,6 +85,9 @@ devDependencies:
   markdown-it-new-katex: 2.0.3
   markdown-it-prism: 2.3.0
   markdown-it-table-of-contents: 0.6.0
+  mdit-plg-double-bracket-link: 0.0.1
+  mdit-plg-double-bracket-media: 0.0.2
+  mdit-plugin-callouts: 0.0.13
   pnpm: 7.11.0
   prism-theme-vars: 0.2.4
   taze: 0.8.0
@@ -3938,6 +3944,18 @@ packages:
 
   /mdast-util-to-string/2.0.0:
     resolution: {integrity: sha512-AW4DRS3QbBayY/jJmD8437V1Gombjf8RSOUCMFBuo5iHi58AGEgVCKQ+ezHkZZDpAQS75hcBMpLqjpJTjtUL7w==}
+    dev: true
+
+  /mdit-plg-double-bracket-link/0.0.1:
+    resolution: {integrity: sha512-RZ+5uDx6ULJc/4VKckcsgtrW2JfexYTgAD6i7L+W6W/Omh0kVXySSxFtCskfKU03h1bh27cAs1aJfLG1iK9xYg==}
+    dev: true
+
+  /mdit-plg-double-bracket-media/0.0.2:
+    resolution: {integrity: sha512-7ud8U73s/UuB5DsyWH/mRQUqF9LrAEWIQNer04d0PQeyZ4meC3SL0wH7wOANmXBoGOQ9OymyLAnOgcq8NzGFNQ==}
+    dev: true
+
+  /mdit-plugin-callouts/0.0.13:
+    resolution: {integrity: sha512-qybgeAGZoRCrWZ035gZ3DldeZsX3qR1SZ/a1JaWzGS+tPFzi87Vr+z0QMWzIpXms0zZuzU+z3UzSxbrdW0JiDA==}
     dev: true
 
   /mdn-data/2.0.28:

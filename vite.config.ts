@@ -20,9 +20,9 @@ import markdownItAnchor from 'markdown-it-anchor'
 import markdownItTableOfContents from 'markdown-it-table-of-contents'
 // @ts-expect-error declaration
 import markdownItMark from 'markdown-it-mark'
-import markdownCallouts from './src/composables/plugins/callouts'
-import doubleBracketLink from './src/composables/plugins/double-bracket-link'
-import doubleBracketMedia from './src/composables/plugins/double-bracket-media'
+import DoubleBracketMedia from 'mdit-plg-double-bracket-media'
+import DoubleBracketLink from 'mdit-plg-double-bracket-link'
+import CalloutPlugin from 'mdit-plugin-callouts'
 import { mermaidPlugin } from './src/composables/plugins/mermaid'
 import type { MyRouteMeta } from './src/composables/types'
 
@@ -115,9 +115,9 @@ export default defineConfig({
         md.use(markdownItKatex)
         md.use(markdownItMark)
         md.use(markdownItAnchor)
-        md.use(markdownCallouts)
-        md.use(doubleBracketLink, { removePrefix: 'pages/' })
-        md.use(doubleBracketMedia, { removePrefix: 'public/' })
+        md.use(CalloutPlugin)
+        md.use(DoubleBracketMedia, { removePrefix: 'public/' })
+        md.use(DoubleBracketLink, { removePrefix: 'pages/' })
         md.use(markdownItTableOfContents, {
           includeLevel: [2, 3, 4],
           containerHeaderHtml: '<h3>目录</h3>',
