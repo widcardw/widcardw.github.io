@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Maze from './components/client/Maze.vue'
+import { useGlStore } from './stores/gl'
 import { isDark } from '~/composables'
 import { enableMaze } from '~/composables/modules/mazeBackground'
 
@@ -15,19 +16,21 @@ useHead({
 })
 
 const instance = getCurrentInstance()
-const showBg = ref(false)
+const useGl = useGlStore()
 
 onMounted (async () => {
   // @ts-expect-error type declaration
   const glsl = await import('vue-glsl')
-  instance?.appContext.app.use(glsl.default)
-  showBg.value = true
+  if (instance) {
+    instance.appContext.app.use(glsl.default)
+    useGl.isLoaded = true
+  }
 })
 </script>
 
 <template>
   <ClientOnly>
-    <Maze v-if="enableMaze && showBg" />
+    <Maze v-if="enableMaze && useGl.isLoaded" />
   </ClientOnly>
   <router-view />
 </template>

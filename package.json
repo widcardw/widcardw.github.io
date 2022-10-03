@@ -23,6 +23,7 @@
     "mermaid": "^9.1.6",
     "nanoid": "^4.0.0",
     "nprogress": "^0.2.0",
+    "pinia": "^2.0.22",
     "vite-plugin-vue-markdown": "^0.22.1",
     "vite-ssg": "^0.20.2",
     "vue": "^3.2.38",
