@@ -55,7 +55,7 @@ float smoothstep(float edge_0, float edge_1, float x);
 - 当 $x>edge_1$ 时，返回值为 1
 - 当 $edge_0 < x < edge_1$ 时，返回值为从 0 到 1 的一个平滑插值
 
-![[public/posts-imgs/smoothstep1.svg]]
+<SmoothStep />
 
 特别的，如果 $edge_1 < edge_0$ 时，满足下面的性质
 
@@ -63,7 +63,7 @@ float smoothstep(float edge_0, float edge_1, float x);
 - 当 $x>edge_0$ 时，返回值为 0
 - 当 $edge_1 < x < edge_0$ 时，返回值为从 1 到 0 的一个平滑插值
 
-![[public/posts-imgs/smoothstep2.svg]]
+<SmoothStepReverse />
 
 
 ### sdf符号距离函数
@@ -102,18 +102,19 @@ float f = sdfCircle(coord, vec2(0.), 1.);
 color = mix(color, vec3(1.), f);
 ```
 
-![[public/posts-imgs/Pasted_image_20220503163955.png]]
+<sdf1 />
 
 好像这个效果不尽如人意诶，毕竟这个 sdf 也只是区分了一下符号，我们想要把大于 0 的片段，全部使用 `vec3(1.)` 的颜色，而小于 0 的片段，全部使用原来的颜色片段。
 
 此时我们请出 smoothstep 函数，让小于 0 的片段结果都为 0，大于 0 的片段都为 1，我们可以得到这样的结果
 
 ```glsl
-float f = smoothstep(0., 0.01, sdfCircle(coord, vec2(0.), 1.));
+float f = smoothstep(0., fwidth(uv.x), sdfCircle(coord, vec2(0.), 1.));
 color = mix(color, vec3(1.), f);
 ```
 
-![[public/posts-imgs/Pasted_image_20220503165232.png]]
+<sdf2 />
+
 
 同时我们也发现，由于 smoothstep 的平滑补间效果，图形边缘的锯齿也改善了很多，~~在此处看得其实不是很清晰~~。
 
