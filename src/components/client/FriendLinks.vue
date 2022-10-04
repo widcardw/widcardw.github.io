@@ -28,7 +28,7 @@ const friends = [{
   name: '你们的小f',
   avatar: '/avatar/fzf404.jpeg',
   desc: '修炼中',
-  link: 'https://www.fzf404.top/',
+  link: 'https://www.fzf404.art/',
 }]
 </script>
 
