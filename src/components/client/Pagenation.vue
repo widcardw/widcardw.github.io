@@ -26,6 +26,11 @@ function nextPage() {
   if (currentPage.value < Math.ceil(props.total / props.size))
     currentPage.value++
 }
+
+watchEffect(() => {
+  if (currentPage.value > Math.ceil(props.total / props.size))
+    currentPage.value = 1
+})
 </script>
 
 <template>

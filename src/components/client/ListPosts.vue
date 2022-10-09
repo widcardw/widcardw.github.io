@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import type { Post } from '~/composables/types'
 import { dateLineToSlash } from '~/composables/utils/formatDate'
+import { usePage } from '~/stores/page'
 
 const props = defineProps<{
   posts?: Post[]
@@ -33,7 +35,8 @@ const posts = computed(
     .filter(it => (fcate.value.trim() === '' && true) || it.category === fcate.value)
     .filter(it => (ftag.value.trim() === '' && true) || it.tags?.includes(ftag.value)),
 )
-const currentPage = useStorage('w-currentPage', 1)
+
+const { currentPage } = storeToRefs(usePage())
 const pageSize = ref(10)
 </script>
 

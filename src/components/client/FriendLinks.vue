@@ -23,7 +23,7 @@ const friends = [{
   name: 'HK-SHAO',
   avatar: '/avatar/hk-shao.png',
   desc: 'A human.',
-  link: 'https://hk-shao.github.io/',
+  link: 'https://shao.fun/',
 }, {
   name: '你们的小f',
   avatar: '/avatar/fzf404.jpeg',
