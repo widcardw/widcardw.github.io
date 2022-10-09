@@ -21,7 +21,7 @@ article: true
 编辑 `~/.cargo/config`
 
 ```shell
-$ vi ~/.cargo/config
+vi ~/.cargo/config
 ```
 
 写入以下内容
@@ -41,8 +41,8 @@ git-fetch-with-cli = true
 首先需要安装好各种各样的 rust 依赖，此处全部使用 cargo 来安装
 
 ```shell
-$ cargo install wasm-pack
-$ cargo install rsw
+cargo install wasm-pack
+cargo install rsw
 ```
 
 ### 2. 初始化一个 Web 项目
@@ -50,26 +50,26 @@ $ cargo install rsw
 新建一个文件夹
 
 ```shell
-$ mkdir vite-rsw-test && cd vite-rsw-test
+mkdir vite-rsw-test && cd vite-rsw-test
 ```
 
 初始化 pnpm
 
 ```shell
-$ pnpm init
+pnpm init
 ```
 
 安装 vite 和 vite-plugin-rsw
 
 ```shell
-$ pnpm i vite
-$ pnpm i vite-plugin-rsw
+pnpm i vite
+pnpm i vite-plugin-rsw
 ```
 
 初始化 git
 
 ```shell
-$ git init
+git init
 ```
 
 ### 3. 配置 Web 项目
@@ -106,7 +106,7 @@ export default defineConfig({
 初始化 `rsw.toml`
 
 ```shell
-$ rsw init
+rsw init
 ```
 
 生成 rust crate
@@ -119,7 +119,7 @@ using = "wasm-pack"
 ```
 
 ```shell
-$ rsw new rsw-hello
+rsw new rsw-hello
 ```
 
 > 这一步需要在 `git init` 之后才能成功执行，因为 `git fetch` 需要当前为一个 git 仓库
@@ -172,17 +172,17 @@ init().then(() => {
 启动 Rsw 的监看
 
 ```shell
-$ pnpm run watch
+pnpm run watch
 ```
 
 启动 vite 前端项目
 
 ```shell
-$ pnpm run dev
+pnpm run dev
 ```
 
 > [!warning] 注意
-> 
+>
 > 两个命令行需要分别开启，因为上面一个是监看 Rust 项目的，下面那个是监听 vite 前端项目的
 
 ### 7. 补充

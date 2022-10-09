@@ -1,12 +1,12 @@
 ---
 title: MPV的使用心得
 date: 2021-01-23
-tags: 
+tags:
   - software
 category: software
 article: true
 ---
-## 我与MPV  
+## 我与MPV
 最初接触到 MPV 是在 Elteoremadebeethoven 的视频。当时也只是看到了，也并没有去刻意的关注，毕竟跨平台的音视频播放器应该来说还是蛮多的。而且我们也没有什么特别的需求要在自己的电脑上安装过多不同种类的播放器，毕竟常用的一般都不会超过 3 个。有了一个 PotPlayer 不就够了吗。
 <!--more-->
 之前有浏览过关于 FFmpeg 耻辱柱的信息，而 PotPlayer 的前身居然也在这上面。再加上现在国内似乎去不了 PotPlayer 的官网，想要下载到较为原装版本的 PotPlayer 似乎就变得有点困难。**但是**，当我回想起几年前接触到一个剪辑软件 Aviutl 的时候，教程中指导我们安装**完美解码**，而完美解码的安装包中就恰好有几款颇受大众推崇的播放器：PotPlayer，MPC-HC，MPC-BE。或许这也是在国内获取到 PotPlayer 的一种途径吧。
@@ -56,8 +56,8 @@ c        seek 0 absolute-percent ; set pause no  # 重新播放
 mpv 作为一个能够使用命令行进行操作的播放器，当然要有其特殊之处。但我却没有想到，这个播放器竟然能播放在线的视频。后来在搜索中发现，原来在 Linux 上安装 mpv 时，它会自动安装 youtube-dl 库，用来抓取网络上的视频。如果再使用 you-get 库，在命令中添加属性 `-p` 来指定播放器，同样能够在线观看视频。
 
 ```shell
-$ mpv https://b23.tv/av666  
-$ you-get -p mpv https://b23.tv/av170001
+mpv https://b23.tv/av666
+you-get -p mpv https://b23.tv/av170001
 ```
 这样即可直接抓取视频在本地播放，这一功能着实令人惊讶，也让我感叹爬虫与反爬之间的激烈竞争。~~不会爬虫还在这儿说，爪巴~~
 
