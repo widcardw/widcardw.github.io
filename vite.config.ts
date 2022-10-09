@@ -59,7 +59,7 @@ export default defineConfig({
             if (match)
               data.title = match[0].slice(1).trim()
 
-            else throw new Error('Post without title!')
+            else throw new Error(`Post without title! ${path}`)
           }
           route.meta = Object.assign(route.meta || {}, { frontmatter: data }) as MyRouteMeta
         }

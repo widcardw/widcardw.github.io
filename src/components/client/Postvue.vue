@@ -61,7 +61,7 @@ function renderGiscus(): VNode {
         back
       </a>
     </p>
-    <template v-if="route.path.startsWith('/posts') && !route.path.endsWith('/posts')">
+    <template v-if="(route.path.startsWith('/posts') && !route.path.endsWith('/posts')) || (route.path.startsWith('/secrets') && !route.path.endsWith('/secrets'))">
       <render-giscus />
     </template>
   </div>

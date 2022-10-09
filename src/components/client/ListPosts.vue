@@ -4,12 +4,13 @@ import { dateLineToSlash } from '~/composables/utils/formatDate'
 
 const props = defineProps<{
   posts?: Post[]
+  prefix: string
 }>()
 
 const router = useRouter()
 
 const routes: Post[] = router.getRoutes()
-  .filter(i => i.path.startsWith('/posts') && !i.path.endsWith('/posts') && i.name && (i.meta.frontmatter as any).date)
+  .filter(i => i.path.startsWith(props.prefix) && !i.path.endsWith(props.prefix) && i.name && (i.meta.frontmatter as any).date)
   .map((i) => {
     (i.meta.frontmatter as any).date = dateLineToSlash((i.meta.frontmatter as any).date)
     return i
