@@ -56,7 +56,9 @@ Cannot load module /path/to/node_modules/mermaid/dist/mermaid.js
 - 方案一：在 server 打包的时候，不运行这一部分代码
 - 方案二：在 server 打包的时候，使用 `try...catch` 捕捉错误，并用适当的办法处理它
 
-针对方案一，[Vue 官方文档](https://cn.vuejs.org/api/composition-api-lifecycle.html#onmounted) 中有这么一句话
+#### 方案一
+
+[Vue 官方文档](https://cn.vuejs.org/api/composition-api-lifecycle.html#onmounted) 中有这么一句话
 
 > `onMounted` **钩子在服务器端渲染期间不会被调用。**
 
@@ -72,7 +74,9 @@ onMounted(async () => {
 
 这里他使用了 `onMounted` 和异步加载，我只能说：实在厉害。
 
-针对方案二，或许处理方案不是那么合适，但至少好像成功了，也作为一种比较 **丑陋** 的方案写出来。
+#### 方案二
+
+直接抓取错误并抛出去，或许处理不是那么合适，但至少好像成功了，也作为一种比较 **丑陋** 的方案写出来。
 
 ```ts
 function renderFunction() {
@@ -93,6 +97,48 @@ function renderFunction() {
 const html = computed(() => renderFunction())
 ```
 
-这样的话，在 server 渲染的时候，依然会执行这一段代码，只不过在 `renderMermaid` 这个函数报错，无法获取 DOM 的时候，自动转到 `catch` 中，返回空字符串了。这样只是避免了报错，但也能在一定程度上解决问题 ¯\\\_(ツ)\_/¯
+这样的话，在 server 渲染的时候，依然会执行这一段代码，只不过在 `renderMermaid` 这个函数报错，无法获取 DOM 的时候，自动转到 `catch` 中，返回空字符串了。这样只是避免了报错，但也能在一定程度上解决问题 ¯\\\_(ツ)\_/¯，实际应用中并不推荐这么做。
 
+### GLSL 背景
+
+在 pdcxs 的 [shader 教程](https://www.bilibili.com/video/BV1ce411g7B2)中，有这么一个样例，我觉得作为一个背景是非常棒的，所以我想把它引入进来。并且，有人也是专门封装了 [Vue GLSL](https://github.com/kongxiaojian123/vue-glsl) 的组件库，可以直接引用。
+
+然而，同样是在 server 编译的时候，GLSL 的组件报错了，原因是它使用了 `window.requestAnimationFrame`，而 server 端是无 DOM 的。
+
+然而，Vue GLSL 作为一个封装好的组件库，需要在合适的时候将组件挂载到 App 上，我们通常是在 _main.ts_ 中做这件事的。我们依然使用 `onMounted` 来包裹这一引入的语句。
+
+```ts
+onMounted(async () => {
+  // @ts-expect-error type declaration
+  const glsl = await import('vue-glsl')
+  app.use(glsl.default)
+})
+```
+
+而引入和挂载这些组件似乎是异步的，我们可能并不知道什么时候它能挂载完成，因此在页面初次渲染的时候，可能组件还没注册到全局，DOM 就已经渲染了，此时我们就会看到这样的警告。
+
+> [!warning] Failed to resolve component: gl-canvas
+> If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement.
+
+如果加一个背景的开关，那么重新启动一下背景就能渲染出来了。但是这样显得有点麻烦捏。
+
+这里我采取的方案是，在 *App.vue* 中加载这一组件，加载完成后再启用背景。具体方式是这样的：
+
+```ts
+// 获取当前实例
+const instance = getCurrentInstance()
+// 基于 pinia 的 storage
+const useGl = useGlStore()
+
+onMounted (async () => {
+  // @ts-expect-error type declaration
+  const glsl = await import('vue-glsl')
+  if (instance) {
+    instance.appContext.app.use(glsl.default)
+    useGl.isLoaded = true
+  }
+})
+```
+
+这样就基本上不会有任何错误和警告了。
 
