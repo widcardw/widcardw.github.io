@@ -1,6 +1,7 @@
 ---
+title: manimgl 安装记录
 date: 2021-06-24
-tags: 
+tags:
   - manim
 category: manim
 article: true
@@ -33,7 +34,7 @@ article: true
 
 ### 安装过程
 
-1. FFmpeg 
+1. FFmpeg
     - Windows 用户去[官网](https://ffmpeg.org)下载用户编译版本的 FFmpeg，并添加到环境变量 Path 中，直到在终端中输入 `ffmpeg -h` 能够显示 FFmpeg 的帮助信息。
     - Linux 和 Mac OS 用户直接采用命令行安装，这里不再赘述。
 
@@ -46,32 +47,32 @@ article: true
     - Mac OS 用户可以选择 [Mac $\TeX$](http://www.tug.org/mactex/)，同样可以搜索后进行安装。
 
 3. manimgl
-  
+
       - 使用 git 克隆仓库 <https://github.com/3b1b/manim.git>。
-    
+
         > 如果直接下载 zip 包，则不会包含 `.git` 文件夹里面的一些必要环境，所以最好还是采用克隆。如果嫌慢，可以采用 `gitee` 进行  中转，或者采用下面的国内镜像进行克隆。
         > ```bash
         > git clone https://github.com.cnpmjs.org/3b1b/manim.git
         > ```
-      
+
       - 进入该文件夹，使用命令行安装运行环境。
-      
+
         ```bash
         pip install -e .  # 注意，最后有一个点
         ```
-    
+
          > 此时可能会遇到下面的报错（该部分来自 *manimgl 常见问题*）
-         > 
+         >
          > ```bash
          > CMake must be installed to build the following extensions
          > ```
-         > 
+         >
          > 可以先通过运行 `pip install cmake` 安装 `cmake`，再尝试。
-    
+
       - 配置参数
-        
+
         可以采用自带的方式来配置，在刚刚的目录下执行命令 `manimgl --config`，即可配置参数。在参数配置过程中，建议将环境安装在 local 而不是 global，否则如果你想要更改源码，你就必须在全局的 Python 环境中找到 site-packages 里面的 manimgl 包进行修改，可能相对来说会比较繁琐。
-    
+
         > 同时，这个配置过程会让你指定 Tex 和 Text 的临时文件输出路径，将它们设置到合适的位置，否则会出现下面的报错。
         > ```shell
         > $ OSError: C:\Users\...\Temp\Tex\<...>.svg not Found
@@ -123,9 +124,9 @@ python manimlib/__main__.py example_scenes.py --config_file custom_config.yml
 
 ### 关于在 `xxx.py` 中引入 `manim_sandbox` 的内容
 
-> 在 [`Commit 7ecfc04`](https://github.com/3b1b/manim/commit/7ecfc041b3883db7eb55c79fb29f5b83feb86fdd) 之后，`manimlib/__main__.py` 文件中已经添加了 
+> 在 [`Commit 7ecfc04`](https://github.com/3b1b/manim/commit/7ecfc041b3883db7eb55c79fb29f5b83feb86fdd) 之后，`manimlib/__main__.py` 文件中已经添加了
 > ```python
-> if "__name__" == __main__: 
+> if "__name__" == __main__:
 >     main()
 > ```
 > 语句，因此添加该语句的操作可以忽略。
@@ -134,14 +135,14 @@ python manimlib/__main__.py example_scenes.py --config_file custom_config.yml
 - 如何引入且不报路径错
 
   如果你的 `manim_sandox` 和 `manimlib` 在同一级目录下，那么你可以在你的文件里这样引入模块
-  
+
   ```python
   from manimlib import *
   from manim_sandbox.utils.imports import *
   ```
-  
+
   然后，可以继续用上面提到的**使用 VSCode 的脚本进行操作**来进行预览和输出文件，或者用它的命令来运行。
-  
+
   ```bash
   python manimlib xxx.py
   ```
@@ -161,7 +162,7 @@ cd manimgl-mathjax
 pnpm install   # 安装 asciimath-js 和 mathjax-full 依赖
 ```
 
-## 附录 
+## 附录
 
 ### launch.json
 
@@ -252,23 +253,23 @@ pnpm install   # 安装 asciimath-js 和 mathjax-full 依赖
 ### 其他问题
 
 - WSL 下安装和预览
-  
+
   由于 `manimgl` 使用了 `Pyglet Window` 来进行实时预览，也就是说会跳出一个窗口，而 WSL 无法调出 GUI，因此用 WSL 你只能生成视频，无法实现预览的效果。
 
 - ControlsExample 无法运行
-  
+
   ~~在 [#1551](https://github.com/3b1b/manim/pull/1551) 有解决方案，但会导致 [#1378](https://github.com/3b1b/manim/issues/1378) 的动画无法正确生成，因此暂时被搁置，等到有更好的解决方案，会对这两个问题进行解决。~~
 
   似乎在 [`Commit 01670cf`](https://github.com/3b1b/manim/commit/01670cf8238a4419d108f65ce093693dfe72773f) 已经得到解决，可以尝试更新至最新版。
 
 - 关于 `pip install manimgl`
-  
+
   由于在 Pypi 上的镜像源不会一直保持更新，所以建议采用 `git clone` 和 `git pull` 来保持最新版，能够对 bug 的解决有一定的帮助。
 
 - 预览窗口的位置
-  
+
   可以通过在 `custom_config.yml` 中的 `window_position` 进行设置，使用说明可以在 `manimlib/default_config.yml` 中找到，Grant 的注释写的很清晰。
 
 - 更多问题
-  
+
   详见 <https://manim.org.cn/docs.html>

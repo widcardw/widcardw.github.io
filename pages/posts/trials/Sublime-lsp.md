@@ -1,5 +1,5 @@
 ---
-date: 2022-9-29
+date: 2022-09-29
 title: Sublime LSP 作为 linter
 category: linter
 tags: ['linter', 'sublime', 'LSP', 'Language-Server-Protocol']

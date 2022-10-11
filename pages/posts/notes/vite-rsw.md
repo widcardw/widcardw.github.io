@@ -1,4 +1,5 @@
 ---
+title: Vite Rsw 使用入门
 date: 2022-06-09
 tags: ['vite', 'wasm', '前端']
 category: '踩坑'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import type { Post } from '~/composables/types'
-import { dateLineToSlash } from '~/composables/utils/formatDate'
+// import { dateLineToSlash } from '~/composables/utils/formatDate'
 import { usePage } from '~/stores/page'
 
 const props = defineProps<{
@@ -13,10 +13,10 @@ const router = useRouter()
 
 const routes: Post[] = router.getRoutes()
   .filter(i => i.path.startsWith(props.prefix) && !i.path.endsWith(props.prefix) && i.name && (i.meta.frontmatter as any).date)
-  .map((i) => {
-    (i.meta.frontmatter as any).date = dateLineToSlash((i.meta.frontmatter as any).date)
-    return i
-  })
+  // .map((i) => {
+  //   (i.meta.frontmatter as any).date = dateLineToSlash((i.meta.frontmatter as any).date)
+  //   return i
+  // })
   .sort((a, b) => +new Date((b.meta.frontmatter as any).date) - +new Date((a.meta.frontmatter as any).date))
   .filter(i => !i.path.endsWith('.html'))
   .map(i => ({

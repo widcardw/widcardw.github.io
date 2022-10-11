@@ -1,4 +1,5 @@
 ---
+title: manimgl 二阶贝塞尔曲线的上色机制
 date: 2022-05-03
 tags: ['manim','矢量图','OpenGL','bezier']
 category: manim

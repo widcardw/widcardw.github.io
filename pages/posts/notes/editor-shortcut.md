@@ -1,4 +1,5 @@
 ---
+title: 文本编辑器的一些奇怪的快捷键
 date: 2022-10-10
 category: 'Shortcut'
 tags: ['Shortcut', 'Editor']

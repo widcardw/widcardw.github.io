@@ -1,4 +1,5 @@
 ---
+title: MongoDB Writeup
 date: 2022-05-25
 category: '数据库'
 tags: ['MongoDB', '数据库', 'NoSQL']

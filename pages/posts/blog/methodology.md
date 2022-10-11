@@ -1,9 +1,10 @@
 ---
+title: 方法论思考
 date: 2021-06-21
-tags: 
+tags:
   - '日常'
   - '方法论'
-  - '思维' 
+  - '思维'
 category: 异想天开
 article: true
 ---

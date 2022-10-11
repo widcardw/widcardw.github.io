@@ -1,11 +1,13 @@
 ---
-title: MPV的使用心得
+title: MPV 使用心得
 date: 2021-01-23
 tags:
   - software
 category: software
 article: true
 ---
+
+# MPV 使用心得
 ## 我与MPV
 最初接触到 MPV 是在 Elteoremadebeethoven 的视频。当时也只是看到了，也并没有去刻意的关注，毕竟跨平台的音视频播放器应该来说还是蛮多的。而且我们也没有什么特别的需求要在自己的电脑上安装过多不同种类的播放器，毕竟常用的一般都不会超过 3 个。有了一个 PotPlayer 不就够了吗。
 

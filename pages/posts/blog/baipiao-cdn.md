@@ -1,4 +1,5 @@
 ---
+title: 如何使用 CloudFlare 和 GitHub 来给图片做 CDN
 date: 2022-09-24
 category: 'software'
 tags: ['CDN','静态部署']

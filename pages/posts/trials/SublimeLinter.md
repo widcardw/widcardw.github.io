@@ -1,4 +1,5 @@
 ---
+title: SublimeLinter 使用记录
 date: 2022-04-28
 tags:
   - sublime

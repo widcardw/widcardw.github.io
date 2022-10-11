@@ -1,5 +1,5 @@
 ---
-title: manim中的矢量图
+title: manim 中的矢量图
 date: 2021-06-24
 tags: ['manim','教程','矢量图']
 category: manim
@@ -23,7 +23,7 @@ article: true
 ### 介绍
 
 > *摘自百度百科*
-> 
+>
 > 矢量图，也称为**面向对象**的图像或绘图图像，在数学上定义为**一系列由点连接的线**。矢量文件中的图形元素称为对象。每个对象都是一个自成一体的实体，它具有**颜色**、**形状**、**轮廓**、**大小**和**屏幕位置**等属性。
 >
 > 矢量图是根据几何特性来绘制图形，矢量可以是一个点或一条线，矢量图只能靠软件生成，**文件占用内在空间较小**，因为这种类型的图像文件包含独立的分离图像，可以自由无限制的重新组合。它的特点是**放大后图像不会失真**，和分辨率无关，适用于图形设计、文字设计和一些标志设计、版式设计等。
@@ -88,7 +88,7 @@ $$B(t)=\sum_{i=0}^{n}\binom{n}{i}P_{i}(1-t)^{i}t^{n-i},t\in[0,1]$$
 基于贝塞尔曲线的知识，我们回到 svg 格式的路径，看到 `<path>` 标签的内容。
 
 > *该部分内容来自 [w3school](https://www.w3school.com.cn/svg/svg_path.asp)*
-> 
+>
 > 下面的命令可用于路径数据：
 > - M = moveto
 > - L = lineto
@@ -104,12 +104,12 @@ $$B(t)=\sum_{i=0}^{n}\binom{n}{i}P_{i}(1-t)^{i}t^{n-i},t\in[0,1]$$
 > [!example] w3school 绘制曲线的例子
 > ~~~html
 > <?xml version="1.0" standalone="no"?>
-> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
 > "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-> 
+>
 > <svg width="100%" height="100%" version="1.1"
 > xmlns="http://www.w3.org/2000/svg">
-> 
+>
 > <path d="M153 334
 > C153 334 151 334 151 334
 > C151 339 153 344 156 344
@@ -124,7 +124,7 @@ $$B(t)=\sum_{i=0}^{n}\binom{n}{i}P_{i}(1-t)^{i}t^{n-i},t\in[0,1]$$
 > C186 384 211 361 211 334
 > C211 300 186 274 156 274"
 > style="fill:white;stroke:red;stroke-width:2"/>
-> 
+>
 > </svg>
 > ~~~
 
@@ -204,18 +204,18 @@ $$B(t)=\sum_{i=0}^{n}\binom{n}{i}P_{i}(1-t)^{i}t^{n-i},t\in[0,1]$$
 ![[public/posts-imgs/line.png]]
 
 > [!example] 关于在三个点在同一直线上 **拉扯** 的问题
-> 
+>
 > 在测试中，也出现了这样的 bug，发生原因大致是 shaders 上色之前使用了 interpolate 对坐标、颜色等属性进行了补间，导致出现了一些偏差。
-> 
+>
 > 使用下面的代码，会发现直线的粗细会有一些问题，甚至出现断裂。
-> 
+>
 > 图中数字为锚点的位置和编号。
-> 
+>
 > ~~~python
 > v = VMobject()
 > v.set_points(np.array([[-1, 0, 0], [3, 0, 0], [1, 0, 0]]))
 > ~~~
-> 
+>
 > ![[public/posts-imgs/problem-of-handle.jpg]]
 
 
