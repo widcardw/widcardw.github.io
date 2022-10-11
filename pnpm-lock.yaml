@@ -5,6 +5,7 @@ specifiers:
   '@antfu/utils': ^0.5.2
   '@giscus/vue': ^2.2.0
   '@iconify-json/ri': ^1.1.3
+  '@iconify-json/vscode-icons': ^1.1.15
   '@types/markdown-it-link-attributes': ^3.0.1
   '@types/mermaid': ^8.2.9
   '@types/node': ^18.7.15
@@ -74,6 +75,7 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config': 0.26.3_yqf6kl63nyoq5megxukfnom5rm
   '@iconify-json/ri': 1.1.3
+  '@iconify-json/vscode-icons': 1.1.15
   '@types/markdown-it-link-attributes': 3.0.1
   '@types/node': 18.7.15
   '@types/nprogress': 0.2.0
@@ -332,6 +334,12 @@ packages:
 
   /@iconify-json/ri/1.1.3:
     resolution: {integrity: sha512-YQ45kQNpuHc2bso4fDGhooWou43qy7njD/I5l7vpjcujb+P/K2BfLASbWYTTUKu6lMersuFmO8F7NdGzy6eGWw==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/vscode-icons/1.1.15:
+    resolution: {integrity: sha512-QtELetNq51smkiuVSrki1no5ACOWBpYFSsV8vsaJRI1APeBsGbxddfOS+o1HbdWzOry7+piSi0RKOWiGO+FMQg==}
     dependencies:
       '@iconify/types': 1.1.0
     dev: true

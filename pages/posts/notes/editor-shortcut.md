@@ -8,7 +8,7 @@ tags: ['Shortcut', 'Editor']
 
 本文提到的与 Vim 的快捷键没有任何关系，仅针对如 Obsidian, VSCode, Sublime 等编辑器。当然，如果有快捷键冲突，那当我没说（
 
-## 与 control 相关,
+## 与 control 相关
 
 > 此处的 control 指的不是 <kbd>⌘</kbd>，而是 <kbd>⌃</kbd>
 
@@ -25,7 +25,7 @@ tags: ['Shortcut', 'Editor']
 | <kbd>⌃</kbd> <kbd>O</kbd> | 在光标所在行的下一行创建一个新行 | Open                   |
 | <kbd>⌃</kbd> <kbd>P</kbd> | 光标移动到上一行                 | Previous               |
 | <kbd>⌃</kbd> <kbd>T</kbd> | 将光标所在的字符向后移动一个字符 |                        |
-| <kbd>⌃</kbd> <kbd>V</kbd> | 光标移动到文件尾                 | V 像是一个向下的箭头   | 
+| <kbd>⌃</kbd> <kbd>V</kbd> | 光标移动到文件尾                 | V 像是一个向下的箭头   |
 
 上述按键中和移动光标相关的，与 <kbd>⇧</kbd> 组合可以选中选取中的文本，与 <kbd>⌥</kbd> 组合可以一次性移动一个单词或词语。
 

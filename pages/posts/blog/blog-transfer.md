@@ -15,7 +15,7 @@ article: true
 
 然而，我突然发现在博客部署的那一天，GitHub 的瓷砖墙格外的绿。我就知道，这个玩意似乎会污染 git 的文件树，导致之后树越来越大，挺难受的。
 
-在一次偶然看直播的时候，听到有主播说他的文档用的是 [docsify](https://docsify.js.org)，于是我立马就尝试了，效果还是非常不错的。它只用在文档的根目录下放置一个 `index.html` 文件，之后的 markdown 文件就可以被直接动态的翻译为我们所见到的文档。在那个时候，我还给这个 docsify 写了不少插件，包括 admonition，[wavedrom](https://wavedrom.com) 的转译，以及解决了 [Obsidian](https://obsidian.md) 笔记软件所支持的双方括号插入图片媒体文件的格式与 docsify 渲染之间的匹配问题。总之，当时成就感满满的。
+在一次偶然看直播的时候，听到有主播说他的文档用的是 [docsify](https://docsify.js.org)，于是我立马就尝试了，效果还是非常不错的。它只用在文档的根目录下放置一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" /> 文件，之后的 markdown 文件就可以被直接动态的翻译为我们所见到的文档。在那个时候，我还给这个 docsify 写了不少插件，包括 admonition，[wavedrom](https://wavedrom.com) 的转译，以及解决了 [Obsidian](https://obsidian.md) 笔记软件所支持的双方括号插入图片媒体文件的格式与 docsify 渲染之间的匹配问题。总之，当时成就感满满的。
 
 However，似乎是一种喜新厌旧的驱使吧，我开始觉得 docsify 好像初始打开的时候特别慢，而 Vue 的官方文档打开的又快，而且动画还好看。于是我遇到了 VuePress 和 VitePress。
 

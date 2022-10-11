@@ -12,13 +12,13 @@ article: true
 
 <https://github.com/rwasm/vite-plugin-rsw>
 
-这个方法要比手动改 `vite.config.ts` 和 `tsconfig.json` 方便的多，感谢库作者
+这个方法要比手动改 <FileName name="vite.config.ts" icon="i-vscode-icons-file-type-vite" /> 和 <FileName name="tsconfig.json" icon="i-vscode-icons-file-type-typescript-official" /> 方便的多，感谢库作者
 
 ## 入门
 
 ### 0. Rust 换源
 
-编辑 `~/.cargo/config`
+编辑 <FileName name="~/.cargo/config" />
 
 ```shell
 vi ~/.cargo/config
@@ -74,7 +74,7 @@ git init
 
 ### 3. 配置 Web 项目
 
-新建 `vite.config.ts`，编写官网给的内容
+新建 <FileName name="vite.config.ts" icon="i-vscode-icons-file-type-vite" />，编写官网给的内容
 
 ```ts
 import { defineConfig } from 'vite'
@@ -87,7 +87,7 @@ export default defineConfig({
 })
 ```
 
-编辑 `package.json`
+编辑 <FileName name="package.json" icon="i-vscode-icons-file-type-json" />
 
 ```json
 {
@@ -103,7 +103,7 @@ export default defineConfig({
 
 ### 4. 初始化 Rust 项目
 
-初始化 `rsw.toml`
+初始化 <FileName name="rsw.toml" icon="i-vscode-icons-file-type-light-toml" />
 
 ```shell
 rsw init
@@ -124,7 +124,7 @@ rsw new rsw-hello
 
 > 这一步需要在 `git init` 之后才能成功执行，因为 `git fetch` 需要当前为一个 git 仓库
 
-编辑 `rsw.toml`
+编辑 <FileName name="rsw.toml" icon="i-vscode-icons-file-type-light-toml" />
 
 ```toml
 # link type: npm | yarn | pnpm, default is `npm`
@@ -139,7 +139,7 @@ link = true
 
 ### 5. 编写 Web 基本部件
 
-`index.html` 部分
+<FileName name="index.html" icon="i-vscode-icons-file-type-html" /> 部分
 
 ```html
 <!DOCTYPE html>
@@ -157,7 +157,7 @@ link = true
 </html>
 ```
 
-`/src/main.ts` 部分
+<FileName name="/src/main.ts" icon="i-vscode-icons-file-type-typescript-official" /> 部分
 
 ```ts
 import init, { greet } from 'rsw-hello'

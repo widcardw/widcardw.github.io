@@ -23,10 +23,10 @@ tags: ['linter', 'sublime', 'LSP', 'Language-Server-Protocol']
 
 ```json
 {
-	"lsp_code_actions_on_save": {
-		"source.fixAll.eslint": true,
-		"source.organizeImports.eslint": true
-	}
+  "lsp_code_actions_on_save": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports.eslint": true
+  }
 }
 ```
 
