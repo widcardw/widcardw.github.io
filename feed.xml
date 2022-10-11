@@ -1,0 +1,1234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>widcardw</title>
+        <link>https://widcard.win/</link>
+        <description>widcardw's blog</description>
+        <lastBuildDate>Tue, 11 Oct 2022 13:56:02 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>widcardw</title>
+            <url>https://widcard.win/avatar/avatar-round.png</url>
+            <link>https://widcard.win/</link>
+        </image>
+        <atom:link href="https://widcard.win/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[文本编辑器的一些奇怪的快捷键]]></title>
+            <link>https://widcard.win/posts/notes/editor-shortcut</link>
+            <guid>https://widcard.win/posts/notes/editor-shortcut</guid>
+            <pubDate>Mon, 10 Oct 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>文本编辑器的一些奇怪的快捷键</h1>
+<p>本文提到的与 Vim 的快捷键没有任何关系，仅针对如 Obsidian, VSCode, Sublime 等编辑器。当然，如果有快捷键冲突，那当我没说（</p>
+<h2>与 control 相关</h2>
+<blockquote>
+<p>此处的 control 指的不是 <kbd>⌘</kbd>，而是 <kbd>⌃</kbd></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">按键</th>
+<th>含义</th>
+<th>速记</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><kbd>⌃</kbd> <kbd>A</kbd></td>
+<td>跳转到行首</td>
+<td>A 是字母表的第一个字母</td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>⌃</kbd> <kbd>B</kbd></td>
+<td>光标向左移动一个字符</td>
+<td>Back</td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>⌃</kbd> <kbd>D</kbd></td>
+<td>删除光标右侧的一个字符</td>
+<td>Delete</td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>⌃</kbd> <kbd>E</kbd></td>
+<td>跳转到行尾</td>
+<td>End</td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>⌃</kbd> <kbd>F</kbd></td>
+<td>光标向右移动一个字符</td>
+<td>Forward</td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>⌃</kbd> <kbd>H</kbd></td>
+<td>删除光标左侧的一个字符</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>⌃</kbd> <kbd>K</kbd></td>
+<td>删除至行尾</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>⌃</kbd> <kbd>N</kbd></td>
+<td>光标移动到下一行</td>
+<td>Next</td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>⌃</kbd> <kbd>O</kbd></td>
+<td>在光标所在行的下一行创建一个新行</td>
+<td>Open</td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>⌃</kbd> <kbd>P</kbd></td>
+<td>光标移动到上一行</td>
+<td>Previous</td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>⌃</kbd> <kbd>T</kbd></td>
+<td>将光标所在的字符向后移动一个字符</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center"><kbd>⌃</kbd> <kbd>V</kbd></td>
+<td>光标移动到文件尾</td>
+<td>V 像是一个向下的箭头</td>
+</tr>
+</tbody>
+</table>
+<p>上述按键中和移动光标相关的，与 <kbd>⇧</kbd> 组合可以选中选取中的文本，与 <kbd>⌥</kbd> 组合可以一次性移动一个单词或词语。</p>
+<h2>与 option 相关</h2>
+<p>在 macOS 中，<kbd>⌥</kbd> <kbd>A</kbd> 会得到一些希腊字母，其中 <kbd>A</kbd> 指代的是 ASCII 按键的任意一个，包括字母，数字，字符符号等，很怪。</p>
+<p>在常用编辑器中，经常使用 <kbd>⌥</kbd> 和鼠标操作来选择一些文本块。</p>
+<ul>
+<li>VSCode 中为 <kbd>⌥</kbd> <kbd>⇧</kbd> 鼠标选择（其实微软系应该都是这个组合，包括 Microsoft Word 也是）</li>
+<li>Obsidian 中为 <kbd>⌥</kbd> 鼠标选择</li>
+<li>Sublime 中需要安装插件，但可以原生使用鼠标滚轮键选择文本块</li>
+</ul>
+]]></content:encoded>
+            <author>widcardw@foxmail.com (widcardw)</author>
+        </item>
+        <item>
+            <title><![CDATA[绯 · M]]></title>
+            <link>https://widcard.win/secrets/fei/chapter-01</link>
+            <guid>https://widcard.win/secrets/fei/chapter-01</guid>
+            <pubDate>Sun, 09 Oct 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>绯 · M</h1>
+<h2>一</h2>
+<p>出了火车站，我就到了另一个城市了。</p>
+<p>M 市，这是众星捧月的一座城市，是在我看来发展的最好的城市。它有着无限的活力和潜力，也向周边城市带来了发展的曙光。</p>
+<p>“这是我第一次体验 M 市的地铁呢。” 我这样想着，可也万万没想到恰好遇上了早高峰，本来拖着行李就已经挺累了，却还要忍受这么拥挤的人流……</p>
+<p>到站了，我被人流带下了车，跟着路标找地铁站出口。我被溶解在这片人海中，人海像自来水管道里的水，自觉的寻找他们要去往的方向，而后消失不见。每个人要么低着头，要么只是死死的盯着前方。</p>
+<p>不是说有无限的活力吗？活力去哪了？</p>
+<p>这时，脑中好像浮现出一个不知道在哪学到的单词：Institutionalized.</p>
+<p>或许是我恰好碰到了这个时间点吧，只是人们都不想上班的一个表现吧。我这样安慰自己。</p>
+<p>“现实恐怕并不是这样哦。” 一个绯红色的影子对我说道。</p>
+<p>我急忙转身，却发现并没有任何熟悉的身影。只是从玻璃的反光中发现，瞳孔不知何时变成了红色。</p>
+]]></content:encoded>
+            <author>widcardw@foxmail.com (widcardw)</author>
+        </item>
+        <item>
+            <title><![CDATA[地府工作日记 · 第二章]]></title>
+            <link>https://widcard.win/secrets/di-fu-gong-zuo-ri-ji/chapter-02</link>
+            <guid>https://widcard.win/secrets/di-fu-gong-zuo-ri-ji/chapter-02</guid>
+            <pubDate>Fri, 07 Oct 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>地府工作日记 · 第二章</h1>
+<blockquote>
+<p>本文为「耿同学讲故事」UP 主的视频文稿，仅用于记录其精妙的叙述。本文所有权益和解释权归「耿同学讲故事」所有。</p>
+</blockquote>
+<p>阎哥给我在地府安排了一份工作。阎哥就是阎王，有时候也叫王哥，当时是因为地狱来了一批研究益生菌的人，阎哥想要油炸了他们。但是研究益生菌的人他们天天撒谎，所以嘴特别硬，全身都炸熟了，只有嘴炸不熟。阎哥很苦恼，但是我灵机一动，因为益生菌这个圈子里，只认头衔，不讲道理，所以我就假扮院士，跟这些嘴对线，把这些嘴都给说软了，然后它们就被炸熟了。阎哥很高兴就给我发了 offer，我就算是地府的公务员了。</p>
+<p>其实我在人间也一直想当个公务员。细心的观众可能发现我身后是有公务员考试资料的。</p>
+<p>我的公务员之路不太顺利，因为当公务员最好是先入党，所以我就提交了入党申请书。我的入党理由是方便找工作，这是我的心里话，但是人家不给通过，说我觉悟不够。我当然也可以在网上去抄一份别人的入党申请书，但是想到后面还有入党宣誓什么的，我就觉得我这个入党不着急，还是先提高觉悟比较好。结果觉悟到今天也没提升上来。</p>
+<p>我还问导员就我这个觉悟，当普通群众够资格吗？导员说可以，这我才放下心来，我至少还是个合格的公民。</p>
+<p>进政府当公务员真的很难，有些岗位是上千人录取一个，所以当阎哥的地府公务员 offer 摆在我面前的时候，我还挺激动，咱进不了政府，咱进不了地府吗？</p>
+<p>但是地府的工作内容并不是我想象的那么美好。我在地府的工作内容就是油炸坏人，跟炸油条差不多。但是上级居然规定我要发 SCI，并且要在 6 年之内评上副高级职称，要不然就滚蛋，他们管这个叫非升即走。</p>
+<p>再说了我一个炸油条的，你搞科研干啥？他们说这个和人间的医生是一样的，你明明只需要救治病人，结果非要逼着医生搞科研。</p>
+<p>我又问这个风气是怎么传到阴间的，他们说是那些强迫医生搞科研的领导都下地狱了，但是这些领导很会升官发财，他们在硬件也能迅速当上领导。据说具体的方法是，他们在盘丝洞整了一些小妖精下来，让阎哥连夜去审问，结果连续审了好几个晚上，阎哥很累，但是很开心，就给他们升官了。于是我这个炸油条的就得发 SCI 了。没有办法，为了生存，我也只能硬着头皮去搞科研。</p>
+<p>我们油炸这个领域啊没有什么热点课题，不好发文章。在阴间最大的科研明星是孟婆，我们都叫孟姐，叫孟婆显老，她不高兴。孟姐是脑科学专家，主要研究记忆编辑技术，Memory Cas9. 她还发明了孟婆汤，因此获得了很多的大奖，名满整个阴间。</p>
+<p>所以我的研究课题都是跟孟姐套近乎，比如孟婆汤配香菜和配大蒜哪个效果好，孟婆汤加糖和加奶有什么区别。你们也别笑话我，你们人间的可以也差不多是这个意思。</p>
+<p>为了跟孟姐套近乎，我还送了好多的礼。孟姐身边的收下我也都打点了，花了我大概一年多的工资。我现在就担心这个孟姐吃饭的时候喝错了汤，忘了我曾经给她花那么多钱怎么办。</p>
+]]></content:encoded>
+            <author>widcardw@foxmail.com (widcardw)</author>
+        </item>
+        <item>
+            <title><![CDATA[地府工作日记 · 第一章]]></title>
+            <link>https://widcard.win/secrets/di-fu-gong-zuo-ri-ji/chapter-01</link>
+            <guid>https://widcard.win/secrets/di-fu-gong-zuo-ri-ji/chapter-01</guid>
+            <pubDate>Mon, 03 Oct 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>地府工作日记 · 第一章</h1>
+<blockquote>
+<p>本文为「耿同学讲故事」UP 主的视频文稿，仅用于记录其精妙的叙述。本文所有权益和解释权归「耿同学讲故事」所有。</p>
+</blockquote>
+<p>同学说我是科研明星，我还挺高兴。</p>
+<p>他们跟我说是玄冥二老的冥啊，意思就是说我是个科研黑子。其实我也不想这样，不想给科研抹黑，所以我要改变自己的人设，我要做一名阳光自信的科研吹！</p>
+<p>做科研吹要从身边小事吹起，比如说我最近在写文章，我写完之后这个文章我也不知道它有什么实际意义。但是作为一名科研吹，一名合格的科研吹，永远不会说自己的文章没有意义。我们有个专业术语叫潜力，任何没有意义的事情，我们都可以说它有潜力。甚至有科研吹同事表示，潜力这个词是无解的，谁也没有办法否定潜力的存在，上了法庭都敢这么说，就算死后下地狱见了阎王也敢这么说。</p>
+<p>就假如说我下了地狱，戴上枷锁，跪在阎王面前，阎王问：“知道自个儿犯了什么错误吗？” 作为一名合格的科研吹，永远不会承认错误，永远都要嘴硬。我就回答阎王：“我认真研究肠道菌群，我的研究很有潜力，我没有错。”</p>
+<p>阎王很生气，“你们这些搞肠道菌群研究的，每个人都说自己的研究有潜力，你搁那糊弄鬼呐？啊不对，我就是鬼啊……你们竟敢糊弄本王！就判处你和你的那些同行一样，下油锅！你看那边的锅里，炸的都是你的同行，我跟你讲。”</p>
+<p>我一看，好家伙，给我吓坏了。一口滚烫的大油锅，里边好多人，全身炸的都焦黄焦黄的，但是每个人的嘴都完好无损。那嘴是真的硬啊，不但完好无损，还能说话。“我的研究还有潜力！” 旁边还有个嘴还在那喊：“益生菌包治百病！” 还有几个嘴在旁边附和：“说得好！说得妙！说得呱呱叫！” 场面热闹无比。真不愧是搞科研的都下油锅了，还在那相互吹捧，不知道的以为在开学术会议呢。</p>
+<p>负责油炸的牛头马面也发牢骚：“最不喜欢油炸这些搞科研的，嘴太硬。就喊那个益生菌包治百病的那货啊，以前是个大公司的 CEO，这都油炸一年多了嘴还没熟。”</p>
+<p>牛头马面一边发牢骚，一边拿着棍子往那些嘴上怼：“我让尼玛嘴硬！让尼玛嘴硬！” 阎王爷看着这些金刚不坏的嘴也头疼，挠头没有办法，太硬了。</p>
+<p>阎王说以前有个研究宇宙最硬物质的科学家，也下地狱了。他看到这些嘴啊，震惊不已，表示他这些年的研究白做了，从来没有见过这么硬的东西。</p>
+<p>我就趁机跟阎王爷求饶，我说：“阎哥，我有办法对付这些嘴，我擅长吹牛，我只要吹自己是院士，我说的话就是真理，这些嘴就不敢再硬了。因为我们这个圈子里，只认头衔，不讲道理。”</p>
+<p>然后我就假装院士，在锅旁边讲话。几句话说完，锅里的嘴全都不硬了，瞬间就被炸熟了。阎王高兴坏了：“这小伙子不错，以后你就留在这儿上班了，我这真需要你这样的人才。”</p>
+<p>我高兴坏了，“谢谢阎哥！”</p>
+<p>阎哥又说：“你旁边那口锅，就是专门用来油炸那些搞科研的坏人。你的工作就是吹牛，结合你的工作岗位和你的工作内容，你的绰号就叫科研吹。行了，科研吹，以后你在道上混，你有事报我名字，不给面子你就直接油炸，先炸后奏，我跟你讲。”</p>
+<p>以后我就是科研吹了，整挺好。</p>
+]]></content:encoded>
+            <author>widcardw@foxmail.com (widcardw)</author>
+        </item>
+        <item>
+            <title><![CDATA[Sublime LSP 作为 linter]]></title>
+            <link>https://widcard.win/posts/trials/Sublime-lsp</link>
+            <guid>https://widcard.win/posts/trials/Sublime-lsp</guid>
+            <pubDate>Thu, 29 Sep 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Sublime LSP 作为 linter</h1>
+<h2>起因</h2>
+<p>在之前，我写过一篇 <a href="/posts/trials/sublimelinter">SublimeLinter 对 Python 进行代码检查</a>。它使用 pylint 作为检查器，但是未免有点 “过于追求规范” 了，它要求每个函数，每个类都有 doc-string，以及一些非常奇怪的警告。当时忆拾正在改 manim 的 SVG，他在没有代码提示的情况下，有不少包没引入（然而竟然没有报错！），所以我就把 SublimeLinter &amp; pylint 的方案推荐给他了，但是体验也不算非常好（<s>因为 manim 的代码本来写得就有点一言难尽</s>）</p>
+<p>在一个偶然之中，我了解到 VSCode 的插件，叫做 rust-analyzer，它使用了 Language Server Protocol 这一技术，这一方案定义了一套编辑器或 IDE 与语言服务器之间的使用协议。于是查看 Sublime LSP 文档，发现已经有不少可用的插件了，于是就立即改用这一方案（<s>又是喜新厌旧</s></p>
+<h2>安装</h2>
+<p><kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> 打开命令交互界面，分别安装 Sublime-LSP 和 LSP-pyright 即可。</p>
+<h2>配置项</h2>
+<p>使用这一方案的优势就是几乎零配置。但其实有一些选项还是很可能用到的，例如 eslint 中我们经常需要保存时直接格式化，这时就需要一些配置了。</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"lsp_code_actions_on_save"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"source.fixAll.eslint"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"source.organizeImports.eslint"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>当然，更多的配置可以在 LSP: Preferences 中查看，本篇中就不多加赘述了。</p>
+]]></content:encoded>
+            <author>widcardw@foxmail.com (widcardw)</author>
+        </item>
+        <item>
+            <title><![CDATA[如何使用 CloudFlare 和 GitHub 来给图片做 CDN]]></title>
+            <link>https://widcard.win/posts/blog/baipiao-cdn</link>
+            <guid>https://widcard.win/posts/blog/baipiao-cdn</guid>
+            <pubDate>Sat, 24 Sep 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>如何使用 CloudFlare 和 GitHub 来给图片做 CDN</h1>
+<blockquote>
+<p>本来标题应该是 “白嫖”，但是突然想到我是从 CloudFlare 买的域名，还是花了钱的，所以也不能算是白嫖了，呜呜。</p>
+</blockquote>
+<h2>Why</h2>
+<p>为什么要采用这一种方案呢？其实还是因为想白嫖，毕竟买域名的钱都花了，不用也说不过去。另外就是 CloudFlare 自身的图片 CDN 是按月来订购的，感觉好像有点贵，所以就继续白嫖 GitHub 了（x</p>
+<h2>How</h2>
+<h3>在 GitHub 上创建一个仓库</h3>
+<p>我使用 <em>CDN</em> 作为仓库名，这样就能稍微好记一点，也符合它的含义。</p>
+<p>在本地进行一些初始化工作，例如文件目录，<em>.gitignore</em> 等等，这些也不用过多去阐述。另外，你需要上传一张图片，来作为需要 CDN 的对象。</p>
+<p>下面是本地仓库的文件树</p>
+<pre class="language-text"><code class="language-text">.
+|____.git
+|____.gitignore
+|____manim
+| |____favicon.svg   # 图片文件
+|____README.md
+</code></pre>
+<h3>开启 GitHub Pages 服务</h3>
+<p>在 <em>Settings &gt; pages</em> 页面，将 main 分支部署到 GitHub Pages</p>
+<h3>在 CloudFlare 添加 DNS 规则</h3>
+<p>在 <em>域名 &gt; DNS</em> 页面中，添加一条规则</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">内容</th>
+<th style="text-align:center">代理状态</th>
+<th style="text-align:center">TTL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CNAME</td>
+<td style="text-align:center">cdn</td>
+<td style="text-align:center"><a href="http://widcardw.github.io">widcardw.github.io</a></td>
+<td style="text-align:center">已代理</td>
+<td style="text-align:center">自动</td>
+</tr>
+</tbody>
+</table>
+<p>其中，内容中填写的是自己开启 GitHub Pages 服务后所获得的 url</p>
+<h3>在 GitHub Pages 服务中添加自定义域名</h3>
+<p>自定义域名为 <strong>cdn</strong>.widcard.win</p>
+<p>等待片刻后，就可以通过 <a href="https://cdn.widcard.win/manim/favicon.svg">https://cdn.widcard.win/manim/favicon.svg</a> 这个路径来访问资源了</p>
+<blockquote>
+<p>在添加 CNAME 后，仓库中会添加一个 <em>CNAME</em> 文件，因此后期修改的时候，还需要 pull 后 merge 一下</p>
+</blockquote>
+]]></content:encoded>
+            <author>widcardw@foxmail.com (widcardw)</author>
+        </item>
+        <item>
+            <title><![CDATA[关于博客又搬家]]></title>
+            <link>https://widcard.win/posts/blog/blog-transfer2</link>
+            <guid>https://widcard.win/posts/blog/blog-transfer2</guid>
+            <pubDate>Sat, 17 Sep 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>关于博客又搬家</h1>
+<p>明明 Vuepress 和 Vitepress 已经足够好了，为什么我还要重新自己搞一个博客呢，真是太折腾了。但其实通过这么一路下来，总算是了解了普通的 Vue app 和 SSG 之间的区别。</p>
+<h2>问题发现</h2>
+<p>在新博客系统最开始，我使用的是 <a href="https://github.com/antfy/vitesse-lite">vitesse-lite</a> 搭建的，其中并不包含 SSG，这也就导致了博客并不是每个页面都生成一个 html 文件，而是只有一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" />，而它的路由其实可以理解为都是脚本动态生成的。也就是说，只要刷新页面，这个页面就会失效。如果有良好的 <FileName name="_redirect" /> 声明，那么网页就会跳转到根路由。而没有<FileName name="_redirect" /> 的网页 app，将会直接 404。如果细究其打包完成后的 <FileName name="dist" icon="i-vscode-icons-default-folder-opened" /> 目录，可以发现 Vue app 中只有一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" />，静态媒体资源，以及在 <FileName name="assets" icon="i-vscode-icons-default-folder-opened" /> 中的一堆 js 和 css 文件。在 <a href="https://cn.vuejs.org/guide/scaling-up/ssr.html#why-ssr">官方文档</a> 中，这种 app 被称为 SPA，即客户端的单页应用。</p>
+<p>而 SSG (Static-site Generation 静态站点生成 )，它所构建的所有网页，都可以认为是静态的，每个网页路由都有各自的文件，直接输入 url 将会直接加载对应的网页文件，而不是像上面所说的，所有路由都是动态生成。SSG 打包后，每个页面都有对应的 html 文件，每个页面都能够各自加载自己的资源和脚本，当然代价就是打包所耗费的资源多了一些。</p>
+<p>那为什么我要从 SPA 转到 SSG 呢？单页应用不好吗？</p>
+<p>确实没有那么方便，首当其冲的就是刷新重新渲染的问题，另外就是 giscus 评论的问题。从某个页面刷新后要重新从根页面点击进入目标页面，可想而知这是多么糟糕的用户体验。而 giscus 评论系统登录验证后，会重新跳转到原来的路由，而 SPA 的路由不复存在，需要重新生成，这也会重新路由到 404。</p>
+<p>而使用 SSG 后，问题又蜂拥而至</p>
+<details class="custom-callout bug" open><summary class="callout-title"><div>document is not defined</div>
+</summary></details><p>这是因为打包过程中，使用的是 Nodejs，而 Nodejs 本身是没有自带 DOM 的，因此需要外部包 <em>jsdom</em> 来为它做支撑。</p>
+<blockquote>
+<p>难道问题就这么简单吗？不可能！</p>
+</blockquote>
+<p>自己搭建博客系统，最突出的特点就是定制化，也就是说，我们想要什么功能，就可以自己加上。<em>mermaid-js</em> 流程图是比较受欢迎的例子，想要从 Markdown 中把 <code>mermaid</code> 关键字包裹的代码块转换成待渲染的流程图，看上去很简单。</p>
+<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> LR
+	A<span class="token text string">["从Markdown-it的token流&lt;br>获取mermaid代码"]</span> <span class="token arrow operator">--></span> B<span class="token text string">["将代码编码后传入&lt;br>自定义的Mermaid组件"]</span>
+	B <span class="token arrow operator">--></span> C<span class="token text string">["读取mermaid模块&lt;br>渲染为svg"]</span>
+</code></pre>
+<p>如此清晰，在 dev 阶段没有任何报错，然而在 SSG build 时却总是会发生各种各样的问题。</p>
+<details class="custom-callout bug" open><summary class="callout-title"><div>Cannot load module <code>/path/to/node_modules/mermaid/dist/mermaid.js</code></div>
+</summary></details><p>类似的问题，在引入 giscus 模块的时候也出现了。推测其原因，还是包含两个方面：DOM，异步.</p>
+<blockquote>
+<p>在这里很感谢 Vuepress Theme Hope 的作者 Mr. Hope，他的代码为解决这些问题提供了非常大的帮助，虽然在 Vue 里面不用 template，而用 <code>h</code> 函数这种操作真的很邪教 ¯\_(ツ)_/¯</p>
+</blockquote>
+<h2>问题解决</h2>
+<h3>DOM</h3>
+<p>在 Vue 中，DOM 需要在 <code>nextTick</code> 时候才能被访问到，这其实应该算是一个基础，在 Vue 的挑战练习中应该也是能找到的。而在我本地打包 SSG 时，留意到整个打包过程其实分为两部分，一部分是 client，另一部分是 server。几乎很多这种问题都是在 server 打包时出问题的。那么我们的解决方案就很明了了：</p>
+<ul>
+<li>方案一：在 server 打包的时候，不运行这一部分代码</li>
+<li>方案二：在 server 打包的时候，使用 <code>try...catch</code> 捕捉错误，并用适当的办法处理它</li>
+</ul>
+<h4>方案一</h4>
+<p><a href="https://cn.vuejs.org/api/composition-api-lifecycle.html#onmounted">Vue 官方文档</a> 中有这么一句话</p>
+<blockquote>
+<p><code>onMounted</code> <strong>钩子在服务器端渲染期间不会被调用。</strong></p>
+</blockquote>
+<p>这样就很好办了，我们只需要在 <code>onMounted</code> 中加载需要用到 DOM 的模块就好了。Vuepress Theme Hope 也就是这么做的。</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> loaded <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token function">onMounted</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'giscus'</span><span class="token punctuation">)</span>
+  loaded<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>这里他使用了 <code>onMounted</code> 和异步加载，我只能说：实在厉害。</p>
+<h4>方案二</h4>
+<p>直接抓取错误并抛出去，或许处理不是那么合适，但至少好像成功了，也作为一种比较 <strong>丑陋</strong> 的方案写出来。</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">function</span> <span class="token function">renderFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> svg <span class="token operator">=</span> <span class="token function">renderMermaid</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>code <span class="token operator">||</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      theme<span class="token operator">:</span> props<span class="token punctuation">.</span>theme <span class="token operator">||</span> <span class="token punctuation">(</span>isDark<span class="token punctuation">.</span>value <span class="token operator">?</span> <span class="token string">'dark'</span> <span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token operator">...</span>vm<span class="token operator">?.</span>attrs<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> svg
+  <span class="token punctuation">}</span>
+  <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>e <span class="token keyword">as</span> ReferenceError<span class="token punctuation">)</span><span class="token punctuation">.</span>message<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'document is not defined'</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token string">''</span>
+    <span class="token keyword">throw</span> e
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> html <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">renderFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>这样的话，在 server 渲染的时候，依然会执行这一段代码，只不过在 <code>renderMermaid</code> 这个函数报错，无法获取 DOM 的时候，自动转到 <code>catch</code> 中，返回空字符串了。这样只是避免了报错，但也能在一定程度上解决问题 ¯\_(ツ)_/¯，实际应用中并不推荐这么做。</p>
+<h3>GLSL 背景</h3>
+<p>在 pdcxs 的 <a href="https://www.bilibili.com/video/BV1ce411g7B2">shader 教程</a>中，有这么一个样例，我觉得作为一个背景是非常棒的，所以我想把它引入进来。并且，有人也是专门封装了 <a href="https://github.com/kongxiaojian123/vue-glsl">Vue GLSL</a> 的组件库，可以直接引用。</p>
+<p>然而，同样是在 server 编译的时候，GLSL 的组件报错了，原因是它使用了 <code>window.requestAnimationFrame</code>，而 server 端是无 DOM 的。</p>
+<p>然而，Vue GLSL 作为一个封装好的组件库，需要在合适的时候将组件挂载到 App 上，我们通常是在 <FileName name="main.ts" icon="i-vscode-icons-file-type-typescript-official" /> 中做这件事的。我们依然使用 <code>onMounted</code> 来包裹这一引入的语句。</p>
+<pre class="language-ts"><code class="language-ts"><span class="token function">onMounted</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// @ts-expect-error type declaration</span>
+  <span class="token keyword">const</span> glsl <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'vue-glsl'</span><span class="token punctuation">)</span>
+  app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>glsl<span class="token punctuation">.</span>default<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>而引入和挂载这些组件似乎是异步的，我们可能并不知道什么时候它能挂载完成，因此在页面初次渲染的时候，可能组件还没注册到全局，DOM 就已经渲染了，此时我们就会看到这样的警告。</p>
+<details class="custom-callout warning" open><summary class="callout-title"><div>Failed to resolve component: gl-canvas</div>
+<div class="callout-fold"></div></summary><blockquote>
+<p>If this is a native custom element, make sure to exclude it from component resolution via <code>compilerOptions.isCustomElement</code>.</p>
+</blockquote>
+</details><p>如果加一个背景的开关，那么重新启动一下背景就能渲染出来了。但是这样显得有点麻烦捏。</p>
+<p>这里我采取的方案是，在 <FileName name="App.vue" icon="i-vscode-icons-file-type-vue" /> 中加载这一组件，加载完成后再启用背景。具体方式是这样的：</p>
+<pre class="language-ts"><code class="language-ts"><span class="token comment">// 获取当前实例</span>
+<span class="token keyword">const</span> instance <span class="token operator">=</span> <span class="token function">getCurrentInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 基于 pinia 的 storage</span>
+<span class="token keyword">const</span> useGl <span class="token operator">=</span> <span class="token function">useGlStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token function">onMounted</span> <span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// @ts-expect-error type declaration</span>
+  <span class="token keyword">const</span> glsl <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'vue-glsl'</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>instance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    instance<span class="token punctuation">.</span>appContext<span class="token punctuation">.</span>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>glsl<span class="token punctuation">.</span>default<span class="token punctuation">)</span>
+    useGl<span class="token punctuation">.</span>isLoaded <span class="token operator">=</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>这样就基本上不会有任何错误和警告了。</p>
+]]></content:encoded>
+            <author>widcardw@foxmail.com (widcardw)</author>
+        </item>
+        <item>
+            <title><![CDATA[updater 文档 | 第 4 节 Alpha 在动画中的作用]]></title>
+            <link>https://widcard.win/posts/updater_tutorials/c04_update_from_func</link>
+            <guid>https://widcard.win/posts/updater_tutorials/c04_update_from_func</guid>
+            <pubDate>Sun, 03 Jul 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>第 4 节 Alpha 在动画中的作用</h1>
+<h2>碎碎念</h2>
+<p>如果是看过我 B 站视频的同学，应该会发现我把这部分顺序稍微调整了一下，但其实也无伤大雅，毕竟一旦想学会使用 updater ，那么就必然需要阅读源码，而这部分文档实际上就是带领读者去阅读 manim 源码，了解动画的工作原理。</p>
+<p>前面我们也常常提到一个词叫做<mark>插值</mark>，它的泛型一般定义成这样</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">interpolate</span><span class="token punctuation">(</span>start<span class="token punctuation">:</span> T<span class="token punctuation">,</span> end<span class="token punctuation">:</span> T<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> T<span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">1.</span> <span class="token operator">-</span> alpha<span class="token punctuation">)</span> <span class="token operator">*</span> start <span class="token operator">+</span> alpha <span class="token operator">*</span> end
+</code></pre>
+<p>我们前面也没有去提到过多关于 alpha 的内容，这一节将会尝试讲解这一困惑。</p>
+<h2>Alpha 的含义</h2>
+<p>可能我们在图像处理的时候听说过一个 “alpha 通道” 的概念，其实就是指透明度通道。而它的取值范围是 0%~100%，也就是 $[0,1]$。</p>
+<p>如果我们尝试将这个值代入到上面的函数定义中，发现它返回的是 start 与 end 之间的一个<mark>中间值</mark>。而<mark>补全中间值</mark>其实就是<mark>补间动画</mark>的一个重要任务了，它让画面的切换变得看起来更加平滑，而不会非常生硬。</p>
+<p>我们再拿出之前的一张图，在动画的过程中，alpha 的值从 0 到 1 变化，而图形也由原来的方形变得越来越像变化之后的圆形。</p>
+<p><img src="https://widcard.win/updater/InterpolateExampleScene.png" alt="updater/InterpolateExampleScene.png"></p>
+<p>在这里，alpha 所做的就是在 $[0,1]$ 定义域上，对于每个<mark>选到的值</mark>，算出对应的物件状态。</p>
+<p>至于为什么是选到的值，这就要聊聊<mark>视频</mark>这一概念了。我们都知道，视频有一个叫做<mark>帧率</mark>的属性，它代表着每一秒钟，视频会播放多少个画面。由于计算机的算力、硬盘的存储容量均有限，我们不可能用有限的事物来存储和计算<mark>无限的</mark>、<mark>连续的</mark>现实世界，只能尽可能的去保存一些<mark>离散的</mark>数据，在视频播放的过程中，尝试利用人眼的视觉暂留，<mark>骗过</mark>人类，让我们认为这是连续的。而对于 60 帧的视频，我们只需每秒让计算机算出 60 个 alpha 值分别对应的状态，即可生成视频。</p>
+<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> LR
+a<span class="token text string">["连续的 alpha ∈ [0,1]"]</span> <span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">"离散采样"</span><span class="token arrow operator">--></span></span> b<span class="token text string">["离散的一系列 alpha&lt;br>每秒 60 个离散值"]</span>
+b <span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">"计算画面"</span><span class="token arrow operator">--></span></span> c<span class="token text string">["离散的一系列画面&lt;br>每秒 60 张"]</span>
+</code></pre>
+<h2>动画的执行流程</h2>
+<p>我们再回忆一下第 1 节的内容，Animation 类编写了很多方法，在 Scene 调用 play 的时候，会按一定的顺序和逻辑去调用 Animation 的这些方法。此时我们关注的就是其中实际的动画部分了。</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">progress_through_animations</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> animations<span class="token punctuation">:</span> Iterable<span class="token punctuation">[</span>Animation<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+    last_t <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> t <span class="token keyword">in</span> self<span class="token punctuation">.</span>get_animation_time_progression<span class="token punctuation">(</span>animations<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        dt <span class="token operator">=</span> t <span class="token operator">-</span> last_t
+        last_t <span class="token operator">=</span> t
+        <span class="token keyword">for</span> animation <span class="token keyword">in</span> animations<span class="token punctuation">:</span>
+            animation<span class="token punctuation">.</span>update_mobjects<span class="token punctuation">(</span>dt<span class="token punctuation">)</span>
+            alpha <span class="token operator">=</span> t <span class="token operator">/</span> animation<span class="token punctuation">.</span>run_time
+            <span class="token comment"># 动画插值</span>
+            animation<span class="token punctuation">.</span>interpolate<span class="token punctuation">(</span>alpha<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>update_frame<span class="token punctuation">(</span>dt<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>emit_frame<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Animation 的方法方法一层套一层，最终会到达 <code>interpolate_mobject</code> 和 <code>interpolate_submobject</code> 这两个方法身上。我们来看 manim 中最常用的方法 Transform ，它是怎么实现的：</p>
+<pre class="language-python"><code class="language-python">    <span class="token keyword">def</span> <span class="token function">interpolate_submobject</span><span class="token punctuation">(</span>
+        self<span class="token punctuation">,</span>
+        submob<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span>
+        start<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span>
+        target_copy<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span>
+        alpha<span class="token punctuation">:</span> <span class="token builtin">float</span>
+    <span class="token punctuation">)</span><span class="token punctuation">:</span>
+        submob<span class="token punctuation">.</span>interpolate<span class="token punctuation">(</span>start<span class="token punctuation">,</span> target_copy<span class="token punctuation">,</span> alpha<span class="token punctuation">,</span> self<span class="token punctuation">.</span>path_func<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self
+</code></pre>
+<p>没错，要做的事情就只有一行！从中应该可以想象到 Transform 的实现有多么简单粗暴，只需要使得在屏幕上的物件成为<mark>起始和目标的中间值</mark>就可以了。</p>
+<p>其实这么一来，许多工作就落到了 <code>begin</code> 和 <code>finish</code> 头上。它们要完成的工作，包括检查合法性、<mark>对齐起始物件和目标物件的数据</mark>、以及一些优化问题。</p>
+<p>其中，第二个步骤应当是在运行进程中比较关键的步骤。不妨假设有下面这个例子：</p>
+<details class="custom-callout example"><summary class="callout-title"><div>给定两个任意矩阵，尝试给出这两个矩阵的 0.5 处的插值</div>
+</summary></details><p>这么听的确是强人所难，如果两个矩阵不一样大，那么根本就不可能进行插值。</p>
+<p>在这一过程中，<mark>数据对齐</mark>的作用就显得相当重要了。如果我们把这两个矩阵都进行扩展，使得新的矩阵大小都能覆盖两个矩阵，接着对一些缺失的数据进行修补，那么此时一个矩阵中的每一个值都能与另一个矩阵中的相应值形成<mark>一一映射</mark>，这样插值动画就可以畅通无阻了。</p>
+<p><img src="/updater/MatrixReflect.png" alt="updater/MatrixReflect.png"></p>
+<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> LR
+begin <span class="token arrow operator">--></span>a<span class="token text string">["检查"]</span> <span class="token arrow operator">--></span> b<span class="token text string">["数据对齐"]</span> <span class="token arrow operator">--></span> c<span class="token text string">["拷贝变量"]</span> 
+c <span class="token arrow operator">--></span> d<span class="token text string">["lock data&lt;br>优化"]</span> <span class="token arrow operator">--></span> e<span class="token text string">["插值&lt;br>interpolate&lt;br>mobject"]</span>
+e <span class="token arrow operator">--></span> f<span class="token text string">["unlock data"]</span> <span class="token arrow operator">--></span> g<span class="token text string">["finish"]</span>
+</code></pre>
+<h2>UpdateFromAlphaFunc</h2>
+<p>讲了那么多前置知识，终于能将这一节的重点了。这个动画类其实类似于向我们暴露了一个接口，让我们来动手实现这个动画的具体流程。</p>
+<p>而在源码层面上，这个类继承于 Animation ，接收的参数有两个：一个是 mobject ，另一个是更新函数。而待我们实现的更新函数，就是物件更新的依据。而事实上也就是让我们直接实现 <code>interpolate_mobject</code> 方法。越是接近底层，其灵活度也就越高。</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">UpdateFromAlphaFunc</span><span class="token punctuation">(</span>Animation<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>
+        self<span class="token punctuation">,</span>
+        mobject<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span>
+        update_function<span class="token punctuation">:</span> Callable<span class="token punctuation">[</span><span class="token punctuation">[</span>Mobject<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token operator">**</span>kwargs
+    <span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>update_function <span class="token operator">=</span> update_function
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>mobject<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">interpolate_mobject</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>update_function<span class="token punctuation">(</span>self<span class="token punctuation">.</span>mobject<span class="token punctuation">,</span> alpha<span class="token punctuation">)</span>
+</code></pre>
+<p>用这一个动画类我们几乎可以实现任何效果，只需要计算出 alpha 值对应的物件状态，就可以实现我们想要的动画了。</p>
+<details class="custom-callout caution" open><summary class="callout-title"><div>Caution</div>
+<div class="callout-fold"></div></summary><blockquote>
+<p>在 1.6.1 及以后的某些版本，restore 方法可能存在 bug ，导致有些效果都没有办法还原出来。</p>
+</blockquote>
+</details><p>我们可以在每一帧都<mark>恢复初态</mark>、<mark>重新计算当前状态</mark>、<mark>提交</mark>，这样来控制其实更加方便。例如下面一个旋转平移的效果（但是笔者当前版本是 1.6.1 之后的，却没有出现问题）</p>
+<p><video controls="controls" src="/updater/ShiftRotateExample.mp4" alt="updater/ShiftRotateExample.mp4" style="width: 100%; height: 100%;"></video></p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ShiftRotateExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        square <span class="token operator">=</span> VGroup<span class="token punctuation">(</span>Square<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Dot<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>shift<span class="token punctuation">(</span>LEFT<span class="token operator">*</span><span class="token number">5</span><span class="token punctuation">)</span>
+        numline <span class="token operator">=</span> NumberLine<span class="token punctuation">(</span>x_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 保存初态</span>
+        square<span class="token punctuation">.</span>save_state<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">def</span> <span class="token function">anim</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 恢复初态</span>
+            m<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token comment"># 移动</span>
+            m<span class="token punctuation">.</span>shift<span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">*</span> alpha <span class="token operator">*</span> RIGHT<span class="token punctuation">)</span>
+            <span class="token comment"># 旋转</span>
+            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>PI <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">*</span> alpha<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>numline<span class="token punctuation">,</span> square<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>UpdateFromAlphaFunc<span class="token punctuation">(</span>square<span class="token punctuation">,</span> anim<span class="token punctuation">)</span><span class="token punctuation">,</span> run_time<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
+</code></pre>
+<p>既然这样稍微复杂一些的动画效果可以用 UpdateFromAlphaFunc 实现，那么我们就用它来实现一个 MyRotate 吧！</p>
+<details class="custom-callout example"><summary class="callout-title"><div>尝试编写一个函数，当传入 UpdateFromAlphaFunc 时，能达到旋转的效果</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MyRotateExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        square <span class="token operator">=</span> Square<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 保存初态</span>
+        square<span class="token punctuation">.</span>save_state<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">def</span> <span class="token function">my_rotate</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 恢复初态</span>
+            m<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token comment"># 旋转</span>
+            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>PI <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">*</span> alpha<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>square<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>UpdateFromAlphaFunc<span class="token punctuation">(</span>square<span class="token punctuation">,</span> my_rotate<span class="token punctuation">)</span><span class="token punctuation">,</span> run_time<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details><h2>Alpha 还能在哪里找到——Bézier Curve</h2>
+<p>如果阅读过笔者以前的博客，应该都知道 manim 中一切皆为 Mobject ，而它又有一个重要的子类 <mark>VMobject</mark> ，它的本质是<mark>贝塞尔曲线</mark>。而提到贝塞尔曲线，就不得不提到其生成原理：<mark>插值</mark>。</p>
+<p>manim 的作者考虑的很周全，为了避免计算高阶贝塞尔曲线，提高运算性能，他使用许多段短曲线拼接成完整的复杂曲线。尽管在宏观上好像抛弃了 $n$ 阶贝塞尔曲线完整定义，“似乎”没有办法去利用它这个 alpha 了，但是 VMobject 依然实现了一个曲线采样方法：<code>point_from_proportion</code>，简写为 <code>pfp</code> 。</p>
+<p>这个方法应该常用于函数曲线，向其中传入一个百分比 alpha ，范围是 $[0, 1]$；输出值是一个点的坐标，而这个点位置在曲线长度百分比 alpha 处。（<s>一直感觉没有办法很好地表述这段话</s>）</p>
+<details class="custom-callout example"><summary class="callout-title"><div>绘制一条曲线，并在上面取一个点，让点从曲线的起始位置，顺着曲线移动到结束位置。</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MoveAlongPathExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        graph <span class="token operator">=</span> FunctionGraph<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>PI <span class="token operator">*</span> x<span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                              x_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>graph<span class="token punctuation">)</span>
+
+        dot <span class="token operator">=</span> Dot<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>graph<span class="token punctuation">.</span>get_start<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>dot<span class="token punctuation">)</span>
+
+        <span class="token keyword">def</span> <span class="token function">update_dot</span><span class="token punctuation">(</span>dot<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            dot<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>graph<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>alpha<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>UpdateFromAlphaFunc<span class="token punctuation">(</span>dot<span class="token punctuation">,</span> update_dot<span class="token punctuation">)</span><span class="token punctuation">,</span> run_time<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
+</code></pre>
+<p>然而，Grant 早就已经封装好一个动画类了，叫 MoveAlongPath ，感兴趣的读者可以尝试一下。</p>
+</blockquote>
+</details><p>接下来加大一点难度。</p>
+<details class="custom-callout example"><summary class="callout-title"><div>绘制一条曲线，在上面取一个点，在这个点处绘制一个小箭头，使得这个箭头顺着曲线移动的时候，朝向永远顺着曲线的切线方向。小箭头可以使用 ArrowTip 代替 Dot 。</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token comment"># 计算输入 alpha 对应点处切线的倾斜角</span>
+<span class="token keyword">def</span> <span class="token function">angle_of_tan</span><span class="token punctuation">(</span>graph<span class="token punctuation">:</span> ParametricCurve<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">,</span> dx<span class="token operator">=</span><span class="token number">0.01</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">float</span><span class="token punctuation">:</span>
+    vect <span class="token operator">=</span> graph<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>alpha <span class="token operator">+</span> dx<span class="token punctuation">)</span> <span class="token operator">-</span> graph<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>alpha <span class="token operator">-</span> dx<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> angle_of_vector<span class="token punctuation">(</span>vect<span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MoveAlongPathExample2</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        graph <span class="token operator">=</span> FunctionGraph<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">*</span> np<span class="token punctuation">.</span>cos<span class="token punctuation">(</span>PI <span class="token operator">*</span> x<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                              x_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        arrow <span class="token operator">=</span> ArrowTip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>scale<span class="token punctuation">(</span><span class="token number">0.8</span><span class="token punctuation">)</span>
+        <span class="token comment"># 保存 arrow 的旋转角度</span>
+        arrow<span class="token punctuation">.</span>save_state<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>graph<span class="token punctuation">,</span> arrow<span class="token punctuation">)</span>
+
+        <span class="token keyword">def</span> <span class="token function">update_arrow</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 恢复到初态，主要是为了恢复旋转角</span>
+            m<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token comment"># 旋转</span>
+            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>angle_of_tan<span class="token punctuation">(</span>graph<span class="token punctuation">,</span> alpha<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token comment"># 移动</span>
+            m<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>graph<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>alpha<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>UpdateFromAlphaFunc<span class="token punctuation">(</span>arrow<span class="token punctuation">,</span> update_arrow<span class="token punctuation">)</span><span class="token punctuation">,</span> run_time<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details><h2>UpdateFromFunc</h2>
+<p>从这个类的名字来看，其实就是无需传入 alpha 的动画更新。但是没有了 alpha ，也就无法构成动画，因此这个方法常常作为<mark>伴随动画</mark>，用作某一段时间内动画的附加效果。</p>
+<p>例如，我们想让点移动的时候，文本保持在它的旁边，但是我们不使用 add_updater 方法，此时就可以使用 UpdateFromFunc 作为一个伴随效果，添加到 play 中。</p>
+<pre class="language-python"><code class="language-python">self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
+    dot<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>shift<span class="token punctuation">(</span>RIGHT <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    UpdateFromFunc<span class="token punctuation">(</span>text<span class="token punctuation">,</span> <span class="token keyword">lambda</span> m<span class="token punctuation">:</span> m<span class="token punctuation">.</span>next_to<span class="token punctuation">(</span>dot<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+</code></pre>
+<p>由于这个方法无法使用 alpha 参数，因此限制也是非常多，基本上也就只能作为伴随动画了。</p>
+<h2>更多的例子</h2>
+<h5>1. 2022-07-01 版本中， manimgl 自带样例中 CoordinateSystemExample 因为使用 always_redraw 坏掉了，究其原因是 updater 和 become 的冲突问题。现在请你尝试抛弃前面的方法，用 UpdateFromFunc 和 become 来修复它。</h5>
+<details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token comment"># 重绘坐标线</span>
+<span class="token keyword">def</span> <span class="token function">redraw_h_line</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m<span class="token punctuation">.</span>become<span class="token punctuation">(</span>axes<span class="token punctuation">.</span>get_h_line<span class="token punctuation">(</span>dot<span class="token punctuation">.</span>get_left<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">redraw_v_line</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m<span class="token punctuation">.</span>become<span class="token punctuation">(</span>axes<span class="token punctuation">.</span>get_v_line<span class="token punctuation">(</span>dot<span class="token punctuation">.</span>get_bottom<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
+    ShowCreation<span class="token punctuation">(</span>h_line<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    ShowCreation<span class="token punctuation">(</span>v_line<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
+    dot<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>axes<span class="token punctuation">.</span>c2p<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token comment"># UpdateFromFunc 作为伴随动画，下同</span>
+    UpdateFromFunc<span class="token punctuation">(</span>h_line<span class="token punctuation">,</span> redraw_h_line<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    UpdateFromFunc<span class="token punctuation">(</span>v_line<span class="token punctuation">,</span> redraw_v_line<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token punctuation">)</span>
+self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
+    dot<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>axes<span class="token punctuation">.</span>c2p<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    UpdateFromFunc<span class="token punctuation">(</span>h_line<span class="token punctuation">,</span> redraw_h_line<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    UpdateFromFunc<span class="token punctuation">(</span>v_line<span class="token punctuation">,</span> redraw_v_line<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+f_always<span class="token punctuation">(</span>dot<span class="token punctuation">.</span>move_to<span class="token punctuation">,</span> <span class="token keyword">lambda</span><span class="token punctuation">:</span> axes<span class="token punctuation">.</span>c2p<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
+    axes<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>scale<span class="token punctuation">(</span><span class="token number">0.75</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to_corner<span class="token punctuation">(</span>UL<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    UpdateFromFunc<span class="token punctuation">(</span>h_line<span class="token punctuation">,</span> redraw_h_line<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    UpdateFromFunc<span class="token punctuation">(</span>v_line<span class="token punctuation">,</span> redraw_v_line<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    run_time<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+</code></pre>
+<p>这么写下来发现真的好烦， updater + become 真的是万能，但是有 bug</p>
+</blockquote>
+</details><h5>2. 编写一个半径为 1 的圆在半径为 2 的圆上滚动一周的动画，并使用 TracedPath 来绘制起始两圆切点在动画中的轨迹。为了更清楚地看出圆的旋转角度，可以添加一个由圆心指向初始切点的箭头。</h5>
+<blockquote>
+<p>如果使用 UpdateFromAlphaFunc ，那么旋转的角度、半径需要手动计算后写入。</p>
+</blockquote>
+<p><video controls="controls" src="/updater/RollingCircleExample.mp4" alt="updater/RollingCircleExample.mp4" style="width: 100%; height: 100%;"></video></p>
+<details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">RollingCircleExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        c1 <span class="token operator">=</span> Circle<span class="token punctuation">(</span>radius<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+        c2 <span class="token operator">=</span> VGroup<span class="token punctuation">(</span>
+            Circle<span class="token punctuation">(</span>radius<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token comment"># 圆</span>
+            Dot<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>              <span class="token comment"># 圆心</span>
+            Vector<span class="token punctuation">(</span>DOWN <span class="token operator">*</span> <span class="token number">0.8</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment"># 箭头</span>
+        <span class="token punctuation">)</span>
+        c2<span class="token punctuation">.</span>shift<span class="token punctuation">(</span>UP <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>set_color<span class="token punctuation">(</span>GOLD<span class="token punctuation">)</span>
+        c2<span class="token punctuation">.</span>save_state<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        path <span class="token operator">=</span> TracedPath<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> c2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>pfp<span class="token punctuation">(</span><span class="token number">0.75</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment"># 圆的 3/4 处坐标</span>
+                          stroke_width<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">,</span>
+                          stroke_color<span class="token operator">=</span>YELLOW<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>c1<span class="token punctuation">,</span> c2<span class="token punctuation">,</span> path<span class="token punctuation">)</span>
+
+        <span class="token keyword">def</span> <span class="token function">update_c2</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            m<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span> <span class="token operator">*</span> TAU <span class="token operator">*</span> alpha<span class="token punctuation">)</span>
+            m<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">*</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>
+                np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>TAU <span class="token operator">*</span> alpha<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                np<span class="token punctuation">.</span>cos<span class="token punctuation">(</span>TAU <span class="token operator">*</span> alpha<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token number">0</span>
+            <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
+            UpdateFromAlphaFunc<span class="token punctuation">(</span>c2<span class="token punctuation">,</span> update_c2<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            run_time<span class="token operator">=</span><span class="token number">6</span>
+        <span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details><h5>3. 给定三个锚点，用贝塞尔曲线的定义来绘制这三个点生成的曲线。</h5>
+<p><video controls="controls" src="/updater/BezierExample.mp4" alt="updater/BezierExample.mp4" style="width: 100%; height: 100%;"></video></p>
+<details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">BezierExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        points <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>
+            <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+        dots <span class="token operator">=</span> VGroup<span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">[</span>Dot<span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token keyword">for</span> p <span class="token keyword">in</span> points<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        lines <span class="token operator">=</span> VGroup<span class="token punctuation">(</span>
+            Line<span class="token punctuation">(</span>points<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> points<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            Line<span class="token punctuation">(</span>points<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> points<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">.</span>set_stroke<span class="token punctuation">(</span>width<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>dots<span class="token punctuation">,</span> lines<span class="token punctuation">)</span>
+
+        moving_dot1 <span class="token operator">=</span> Dot<span class="token punctuation">(</span>points<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> color<span class="token operator">=</span>GOLD<span class="token punctuation">)</span>
+        moving_dot2 <span class="token operator">=</span> Dot<span class="token punctuation">(</span>points<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> color<span class="token operator">=</span>GOLD<span class="token punctuation">)</span>
+
+        moving_line <span class="token operator">=</span> Line<span class="token punctuation">(</span>points<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> points<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> color<span class="token operator">=</span>GOLD<span class="token punctuation">)</span>
+
+        moving_line<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>
+            <span class="token keyword">lambda</span> l<span class="token punctuation">:</span> l<span class="token punctuation">.</span>put_start_and_end_on<span class="token punctuation">(</span>
+                moving_dot1<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                moving_dot2<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+        moving_dot3 <span class="token operator">=</span> Dot<span class="token punctuation">(</span>color<span class="token operator">=</span>RED<span class="token punctuation">)</span>
+
+        path <span class="token operator">=</span> TracedPath<span class="token punctuation">(</span>moving_dot3<span class="token punctuation">.</span>get_center<span class="token punctuation">,</span> stroke_width<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">,</span> stroke_color<span class="token operator">=</span>RED<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>moving_dot1<span class="token punctuation">,</span> moving_dot2<span class="token punctuation">,</span> moving_dot3<span class="token punctuation">,</span> moving_line<span class="token punctuation">,</span> path<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
+            UpdateFromAlphaFunc<span class="token punctuation">(</span>moving_dot1<span class="token punctuation">,</span> <span class="token keyword">lambda</span> d<span class="token punctuation">,</span> a<span class="token punctuation">:</span> d<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>lines<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            UpdateFromAlphaFunc<span class="token punctuation">(</span>moving_dot2<span class="token punctuation">,</span> <span class="token keyword">lambda</span> d<span class="token punctuation">,</span> a<span class="token punctuation">:</span> d<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>lines<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            UpdateFromAlphaFunc<span class="token punctuation">(</span>moving_dot3<span class="token punctuation">,</span> <span class="token keyword">lambda</span> d<span class="token punctuation">,</span> a<span class="token punctuation">:</span> d<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>moving_line<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            run_time<span class="token operator">=</span><span class="token number">4</span>
+        <span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details><p></p>
+]]></content:encoded>
+            <author>widcardw@foxmail.com (widcardw)</author>
+        </item>
+        <item>
+            <title><![CDATA[updater 文档 | 第 3 节 基于时间的更新]]></title>
+            <link>https://widcard.win/posts/updater_tutorials/c03_time_based_updater</link>
+            <guid>https://widcard.win/posts/updater_tutorials/c03_time_based_updater</guid>
+            <pubDate>Sat, 02 Jul 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>第 3 节 基于时间的更新</h1>
+<h2>引入</h2>
+<p>之前我们提到了有起始和终止的动画，以及<mark>无限播放</mark>的动画。这一节我们将探讨后者应当如何编写。</p>
+<details class="custom-callout question" open><summary class="callout-title"><div>试试看！</div>
+<div class="callout-fold"></div></summary><blockquote>
+<p>编写一个时钟，使得秒针、分针、时针分别按照固定的角速度旋转。如果严格按照现实时间来写比较慢，可以适当增加角速度。</p>
+</blockquote>
+</details><p><img src="https://widcard.win/updater/ClockExampleScene.png" alt="updater/ClockExampleScene.png"></p>
+<p>如果上面的例子你能写出来，那么这一节就结束了。</p>
+<p><s>开个玩笑</s></p>
+<h2>浅析基于时间的 updater</h2>
+<p>我们回到上一节提到的基于时间的更新函数，它的类型定义如下。此时这个函数接收的参数是两个，一个是 Mobject ，另一个是 dt 。</p>
+<pre class="language-python"><code class="language-python">TimeBasedUpdater <span class="token operator">=</span> Callable<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"Mobject"</span><span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span>
+</code></pre>
+<p>同时，在 <code>add_updater</code> 方法中，有这么一条语句：</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">if</span> <span class="token string">"dt"</span> <span class="token keyword">in</span> get_parameters<span class="token punctuation">(</span>update_function<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment">#...</span>
+</code></pre>
+<p>很明显，当更新函数的参数中如果有一个名字为 dt ，那么就会执行下面的步骤，即将<mark>基于时间的更新函数</mark>添加到成员列表中。接下来就只需要接着上一节的分析，在每次 <em>动画播放</em> 的时候，动画过程中的每一帧都会调用这一函数，对物件进行更新了。</p>
+<p>然而我们好像忽略了 <code>wait</code> 这个方法。我们发现，基于时间的更新不管是遇到 <code>play</code> 还是 <code>wait</code>，它都会更新。</p>
+<pre class="language-python"><code class="language-python"><span class="token decorator annotation punctuation">@handle_play_like_call</span>
+    <span class="token keyword">def</span> <span class="token function">wait</span><span class="token punctuation">(</span>
+        self<span class="token punctuation">,</span>
+        duration<span class="token punctuation">:</span> <span class="token builtin">float</span> <span class="token operator">=</span> DEFAULT_WAIT_TIME<span class="token punctuation">,</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>update_mobjects<span class="token punctuation">(</span>dt<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment"># Any problems with this?</span>
+        <span class="token comment"># 处理演讲者模式</span>
+        <span class="token keyword">if</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">:</span>
+            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            time_progression <span class="token operator">=</span> \
+                self<span class="token punctuation">.</span>get_wait_time_progression<span class="token punctuation">(</span>duration<span class="token punctuation">,</span> stop_condition<span class="token punctuation">)</span>
+            last_t <span class="token operator">=</span> <span class="token number">0</span>
+            <span class="token keyword">for</span> t <span class="token keyword">in</span> time_progression<span class="token punctuation">:</span>
+                dt <span class="token operator">=</span> t <span class="token operator">-</span> last_t
+                last_t <span class="token operator">=</span> t
+                <span class="token comment"># 处理更新</span>
+                self<span class="token punctuation">.</span>update_frame<span class="token punctuation">(</span>dt<span class="token punctuation">)</span>
+                self<span class="token punctuation">.</span>emit_frame<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token keyword">if</span> stop_condition <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span> <span class="token keyword">and</span> stop_condition<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    <span class="token keyword">break</span>
+        self<span class="token punctuation">.</span>refresh_static_mobjects<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self
+</code></pre>
+<p>可以看到，<code>wait</code> 方法中，其实也是做了一些关于 updater 的处理，这样就能做到 <code>wait</code> 时也能处理基于时间的更新了。</p>
+<details class="custom-callout example"><summary class="callout-title"><div>玩笑归玩笑，时钟的例子还是得给答案的</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ClockExampleScene</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 秒针的角速度</span>
+        omega <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">6</span> <span class="token operator">*</span> DEGREES
+        cir <span class="token operator">=</span> Circle<span class="token punctuation">(</span>radius<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> color<span class="token operator">=</span>WHITE<span class="token punctuation">)</span>
+        <span class="token comment"># 添加刻度</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            percent <span class="token operator">=</span> i <span class="token operator">/</span> <span class="token number">60</span>
+            <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">5</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                <span class="token comment"># pfp 是 point_from_proportion 的简写</span>
+                cir<span class="token punctuation">.</span>add<span class="token punctuation">(</span>Line<span class="token punctuation">(</span>cir<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>percent<span class="token punctuation">)</span><span class="token punctuation">,</span> cir<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>percent<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.9</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                cir<span class="token punctuation">.</span>add<span class="token punctuation">(</span>Line<span class="token punctuation">(</span>cir<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>percent<span class="token punctuation">)</span><span class="token punctuation">,</span> cir<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>percent<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.95</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>cir<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 秒针 分针 时针</span>
+        sec_handle <span class="token operator">=</span> Line<span class="token punctuation">(</span>DOWN <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">,</span> UP <span class="token operator">*</span> <span class="token number">2.7</span><span class="token punctuation">,</span> stroke_width<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>
+        minute_handle <span class="token operator">=</span> Line<span class="token punctuation">(</span>DOWN <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">,</span> UP <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> stroke_width<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">)</span>
+        hour_handle <span class="token operator">=</span> Line<span class="token punctuation">(</span>DOWN <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">,</span> UP <span class="token operator">*</span> <span class="token number">1.5</span><span class="token punctuation">,</span> stroke_width<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>hour_handle<span class="token punctuation">,</span> minute_handle<span class="token punctuation">,</span> sec_handle<span class="token punctuation">)</span>
+
+        <span class="token keyword">def</span> <span class="token function">updater_sec</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>omega <span class="token operator">*</span> dt<span class="token punctuation">,</span> about_point<span class="token operator">=</span>ORIGIN<span class="token punctuation">)</span>
+
+        <span class="token keyword">def</span> <span class="token function">updater_minute</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>omega <span class="token operator">*</span> dt <span class="token operator">/</span> <span class="token number">60</span><span class="token punctuation">,</span> about_point<span class="token operator">=</span>ORIGIN<span class="token punctuation">)</span>
+        
+        <span class="token keyword">def</span> <span class="token function">updater_hour</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>omega <span class="token operator">*</span> dt <span class="token operator">/</span> <span class="token number">3600</span><span class="token punctuation">,</span> about_point<span class="token operator">=</span>ORIGIN<span class="token punctuation">)</span>
+
+        <span class="token comment"># 分别添加与时间相关的更新</span>
+        sec_handle<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>updater_sec<span class="token punctuation">)</span>
+        minute_handle<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>updater_minute<span class="token punctuation">)</span>
+        hour_handle<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>updater_hour<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details><h2>dt 的值是多少</h2>
+<p>如果你运行了上面的例子就会发现， 10 秒钟的等待时间，秒针刚好就走了 10 个刻度。这看似是个巧合，但是我们可以使用 print 来 debug 呀。如果尝试在更新函数中加入一句 <code>print(dt)</code>，那么会打印一堆小数。这些小数大多都接近 0.0166 ，这是因为 dt 就是<mark>帧率的倒数</mark>。也就是说，每一秒钟，dt 在这一区间段的总和就是 1 。</p>
+<p>为什么要有这样一个设定呢？我们用常数代替 dt 不行吗？</p>
+<p>当然可行，毕竟 dt 就是一个浮点数。但是当全局设定的帧率变了，而我们仍然使用我们定义的常量，就会导致不同帧率情况下，动画的结果就不同。</p>
+<p>但是，如果我们使用 dt ，并且在使用的过程中有意地给某个变化量乘上 dt ，那么在单位时间内，这个变化量就是恒定的了。</p>
+<p>比如我们将秒针的更新函数改成这样</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sec_updater</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> dt<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>omega <span class="token operator">*</span> <span class="token number">0.016667</span><span class="token punctuation">,</span> about_point<span class="token operator">=</span>ORIGIN<span class="token punctuation">)</span>
+</code></pre>
+<p>那么，在 60 帧的视频中，每 10 秒钟，秒针就会走 10 个刻度。而在 30 帧的视频中，每 10 秒钟，秒针只会走 5 个刻度，因为在 30 帧的视频中，更新函数在每秒只会被调用 30 次。所以，dt 可以作为一个标准化的数值来使用。</p>
+<p>仔细阅读的读者应该也能发现， dt 是通过当前帧的“时间戳”减去上一帧的“时间戳”来算出来的。既然有这个“时间戳”，我们能把它利用起来吗？当然是可以的， Scene 有一个成员变量 <code>time</code> 就存放了当前动画已经运行的秒数。我们可以用 <code>DecimalNumber</code> 来将它显示在屏幕上。</p>
+<pre class="language-python"><code class="language-python">cur_time <span class="token operator">=</span> DecimalNumber<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+cur_time<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> m<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> m<span class="token punctuation">.</span>set_value<span class="token punctuation">(</span>self<span class="token punctuation">.</span>time<span class="token punctuation">)</span><span class="token punctuation">)</span>
+self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>cur_time<span class="token punctuation">)</span>
+self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+</code></pre>
+<h2>更多的例子</h2>
+<h5>1. 恒星行星模型：制作地球绕太阳公转，月球绕地球公转的动画。公转的速度、半径不做硬性要求。</h5>
+<details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">StarPlantExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        sun <span class="token operator">=</span> Sphere<span class="token punctuation">(</span>radius<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> color<span class="token operator">=</span>RED<span class="token punctuation">)</span>
+        earth <span class="token operator">=</span> Sphere<span class="token punctuation">(</span>radius<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">,</span> color<span class="token operator">=</span>BLUE<span class="token punctuation">)</span>
+        moon <span class="token operator">=</span> Sphere<span class="token punctuation">(</span>radius<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">,</span> color<span class="token operator">=</span>YELLOW_A<span class="token punctuation">)</span>
+
+        earth<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>sun<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">3.5</span> <span class="token operator">*</span> RIGHT<span class="token punctuation">)</span>
+        moon<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>earth<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> RIGHT<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>sun<span class="token punctuation">,</span> earth<span class="token punctuation">,</span> moon<span class="token punctuation">)</span>
+
+        <span class="token comment"># 地球绕太阳转</span>
+        <span class="token keyword">def</span> <span class="token function">update_earth</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>dt<span class="token punctuation">,</span> about_point<span class="token operator">=</span>sun<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">def</span> <span class="token function">update_moon</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 强行移动到地球的右侧</span>
+            m<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>earth<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> RIGHT<span class="token punctuation">)</span>
+            <span class="token comment"># 根据动画已经运行的时间来旋转</span>
+            <span class="token comment"># self.time 是 Scene 的属性，用于记录动画总的运行时间</span>
+            <span class="token comment"># 其实用了 self.time 稍微就有点违背了原本的想法了，虽然这样写比较简单</span>
+            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>self<span class="token punctuation">.</span>time <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">,</span> about_point<span class="token operator">=</span>earth<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        earth<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>update_earth<span class="token punctuation">)</span>
+        moon<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>update_moon<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details><h5>2. 李萨如曲线：让一个物件按照李撒如图形的轨迹持续运动。李萨如图形的参数可自己给定。</h5>
+<p><video controls="controls" src="/updater/LissajousExample.mp4" alt="updater/LissajousExample.mp4" style="width: 100%; height: 100%;"></video></p>
+<details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
+<div class="callout-fold"></div></summary><blockquote>
+<p>在这里同样也用了 <code>self.time</code> 这个变量，处理更加方便一些</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LissajousExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        u <span class="token operator">=</span> <span class="token number">4</span>
+        v <span class="token operator">=</span> <span class="token number">5</span>
+        <span class="token comment"># 李萨如图形的参数曲线</span>
+        lissajous <span class="token operator">=</span> ParametricCurve<span class="token punctuation">(</span>
+            <span class="token keyword">lambda</span> t<span class="token punctuation">:</span> <span class="token number">3</span> <span class="token operator">*</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>
+                np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>u <span class="token operator">*</span> t<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>v <span class="token operator">*</span> t<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token number">0</span>
+            <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            t_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> TAU<span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            stroke_color<span class="token operator">=</span>GREY
+        <span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>lissajous<span class="token punctuation">)</span>
+
+        dot <span class="token operator">=</span> Dot<span class="token punctuation">(</span>color<span class="token operator">=</span>YELLOW<span class="token punctuation">)</span>
+
+        <span class="token keyword">def</span> <span class="token function">update_dot</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            m<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">*</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>
+                np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>u <span class="token operator">*</span> self<span class="token punctuation">.</span>time <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>v <span class="token operator">*</span> self<span class="token punctuation">.</span>time <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token number">0</span>
+            <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        dot<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>update_dot<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>dot<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details><h5>3. 追逐曲线：一个正三角形的三个顶点分别以一定速度靠近同一侧相邻的顶点，画出每一帧三角形的位置。</h5>
+<p><video controls="controls" src="/updater/TracingCurveExample.mp4" alt="updater/TracingCurveExample.mp4" style="width: 100%; height: 100%;"></video></p>
+<details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TracingCurveExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 极坐标转换为笛卡尔坐标</span>
+    <span class="token keyword">def</span> <span class="token function">polar2xyz</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pho<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">,</span> theta<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> pho <span class="token operator">*</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>
+            np<span class="token punctuation">.</span>cos<span class="token punctuation">(</span>theta<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>theta<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token number">0</span>
+        <span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        r <span class="token operator">=</span> <span class="token number">3</span>
+        <span class="token comment"># 3 个顶点</span>
+        a <span class="token operator">=</span> Dot<span class="token punctuation">(</span>self<span class="token punctuation">.</span>polar2xyz<span class="token punctuation">(</span>r<span class="token punctuation">,</span> PI <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>YELLOW<span class="token punctuation">)</span>
+        b <span class="token operator">=</span> Dot<span class="token punctuation">(</span>self<span class="token punctuation">.</span>polar2xyz<span class="token punctuation">(</span>r<span class="token punctuation">,</span> PI <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">+</span> TAU <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>YELLOW<span class="token punctuation">)</span>
+        c <span class="token operator">=</span> Dot<span class="token punctuation">(</span>self<span class="token punctuation">.</span>polar2xyz<span class="token punctuation">(</span>r<span class="token punctuation">,</span> PI <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">-</span> TAU <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>YELLOW<span class="token punctuation">)</span>
+
+        <span class="token comment"># 3 条边</span>
+        ab <span class="token operator">=</span> Line<span class="token punctuation">(</span>a<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> b<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>GOLD<span class="token punctuation">)</span>
+        bc <span class="token operator">=</span> Line<span class="token punctuation">(</span>b<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> c<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>GOLD<span class="token punctuation">)</span>
+        ca <span class="token operator">=</span> Line<span class="token punctuation">(</span>c<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> a<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>GOLD<span class="token punctuation">)</span>
+
+        <span class="token comment"># 使 3 条边始终连接 3 个顶点</span>
+        ab<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> l<span class="token punctuation">:</span> l<span class="token punctuation">.</span>put_start_and_end_on<span class="token punctuation">(</span>a<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> b<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        bc<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> l<span class="token punctuation">:</span> l<span class="token punctuation">.</span>put_start_and_end_on<span class="token punctuation">(</span>b<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> c<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        ca<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> l<span class="token punctuation">:</span> l<span class="token punctuation">.</span>put_start_and_end_on<span class="token punctuation">(</span>c<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> a<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>ab<span class="token punctuation">,</span> bc<span class="token punctuation">,</span> ca<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+
+        <span class="token comment"># 3 个顶点随时间向同一侧相邻点靠近</span>
+        a<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> m<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> m<span class="token punctuation">.</span>shift<span class="token punctuation">(</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> m<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> dt<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        b<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> m<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> m<span class="token punctuation">.</span>shift<span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> m<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> dt<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        c<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> m<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> m<span class="token punctuation">.</span>shift<span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> m<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> dt<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 轨迹</span>
+        trace <span class="token operator">=</span> VGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 向轨迹中不断添加三角形三边的拷贝</span>
+        <span class="token keyword">def</span> <span class="token function">update_trace</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            m<span class="token punctuation">.</span>add<span class="token punctuation">(</span>ab<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>clear_updaters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>set_stroke<span class="token punctuation">(</span>width<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            m<span class="token punctuation">.</span>add<span class="token punctuation">(</span>bc<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>clear_updaters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>set_stroke<span class="token punctuation">(</span>width<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            m<span class="token punctuation">.</span>add<span class="token punctuation">(</span>ca<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>clear_updaters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>set_stroke<span class="token punctuation">(</span>width<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        trace<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>update_trace<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>trace<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details><h5>4. 东方弹幕游戏：对手每一帧都会改变弹幕的发射角，但是当弹幕发射出去之后，只会进行匀速直线运动，直至飞出屏幕。你需要制作一张螺旋符卡，拥有至少 3 条伪线，且发射角匀速变化。</h5>
+<p><img src="/updater/danmaku01.png" alt="updater/danmaku01.png"></p>
+<details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token comment"># 子弹物件封装</span>
+<span class="token keyword">class</span> <span class="token class-name">Bullet</span><span class="token punctuation">(</span>ArrowTip<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> angle<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token string">"points"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">+=</span> LEFT<span class="token operator">*</span><span class="token number">0.5</span>
+        self<span class="token punctuation">.</span>scale<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>angle <span class="token operator">+</span> PI<span class="token punctuation">)</span>
+        <span class="token comment"># 子弹朝向所对应的向量</span>
+        self<span class="token punctuation">.</span>vector <span class="token operator">=</span> normalize<span class="token punctuation">(</span>rotate_vector<span class="token punctuation">(</span>RIGHT<span class="token punctuation">,</span> angle<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+color_list <span class="token operator">=</span> <span class="token punctuation">[</span>RED<span class="token punctuation">,</span> GOLD<span class="token punctuation">,</span> YELLOW<span class="token punctuation">,</span> GREEN<span class="token punctuation">,</span> TEAL<span class="token punctuation">,</span> BLUE<span class="token punctuation">,</span> PURPLE<span class="token punctuation">]</span>
+v <span class="token operator">=</span> <span class="token number">2</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Danmaku01</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        danmaku <span class="token operator">=</span> VGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 每一帧都向集合中添加一颗子弹，初始角度为 self.time * 50</span>
+            m<span class="token punctuation">.</span>add<span class="token punctuation">(</span>Bullet<span class="token punctuation">(</span>self<span class="token punctuation">.</span>time <span class="token operator">*</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token comment"># 渐变着色</span>
+            m<span class="token punctuation">.</span>set_color_by_gradient<span class="token punctuation">(</span><span class="token operator">*</span>color_list<span class="token punctuation">)</span>
+
+            <span class="token keyword">for</span> b <span class="token keyword">in</span> m<span class="token punctuation">:</span>
+                <span class="token comment"># 子弹匀速直线运动</span>
+                b<span class="token punctuation">.</span>shift<span class="token punctuation">(</span>v <span class="token operator">*</span> dt <span class="token operator">*</span> b<span class="token punctuation">.</span>vector<span class="token punctuation">)</span>
+                <span class="token comment"># 删除屏幕外的子弹</span>
+                <span class="token keyword">if</span> b<span class="token punctuation">.</span>is_off_screen<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    m<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+
+        danmaku<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>update<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>danmaku<span class="token punctuation">)</span>
+</code></pre>
+<p>当然这里的例子我并没有进行优化，如果是游戏开发者，肯定了解过<mark>对象池</mark>的概念，它能有效优化对象频繁创建和析构带来的性能损失问题。</p>
+</blockquote>
+</details><h5>5. 东方弹幕游戏进阶：境符「波と粒の境界」可谓是观赏性极高的符卡之一，现在紫妈要求你用 manim 来实现它。</h5>
+<p><img src="/updater/danmaku02.png" alt="updater/danmaku02.png"></p>
+<details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
+<div class="callout-fold"></div></summary><blockquote>
+<p>其实只需要改第 6 行就可以了。只要发射角的变化是非线性的，就可以达到这样的效果。当然，如果觉得子弹还不够密集（因为 60 帧下每秒只有 60 颗）可以再加几组。</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Danmaku01</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        danmaku <span class="token operator">=</span> VGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            m<span class="token punctuation">.</span>add<span class="token punctuation">(</span>Bullet<span class="token punctuation">(</span>self<span class="token punctuation">.</span>time <span class="token operator">**</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            m<span class="token punctuation">.</span>set_color_by_gradient<span class="token punctuation">(</span><span class="token operator">*</span>color_list<span class="token punctuation">)</span>
+
+            <span class="token keyword">for</span> b <span class="token keyword">in</span> m<span class="token punctuation">:</span>
+                b<span class="token punctuation">.</span>shift<span class="token punctuation">(</span>v <span class="token operator">*</span> dt <span class="token operator">*</span> b<span class="token punctuation">.</span>vector<span class="token punctuation">)</span>
+                <span class="token keyword">if</span> b<span class="token punctuation">.</span>is_off_screen<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    m<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+
+        danmaku<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>update<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>danmaku<span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details>]]></content:encoded>
+            <author>widcardw@foxmail.com (widcardw)</author>
+        </item>
+        <item>
+            <title><![CDATA[updater 文档 | 第 2 节 基本使用]]></title>
+            <link>https://widcard.win/posts/updater_tutorials/c02_basic_usage</link>
+            <guid>https://widcard.win/posts/updater_tutorials/c02_basic_usage</guid>
+            <pubDate>Fri, 01 Jul 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>第 2 节 基本使用</h1>
+<h2>updater 是什么</h2>
+<p>请不要尝试用“更新器”来理解这个工具，毕竟用这种方式来理解并不方便。而又有群友提出了这样一种见解：</p>
+<details class="custom-callout quote" open><summary class="callout-title"><div>来自 manim kindergarten 群友</div>
+<div class="callout-fold"></div></summary><blockquote>
+<p>updater 可以看作是一种以<mark>副作用</mark>驱动的动画编写策略。</p>
+</blockquote>
+</details><p>还有群友是这样认为的</p>
+<details class="custom-callout quote" open><summary class="callout-title"><div>Xx</div>
+<div class="callout-fold"></div></summary><blockquote>
+<p>updater 不是和 up 约会的人吗？</p>
+</blockquote>
+</details><h2>updater 怎么用</h2>
+<p>其实在一些情况下我是非常认同这一观点的，因为我们常用的 updater 方法大多都符合这一说法。在这里我们给一个例子，读者不妨实际操作一下。</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">BasicExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 创建物件</span>
+        dot <span class="token operator">=</span> Dot<span class="token punctuation">(</span>LEFT<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span>
+        text <span class="token operator">=</span> Text<span class="token punctuation">(</span><span class="token string">"This is a dot"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>next_to<span class="token punctuation">(</span>dot<span class="token punctuation">,</span> RIGHT<span class="token punctuation">)</span>
+        <span class="token comment"># 添加更新，使得文本保持在点的右边</span>
+        text<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> m<span class="token punctuation">:</span> m<span class="token punctuation">.</span>next_to<span class="token punctuation">(</span>dot<span class="token punctuation">,</span> RIGHT<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment"># 将点和物件添加到场景中</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>dot<span class="token punctuation">,</span> text<span class="token punctuation">)</span>
+        <span class="token comment"># 让点绕原点旋转一周</span>
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>Rotate<span class="token punctuation">(</span>dot<span class="token punctuation">,</span> PI <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> about_point<span class="token operator">=</span>ORIGIN<span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                  run_time<span class="token operator">=</span><span class="token number">4.44</span><span class="token punctuation">)</span>
+</code></pre>
+<p>在这一个例子中，updater 在感觉上很明显就是一种<mark>副作用驱动</mark>的例子。在动画中，我们只编写了点的旋转，但是文本的位置也随着点的运动而一起运动。</p>
+<blockquote>
+<p>这不由得让笔者想起了 Vue 的依赖收集，当变量改变时，根据收集的依赖判断是否需要触发回调。</p>
+</blockquote>
+<h2>实际上它是如何工作的</h2>
+<p>在使用 <code>add_updater</code> 方法给物件添加更新的时候，它会将传入的参数保存到一个成员列表中，这一操作是为了在动画中，能够方便调用物件的更新。</p>
+<pre class="language-python"><code class="language-python">    <span class="token keyword">def</span> <span class="token function">add_updater</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>
+        update_function<span class="token punctuation">:</span> Updater<span class="token punctuation">,</span>
+        index<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">|</span> <span class="token boolean">None</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+        call_updater<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+    <span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 带有 dt</span>
+        <span class="token keyword">if</span> <span class="token string">"dt"</span> <span class="token keyword">in</span> get_parameters<span class="token punctuation">(</span>update_function<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 基于时间的 updater 列表的引用</span>
+            updater_list <span class="token operator">=</span> self<span class="token punctuation">.</span>time_based_updaters
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment"># 普通的 updater 列表的引用</span>
+            updater_list <span class="token operator">=</span> self<span class="token punctuation">.</span>non_time_updaters
+
+        <span class="token comment"># 向列表的引用中添加传入的更新函数</span>
+        <span class="token keyword">if</span> index <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            updater_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>update_function<span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            updater_list<span class="token punctuation">.</span>insert<span class="token punctuation">(</span>index<span class="token punctuation">,</span> update_function<span class="token punctuation">)</span>
+
+        <span class="token comment"># 更新是否含有 updater 的状态</span>
+        self<span class="token punctuation">.</span>refresh_has_updater_status<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> parent <span class="token keyword">in</span> self<span class="token punctuation">.</span>parents<span class="token punctuation">:</span>
+            parent<span class="token punctuation">.</span>has_updaters <span class="token operator">=</span> <span class="token boolean">True</span>
+        <span class="token keyword">if</span> call_updater<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>update<span class="token punctuation">(</span>dt<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self
+</code></pre>
+<p>还记得上一节提到的 <code>update_mobject</code> 方法吗，Scene 的 <code>play</code> 方法每一帧都会遍历添加到场景中的物件，并且计算出这一帧它应该更新到哪一个状态。前面的“副作用”的错觉，其实相当于是动画引擎在静默的帮你处理所有隐含的动画和更新。因此我认为“副作用”这一说法也没有任何错。</p>
+<pre class="language-python"><code class="language-python"><span class="token comment"># scene.py</span>
+<span class="token keyword">class</span> <span class="token class-name">Scene</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+    <span class="token keyword">def</span> <span class="token function">update_mobjects</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        <span class="token comment"># 遍历场景中的 mobject</span>
+        <span class="token keyword">for</span> mobject <span class="token keyword">in</span> self<span class="token punctuation">.</span>mobjects<span class="token punctuation">:</span>
+            <span class="token comment"># 逐一更新</span>
+            mobject<span class="token punctuation">.</span>update<span class="token punctuation">(</span>dt<span class="token punctuation">)</span>
+
+<span class="token comment"># mobject.py</span>
+<span class="token keyword">class</span> <span class="token class-name">Mobject</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+    <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> recurse<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> self<span class="token punctuation">.</span>has_updaters <span class="token keyword">or</span> self<span class="token punctuation">.</span>updating_suspended<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> self
+        <span class="token comment"># 遍历含 dt 的更新</span>
+        <span class="token keyword">for</span> updater <span class="token keyword">in</span> self<span class="token punctuation">.</span>time_based_updaters<span class="token punctuation">:</span>
+            updater<span class="token punctuation">(</span>self<span class="token punctuation">,</span> dt<span class="token punctuation">)</span>
+        <span class="token comment"># 遍历不含 dt 的更新</span>
+        <span class="token keyword">for</span> updater <span class="token keyword">in</span> self<span class="token punctuation">.</span>non_time_updaters<span class="token punctuation">:</span>
+            updater<span class="token punctuation">(</span>self<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> recurse<span class="token punctuation">:</span>
+            <span class="token keyword">for</span> submob <span class="token keyword">in</span> self<span class="token punctuation">.</span>submobjects<span class="token punctuation">:</span>
+                submob<span class="token punctuation">.</span>update<span class="token punctuation">(</span>dt<span class="token punctuation">,</span> recurse<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self
+</code></pre>
+<p>这是这样大多数情况下，当有物件添加了 updater ，那么整个执行的流程大致就是如下的样子（更多的内容还是建议看源码）：</p>
+<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TD
+
+<span class="token keyword">subgraph</span> Scene
+    a<span class="token text string">[添加updater]</span> <span class="token arrow operator">--></span> b<span class="token text string">[play]</span>
+    <span class="token keyword">subgraph</span> Animation
+        c<span class="token text string">["update mobjects"]</span> <span class="token arrow operator">--></span> d<span class="token text string">["interpolate&lt;br>动画插值变换"]</span>
+        d <span class="token arrow operator">--></span> e<span class="token text string">["interpolate_mobject&lt;br>根据插值变换物件"]</span>
+    <span class="token keyword">end</span>
+    <span class="token keyword">subgraph</span> Updater
+        f<span class="token text string">["update frames"]</span> <span class="token arrow operator">--></span> g<span class="token text string">["update mobjects"]</span>
+        g <span class="token arrow operator">--></span> h<span class="token text string">["mobject.update(dt)&lt;br>根据updater列表更新物件"]</span>
+    <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+b <span class="token arrow operator">--></span> c
+b <span class="token arrow operator">--></span> f
+
+</code></pre>
+<h2>编写规范</h2>
+<p>在 <code>add_updater</code> 方法中，传入的参数是一个函数，当然也可以查看它的类型定义，它接受一个 Mobject 作为参数。</p>
+<pre class="language-python"><code class="language-python">TimeBasedUpdater <span class="token operator">=</span> Callable<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"Mobject"</span><span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span>
+NonTimeUpdater <span class="token operator">=</span> Callable<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"Mobject"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span>
+Updater <span class="token operator">=</span> Union<span class="token punctuation">[</span>TimeBasedUpdater<span class="token punctuation">,</span> NonTimeUpdater<span class="token punctuation">]</span>
+</code></pre>
+<p>因此，我们可以这样写一个 updater</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">my_updater</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m<span class="token punctuation">.</span>next_to<span class="token punctuation">(</span>other_mobject<span class="token punctuation">,</span> RIGHT<span class="token punctuation">)</span>
+    m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">*</span> DEGREES<span class="token punctuation">)</span>
+
+mob<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>my_updater<span class="token punctuation">)</span>
+</code></pre>
+<p>当然，对于一些比较简单的单行函数，也可以用 lambda 匿名函数来简化。</p>
+<h2>更多的例子</h2>
+<details class="custom-callout caution" open><summary class="callout-title"><div>注意</div>
+<div class="callout-fold"></div></summary><blockquote>
+<p>2022-07-01 版本的 manimgl 在使用 updater 组合上 become 会失效，具体原因可能是某处触发了 <code>suspend_updating</code>，导致更新被禁用。</p>
+</blockquote>
+</details><p>这一部分作为一个练习，读者可以先尝试自己动手实现。在实现之后，再来看看笔者是如何实现的。</p>
+<h5>1. 绘制一条线段 $AB$，并绘制它的垂直平分线，使得当线段 $AB$ 移动、旋转的时候，中垂线始终能够垂直平分这条线段。</h5>
+<p><video controls="controls" src="https://widcard.win/updater/PerpendicularBisectorExample.mp4" alt="updater/PerpendicularBisectorExample.mp4" style="width: 100%; height: 100%;"></video></p>
+<details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">PerpendicularBisectorExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 直线</span>
+        line <span class="token operator">=</span> Line<span class="token punctuation">(</span>LEFT<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">,</span> RIGHT<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token comment"># 中垂线</span>
+        bisector <span class="token operator">=</span> line<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>PI <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>scale<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+        bisector<span class="token punctuation">.</span>set_color<span class="token punctuation">(</span>RED<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>line<span class="token punctuation">,</span> bisector<span class="token punctuation">)</span>
+
+        bisector<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>
+            <span class="token keyword">lambda</span> m<span class="token punctuation">:</span> m
+                <span class="token comment"># 设置角度</span>
+                <span class="token punctuation">.</span>set_angle<span class="token punctuation">(</span>line<span class="token punctuation">.</span>get_angle<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> PI <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span>
+                <span class="token comment"># 移动到线段的中点</span>
+                <span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>line<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+        <span class="token comment"># 变换直线</span>
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>line<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>put_start_and_end_on<span class="token punctuation">(</span>
+            np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment"># 旋转直线</span>
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>Rotate<span class="token punctuation">(</span>line<span class="token punctuation">,</span> PI <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details><p></p>
+<h5>2. 绘制一段圆弧，使用两个 <code>ValueTracker</code> 分别控制它的弧度和半径。</h5>
+<blockquote>
+<p>这个样例暂时没有办法写，在先前版本是可以实现的</p>
+</blockquote>
+<details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ArcExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        arc <span class="token operator">=</span> Arc<span class="token punctuation">(</span>angle<span class="token operator">=</span>PI <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> radius<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+        arc<span class="token punctuation">.</span>set_color<span class="token punctuation">(</span>YELLOW<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>arc<span class="token punctuation">)</span>
+
+        radius <span class="token operator">=</span> ValueTracker<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+        angle <span class="token operator">=</span> ValueTracker<span class="token punctuation">(</span>PI <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        arc<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> m<span class="token punctuation">:</span> m<span class="token punctuation">.</span>become<span class="token punctuation">(</span>
+            Arc<span class="token punctuation">(</span>angle<span class="token operator">=</span>angle<span class="token punctuation">.</span>get_value<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> radius<span class="token operator">=</span>radius<span class="token punctuation">.</span>get_value<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>radius<span class="token punctuation">,</span> angle<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>radius<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>set_value<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>angle<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>set_value<span class="token punctuation">(</span>PI<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details><p></p>
+<h5>3. 绘制一条数轴，在上面添加一个点，使用 <code>ValueTracker</code> 类来控制点的位置，同时使用 <code>DecimalNumber</code> 来显示点所代表的数值。</h5>
+<p><video controls="controls" src="/updater/NumberLineScene.mp4" alt="updater/NumberLineScene.mp4" style="width: 100%; height: 100%;"></video></p>
+<p></p>
+<details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">NumberLineScene</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 创建数轴</span>
+        number_line <span class="token operator">=</span> NumberLine<span class="token punctuation">(</span>x_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> width<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span>
+        number_line<span class="token punctuation">.</span>add_numbers<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>number_line<span class="token punctuation">)</span>
+
+        v <span class="token operator">=</span> ValueTracker<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token comment"># 点</span>
+        dot <span class="token operator">=</span> Dot<span class="token punctuation">(</span>number_line<span class="token punctuation">.</span>n2p<span class="token punctuation">(</span>v<span class="token punctuation">.</span>get_value<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>YELLOW<span class="token punctuation">)</span>
+        <span class="token comment"># 显示数值</span>
+        label <span class="token operator">=</span> DecimalNumber<span class="token punctuation">(</span>v<span class="token punctuation">.</span>get_value<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> num_decimal_places<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>dot<span class="token punctuation">,</span> label<span class="token punctuation">)</span>
+
+        dot<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>
+            <span class="token keyword">lambda</span> m<span class="token punctuation">:</span> m<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>
+                number_line<span class="token punctuation">.</span>n2p<span class="token punctuation">(</span>v<span class="token punctuation">.</span>get_value<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 数轴上数值对映的实际坐标</span>
+            <span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+        label<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>
+            <span class="token keyword">lambda</span> m<span class="token punctuation">:</span> m
+                <span class="token punctuation">.</span>set_value<span class="token punctuation">(</span>v<span class="token punctuation">.</span>get_value<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 设置数值</span>
+                <span class="token punctuation">.</span>next_to<span class="token punctuation">(</span>dot<span class="token punctuation">,</span> UP<span class="token punctuation">)</span>          <span class="token comment"># 设置位置</span>
+        <span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>v<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>set_value<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> run_time<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>v<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>set_value<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> run_time<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details><h5>4. 在坐标系上绘制一条函数 $y=\sin(x+\varphi)$，使用你觉得方便的方法，使得改变 $\varphi$ 值的时候，图像也能动态改变。</h5>
+<p><video controls="controls" src="/updater/SineGraphScene.mp4" alt="updater/SineGraphScene.mp4" style="width: 100%; height: 100%;"></video></p>
+<details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
+<div class="callout-fold"></div></summary><blockquote>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">SineGraphScene</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 坐标轴</span>
+        axes <span class="token operator">=</span> Axes<span class="token punctuation">(</span>x_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0.25</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>axes<span class="token punctuation">)</span>
+        
+        <span class="token comment"># 图像</span>
+        graph <span class="token operator">=</span> axes<span class="token punctuation">.</span>get_graph<span class="token punctuation">(</span>
+            <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> x_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">]</span>
+        <span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>graph<span class="token punctuation">)</span>
+
+        <span class="token comment"># phi 的值</span>
+        phi <span class="token operator">=</span> ValueTracker<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># 给 grahp 添加绑定</span>
+        graph<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>
+            <span class="token keyword">lambda</span> g<span class="token punctuation">:</span> g<span class="token punctuation">.</span>set_points<span class="token punctuation">(</span>
+                axes<span class="token punctuation">.</span>get_graph<span class="token punctuation">(</span>
+                    <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>x <span class="token operator">+</span> phi<span class="token punctuation">.</span>get_value<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    x_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">]</span>
+                <span class="token punctuation">)</span><span class="token punctuation">.</span>get_points<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+        <span class="token triple-quoted-string string">'''
+        # 在编写该文档的时候 updater 和 become 一起用的方法坏掉了
+        # 因此只能用 `set_points` 来暂时顶替一下
+        # 如果什么时候修好了可以直接 become 一个新的 graph
+        graph.add_updater(lambda g: g.become(
+            axes.get_graph(
+                lambda x: np.sin(x + phi.get_value()), 
+                x_range=[-9, 9, 0.1]
+            )
+        ))
+        '''</span>
+
+        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>phi<span class="token punctuation">,</span> graph<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>phi<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>set_value<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> run_time<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>
+</code></pre>
+</blockquote>
+</details><p>如果上面的这些例子读者都能写出来，并且能够举一反三，那么 updater 的基础使用应当是没有什么问题的了。</p>
+]]></content:encoded>
+            <author>widcardw@foxmail.com (widcardw)</author>
+        </item>
+    </channel>
+</rss>
