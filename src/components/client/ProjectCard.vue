@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <a :href="link" border-b="~ transparent" class="!pbe-0">
+  <a :href="link" border-b="~ transparent" class="!pbe-0" target="_blank">
     <div
       p-4 rounded
       class="hover:bg-zinc/10 transition-all"
