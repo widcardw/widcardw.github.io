@@ -15,7 +15,7 @@ withDefaults(defineProps<{
 <template>
   <div
     p-4 flex space-x-2 rounded
-    class="hover:bg-zinc/10 transition-all cursor-pointer"
+    class="hover:bg-zinc/10 transition-all"
   >
     <MyImg class="w-3.25rem h-3.25rem rounded-full" :src="avatar" />
     <div flex-1>

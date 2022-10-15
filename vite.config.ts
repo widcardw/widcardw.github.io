@@ -32,6 +32,9 @@ export default defineConfig({
       '~/': `${resolve(__dirname, 'src')}/`,
     },
   },
+
+  publicDir: 'pages/public',
+
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/],
