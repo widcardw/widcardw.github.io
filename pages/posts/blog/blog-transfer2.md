@@ -12,7 +12,7 @@ abstract: 又是喜新厌旧的博客换主题
 
 ## 问题发现
 
-在新博客系统最开始，我使用的是 [vitesse-lite](https://github.com/antfy/vitesse-lite) 搭建的，其中并不包含 SSG，这也就导致了博客并不是每个页面都生成一个 html 文件，而是只有一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" />，而它的路由其实可以理解为都是脚本动态生成的。也就是说，只要刷新页面，这个页面就会失效。如果有良好的 <FileName name="_redirect" /> 声明，那么网页就会跳转到根路由。而没有<FileName name="_redirect" /> 的网页 app，将会直接 404。如果细究其打包完成后的 <FileName name="dist" icon="i-vscode-icons-default-folder-opened" /> 目录，可以发现 Vue app 中只有一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" />，静态媒体资源，以及在 <FileName name="assets" icon="i-vscode-icons-default-folder-opened" /> 中的一堆 js 和 css 文件。在 [官方文档](https://cn.vuejs.org/guide/scaling-up/ssr.html#why-ssr) 中，这种 app 被称为 SPA，即客户端的单页应用。
+在新博客系统最开始，我使用的是 [vitesse-lite](https://github.com/antfy/vitesse-lite) 搭建的，其中并不包含 SSG，这也就导致了博客并不是每个页面都生成一个 html 文件，而是只有一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" />，而它的路由其实可以理解为都是脚本动态生成的。也就是说，只要刷新页面，这个页面就会失效。如果有良好的 <FileName name="_redirect" /> 声明，那么网页就会跳转到根路由。而没有 <FileName name="_redirect" /> 的网页 app，将会直接 404。如果细究其打包完成后的 <FileName name="dist" icon="i-vscode-icons-default-folder-opened" /> 目录，可以发现 Vue app 中只有一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" />，静态媒体资源，以及在 <FileName name="assets" icon="i-vscode-icons-default-folder-opened" /> 中的一堆 js 和 css 文件。在 [官方文档](https://cn.vuejs.org/guide/scaling-up/ssr.html#why-ssr) 中，这种 app 被称为 SPA，即客户端的单页应用。
 
 而 SSG (Static-site Generation 静态站点生成 )，它所构建的所有网页，都可以认为是静态的，每个网页路由都有各自的文件，直接输入 url 将会直接加载对应的网页文件，而不是像上面所说的，所有路由都是动态生成。SSG 打包后，每个页面都有对应的 html 文件，每个页面都能够各自加载自己的资源和脚本，当然代价就是打包所耗费的资源多了一些。
 

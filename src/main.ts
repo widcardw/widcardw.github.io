@@ -8,11 +8,11 @@ import App from './App.vue'
 
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
+import 'mdit-plugin-callouts/index.css'
+import './styles/heti.css'
 import './styles/heti-ext.css'
 import 'uno.css'
-import './styles/heti.css'
 import type { UserModule } from './types'
-import 'mdit-plugin-callouts/index.css'
 
 const routes = setupLayouts(generatedRoutes)
 

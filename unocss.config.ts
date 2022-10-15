@@ -3,7 +3,8 @@ import {
   presetAttributify,
   presetIcons,
   presetUno,
-  // transformerDirectives,
+  presetWebFonts,
+  transformerDirectives,
   // transformerVariantGroup,
 } from 'unocss'
 
@@ -20,10 +21,15 @@ export default defineConfig({
       scale: 1.2,
       warn: true,
     }),
+    presetWebFonts({
+      fonts: {
+        mono: 'PT Mono',
+      },
+    }),
   ],
-  // transformers: [
-  //   transformerDirectives(),
-  //   transformerVariantGroup(),
-  // ],
+  transformers: [
+    transformerDirectives(),
+    // transformerVariantGroup(),
+  ],
   safelist: 'prose-style m-auto text-left'.split(' '),
 })

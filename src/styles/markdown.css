@@ -1,6 +1,7 @@
 /* https://github.com/antfu/prism-theme-vars */
 @import 'prism-theme-vars/base.css';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.15.3/katex.min.css';
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
 
 .prose-style {
   padding: 0.75rem 0.75rem 4.5rem 0.75rem;
