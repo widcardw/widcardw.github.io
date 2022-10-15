@@ -4,7 +4,7 @@
         <title>widcardw</title>
         <link>https://widcard.win/</link>
         <description>widcardw's blog</description>
-        <lastBuildDate>Wed, 12 Oct 2022 06:53:58 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 15 Oct 2022 10:52:19 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -264,7 +264,7 @@
             <content:encoded><![CDATA[<h1>关于博客又搬家</h1>
 <p>明明 Vuepress 和 Vitepress 已经足够好了，为什么我还要重新自己搞一个博客呢，真是太折腾了。但其实通过这么一路下来，总算是了解了普通的 Vue app 和 SSG 之间的区别。</p>
 <h2>问题发现</h2>
-<p>在新博客系统最开始，我使用的是 <a href="https://github.com/antfy/vitesse-lite">vitesse-lite</a> 搭建的，其中并不包含 SSG，这也就导致了博客并不是每个页面都生成一个 html 文件，而是只有一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" />，而它的路由其实可以理解为都是脚本动态生成的。也就是说，只要刷新页面，这个页面就会失效。如果有良好的 <FileName name="_redirect" /> 声明，那么网页就会跳转到根路由。而没有<FileName name="_redirect" /> 的网页 app，将会直接 404。如果细究其打包完成后的 <FileName name="dist" icon="i-vscode-icons-default-folder-opened" /> 目录，可以发现 Vue app 中只有一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" />，静态媒体资源，以及在 <FileName name="assets" icon="i-vscode-icons-default-folder-opened" /> 中的一堆 js 和 css 文件。在 <a href="https://cn.vuejs.org/guide/scaling-up/ssr.html#why-ssr">官方文档</a> 中，这种 app 被称为 SPA，即客户端的单页应用。</p>
+<p>在新博客系统最开始，我使用的是 <a href="https://github.com/antfy/vitesse-lite">vitesse-lite</a> 搭建的，其中并不包含 SSG，这也就导致了博客并不是每个页面都生成一个 html 文件，而是只有一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" />，而它的路由其实可以理解为都是脚本动态生成的。也就是说，只要刷新页面，这个页面就会失效。如果有良好的 <FileName name="_redirect" /> 声明，那么网页就会跳转到根路由。而没有 <FileName name="_redirect" /> 的网页 app，将会直接 404。如果细究其打包完成后的 <FileName name="dist" icon="i-vscode-icons-default-folder-opened" /> 目录，可以发现 Vue app 中只有一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" />，静态媒体资源，以及在 <FileName name="assets" icon="i-vscode-icons-default-folder-opened" /> 中的一堆 js 和 css 文件。在 <a href="https://cn.vuejs.org/guide/scaling-up/ssr.html#why-ssr">官方文档</a> 中，这种 app 被称为 SPA，即客户端的单页应用。</p>
 <p>而 SSG (Static-site Generation 静态站点生成 )，它所构建的所有网页，都可以认为是静态的，每个网页路由都有各自的文件，直接输入 url 将会直接加载对应的网页文件，而不是像上面所说的，所有路由都是动态生成。SSG 打包后，每个页面都有对应的 html 文件，每个页面都能够各自加载自己的资源和脚本，当然代价就是打包所耗费的资源多了一些。</p>
 <p>那为什么我要从 SPA 转到 SSG 呢？单页应用不好吗？</p>
 <p>确实没有那么方便，首当其冲的就是刷新重新渲染的问题，另外就是 giscus 评论的问题。从某个页面刷新后要重新从根页面点击进入目标页面，可想而知这是多么糟糕的用户体验。而 giscus 评论系统登录验证后，会重新跳转到原来的路由，而 SPA 的路由不复存在，需要重新生成，这也会重新路由到 404。</p>

@@ -36,292 +36,292 @@
   "src/App.vue?vue&type=script&setup=true&lang.ts": [],
   "node_modules/.pnpm/@unocss+reset@0.45.15/node_modules/@unocss/reset/tailwind.css": [],
   "src/styles/main.css": [],
+  "node_modules/.pnpm/mdit-plugin-callouts@0.0.13/node_modules/mdit-plugin-callouts/dist/index.css": [],
+  "src/styles/heti.css": [],
   "src/styles/heti-ext.css": [],
   "../../../../../__uno.css": [],
-  "src/styles/heti.css": [],
-  "node_modules/.pnpm/mdit-plugin-callouts@0.0.13/node_modules/mdit-plugin-callouts/dist/index.css": [],
   "src/main.ts": [],
   "index.html": [],
-  "assets/app.b26431f6.js-unocss-hash.css": [],
+  "assets/app.ff90c900.js-unocss-hash.css": [],
   "pages/secrets/fei/chapter-01.md": [
-    "/assets/chapter-01.cf60ad5e.js"
+    "/assets/chapter-01.aeb46caa.js"
   ],
   "pages/secrets/di-fu-gong-zuo-ri-ji/chapter-02.md": [
-    "/assets/chapter-02.2b7a060d.js"
+    "/assets/chapter-02.c0262045.js"
   ],
   "pages/secrets/di-fu-gong-zuo-ri-ji/chapter-01.md": [
-    "/assets/chapter-01.2c15a403.js"
+    "/assets/chapter-01.008086c8.js"
   ],
   "../../../../../updater/MatrixReflect.png": [
-    "/assets/c04_update_from_func.ff432d10.js"
+    "/assets/c04_update_from_func.9fced033.js"
   ],
   "../../../../../updater/ShiftRotateExample.mp4": [
-    "/assets/c04_update_from_func.ff432d10.js"
+    "/assets/c04_update_from_func.9fced033.js"
   ],
   "../../../../../updater/RollingCircleExample.mp4": [
-    "/assets/c04_update_from_func.ff432d10.js"
+    "/assets/c04_update_from_func.9fced033.js"
   ],
   "../../../../../updater/BezierExample.mp4": [
-    "/assets/c04_update_from_func.ff432d10.js"
+    "/assets/c04_update_from_func.9fced033.js"
   ],
   "pages/posts/updater_tutorials/c04_update_from_func.md": [
-    "/assets/c04_update_from_func.ff432d10.js"
+    "/assets/c04_update_from_func.9fced033.js"
   ],
   "src/components/internals/ShadowRoot.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.bcf19528.js"
+    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.1310edd1.js"
   ],
   "node_modules/.pnpm/@antfu+utils@0.5.2/node_modules/@antfu/utils/dist/index.mjs": [
-    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.bcf19528.js"
+    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.1310edd1.js"
   ],
   "node_modules/.pnpm/js-base64@3.7.2/node_modules/js-base64/base64.mjs": [
-    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.bcf19528.js"
+    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.1310edd1.js"
   ],
   "\u0000/home/runner/work/widcardw.github.io/widcardw.github.io/node_modules/.pnpm/mermaid@9.1.6/node_modules/mermaid/dist/mermaid.js?commonjs-module": [
-    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.bcf19528.js"
+    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.1310edd1.js"
   ],
   "node_modules/.pnpm/mermaid@9.1.6/node_modules/mermaid/dist/mermaid.js": [
-    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.bcf19528.js"
+    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.1310edd1.js"
   ],
   "src/composables/modules/setupMermaid.ts": [
-    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.bcf19528.js"
+    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.1310edd1.js"
   ],
   "src/components/client/Mermaid.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.bcf19528.js"
+    "/assets/Mermaid.vue_vue_type_script_setup_true_lang.1310edd1.js"
   ],
   "../../../../../updater/InterpolateExampleScene.png": [
     "/assets/InterpolateExampleScene.0c640f3e.js"
   ],
   "../../../../../updater/ClockExampleScene.png": [
-    "/assets/c03_time_based_updater.8d0eb3d1.js"
+    "/assets/c03_time_based_updater.dc862005.js"
   ],
   "../../../../../updater/LissajousExample.mp4": [
-    "/assets/c03_time_based_updater.8d0eb3d1.js"
+    "/assets/c03_time_based_updater.dc862005.js"
   ],
   "../../../../../updater/TracingCurveExample.mp4": [
-    "/assets/c03_time_based_updater.8d0eb3d1.js"
+    "/assets/c03_time_based_updater.dc862005.js"
   ],
   "../../../../../updater/danmaku01.png": [
-    "/assets/c03_time_based_updater.8d0eb3d1.js"
+    "/assets/c03_time_based_updater.dc862005.js"
   ],
   "../../../../../updater/danmaku02.png": [
-    "/assets/c03_time_based_updater.8d0eb3d1.js"
+    "/assets/c03_time_based_updater.dc862005.js"
   ],
   "pages/posts/updater_tutorials/c03_time_based_updater.md": [
-    "/assets/c03_time_based_updater.8d0eb3d1.js"
+    "/assets/c03_time_based_updater.dc862005.js"
   ],
   "../../../../../updater/PerpendicularBisectorExample.mp4": [
-    "/assets/c02_basic_usage.2b029bb7.js"
+    "/assets/c02_basic_usage.36d60785.js"
   ],
   "../../../../../updater/NumberLineScene.mp4": [
-    "/assets/c02_basic_usage.2b029bb7.js"
+    "/assets/c02_basic_usage.36d60785.js"
   ],
   "../../../../../updater/SineGraphScene.mp4": [
-    "/assets/c02_basic_usage.2b029bb7.js"
+    "/assets/c02_basic_usage.36d60785.js"
   ],
   "pages/posts/updater_tutorials/c02_basic_usage.md": [
-    "/assets/c02_basic_usage.2b029bb7.js"
+    "/assets/c02_basic_usage.36d60785.js"
   ],
   "../../../../../updater/updater_01interpolate.svg": [
-    "/assets/c01_front_knowledge.be6ddf7d.js"
+    "/assets/c01_front_knowledge.cec30b1f.js"
   ],
   "pages/posts/updater_tutorials/c01_front_knowledge.md": [
-    "/assets/c01_front_knowledge.be6ddf7d.js"
+    "/assets/c01_front_knowledge.cec30b1f.js"
   ],
   "pages/posts/trials/SublimeLinter.md": [
-    "/assets/SublimeLinter.836b9c13.js"
+    "/assets/SublimeLinter.71be7f26.js"
   ],
   "pages/posts/trials/Sublime-lsp.md": [
-    "/assets/Sublime-lsp.75760702.js"
+    "/assets/Sublime-lsp.c6fb1e24.js"
   ],
   "pages/posts/trials/MPV-use-notes.md": [
-    "/assets/MPV-use-notes.a0caca0e.js"
+    "/assets/MPV-use-notes.00ac9cfe.js"
   ],
   "pages/posts/notes/vite-rsw.md": [
-    "/assets/vite-rsw.90be8992.js"
+    "/assets/vite-rsw.426f1873.js"
   ],
   "src/components/client/FileName.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/FileName.vue_vue_type_script_setup_true_lang.72a75644.js"
+    "/assets/FileName.vue_vue_type_script_setup_true_lang.57df6a6d.js"
   ],
   "../../../../../posts-imgs/bez.gif": [
-    "/assets/vectorized-mobject.c42be1d3.js"
+    "/assets/vectorized-mobject.2b25e5ad.js"
   ],
   "../../../../../posts-imgs/olive.jpg": [
-    "/assets/vectorized-mobject.c42be1d3.js"
+    "/assets/vectorized-mobject.2b25e5ad.js"
   ],
   "../../../../../posts-imgs/olive-withhandle.jpg": [
-    "/assets/vectorized-mobject.c42be1d3.js"
+    "/assets/vectorized-mobject.2b25e5ad.js"
   ],
   "../../../../../posts-imgs/line.png": [
-    "/assets/vectorized-mobject.c42be1d3.js"
+    "/assets/vectorized-mobject.2b25e5ad.js"
   ],
   "../../../../../posts-imgs/problem-of-handle.jpg": [
-    "/assets/vectorized-mobject.c42be1d3.js"
+    "/assets/vectorized-mobject.2b25e5ad.js"
   ],
   "../../../../../posts-imgs/arc.gif": [
-    "/assets/vectorized-mobject.c42be1d3.js"
+    "/assets/vectorized-mobject.2b25e5ad.js"
   ],
   "../../../../../posts-imgs/annulus.jpg": [
-    "/assets/vectorized-mobject.c42be1d3.js"
+    "/assets/vectorized-mobject.2b25e5ad.js"
   ],
   "pages/posts/notes/vectorized-mobject.md": [
-    "/assets/vectorized-mobject.c42be1d3.js"
+    "/assets/vectorized-mobject.2b25e5ad.js"
   ],
   "src/components/client/GlArea.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "src/components/post/sdf2.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "src/components/post/sdf1.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "src/components/post/SmoothStepReverse.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "src/components/post/SmoothStep.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "../../../../../posts-imgs/OpenGL-sequence.svg": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "../../../../../posts-imgs/curve_stroke_primitive.png": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "../../../../../posts-imgs/quadratic_corner_stroke.png": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "../../../../../posts-imgs/curve_stroke_shader.png": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "../../../../../posts-imgs/quadratic_bezier_stroke_shader.svg": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "../../../../../posts-imgs/example_trianglify.svg": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "../../../../../posts-imgs/circle_trianglify.png": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "../../../../../posts-imgs/fill_without_sdf.png": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "../../../../../posts-imgs/curve_shader.png": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "../../../../../posts-imgs/quadratic_bezier_fill_shader.svg": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "pages/posts/notes/quadratic_bezier_shader.md": [
-    "/assets/quadratic_bezier_shader.0609e34c.js"
+    "/assets/quadratic_bezier_shader.c0e71766.js"
   ],
   "../../../../../posts-imgs/map-reduce.bakedsvg.svg": [
-    "/assets/mongodb-notes.5a8af5b1.js"
+    "/assets/mongodb-notes.2ce8ad79.js"
   ],
   "pages/posts/notes/mongodb-notes.md": [
-    "/assets/mongodb-notes.5a8af5b1.js"
+    "/assets/mongodb-notes.2ce8ad79.js"
   ],
   "pages/posts/notes/manimgl-installation.md": [
-    "/assets/manimgl-installation.0db353b5.js"
+    "/assets/manimgl-installation.c37e94ae.js"
   ],
   "pages/posts/notes/editor-shortcut.md": [
-    "/assets/editor-shortcut.ca009762.js"
+    "/assets/editor-shortcut.db2a8aab.js"
   ],
   "pages/posts/blog/methodology.md": [
-    "/assets/methodology.440dd62f.js"
+    "/assets/methodology.ab68a92b.js"
   ],
   "pages/posts/blog/blog-transfer2.md": [
-    "/assets/blog-transfer2.276068eb.js"
+    "/assets/blog-transfer2.4151e90c.js"
   ],
   "pages/posts/blog/blog-transfer.md": [
-    "/assets/blog-transfer.4f98a792.js"
+    "/assets/blog-transfer.e1cfc4ca.js"
   ],
   "pages/posts/blog/baipiao-cdn.md": [
-    "/assets/baipiao-cdn.6860b233.js"
+    "/assets/baipiao-cdn.4496c8a6.js"
   ],
   "../../../../../posts-imgs/screenshot00.png": [
-    "/assets/MyFirstBlog.999e0cec.js"
+    "/assets/MyFirstBlog.600dfa34.js"
   ],
   "pages/posts/blog/MyFirstBlog.md": [
-    "/assets/MyFirstBlog.999e0cec.js"
+    "/assets/MyFirstBlog.600dfa34.js"
   ],
   "pages/secrets/index.md": [
-    "/assets/index.ba13333f.js"
+    "/assets/index.e9c2073b.js"
   ],
   "src/components/client/Pagenation.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/ListPosts.vue_vue_type_script_setup_true_lang.659c113a.js"
+    "/assets/ListPosts.vue_vue_type_script_setup_true_lang.bd3c5780.js"
   ],
   "src/components/client/PostLink.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/ListPosts.vue_vue_type_script_setup_true_lang.659c113a.js"
+    "/assets/ListPosts.vue_vue_type_script_setup_true_lang.bd3c5780.js"
   ],
   "src/stores/page.ts": [
-    "/assets/ListPosts.vue_vue_type_script_setup_true_lang.659c113a.js"
+    "/assets/ListPosts.vue_vue_type_script_setup_true_lang.bd3c5780.js"
   ],
   "src/components/client/ListPosts.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/ListPosts.vue_vue_type_script_setup_true_lang.659c113a.js"
+    "/assets/ListPosts.vue_vue_type_script_setup_true_lang.bd3c5780.js"
   ],
   "pages/posts/index.md": [
-    "/assets/index.502bfcb7.js"
+    "/assets/index.48583081.js"
   ],
   "src/components/client/ProjectCard.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/projects.06e97d4b.js"
+    "/assets/projects.5717b2a0.js"
   ],
   "src/components/client/ListProjects.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/projects.06e97d4b.js"
+    "/assets/projects.5717b2a0.js"
   ],
   "pages/projects.md": [
-    "/assets/projects.06e97d4b.js"
+    "/assets/projects.5717b2a0.js"
   ],
   "src/components/client/MyImg.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/friends.8f401d6c.js"
+    "/assets/friends.51ea661b.js"
   ],
   "src/components/client/Friend.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/friends.8f401d6c.js"
+    "/assets/friends.51ea661b.js"
   ],
   "src/components/client/FriendLinks.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/friends.8f401d6c.js"
+    "/assets/friends.51ea661b.js"
   ],
   "pages/friends.md": [
-    "/assets/friends.8f401d6c.js"
+    "/assets/friends.51ea661b.js"
   ],
   "pages/404.md": [
-    "/assets/404.657e8c2b.js"
+    "/assets/404.a54d825d.js"
   ],
   "src/layouts/404.vue": [
-    "/assets/404.142efd91.js"
+    "/assets/404.4d37980f.js"
   ],
   "src/layouts/home.vue": [
-    "/assets/home.f21efa38.js"
+    "/assets/home.fe2780ad.js"
   ],
   "node_modules/.pnpm/vue-glsl@1.1.27/node_modules/vue-glsl/src/components/ContextManager.ts": [
-    "/assets/index.01703957.js",
+    "/assets/index.7784fa84.js",
     "/assets/index.4e3bdca9.css"
   ],
   "node_modules/.pnpm/vue-glsl@1.1.27/node_modules/vue-glsl/src/components/GlCanvas.vue?vue&type=script&lang.ts": [
-    "/assets/index.01703957.js",
+    "/assets/index.7784fa84.js",
     "/assets/index.4e3bdca9.css"
   ],
   "node_modules/.pnpm/vue-glsl@1.1.27/node_modules/vue-glsl/src/components/GlCanvas.vue?vue&type=style&index=0&scoped=a51a57f7&lang.css": [
-    "/assets/index.01703957.js",
+    "/assets/index.7784fa84.js",
     "/assets/index.4e3bdca9.css"
   ],
   "node_modules/.pnpm/vue-glsl@1.1.27/node_modules/vue-glsl/src/components/GlCanvas.vue": [
-    "/assets/index.01703957.js",
+    "/assets/index.7784fa84.js",
     "/assets/index.4e3bdca9.css"
   ],
   "node_modules/.pnpm/vue-glsl@1.1.27/node_modules/vue-glsl/src/components/GlProgram.vue?vue&type=script&lang.ts": [
-    "/assets/index.01703957.js",
+    "/assets/index.7784fa84.js",
     "/assets/index.4e3bdca9.css"
   ],
   "node_modules/.pnpm/vue-glsl@1.1.27/node_modules/vue-glsl/src/components/GlProgram.vue": [
-    "/assets/index.01703957.js",
+    "/assets/index.7784fa84.js",
     "/assets/index.4e3bdca9.css"
   ],
   "node_modules/.pnpm/vue-glsl@1.1.27/node_modules/vue-glsl/src/components/GlUniform.ts": [
-    "/assets/index.01703957.js",
+    "/assets/index.7784fa84.js",
     "/assets/index.4e3bdca9.css"
   ],
   "node_modules/.pnpm/vue-glsl@1.1.27/node_modules/vue-glsl/src/components/index.ts": [
-    "/assets/index.01703957.js",
+    "/assets/index.7784fa84.js",
     "/assets/index.4e3bdca9.css"
   ],
   "node_modules/.pnpm/@lit+reactive-element@1.4.1/node_modules/@lit/reactive-element/css-tag.js": [
