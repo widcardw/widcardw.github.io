@@ -1,0 +1,11 @@
+{
+  "showInlineTitle": false,
+  "userIgnoreFilters": [
+    "dist/",
+    "node_modules/",
+    "public/",
+    "src/"
+  ],
+  "showLineNumber": true,
+  "newLinkFormat": "absolute"
+}

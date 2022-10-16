@@ -9,4 +9,8 @@ node_modules
 *.log
 auto-imports.d.ts
 components.d.ts
-.obsidian
+
+# obsidian config
+pages/.obsidian/plugins
+pages/.obsidian/workspace.json
+pages/.obsidian/appearance.json
