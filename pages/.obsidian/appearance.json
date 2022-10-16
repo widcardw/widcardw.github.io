@@ -1,0 +1,11 @@
+{
+  "accentColor": "#6b9eef",
+  "textFontFamily": "Latin Modern Math,Songti SC,system-ui",
+  "monospaceFontFamily": "PT Mono",
+  "enabledCssSnippets": [
+    "kbd",
+    "code-highlight"
+  ],
+  "theme": "moonstone",
+  "translucency": true
+}

@@ -13,4 +13,4 @@ components.d.ts
 # obsidian config
 pages/.obsidian/plugins
 pages/.obsidian/workspace.json
-pages/.obsidian/appearance.json
+# pages/.obsidian/appearance.json
