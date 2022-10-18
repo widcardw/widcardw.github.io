@@ -8,7 +8,7 @@ const router = useRouter()
   <div
     flex items-center
     p-4 sm:p-6
-    fixed w-full h-3rem sm:h-4rem
+    w-full h-3rem sm:h-4rem
     backdrop-blur class="font-serif"
     z-999
   >
