@@ -45,6 +45,13 @@ body {
   --code-string: var(--prism-string);
   --code-tag: var(--prism-keyword);
   --code-value: var(--color-purple);
+
+  --h1-color: var(--prism-deleted);
+  --h2-color: var(--prism-regex);
+  --h3-color: var(--prism-property);
+  --h4-color: var(--prism-function);
+  --h5-color: var(--prism-class);
+  --h6-color: var(--prism-number);
 }
 
 .theme-dark  {
