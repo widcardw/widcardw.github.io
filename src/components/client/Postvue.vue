@@ -41,14 +41,14 @@ function renderGiscus(): VNode {
 </script>
 
 <template>
-  <div class="heti heti--classic prose-style m-auto text-left">
+  <div class="heti heti--classic m-auto text-left p-4">
     <slot />
-    <div v-if="frontmatter?.category" flex>
+    <div v-if="frontmatter?.category" flex="~ wrap">
       <Tag :label="frontmatter?.category">
         <div i-ri-book-mark-line />
       </Tag>
     </div>
-    <div v-if="frontmatter?.tags" flex>
+    <div v-if="frontmatter?.tags" flex="~ wrap">
       <Tag v-for="tag in frontmatter?.tags" :key="tag" :label="tag">
         <div i-ri-hashtag />
       </Tag>

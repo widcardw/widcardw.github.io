@@ -30,7 +30,6 @@ specifiers:
   markdown-it-link-attributes: ^4.0.1
   markdown-it-mark: ^3.0.1
   markdown-it-new-katex: ^2.0.3
-  markdown-it-prism: ^2.2.4
   markdown-it-shiki: ^0.5.1
   markdown-it-table-of-contents: ^0.6.0
   mdit-plg-double-bracket-link: ^0.0.1
@@ -41,7 +40,6 @@ specifiers:
   nprogress: ^0.2.0
   pinia: ^2.0.22
   pnpm: ^7.11.0
-  prism-theme-vars: ^0.2.2
   taze: ^0.8.0
   typescript: ^4.8.2
   unocss: ^0.45.15
@@ -98,14 +96,12 @@ devDependencies:
   markdown-it-anchor: 8.6.4
   markdown-it-link-attributes: 4.0.1
   markdown-it-new-katex: 2.0.3
-  markdown-it-prism: 2.3.0
   markdown-it-shiki: 0.5.1
   markdown-it-table-of-contents: 0.6.0
   mdit-plg-double-bracket-link: 0.0.1
   mdit-plg-double-bracket-media: 0.0.2
   mdit-plugin-callouts: 0.0.13
   pnpm: 7.11.0
-  prism-theme-vars: 0.2.4
   taze: 0.8.0
   typescript: 4.8.2
   unocss: 0.45.15_vite@3.1.0
@@ -4242,13 +4238,6 @@ packages:
       katex: 0.12.0
     dev: true
 
-  /markdown-it-prism/2.3.0:
-    resolution: {integrity: sha512-ePtHY80gZyeje4bn3R3SL0jpd1C9HFaYffJW2Ma0YD+tspqa2v9TuVwUyFwboFu4jnFNcO8oPQROgbcYJbmBvw==}
-    engines: {node: '>=6.0.0'}
-    dependencies:
-      prismjs: 1.29.0
-    dev: true
-
   /markdown-it-shiki/0.5.1:
     resolution: {integrity: sha512-cidjLEt5C6x/bmhyO+JqOy92M1qPF/bu6BN8nxaah/8YpOB4gA168NoLfnSSZATf6Btr/qxn3r1Ihy75b894zw==}
     dependencies:
@@ -5063,15 +5052,6 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: false
-
-  /prism-theme-vars/0.2.4:
-    resolution: {integrity: sha512-B3Pht+GCT87sZph7hMRLlCQXzCM0awW7Rhk08RavpqRW4LEQOeqN0uMG4QCWkul2tr8PB61YAOJGUrEW+1uuJA==}
-    dev: true
-
-  /prismjs/1.29.0:
-    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
-    engines: {node: '>=6'}
-    dev: true
 
   /proc-log/2.0.1:
     resolution: {integrity: sha512-Kcmo2FhfDTXdcbfDH76N7uBYHINxc/8GW7UAVuVP9I+Va3uHSerrnKV6dLooga/gh7GlgzuCCr/eoldnL1muGw==}

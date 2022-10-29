@@ -11,7 +11,6 @@ import markdownItMark from 'markdown-it-mark'
 import DoubleBracketMedia from 'mdit-plg-double-bracket-media'
 import DoubleBracketLink from 'mdit-plg-double-bracket-link'
 import CalloutPlugin from 'mdit-plugin-callouts'
-import Prism from 'markdown-it-prism'
 import matter from 'gray-matter'
 
 const md = new MarkdownIt({
@@ -24,7 +23,6 @@ md.use(markdownItMark)
 md.use(CalloutPlugin)
 md.use(DoubleBracketMedia, { removePrefix: 'public/' })
 md.use(DoubleBracketLink, { removePrefix: 'pages/' })
-md.use(Prism)
 
 const DOMAIN = 'https://widcard.win'
 const AUTHOR = {
