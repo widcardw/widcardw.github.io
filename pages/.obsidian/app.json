@@ -1,5 +1,6 @@
 {
   "showInlineTitle": false,
   "showLineNumber": true,
-  "newLinkFormat": "absolute"
+  "newLinkFormat": "absolute",
+  "promptDelete": false
 }

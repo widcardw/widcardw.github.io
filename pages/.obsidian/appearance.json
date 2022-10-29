@@ -1,10 +1,13 @@
 {
-  "accentColor": "#6bbdef",
+  "accentColor": "#6ba5ef",
   "theme": "moonstone",
   "textFontFamily": "Latin Modern Math,Songti SC",
   "monospaceFontFamily": "PT Mono,system-ui",
   "enabledCssSnippets": [
     "code-highlight",
     "kbd"
-  ]
+  ],
+  "translucency": false,
+  "nativeMenus": true,
+  "interfaceFontFamily": ""
 }
