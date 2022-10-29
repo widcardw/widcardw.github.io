@@ -4,7 +4,7 @@
         <title>widcardw</title>
         <link>https://widcard.win/</link>
         <description>widcardw's blog</description>
-        <lastBuildDate>Sat, 29 Oct 2022 14:26:39 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 29 Oct 2022 14:52:12 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -23,34 +23,34 @@
 <p>逛 Github 的时候发现了一个好玩的工具 <a href="https://github.com/SocialSisterYi/bcut-asr">bcut_asr</a>，可以调用 B 站字幕识别的接口，想下载下来玩玩。然而他的环境是 Python 3.10，而我当年为了图方便，就直接用 homebrew 安装了 Python，版本是 3.9，也不知道怎么更新，于是在<strong>大滑稽</strong>的指导下，我开始使用 conda 了。</p>
 <h2>2. 安装</h2>
 <p>当然，在此时前，我得先把已经装过的 Python 卸载掉。</p>
-<pre class="language-sh"><code class="language-sh">pip3 freeze <span class="token operator">></span> requirements.txt
-pip3 uninstall <span class="token parameter variable">-r</span> requirements.txt <span class="token parameter variable">-y</span>
+<pre><code class="language-sh">pip3 freeze &gt; requirements.txt
+pip3 uninstall -r requirements.txt -y
 brew uninstall python@3.9
 </code></pre>
 <p>因为我对那些图形之类的库需求并不是很强硬，所以我就安装了 <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>，直接下载 sh 文件就可以双击运行了。</p>
 <h2>3. 创建环境</h2>
 <p>安装完成之后，当然就是创建虚拟环境了。我们将 base 环境下的 Python 设置为 3.10</p>
-<pre class="language-sh"><code class="language-sh">conda <span class="token function">install</span> <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3.10</span>
+<pre><code class="language-sh">conda install python=3.10
 </code></pre>
 <p>这样，zsh 就会显示成这样</p>
-<pre class="language-sh"><code class="language-sh"><span class="token punctuation">(</span>base<span class="token punctuation">)</span> ~
-$ python <span class="token parameter variable">--version</span>
-Python <span class="token number">3.10</span>.6
+<pre><code class="language-sh">(base) ~
+$ python --version
+Python 3.10.6
 </code></pre>
 <h2>4. 重装 manim</h2>
 <p>既然 manim 的环境都被删了，那么我们就来重新安装一下吧。</p>
 <h3>4.1. 创建一个新的环境</h3>
 <p>这个新创建的环境和 base 环境是隔离的。其实 conda 可以看作是做 Python 版本管理的工具。</p>
-<pre class="language-sh"><code class="language-sh"><span class="token punctuation">(</span>base<span class="token punctuation">)</span> ~/Documents/manim
-$ conda create <span class="token parameter variable">-n</span> manim
-<span class="token punctuation">(</span>base<span class="token punctuation">)</span> ~/Documents/manim
+<pre><code class="language-sh">(base) ~/Documents/manim
+$ conda create -n manim
+(base) ~/Documents/manim
 $ conda activate manim
-<span class="token punctuation">(</span>manim<span class="token punctuation">)</span> ~/Documents/manim
-$ conda <span class="token function">install</span> <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3.10</span>
+(manim) ~/Documents/manim
+$ conda install python=3.10
 </code></pre>
 <h3>4.2. 创建一个虚拟环境</h3>
 <p>我的工程目录大概是这样的：</p>
-<pre class="language-text"><code class="language-text">manim
+<pre><code class="language-text">manim
   +--- .vscode            # 一些运行配置
   +--- wid_manim          # 我从 3b1b 处 fork 的 manim
   |      +--- docs
@@ -63,30 +63,30 @@ $ conda <span class="token function">install</span> <span class="token assign-le
   +--- custom_config.yml
 </code></pre>
 <p>我们将 manim 看作是一个工程来管理，因此我们将依赖都安装在一个虚拟环境里。因此我们首先创建一个虚拟环境。</p>
-<pre class="language-sh"><code class="language-sh"><span class="token punctuation">(</span>manim<span class="token punctuation">)</span> ~/Documents/manim
-$ pip <span class="token function">install</span> virtualenv
-<span class="token punctuation">(</span>manim<span class="token punctuation">)</span> ~/Documents/manim
-$ virtualenv venv           <span class="token comment"># 创建虚拟环境</span>
-<span class="token punctuation">(</span>manim<span class="token punctuation">)</span> ~/Documents/manim
-$ <span class="token builtin class-name">source</span> venv/bin/activate  <span class="token comment"># 启用虚拟环境</span>
-<span class="token punctuation">(</span>manim<span class="token punctuation">)</span> <span class="token punctuation">(</span>venv<span class="token punctuation">)</span> ~/Documents/manim
+<pre><code class="language-sh">(manim) ~/Documents/manim
+$ pip install virtualenv
+(manim) ~/Documents/manim
+$ virtualenv venv           # 创建虚拟环境
+(manim) ~/Documents/manim
+$ source venv/bin/activate  # 启用虚拟环境
+(manim) (venv) ~/Documents/manim
 $
 </code></pre>
 <h3>4.3. 安装 manimgl 的依赖</h3>
 <p>由于我有可能会修改 manimgl 的源码，因此我选择本地安装，而不是直接安装发布到 pypi 上的包。</p>
-<pre class="language-sh"><code class="language-sh"><span class="token punctuation">(</span>manim<span class="token punctuation">)</span> <span class="token punctuation">(</span>venv<span class="token punctuation">)</span> ~/Documents/manim
-$ <span class="token builtin class-name">cd</span> wid_manim
-<span class="token punctuation">(</span>manim<span class="token punctuation">)</span> <span class="token punctuation">(</span>venv<span class="token punctuation">)</span> ~/Documents/manim/wid_manim
-$ pip <span class="token function">install</span> <span class="token parameter variable">-e</span> <span class="token builtin class-name">.</span>
+<pre><code class="language-sh">(manim) (venv) ~/Documents/manim
+$ cd wid_manim
+(manim) (venv) ~/Documents/manim/wid_manim
+$ pip install -e .
 </code></pre>
 <p>安装完成后，在 <FileName name="venv" icon="i-vscode-icons-default-folder-opened" /> 目录下，能看到 <FileName name="bin" icon="i-vscode-icons-default-folder-opened" /> 和 <FileName name="lib" icon="i-vscode-icons-default-folder-opened" /> 中已经出现了很多包，这说明依赖差不多就已经装好了。</p>
 <h3>4.4. 关于模块的引入</h3>
 <p>打开 <FileName name="my_videos" icon="i-vscode-icons-default-folder-opened" /> 文件夹，发现原来的引入语句报错了，不能通过下面</p>
-<pre class="language-py"><code class="language-py"><span class="token keyword">from</span> manimlib <span class="token keyword">import</span> <span class="token operator">*</span>
+<pre><code class="language-py">from manimlib import *
 </code></pre>
 <p>这条语句来导入 manim 的方法。原因其实也很简单，因为在 <FileName name="venv/lib/Python3.10/site-packages" icon="i-vscode-icons-default-folder-opened" /> 中，并没有 <code>manimlib</code> 这个包，我们需要想办法从 <FileName name="wid_manim" icon="i-vscode-icons-default-folder-opened" /> 中导入进来。</p>
 <p>解决方案很明显，我可以这样干：</p>
-<pre class="language-py"><code class="language-py"><span class="token keyword">from</span> wid_manim<span class="token punctuation">.</span>manimlib <span class="token keyword">import</span> <span class="token operator">*</span>
+<pre><code class="language-py">from wid_manim.manimlib import *
 </code></pre>
 <p>这样，模块就被正确导入进来了。但是运行的时候，环境又不承认了</p>
 <pre><code>(manim) (venv) ~/Documents/manim
@@ -98,56 +98,56 @@ ModuleNotFoundError: No module named 'wid_manim'
 </code></pre>
 <p>环境并不承认我们有这个包，因为它似乎只认 <code>site-packages</code> 中的包。</p>
 <p>这时，我想到了 pnpm 对于包的管理手段：软链接。可以通过创建软链接，将包索引到合理的位置。</p>
-<pre class="language-sh"><code class="language-sh"><span class="token punctuation">(</span>manim<span class="token punctuation">)</span> <span class="token punctuation">(</span>venv<span class="token punctuation">)</span> ~/Documents/manim
-$ <span class="token function">ln</span> <span class="token parameter variable">-s</span> /Users/name/Documents/manim/wid_manim/manimlib <span class="token punctuation">\</span>
+<pre><code class="language-sh">(manim) (venv) ~/Documents/manim
+$ ln -s /Users/name/Documents/manim/wid_manim/manimlib \
     venv/lib/python3.10/site-packages/manimlib
 </code></pre>
 <p>打开 <FileName name="venv/lib/python3.10/site-packages" icon="i-vscode-icons-default-folder-opened" /> 文件夹，可以发现多了一个 <FileName name="manimlib" icon="i-vscode-icons-file-type-lnk" /> 的链接。此时， <FileName name="my_videos" icon="i-vscode-icons-default-folder-opened" /> 中的模块也被正确引入了，用下面这条命令运行，也是成功的。</p>
-<pre class="language-sh"><code class="language-sh"><span class="token punctuation">(</span>manim<span class="token punctuation">)</span> <span class="token punctuation">(</span>venv<span class="token punctuation">)</span> ~/Documents/manim
+<pre><code class="language-sh">(manim) (venv) ~/Documents/manim
 $ manimgl my_videos/videos/danmku.py
 </code></pre>
 <h2>5. 再扯一下 manim 的运行</h2>
 <p>事实上，因为我选择了本地安装，manimgl 还可以通过下面的命令运行</p>
-<pre class="language-sh"><code class="language-sh"><span class="token punctuation">(</span>manim<span class="token punctuation">)</span> <span class="token punctuation">(</span>venv<span class="token punctuation">)</span> ~/Documents/manim
+<pre><code class="language-sh">(manim) (venv) ~/Documents/manim
 $ python wid_manim/manimlib my_videos/videos/danmaku.py
 </code></pre>
 <p>其实这样是间接的使用了 <FileName name="wid_manim/manimlib/__main__.py" icon="i-vscode-icons-file-type-python" /> 来启动，其实可以达到几乎相同的效果。而用这条命令可以导入其他包，例如 <code>manim_sandbox</code> 中的工具类。而如果想要直接用 <code>manimgl</code> 命令来执行的话，这就必须采用上面的软链接的方式，将它链接到虚拟环境中。</p>
 <blockquote>
 <p>其实用这个长命令的话，就可以使用</p>
-<pre class="language-py"><code class="language-py"><span class="token keyword">from</span> wid_manim<span class="token punctuation">.</span>manimlib <span class="token keyword">import</span> <span class="token operator">*</span>
+<pre><code class="language-py">from wid_manim.manimlib import *
 </code></pre>
 <p>来引入 <code>manimlib</code> 了，环境是不会报错的。</p>
 </blockquote>
 <p>这条命令很长，我们依然是采用一个 <FileName name="launch.json" icon="i-vscode-icons-file-type-json" /> 脚本来启动它。</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"0.2.0"</span><span class="token punctuation">,</span>
-  <span class="token property">"configurations"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">{</span>
-      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Preview manim"</span><span class="token punctuation">,</span> <span class="token comment">// manim 预览</span>
-      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"python"</span><span class="token punctuation">,</span>
-      <span class="token property">"request"</span><span class="token operator">:</span> <span class="token string">"launch"</span><span class="token punctuation">,</span>
-      <span class="token property">"cwd"</span><span class="token operator">:</span> <span class="token string">"${workspaceFolder}"</span><span class="token punctuation">,</span> <span class="token comment">// 设置当前工作路径</span>
-      <span class="token property">"env"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">"PYTHONPATH"</span><span class="token operator">:</span> <span class="token string">"${workspaceFolder}"</span> <span class="token comment">// 设置 Python 运行环境变量</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token property">"program"</span><span class="token operator">:</span> <span class="token string">"${workspaceFolder}/wid_manim/manimlib/__main__.py"</span><span class="token punctuation">,</span> <span class="token comment">// 设置运行程序</span>
-      <span class="token property">"console"</span><span class="token operator">:</span> <span class="token string">"integratedTerminal"</span><span class="token punctuation">,</span> <span class="token comment">// 使用 vsc 内置终端</span>
-      <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-        <span class="token string">"${file}"</span><span class="token punctuation">,</span> <span class="token comment">// 当前文件路径</span>
-        <span class="token string">"--config_file"</span><span class="token punctuation">,</span> <span class="token comment">// 配置文件参数</span>
-        <span class="token string">"${workspaceFolder}/custom_config.yml"</span> <span class="token comment">// 配置文件路径</span>
-      <span class="token punctuation">]</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;0.2.0&quot;,
+  &quot;configurations&quot;: [
+    {
+      &quot;name&quot;: &quot;Preview manim&quot;, // manim 预览
+      &quot;type&quot;: &quot;python&quot;,
+      &quot;request&quot;: &quot;launch&quot;,
+      &quot;cwd&quot;: &quot;${workspaceFolder}&quot;, // 设置当前工作路径
+      &quot;env&quot;: {
+        &quot;PYTHONPATH&quot;: &quot;${workspaceFolder}&quot; // 设置 Python 运行环境变量
+      },
+      &quot;program&quot;: &quot;${workspaceFolder}/wid_manim/manimlib/__main__.py&quot;, // 设置运行程序
+      &quot;console&quot;: &quot;integratedTerminal&quot;, // 使用 vsc 内置终端
+      &quot;args&quot;: [
+        &quot;${file}&quot;, // 当前文件路径
+        &quot;--config_file&quot;, // 配置文件参数
+        &quot;${workspaceFolder}/custom_config.yml&quot; // 配置文件路径
+      ]
+    }
+  ]
+}
 </code></pre>
 <p>其中，<code>program</code> 关键字指定了运行的主程序，如果读者直接使用 pypi 包安装，并且使用的是下面的命令来启动</p>
-<pre class="language-sh"><code class="language-sh">manimgl example.py
+<pre><code class="language-sh">manimgl example.py
 </code></pre>
 <p>那么，你的主程序应当是 <code>manimgl</code>，而非上述的 <FileName name="__main__.py" icon="i-vscode-icons-file-type-python" /> 文件。因此，你需要做出以下修改</p>
-<pre class="language-diff"><code class="language-diff"><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line"> "program": "${workspaceFolder}/wid_manim/manimlib/__main__.py",
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> "program": "${workspaceFolder}/venv/bin/manimgl",
-</span></span></code></pre>
+<pre><code class="language-diff">- &quot;program&quot;: &quot;${workspaceFolder}/wid_manim/manimlib/__main__.py&quot;,
++ &quot;program&quot;: &quot;${workspaceFolder}/venv/bin/manimgl&quot;,
+</code></pre>
 ]]></content:encoded>
             <author>widcardw@foxmail.com (widcardw)</author>
         </item>
@@ -353,12 +353,12 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 <p><kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>P</kbd> 打开命令交互界面，分别安装 Sublime-LSP 和 LSP-pyright 即可。</p>
 <h2>配置项</h2>
 <p>使用这一方案的优势就是几乎零配置。但其实有一些选项还是很可能用到的，例如 eslint 中我们经常需要保存时直接格式化，这时就需要一些配置了。</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"lsp_code_actions_on_save"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"source.fixAll.eslint"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"source.organizeImports.eslint"</span><span class="token operator">:</span> <span class="token boolean">true</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="language-json">{
+  &quot;lsp_code_actions_on_save&quot;: {
+    &quot;source.fixAll.eslint&quot;: true,
+    &quot;source.organizeImports.eslint&quot;: true
+  }
+}
 </code></pre>
 <p>当然，更多的配置可以在 LSP: Preferences 中查看，本篇中就不多加赘述了。</p>
 ]]></content:encoded>
@@ -380,7 +380,7 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 <p>我使用 <em>CDN</em> 作为仓库名，这样就能稍微好记一点，也符合它的含义。</p>
 <p>在本地进行一些初始化工作，例如文件目录，<em>.gitignore</em> 等等，这些也不用过多去阐述。另外，你需要上传一张图片，来作为需要 CDN 的对象。</p>
 <p>下面是本地仓库的文件树</p>
-<pre class="language-text"><code class="language-text">.
+<pre><code class="language-text">.
 |____.git
 |____.gitignore
 |____manim
@@ -440,9 +440,9 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 <p>难道问题就这么简单吗？不可能！</p>
 </blockquote>
 <p>自己搭建博客系统，最突出的特点就是定制化，也就是说，我们想要什么功能，就可以自己加上。<em>mermaid-js</em> 流程图是比较受欢迎的例子，想要从 Markdown 中把 <code>mermaid</code> 关键字包裹的代码块转换成待渲染的流程图，看上去很简单。</p>
-<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> LR
-	A<span class="token text string">["从Markdown-it的token流&lt;br>获取mermaid代码"]</span> <span class="token arrow operator">--></span> B<span class="token text string">["将代码编码后传入&lt;br>自定义的Mermaid组件"]</span>
-	B <span class="token arrow operator">--></span> C<span class="token text string">["读取mermaid模块&lt;br>渲染为svg"]</span>
+<pre><code class="language-mermaid">graph LR
+	A[&quot;从Markdown-it的token流&lt;br&gt;获取mermaid代码&quot;] --&gt; B[&quot;将代码编码后传入&lt;br&gt;自定义的Mermaid组件&quot;]
+	B --&gt; C[&quot;读取mermaid模块&lt;br&gt;渲染为svg&quot;]
 </code></pre>
 <p>如此清晰，在 dev 阶段没有任何报错，然而在 SSG build 时却总是会发生各种各样的问题。</p>
 <details class="custom-callout bug" open><summary class="callout-title"><div>Cannot load module <code>/path/to/node_modules/mermaid/dist/mermaid.js</code></div>
@@ -463,42 +463,42 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 <p><code>onMounted</code> <strong>钩子在服务器端渲染期间不会被调用。</strong></p>
 </blockquote>
 <p>这样就很好办了，我们只需要在 <code>onMounted</code> 中加载需要用到 DOM 的模块就好了。Vuepress Theme Hope 也就是这么做的。</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> loaded <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
-<span class="token function">onMounted</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">await</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'giscus'</span><span class="token punctuation">)</span>
-  loaded<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<pre><code class="language-ts">const loaded = ref(false)
+onMounted(async () =&gt; {
+  await import('giscus')
+  loaded.value = true
+})
 </code></pre>
 <p>这里他使用了 <code>onMounted</code> 和异步加载，我只能说：实在厉害。</p>
 <h4>方案二</h4>
 <p>直接抓取错误并抛出去，或许处理不是那么合适，但至少好像成功了，也作为一种比较 <strong>丑陋</strong> 的方案写出来。</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">function</span> <span class="token function">renderFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">try</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> svg <span class="token operator">=</span> <span class="token function">renderMermaid</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>code <span class="token operator">||</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-      theme<span class="token operator">:</span> props<span class="token punctuation">.</span>theme <span class="token operator">||</span> <span class="token punctuation">(</span>isDark<span class="token punctuation">.</span>value <span class="token operator">?</span> <span class="token string">'dark'</span> <span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      <span class="token operator">...</span>vm<span class="token operator">?.</span>attrs<span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> svg
-  <span class="token punctuation">}</span>
-  <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>e <span class="token keyword">as</span> ReferenceError<span class="token punctuation">)</span><span class="token punctuation">.</span>message<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'document is not defined'</span><span class="token punctuation">)</span>
-      <span class="token keyword">return</span> <span class="token string">''</span>
-    <span class="token keyword">throw</span> e
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="language-ts">function renderFunction() {
+  try {
+    const svg = renderMermaid(props.code || '', {
+      theme: props.theme || (isDark.value ? 'dark' : undefined),
+      ...vm?.attrs,
+    })
+    return svg
+  }
+  catch (e) {
+    if ((e as ReferenceError).message.trim() === 'document is not defined')
+      return ''
+    throw e
+  }
+}
 
-<span class="token keyword">const</span> html <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">renderFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+const html = computed(() =&gt; renderFunction())
 </code></pre>
 <p>这样的话，在 server 渲染的时候，依然会执行这一段代码，只不过在 <code>renderMermaid</code> 这个函数报错，无法获取 DOM 的时候，自动转到 <code>catch</code> 中，返回空字符串了。这样只是避免了报错，但也能在一定程度上解决问题 ¯\_(ツ)_/¯，实际应用中并不推荐这么做。</p>
 <h3>GLSL 背景</h3>
 <p>在 pdcxs 的 <a href="https://www.bilibili.com/video/BV1ce411g7B2">shader 教程</a>中，有这么一个样例，我觉得作为一个背景是非常棒的，所以我想把它引入进来。并且，有人也是专门封装了 <a href="https://github.com/kongxiaojian123/vue-glsl">Vue GLSL</a> 的组件库，可以直接引用。</p>
 <p>然而，同样是在 server 编译的时候，GLSL 的组件报错了，原因是它使用了 <code>window.requestAnimationFrame</code>，而 server 端是无 DOM 的。</p>
 <p>然而，Vue GLSL 作为一个封装好的组件库，需要在合适的时候将组件挂载到 App 上，我们通常是在 <FileName name="main.ts" icon="i-vscode-icons-file-type-typescript-official" /> 中做这件事的。我们依然使用 <code>onMounted</code> 来包裹这一引入的语句。</p>
-<pre class="language-ts"><code class="language-ts"><span class="token function">onMounted</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">// @ts-expect-error type declaration</span>
-  <span class="token keyword">const</span> glsl <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'vue-glsl'</span><span class="token punctuation">)</span>
-  app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>glsl<span class="token punctuation">.</span>default<span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<pre><code class="language-ts">onMounted(async () =&gt; {
+  // @ts-expect-error type declaration
+  const glsl = await import('vue-glsl')
+  app.use(glsl.default)
+})
 </code></pre>
 <p>而引入和挂载这些组件似乎是异步的，我们可能并不知道什么时候它能挂载完成，因此在页面初次渲染的时候，可能组件还没注册到全局，DOM 就已经渲染了，此时我们就会看到这样的警告。</p>
 <details class="custom-callout warning" open><summary class="callout-title"><div>Failed to resolve component: gl-canvas</div>
@@ -507,19 +507,19 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 </blockquote>
 </details><p>如果加一个背景的开关，那么重新启动一下背景就能渲染出来了。但是这样显得有点麻烦捏。</p>
 <p>这里我采取的方案是，在 <FileName name="App.vue" icon="i-vscode-icons-file-type-vue" /> 中加载这一组件，加载完成后再启用背景。具体方式是这样的：</p>
-<pre class="language-ts"><code class="language-ts"><span class="token comment">// 获取当前实例</span>
-<span class="token keyword">const</span> instance <span class="token operator">=</span> <span class="token function">getCurrentInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment">// 基于 pinia 的 storage</span>
-<span class="token keyword">const</span> useGl <span class="token operator">=</span> <span class="token function">useGlStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre><code class="language-ts">// 获取当前实例
+const instance = getCurrentInstance()
+// 基于 pinia 的 storage
+const useGl = useGlStore()
 
-<span class="token function">onMounted</span> <span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">// @ts-expect-error type declaration</span>
-  <span class="token keyword">const</span> glsl <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'vue-glsl'</span><span class="token punctuation">)</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>instance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    instance<span class="token punctuation">.</span>appContext<span class="token punctuation">.</span>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>glsl<span class="token punctuation">.</span>default<span class="token punctuation">)</span>
-    useGl<span class="token punctuation">.</span>isLoaded <span class="token operator">=</span> <span class="token boolean">true</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+onMounted (async () =&gt; {
+  // @ts-expect-error type declaration
+  const glsl = await import('vue-glsl')
+  if (instance) {
+    instance.appContext.app.use(glsl.default)
+    useGl.isLoaded = true
+  }
+})
 </code></pre>
 <p>这样就基本上不会有任何错误和警告了。</p>
 ]]></content:encoded>
@@ -534,8 +534,8 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 <h2>碎碎念</h2>
 <p>如果是看过我 B 站视频的同学，应该会发现我把这部分顺序稍微调整了一下，但其实也无伤大雅，毕竟一旦想学会使用 updater ，那么就必然需要阅读源码，而这部分文档实际上就是带领读者去阅读 manim 源码，了解动画的工作原理。</p>
 <p>前面我们也常常提到一个词叫做<mark>插值</mark>，它的泛型一般定义成这样</p>
-<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">interpolate</span><span class="token punctuation">(</span>start<span class="token punctuation">:</span> T<span class="token punctuation">,</span> end<span class="token punctuation">:</span> T<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> T<span class="token punctuation">:</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">1.</span> <span class="token operator">-</span> alpha<span class="token punctuation">)</span> <span class="token operator">*</span> start <span class="token operator">+</span> alpha <span class="token operator">*</span> end
+<pre><code class="language-python">def interpolate(start: T, end: T, alpha: float) -&gt; T:
+    return (1. - alpha) * start + alpha * end
 </code></pre>
 <p>我们前面也没有去提到过多关于 alpha 的内容，这一节将会尝试讲解这一困惑。</p>
 <h2>Alpha 的含义</h2>
@@ -545,35 +545,35 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 <p><img src="https://widcard.win/updater/InterpolateExampleScene.png" alt="updater/InterpolateExampleScene.png"></p>
 <p>在这里，alpha 所做的就是在 $[0,1]$ 定义域上，对于每个<mark>选到的值</mark>，算出对应的物件状态。</p>
 <p>至于为什么是选到的值，这就要聊聊<mark>视频</mark>这一概念了。我们都知道，视频有一个叫做<mark>帧率</mark>的属性，它代表着每一秒钟，视频会播放多少个画面。由于计算机的算力、硬盘的存储容量均有限，我们不可能用有限的事物来存储和计算<mark>无限的</mark>、<mark>连续的</mark>现实世界，只能尽可能的去保存一些<mark>离散的</mark>数据，在视频播放的过程中，尝试利用人眼的视觉暂留，<mark>骗过</mark>人类，让我们认为这是连续的。而对于 60 帧的视频，我们只需每秒让计算机算出 60 个 alpha 值分别对应的状态，即可生成视频。</p>
-<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> LR
-a<span class="token text string">["连续的 alpha ∈ [0,1]"]</span> <span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">"离散采样"</span><span class="token arrow operator">--></span></span> b<span class="token text string">["离散的一系列 alpha&lt;br>每秒 60 个离散值"]</span>
-b <span class="token inter-arrow-label"><span class="token arrow-head arrow operator">--</span><span class="token label property">"计算画面"</span><span class="token arrow operator">--></span></span> c<span class="token text string">["离散的一系列画面&lt;br>每秒 60 张"]</span>
+<pre><code class="language-mermaid">graph LR
+a[&quot;连续的 alpha ∈ [0,1]&quot;] --&quot;离散采样&quot;--&gt; b[&quot;离散的一系列 alpha&lt;br&gt;每秒 60 个离散值&quot;]
+b --&quot;计算画面&quot;--&gt; c[&quot;离散的一系列画面&lt;br&gt;每秒 60 张&quot;]
 </code></pre>
 <h2>动画的执行流程</h2>
 <p>我们再回忆一下第 1 节的内容，Animation 类编写了很多方法，在 Scene 调用 play 的时候，会按一定的顺序和逻辑去调用 Animation 的这些方法。此时我们关注的就是其中实际的动画部分了。</p>
-<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">progress_through_animations</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> animations<span class="token punctuation">:</span> Iterable<span class="token punctuation">[</span>Animation<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token boolean">None</span><span class="token punctuation">:</span>
-    last_t <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> t <span class="token keyword">in</span> self<span class="token punctuation">.</span>get_animation_time_progression<span class="token punctuation">(</span>animations<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        dt <span class="token operator">=</span> t <span class="token operator">-</span> last_t
-        last_t <span class="token operator">=</span> t
-        <span class="token keyword">for</span> animation <span class="token keyword">in</span> animations<span class="token punctuation">:</span>
-            animation<span class="token punctuation">.</span>update_mobjects<span class="token punctuation">(</span>dt<span class="token punctuation">)</span>
-            alpha <span class="token operator">=</span> t <span class="token operator">/</span> animation<span class="token punctuation">.</span>run_time
-            <span class="token comment"># 动画插值</span>
-            animation<span class="token punctuation">.</span>interpolate<span class="token punctuation">(</span>alpha<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>update_frame<span class="token punctuation">(</span>dt<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>emit_frame<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre><code class="language-python">def progress_through_animations(self, animations: Iterable[Animation]) -&gt; None:
+    last_t = 0
+    for t in self.get_animation_time_progression(animations):
+        dt = t - last_t
+        last_t = t
+        for animation in animations:
+            animation.update_mobjects(dt)
+            alpha = t / animation.run_time
+            # 动画插值
+            animation.interpolate(alpha)
+        self.update_frame(dt)
+        self.emit_frame()
 </code></pre>
 <p>Animation 的方法方法一层套一层，最终会到达 <code>interpolate_mobject</code> 和 <code>interpolate_submobject</code> 这两个方法身上。我们来看 manim 中最常用的方法 Transform ，它是怎么实现的：</p>
-<pre class="language-python"><code class="language-python">    <span class="token keyword">def</span> <span class="token function">interpolate_submobject</span><span class="token punctuation">(</span>
-        self<span class="token punctuation">,</span>
-        submob<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span>
-        start<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span>
-        target_copy<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span>
-        alpha<span class="token punctuation">:</span> <span class="token builtin">float</span>
-    <span class="token punctuation">)</span><span class="token punctuation">:</span>
-        submob<span class="token punctuation">.</span>interpolate<span class="token punctuation">(</span>start<span class="token punctuation">,</span> target_copy<span class="token punctuation">,</span> alpha<span class="token punctuation">,</span> self<span class="token punctuation">.</span>path_func<span class="token punctuation">)</span>
-        <span class="token keyword">return</span> self
+<pre><code class="language-python">    def interpolate_submobject(
+        self,
+        submob: Mobject,
+        start: Mobject,
+        target_copy: Mobject,
+        alpha: float
+    ):
+        submob.interpolate(start, target_copy, alpha, self.path_func)
+        return self
 </code></pre>
 <p>没错，要做的事情就只有一行！从中应该可以想象到 Transform 的实现有多么简单粗暴，只需要使得在屏幕上的物件成为<mark>起始和目标的中间值</mark>就可以了。</p>
 <p>其实这么一来，许多工作就落到了 <code>begin</code> 和 <code>finish</code> 头上。它们要完成的工作，包括检查合法性、<mark>对齐起始物件和目标物件的数据</mark>、以及一些优化问题。</p>
@@ -582,27 +582,27 @@ b <span class="token inter-arrow-label"><span class="token arrow-head arrow oper
 </summary></details><p>这么听的确是强人所难，如果两个矩阵不一样大，那么根本就不可能进行插值。</p>
 <p>在这一过程中，<mark>数据对齐</mark>的作用就显得相当重要了。如果我们把这两个矩阵都进行扩展，使得新的矩阵大小都能覆盖两个矩阵，接着对一些缺失的数据进行修补，那么此时一个矩阵中的每一个值都能与另一个矩阵中的相应值形成<mark>一一映射</mark>，这样插值动画就可以畅通无阻了。</p>
 <p><img src="/updater/MatrixReflect.png" alt="updater/MatrixReflect.png"></p>
-<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> LR
-begin <span class="token arrow operator">--></span>a<span class="token text string">["检查"]</span> <span class="token arrow operator">--></span> b<span class="token text string">["数据对齐"]</span> <span class="token arrow operator">--></span> c<span class="token text string">["拷贝变量"]</span> 
-c <span class="token arrow operator">--></span> d<span class="token text string">["lock data&lt;br>优化"]</span> <span class="token arrow operator">--></span> e<span class="token text string">["插值&lt;br>interpolate&lt;br>mobject"]</span>
-e <span class="token arrow operator">--></span> f<span class="token text string">["unlock data"]</span> <span class="token arrow operator">--></span> g<span class="token text string">["finish"]</span>
+<pre><code class="language-mermaid">graph LR
+begin --&gt;a[&quot;检查&quot;] --&gt; b[&quot;数据对齐&quot;] --&gt; c[&quot;拷贝变量&quot;] 
+c --&gt; d[&quot;lock data&lt;br&gt;优化&quot;] --&gt; e[&quot;插值&lt;br&gt;interpolate&lt;br&gt;mobject&quot;]
+e --&gt; f[&quot;unlock data&quot;] --&gt; g[&quot;finish&quot;]
 </code></pre>
 <h2>UpdateFromAlphaFunc</h2>
 <p>讲了那么多前置知识，终于能将这一节的重点了。这个动画类其实类似于向我们暴露了一个接口，让我们来动手实现这个动画的具体流程。</p>
 <p>而在源码层面上，这个类继承于 Animation ，接收的参数有两个：一个是 mobject ，另一个是更新函数。而待我们实现的更新函数，就是物件更新的依据。而事实上也就是让我们直接实现 <code>interpolate_mobject</code> 方法。越是接近底层，其灵活度也就越高。</p>
-<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">UpdateFromAlphaFunc</span><span class="token punctuation">(</span>Animation<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre><code class="language-python">class UpdateFromAlphaFunc(Animation):
 
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>
-        self<span class="token punctuation">,</span>
-        mobject<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span>
-        update_function<span class="token punctuation">:</span> Callable<span class="token punctuation">[</span><span class="token punctuation">[</span>Mobject<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token operator">**</span>kwargs
-    <span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>update_function <span class="token operator">=</span> update_function
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>mobject<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+    def __init__(
+        self,
+        mobject: Mobject,
+        update_function: Callable[[Mobject]],
+        **kwargs
+    ):
+        self.update_function = update_function
+        super().__init__(mobject, **kwargs)
 
-    <span class="token keyword">def</span> <span class="token function">interpolate_mobject</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token boolean">None</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>update_function<span class="token punctuation">(</span>self<span class="token punctuation">.</span>mobject<span class="token punctuation">,</span> alpha<span class="token punctuation">)</span>
+    def interpolate_mobject(self, alpha: float) -&gt; None:
+        self.update_function(self.mobject, alpha)
 </code></pre>
 <p>用这一个动画类我们几乎可以实现任何效果，只需要计算出 alpha 值对应的物件状态，就可以实现我们想要的动画了。</p>
 <details class="custom-callout caution" open><summary class="callout-title"><div>Caution</div>
@@ -611,42 +611,42 @@ e <span class="token arrow operator">--></span> f<span class="token text string"
 </blockquote>
 </details><p>我们可以在每一帧都<mark>恢复初态</mark>、<mark>重新计算当前状态</mark>、<mark>提交</mark>，这样来控制其实更加方便。例如下面一个旋转平移的效果（但是笔者当前版本是 1.6.1 之后的，却没有出现问题）</p>
 <p><video controls="controls" src="/updater/ShiftRotateExample.mp4" alt="updater/ShiftRotateExample.mp4" style="width: 100%; height: 100%;"></video></p>
-<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ShiftRotateExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        square <span class="token operator">=</span> VGroup<span class="token punctuation">(</span>Square<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Dot<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>shift<span class="token punctuation">(</span>LEFT<span class="token operator">*</span><span class="token number">5</span><span class="token punctuation">)</span>
-        numline <span class="token operator">=</span> NumberLine<span class="token punctuation">(</span>x_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<pre><code class="language-python">class ShiftRotateExample(Scene):
+    def construct(self):
+        square = VGroup(Square(), Dot()).shift(LEFT*5)
+        numline = NumberLine(x_range=[-5, 5, 1])
         
-        <span class="token comment"># 保存初态</span>
-        square<span class="token punctuation">.</span>save_state<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        # 保存初态
+        square.save_state()
 
-        <span class="token keyword">def</span> <span class="token function">anim</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token comment"># 恢复初态</span>
-            m<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token comment"># 移动</span>
-            m<span class="token punctuation">.</span>shift<span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">*</span> alpha <span class="token operator">*</span> RIGHT<span class="token punctuation">)</span>
-            <span class="token comment"># 旋转</span>
-            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>PI <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">*</span> alpha<span class="token punctuation">)</span>
+        def anim(m: Mobject, alpha: float):
+            # 恢复初态
+            m.restore()
+            # 移动
+            m.shift(10 * alpha * RIGHT)
+            # 旋转
+            m.rotate(PI * 3 * alpha)
 
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>numline<span class="token punctuation">,</span> square<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>UpdateFromAlphaFunc<span class="token punctuation">(</span>square<span class="token punctuation">,</span> anim<span class="token punctuation">)</span><span class="token punctuation">,</span> run_time<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
+        self.add(numline, square)
+        self.play(UpdateFromAlphaFunc(square, anim), run_time=4)
 </code></pre>
 <p>既然这样稍微复杂一些的动画效果可以用 UpdateFromAlphaFunc 实现，那么我们就用它来实现一个 MyRotate 吧！</p>
 <details class="custom-callout example"><summary class="callout-title"><div>尝试编写一个函数，当传入 UpdateFromAlphaFunc 时，能达到旋转的效果</div>
 <div class="callout-fold"></div></summary><blockquote>
-<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MyRotateExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        square <span class="token operator">=</span> Square<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token comment"># 保存初态</span>
-        square<span class="token punctuation">.</span>save_state<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre><code class="language-python">class MyRotateExample(Scene):
+    def construct(self):
+        square = Square()
+        # 保存初态
+        square.save_state()
 
-        <span class="token keyword">def</span> <span class="token function">my_rotate</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token comment"># 恢复初态</span>
-            m<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token comment"># 旋转</span>
-            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>PI <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">*</span> alpha<span class="token punctuation">)</span>
+        def my_rotate(m: Mobject, alpha: float):
+            # 恢复初态
+            m.restore()
+            # 旋转
+            m.rotate(PI * 3 * alpha)
 
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>square<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>UpdateFromAlphaFunc<span class="token punctuation">(</span>square<span class="token punctuation">,</span> my_rotate<span class="token punctuation">)</span><span class="token punctuation">,</span> run_time<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
+        self.add(square)
+        self.play(UpdateFromAlphaFunc(square, my_rotate), run_time=4)
 </code></pre>
 </blockquote>
 </details><h2>Alpha 还能在哪里找到——Bézier Curve</h2>
@@ -655,95 +655,95 @@ e <span class="token arrow operator">--></span> f<span class="token text string"
 <p>这个方法应该常用于函数曲线，向其中传入一个百分比 alpha ，范围是 $[0, 1]$；输出值是一个点的坐标，而这个点位置在曲线长度百分比 alpha 处。（<s>一直感觉没有办法很好地表述这段话</s>）</p>
 <details class="custom-callout example"><summary class="callout-title"><div>绘制一条曲线，并在上面取一个点，让点从曲线的起始位置，顺着曲线移动到结束位置。</div>
 <div class="callout-fold"></div></summary><blockquote>
-<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MoveAlongPathExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        graph <span class="token operator">=</span> FunctionGraph<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>PI <span class="token operator">*</span> x<span class="token punctuation">)</span><span class="token punctuation">,</span> 
-                              x_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>graph<span class="token punctuation">)</span>
+<pre><code class="language-python">class MoveAlongPathExample(Scene):
+    def construct(self):
+        graph = FunctionGraph(lambda x: np.sin(PI * x), 
+                              x_range=[-5, 5, 0.1])
+        self.add(graph)
 
-        dot <span class="token operator">=</span> Dot<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>graph<span class="token punctuation">.</span>get_start<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>dot<span class="token punctuation">)</span>
+        dot = Dot().move_to(graph.get_start())
+        self.add(dot)
 
-        <span class="token keyword">def</span> <span class="token function">update_dot</span><span class="token punctuation">(</span>dot<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            dot<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>graph<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>alpha<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        def update_dot(dot: Mobject, alpha: float):
+            dot.move_to(graph.pfp(alpha))
 
-        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>UpdateFromAlphaFunc<span class="token punctuation">(</span>dot<span class="token punctuation">,</span> update_dot<span class="token punctuation">)</span><span class="token punctuation">,</span> run_time<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
+        self.play(UpdateFromAlphaFunc(dot, update_dot), run_time=4)
 </code></pre>
 <p>然而，Grant 早就已经封装好一个动画类了，叫 MoveAlongPath ，感兴趣的读者可以尝试一下。</p>
 </blockquote>
 </details><p>接下来加大一点难度。</p>
 <details class="custom-callout example"><summary class="callout-title"><div>绘制一条曲线，在上面取一个点，在这个点处绘制一个小箭头，使得这个箭头顺着曲线移动的时候，朝向永远顺着曲线的切线方向。小箭头可以使用 ArrowTip 代替 Dot 。</div>
 <div class="callout-fold"></div></summary><blockquote>
-<pre class="language-python"><code class="language-python"><span class="token comment"># 计算输入 alpha 对应点处切线的倾斜角</span>
-<span class="token keyword">def</span> <span class="token function">angle_of_tan</span><span class="token punctuation">(</span>graph<span class="token punctuation">:</span> ParametricCurve<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">,</span> dx<span class="token operator">=</span><span class="token number">0.01</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">float</span><span class="token punctuation">:</span>
-    vect <span class="token operator">=</span> graph<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>alpha <span class="token operator">+</span> dx<span class="token punctuation">)</span> <span class="token operator">-</span> graph<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>alpha <span class="token operator">-</span> dx<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> angle_of_vector<span class="token punctuation">(</span>vect<span class="token punctuation">)</span>
+<pre><code class="language-python"># 计算输入 alpha 对应点处切线的倾斜角
+def angle_of_tan(graph: ParametricCurve, alpha: float, dx=0.01) -&gt; float:
+    vect = graph.pfp(alpha + dx) - graph.pfp(alpha - dx)
+    return angle_of_vector(vect)
 
-<span class="token keyword">class</span> <span class="token class-name">MoveAlongPathExample2</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        graph <span class="token operator">=</span> FunctionGraph<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">*</span> np<span class="token punctuation">.</span>cos<span class="token punctuation">(</span>PI <span class="token operator">*</span> x<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span>
-                              x_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        arrow <span class="token operator">=</span> ArrowTip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>scale<span class="token punctuation">(</span><span class="token number">0.8</span><span class="token punctuation">)</span>
-        <span class="token comment"># 保存 arrow 的旋转角度</span>
-        arrow<span class="token punctuation">.</span>save_state<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>graph<span class="token punctuation">,</span> arrow<span class="token punctuation">)</span>
+class MoveAlongPathExample2(Scene):
+    def construct(self):
+        graph = FunctionGraph(lambda x: x * np.cos(PI * x) / 2,
+                              x_range=[-5, 5, 0.1])
+        arrow = ArrowTip().scale(0.8)
+        # 保存 arrow 的旋转角度
+        arrow.save_state()
+        self.add(graph, arrow)
 
-        <span class="token keyword">def</span> <span class="token function">update_arrow</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token comment"># 恢复到初态，主要是为了恢复旋转角</span>
-            m<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token comment"># 旋转</span>
-            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>angle_of_tan<span class="token punctuation">(</span>graph<span class="token punctuation">,</span> alpha<span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token comment"># 移动</span>
-            m<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>graph<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>alpha<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        def update_arrow(m: Mobject, alpha: float):
+            # 恢复到初态，主要是为了恢复旋转角
+            m.restore()
+            # 旋转
+            m.rotate(angle_of_tan(graph, alpha))
+            # 移动
+            m.move_to(graph.pfp(alpha))
 
-        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>UpdateFromAlphaFunc<span class="token punctuation">(</span>arrow<span class="token punctuation">,</span> update_arrow<span class="token punctuation">)</span><span class="token punctuation">,</span> run_time<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">)</span>
+        self.play(UpdateFromAlphaFunc(arrow, update_arrow), run_time=6)
 </code></pre>
 </blockquote>
 </details><h2>UpdateFromFunc</h2>
 <p>从这个类的名字来看，其实就是无需传入 alpha 的动画更新。但是没有了 alpha ，也就无法构成动画，因此这个方法常常作为<mark>伴随动画</mark>，用作某一段时间内动画的附加效果。</p>
 <p>例如，我们想让点移动的时候，文本保持在它的旁边，但是我们不使用 add_updater 方法，此时就可以使用 UpdateFromFunc 作为一个伴随效果，添加到 play 中。</p>
-<pre class="language-python"><code class="language-python">self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
-    dot<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>shift<span class="token punctuation">(</span>RIGHT <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    UpdateFromFunc<span class="token punctuation">(</span>text<span class="token punctuation">,</span> <span class="token keyword">lambda</span> m<span class="token punctuation">:</span> m<span class="token punctuation">.</span>next_to<span class="token punctuation">(</span>dot<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
+<pre><code class="language-python">self.play(
+    dot.animate.shift(RIGHT * 2),
+    UpdateFromFunc(text, lambda m: m.next_to(dot))
+)
 </code></pre>
 <p>由于这个方法无法使用 alpha 参数，因此限制也是非常多，基本上也就只能作为伴随动画了。</p>
 <h2>更多的例子</h2>
 <h5>1. 2022-07-01 版本中， manimgl 自带样例中 CoordinateSystemExample 因为使用 always_redraw 坏掉了，究其原因是 updater 和 become 的冲突问题。现在请你尝试抛弃前面的方法，用 UpdateFromFunc 和 become 来修复它。</h5>
 <details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
 <div class="callout-fold"></div></summary><blockquote>
-<pre class="language-python"><code class="language-python"><span class="token comment"># 重绘坐标线</span>
-<span class="token keyword">def</span> <span class="token function">redraw_h_line</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    m<span class="token punctuation">.</span>become<span class="token punctuation">(</span>axes<span class="token punctuation">.</span>get_h_line<span class="token punctuation">(</span>dot<span class="token punctuation">.</span>get_left<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre><code class="language-python"># 重绘坐标线
+def redraw_h_line(m: Mobject):
+    m.become(axes.get_h_line(dot.get_left()))
 
-<span class="token keyword">def</span> <span class="token function">redraw_v_line</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    m<span class="token punctuation">.</span>become<span class="token punctuation">(</span>axes<span class="token punctuation">.</span>get_v_line<span class="token punctuation">(</span>dot<span class="token punctuation">.</span>get_bottom<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+def redraw_v_line(m: Mobject):
+    m.become(axes.get_v_line(dot.get_bottom()))
 
-self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
-    ShowCreation<span class="token punctuation">(</span>h_line<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    ShowCreation<span class="token punctuation">(</span>v_line<span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span>
-self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
-    dot<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>axes<span class="token punctuation">.</span>c2p<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token comment"># UpdateFromFunc 作为伴随动画，下同</span>
-    UpdateFromFunc<span class="token punctuation">(</span>h_line<span class="token punctuation">,</span> redraw_h_line<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    UpdateFromFunc<span class="token punctuation">(</span>v_line<span class="token punctuation">,</span> redraw_v_line<span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
-self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token punctuation">)</span>
-self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
-    dot<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>axes<span class="token punctuation">.</span>c2p<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    UpdateFromFunc<span class="token punctuation">(</span>h_line<span class="token punctuation">,</span> redraw_h_line<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    UpdateFromFunc<span class="token punctuation">(</span>v_line<span class="token punctuation">,</span> redraw_v_line<span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
-self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token punctuation">)</span>
+self.play(
+    ShowCreation(h_line),
+    ShowCreation(v_line),
+)
+self.play(
+    dot.animate.move_to(axes.c2p(3, -2)),
+    # UpdateFromFunc 作为伴随动画，下同
+    UpdateFromFunc(h_line, redraw_h_line),
+    UpdateFromFunc(v_line, redraw_v_line)
+)
+self.wait()
+self.play(
+    dot.animate.move_to(axes.c2p(1, 1)),
+    UpdateFromFunc(h_line, redraw_h_line),
+    UpdateFromFunc(v_line, redraw_v_line)
+)
+self.wait()
 
-f_always<span class="token punctuation">(</span>dot<span class="token punctuation">.</span>move_to<span class="token punctuation">,</span> <span class="token keyword">lambda</span><span class="token punctuation">:</span> axes<span class="token punctuation">.</span>c2p<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
-    axes<span class="token punctuation">.</span>animate<span class="token punctuation">.</span>scale<span class="token punctuation">(</span><span class="token number">0.75</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to_corner<span class="token punctuation">(</span>UL<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    UpdateFromFunc<span class="token punctuation">(</span>h_line<span class="token punctuation">,</span> redraw_h_line<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    UpdateFromFunc<span class="token punctuation">(</span>v_line<span class="token punctuation">,</span> redraw_v_line<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    run_time<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>
-<span class="token punctuation">)</span>
+f_always(dot.move_to, lambda: axes.c2p(1, 1))
+self.play(
+    axes.animate.scale(0.75).to_corner(UL),
+    UpdateFromFunc(h_line, redraw_h_line),
+    UpdateFromFunc(v_line, redraw_v_line),
+    run_time=2,
+)
 </code></pre>
 <p>这么写下来发现真的好烦， updater + become 真的是万能，但是有 bug</p>
 </blockquote>
@@ -754,82 +754,82 @@ self<span class="token punctuation">.</span>play<span class="token punctuation">
 <p><video controls="controls" src="/updater/RollingCircleExample.mp4" alt="updater/RollingCircleExample.mp4" style="width: 100%; height: 100%;"></video></p>
 <details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
 <div class="callout-fold"></div></summary><blockquote>
-<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">RollingCircleExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        c1 <span class="token operator">=</span> Circle<span class="token punctuation">(</span>radius<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
-        c2 <span class="token operator">=</span> VGroup<span class="token punctuation">(</span>
-            Circle<span class="token punctuation">(</span>radius<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   <span class="token comment"># 圆</span>
-            Dot<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>              <span class="token comment"># 圆心</span>
-            Vector<span class="token punctuation">(</span>DOWN <span class="token operator">*</span> <span class="token number">0.8</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment"># 箭头</span>
-        <span class="token punctuation">)</span>
-        c2<span class="token punctuation">.</span>shift<span class="token punctuation">(</span>UP <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>set_color<span class="token punctuation">(</span>GOLD<span class="token punctuation">)</span>
-        c2<span class="token punctuation">.</span>save_state<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre><code class="language-python">class RollingCircleExample(Scene):
+    def construct(self):
+        c1 = Circle(radius=2)
+        c2 = VGroup(
+            Circle(radius=1),   # 圆
+            Dot(),              # 圆心
+            Vector(DOWN * 0.8), # 箭头
+        )
+        c2.shift(UP * 3).set_color(GOLD)
+        c2.save_state()
 
-        path <span class="token operator">=</span> TracedPath<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> c2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>pfp<span class="token punctuation">(</span><span class="token number">0.75</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment"># 圆的 3/4 处坐标</span>
-                          stroke_width<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">,</span>
-                          stroke_color<span class="token operator">=</span>YELLOW<span class="token punctuation">)</span>
+        path = TracedPath(lambda: c2[0].pfp(0.75), # 圆的 3/4 处坐标
+                          stroke_width=6,
+                          stroke_color=YELLOW)
 
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>c1<span class="token punctuation">,</span> c2<span class="token punctuation">,</span> path<span class="token punctuation">)</span>
+        self.add(c1, c2, path)
 
-        <span class="token keyword">def</span> <span class="token function">update_c2</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> alpha<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            m<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span> <span class="token operator">*</span> TAU <span class="token operator">*</span> alpha<span class="token punctuation">)</span>
-            m<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">*</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>
-                np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>TAU <span class="token operator">*</span> alpha<span class="token punctuation">)</span><span class="token punctuation">,</span>
-                np<span class="token punctuation">.</span>cos<span class="token punctuation">(</span>TAU <span class="token operator">*</span> alpha<span class="token punctuation">)</span><span class="token punctuation">,</span>
-                <span class="token number">0</span>
-            <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        def update_c2(m: Mobject, alpha: float):
+            m.restore()
+            m.rotate(-3 * TAU * alpha)
+            m.move_to(3 * np.array([
+                np.sin(TAU * alpha),
+                np.cos(TAU * alpha),
+                0
+            ]))
 
-        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
-            UpdateFromAlphaFunc<span class="token punctuation">(</span>c2<span class="token punctuation">,</span> update_c2<span class="token punctuation">)</span><span class="token punctuation">,</span>
-            run_time<span class="token operator">=</span><span class="token number">6</span>
-        <span class="token punctuation">)</span>
+        self.play(
+            UpdateFromAlphaFunc(c2, update_c2),
+            run_time=6
+        )
 </code></pre>
 </blockquote>
 </details><h5>3. 给定三个锚点，用贝塞尔曲线的定义来绘制这三个点生成的曲线。</h5>
 <p><video controls="controls" src="/updater/BezierExample.mp4" alt="updater/BezierExample.mp4" style="width: 100%; height: 100%;"></video></p>
 <details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
 <div class="callout-fold"></div></summary><blockquote>
-<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">BezierExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        points <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>
-            <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span>
-        <span class="token punctuation">]</span><span class="token punctuation">)</span>
+<pre><code class="language-python">class BezierExample(Scene):
+    def construct(self):
+        points = np.array([
+            [-4, -3, 0],
+            [0, 3, 0],
+            [6, -2, 0]
+        ])
 
-        dots <span class="token operator">=</span> VGroup<span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">[</span>Dot<span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token keyword">for</span> p <span class="token keyword">in</span> points<span class="token punctuation">]</span><span class="token punctuation">)</span>
-        lines <span class="token operator">=</span> VGroup<span class="token punctuation">(</span>
-            Line<span class="token punctuation">(</span>points<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> points<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            Line<span class="token punctuation">(</span>points<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> points<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token punctuation">)</span><span class="token punctuation">.</span>set_stroke<span class="token punctuation">(</span>width<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+        dots = VGroup(*[Dot(p) for p in points])
+        lines = VGroup(
+            Line(points[0], points[1]),
+            Line(points[1], points[2]),
+        ).set_stroke(width=2)
 
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>dots<span class="token punctuation">,</span> lines<span class="token punctuation">)</span>
+        self.add(dots, lines)
 
-        moving_dot1 <span class="token operator">=</span> Dot<span class="token punctuation">(</span>points<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> color<span class="token operator">=</span>GOLD<span class="token punctuation">)</span>
-        moving_dot2 <span class="token operator">=</span> Dot<span class="token punctuation">(</span>points<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> color<span class="token operator">=</span>GOLD<span class="token punctuation">)</span>
+        moving_dot1 = Dot(points[0], color=GOLD)
+        moving_dot2 = Dot(points[1], color=GOLD)
 
-        moving_line <span class="token operator">=</span> Line<span class="token punctuation">(</span>points<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> points<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> color<span class="token operator">=</span>GOLD<span class="token punctuation">)</span>
+        moving_line = Line(points[0], points[1], color=GOLD)
 
-        moving_line<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>
-            <span class="token keyword">lambda</span> l<span class="token punctuation">:</span> l<span class="token punctuation">.</span>put_start_and_end_on<span class="token punctuation">(</span>
-                moving_dot1<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
-                moving_dot2<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">)</span>
-        <span class="token punctuation">)</span>
+        moving_line.add_updater(
+            lambda l: l.put_start_and_end_on(
+                moving_dot1.get_center(), 
+                moving_dot2.get_center()
+            )
+        )
 
-        moving_dot3 <span class="token operator">=</span> Dot<span class="token punctuation">(</span>color<span class="token operator">=</span>RED<span class="token punctuation">)</span>
+        moving_dot3 = Dot(color=RED)
 
-        path <span class="token operator">=</span> TracedPath<span class="token punctuation">(</span>moving_dot3<span class="token punctuation">.</span>get_center<span class="token punctuation">,</span> stroke_width<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">,</span> stroke_color<span class="token operator">=</span>RED<span class="token punctuation">)</span>
+        path = TracedPath(moving_dot3.get_center, stroke_width=6, stroke_color=RED)
 
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>moving_dot1<span class="token punctuation">,</span> moving_dot2<span class="token punctuation">,</span> moving_dot3<span class="token punctuation">,</span> moving_line<span class="token punctuation">,</span> path<span class="token punctuation">)</span>
+        self.add(moving_dot1, moving_dot2, moving_dot3, moving_line, path)
 
-        self<span class="token punctuation">.</span>play<span class="token punctuation">(</span>
-            UpdateFromAlphaFunc<span class="token punctuation">(</span>moving_dot1<span class="token punctuation">,</span> <span class="token keyword">lambda</span> d<span class="token punctuation">,</span> a<span class="token punctuation">:</span> d<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>lines<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            UpdateFromAlphaFunc<span class="token punctuation">(</span>moving_dot2<span class="token punctuation">,</span> <span class="token keyword">lambda</span> d<span class="token punctuation">,</span> a<span class="token punctuation">:</span> d<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>lines<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            UpdateFromAlphaFunc<span class="token punctuation">(</span>moving_dot3<span class="token punctuation">,</span> <span class="token keyword">lambda</span> d<span class="token punctuation">,</span> a<span class="token punctuation">:</span> d<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>moving_line<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            run_time<span class="token operator">=</span><span class="token number">4</span>
-        <span class="token punctuation">)</span>
+        self.play(
+            UpdateFromAlphaFunc(moving_dot1, lambda d, a: d.move_to(lines[0].pfp(a))),
+            UpdateFromAlphaFunc(moving_dot2, lambda d, a: d.move_to(lines[1].pfp(a))),
+            UpdateFromAlphaFunc(moving_dot3, lambda d, a: d.move_to(moving_line.pfp(a))),
+            run_time=4
+        )
 </code></pre>
 </blockquote>
 </details><p></p>
@@ -853,79 +853,79 @@ self<span class="token punctuation">.</span>play<span class="token punctuation">
 <p><s>开个玩笑</s></p>
 <h2>浅析基于时间的 updater</h2>
 <p>我们回到上一节提到的基于时间的更新函数，它的类型定义如下。此时这个函数接收的参数是两个，一个是 Mobject ，另一个是 dt 。</p>
-<pre class="language-python"><code class="language-python">TimeBasedUpdater <span class="token operator">=</span> Callable<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"Mobject"</span><span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span>
+<pre><code class="language-python">TimeBasedUpdater = Callable[[&quot;Mobject&quot;, float], None]
 </code></pre>
 <p>同时，在 <code>add_updater</code> 方法中，有这么一条语句：</p>
-<pre class="language-python"><code class="language-python"><span class="token keyword">if</span> <span class="token string">"dt"</span> <span class="token keyword">in</span> get_parameters<span class="token punctuation">(</span>update_function<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment">#...</span>
+<pre><code class="language-python">if &quot;dt&quot; in get_parameters(update_function):
+    #...
 </code></pre>
 <p>很明显，当更新函数的参数中如果有一个名字为 dt ，那么就会执行下面的步骤，即将<mark>基于时间的更新函数</mark>添加到成员列表中。接下来就只需要接着上一节的分析，在每次 <em>动画播放</em> 的时候，动画过程中的每一帧都会调用这一函数，对物件进行更新了。</p>
 <p>然而我们好像忽略了 <code>wait</code> 这个方法。我们发现，基于时间的更新不管是遇到 <code>play</code> 还是 <code>wait</code>，它都会更新。</p>
-<pre class="language-python"><code class="language-python"><span class="token decorator annotation punctuation">@handle_play_like_call</span>
-    <span class="token keyword">def</span> <span class="token function">wait</span><span class="token punctuation">(</span>
-        self<span class="token punctuation">,</span>
-        duration<span class="token punctuation">:</span> <span class="token builtin">float</span> <span class="token operator">=</span> DEFAULT_WAIT_TIME<span class="token punctuation">,</span>
-        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>update_mobjects<span class="token punctuation">(</span>dt<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment"># Any problems with this?</span>
-        <span class="token comment"># 处理演讲者模式</span>
-        <span class="token keyword">if</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">:</span>
-            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            time_progression <span class="token operator">=</span> \
-                self<span class="token punctuation">.</span>get_wait_time_progression<span class="token punctuation">(</span>duration<span class="token punctuation">,</span> stop_condition<span class="token punctuation">)</span>
-            last_t <span class="token operator">=</span> <span class="token number">0</span>
-            <span class="token keyword">for</span> t <span class="token keyword">in</span> time_progression<span class="token punctuation">:</span>
-                dt <span class="token operator">=</span> t <span class="token operator">-</span> last_t
-                last_t <span class="token operator">=</span> t
-                <span class="token comment"># 处理更新</span>
-                self<span class="token punctuation">.</span>update_frame<span class="token punctuation">(</span>dt<span class="token punctuation">)</span>
-                self<span class="token punctuation">.</span>emit_frame<span class="token punctuation">(</span><span class="token punctuation">)</span>
-                <span class="token keyword">if</span> stop_condition <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span> <span class="token keyword">and</span> stop_condition<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                    <span class="token keyword">break</span>
-        self<span class="token punctuation">.</span>refresh_static_mobjects<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> self
+<pre><code class="language-python">@handle_play_like_call
+    def wait(
+        self,
+        duration: float = DEFAULT_WAIT_TIME,
+        ...
+    ):
+        self.update_mobjects(dt=0)  # Any problems with this?
+        # 处理演讲者模式
+        if ...:
+            ...
+        else:
+            time_progression = \
+                self.get_wait_time_progression(duration, stop_condition)
+            last_t = 0
+            for t in time_progression:
+                dt = t - last_t
+                last_t = t
+                # 处理更新
+                self.update_frame(dt)
+                self.emit_frame()
+                if stop_condition is not None and stop_condition():
+                    break
+        self.refresh_static_mobjects()
+        return self
 </code></pre>
 <p>可以看到，<code>wait</code> 方法中，其实也是做了一些关于 updater 的处理，这样就能做到 <code>wait</code> 时也能处理基于时间的更新了。</p>
 <details class="custom-callout example"><summary class="callout-title"><div>玩笑归玩笑，时钟的例子还是得给答案的</div>
 <div class="callout-fold"></div></summary><blockquote>
-<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ClockExampleScene</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token comment"># 秒针的角速度</span>
-        omega <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">6</span> <span class="token operator">*</span> DEGREES
-        cir <span class="token operator">=</span> Circle<span class="token punctuation">(</span>radius<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> color<span class="token operator">=</span>WHITE<span class="token punctuation">)</span>
-        <span class="token comment"># 添加刻度</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            percent <span class="token operator">=</span> i <span class="token operator">/</span> <span class="token number">60</span>
-            <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">5</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-                <span class="token comment"># pfp 是 point_from_proportion 的简写</span>
-                cir<span class="token punctuation">.</span>add<span class="token punctuation">(</span>Line<span class="token punctuation">(</span>cir<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>percent<span class="token punctuation">)</span><span class="token punctuation">,</span> cir<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>percent<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.9</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">else</span><span class="token punctuation">:</span>
-                cir<span class="token punctuation">.</span>add<span class="token punctuation">(</span>Line<span class="token punctuation">(</span>cir<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>percent<span class="token punctuation">)</span><span class="token punctuation">,</span> cir<span class="token punctuation">.</span>pfp<span class="token punctuation">(</span>percent<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.95</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>cir<span class="token punctuation">)</span>
+<pre><code class="language-python">class ClockExampleScene(Scene):
+    def construct(self):
+        # 秒针的角速度
+        omega = -6 * DEGREES
+        cir = Circle(radius=3, color=WHITE)
+        # 添加刻度
+        for i in range(60):
+            percent = i / 60
+            if i % 5 == 0:
+                # pfp 是 point_from_proportion 的简写
+                cir.add(Line(cir.pfp(percent), cir.pfp(percent) * 0.9))
+            else:
+                cir.add(Line(cir.pfp(percent), cir.pfp(percent) * 0.95))
+        self.add(cir)
         
-        <span class="token comment"># 秒针 分针 时针</span>
-        sec_handle <span class="token operator">=</span> Line<span class="token punctuation">(</span>DOWN <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">,</span> UP <span class="token operator">*</span> <span class="token number">2.7</span><span class="token punctuation">,</span> stroke_width<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>
-        minute_handle <span class="token operator">=</span> Line<span class="token punctuation">(</span>DOWN <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">,</span> UP <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> stroke_width<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">)</span>
-        hour_handle <span class="token operator">=</span> Line<span class="token punctuation">(</span>DOWN <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">,</span> UP <span class="token operator">*</span> <span class="token number">1.5</span><span class="token punctuation">,</span> stroke_width<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">)</span>
+        # 秒针 分针 时针
+        sec_handle = Line(DOWN / 4, UP * 2.7, stroke_width=3)
+        minute_handle = Line(DOWN / 4, UP * 2, stroke_width=6)
+        hour_handle = Line(DOWN / 4, UP * 1.5, stroke_width=9)
 
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>hour_handle<span class="token punctuation">,</span> minute_handle<span class="token punctuation">,</span> sec_handle<span class="token punctuation">)</span>
+        self.add(hour_handle, minute_handle, sec_handle)
 
-        <span class="token keyword">def</span> <span class="token function">updater_sec</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>omega <span class="token operator">*</span> dt<span class="token punctuation">,</span> about_point<span class="token operator">=</span>ORIGIN<span class="token punctuation">)</span>
+        def updater_sec(m: Mobject, dt: float):
+            m.rotate(omega * dt, about_point=ORIGIN)
 
-        <span class="token keyword">def</span> <span class="token function">updater_minute</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>omega <span class="token operator">*</span> dt <span class="token operator">/</span> <span class="token number">60</span><span class="token punctuation">,</span> about_point<span class="token operator">=</span>ORIGIN<span class="token punctuation">)</span>
+        def updater_minute(m: Mobject, dt: float):
+            m.rotate(omega * dt / 60, about_point=ORIGIN)
         
-        <span class="token keyword">def</span> <span class="token function">updater_hour</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>omega <span class="token operator">*</span> dt <span class="token operator">/</span> <span class="token number">3600</span><span class="token punctuation">,</span> about_point<span class="token operator">=</span>ORIGIN<span class="token punctuation">)</span>
+        def updater_hour(m: Mobject, dt: float):
+            m.rotate(omega * dt / 3600, about_point=ORIGIN)
 
-        <span class="token comment"># 分别添加与时间相关的更新</span>
-        sec_handle<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>updater_sec<span class="token punctuation">)</span>
-        minute_handle<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>updater_minute<span class="token punctuation">)</span>
-        hour_handle<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>updater_hour<span class="token punctuation">)</span>
+        # 分别添加与时间相关的更新
+        sec_handle.add_updater(updater_sec)
+        minute_handle.add_updater(updater_minute)
+        hour_handle.add_updater(updater_hour)
 
-        self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+        self.wait(10)
 </code></pre>
 </blockquote>
 </details><h2>dt 的值是多少</h2>
@@ -934,46 +934,46 @@ self<span class="token punctuation">.</span>play<span class="token punctuation">
 <p>当然可行，毕竟 dt 就是一个浮点数。但是当全局设定的帧率变了，而我们仍然使用我们定义的常量，就会导致不同帧率情况下，动画的结果就不同。</p>
 <p>但是，如果我们使用 dt ，并且在使用的过程中有意地给某个变化量乘上 dt ，那么在单位时间内，这个变化量就是恒定的了。</p>
 <p>比如我们将秒针的更新函数改成这样</p>
-<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sec_updater</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> dt<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>omega <span class="token operator">*</span> <span class="token number">0.016667</span><span class="token punctuation">,</span> about_point<span class="token operator">=</span>ORIGIN<span class="token punctuation">)</span>
+<pre><code class="language-python">def sec_updater(m, dt):
+    m.rotate(omega * 0.016667, about_point=ORIGIN)
 </code></pre>
 <p>那么，在 60 帧的视频中，每 10 秒钟，秒针就会走 10 个刻度。而在 30 帧的视频中，每 10 秒钟，秒针只会走 5 个刻度，因为在 30 帧的视频中，更新函数在每秒只会被调用 30 次。所以，dt 可以作为一个标准化的数值来使用。</p>
 <p>仔细阅读的读者应该也能发现， dt 是通过当前帧的“时间戳”减去上一帧的“时间戳”来算出来的。既然有这个“时间戳”，我们能把它利用起来吗？当然是可以的， Scene 有一个成员变量 <code>time</code> 就存放了当前动画已经运行的秒数。我们可以用 <code>DecimalNumber</code> 来将它显示在屏幕上。</p>
-<pre class="language-python"><code class="language-python">cur_time <span class="token operator">=</span> DecimalNumber<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-cur_time<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> m<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> m<span class="token punctuation">.</span>set_value<span class="token punctuation">(</span>self<span class="token punctuation">.</span>time<span class="token punctuation">)</span><span class="token punctuation">)</span>
-self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>cur_time<span class="token punctuation">)</span>
-self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+<pre><code class="language-python">cur_time = DecimalNumber(0)
+cur_time.add_updater(lambda m, dt: m.set_value(self.time))
+self.add(cur_time)
+self.wait(10)
 </code></pre>
 <h2>更多的例子</h2>
 <h5>1. 恒星行星模型：制作地球绕太阳公转，月球绕地球公转的动画。公转的速度、半径不做硬性要求。</h5>
 <details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
 <div class="callout-fold"></div></summary><blockquote>
-<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">StarPlantExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        sun <span class="token operator">=</span> Sphere<span class="token punctuation">(</span>radius<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> color<span class="token operator">=</span>RED<span class="token punctuation">)</span>
-        earth <span class="token operator">=</span> Sphere<span class="token punctuation">(</span>radius<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">,</span> color<span class="token operator">=</span>BLUE<span class="token punctuation">)</span>
-        moon <span class="token operator">=</span> Sphere<span class="token punctuation">(</span>radius<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">,</span> color<span class="token operator">=</span>YELLOW_A<span class="token punctuation">)</span>
+<pre><code class="language-python">class StarPlantExample(Scene):
+    def construct(self):
+        sun = Sphere(radius=1, color=RED)
+        earth = Sphere(radius=0.5, color=BLUE)
+        moon = Sphere(radius=0.2, color=YELLOW_A)
 
-        earth<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>sun<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">3.5</span> <span class="token operator">*</span> RIGHT<span class="token punctuation">)</span>
-        moon<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>earth<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> RIGHT<span class="token punctuation">)</span>
+        earth.move_to(sun.get_center() + 3.5 * RIGHT)
+        moon.move_to(earth.get_center() + 2 * RIGHT)
 
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>sun<span class="token punctuation">,</span> earth<span class="token punctuation">,</span> moon<span class="token punctuation">)</span>
+        self.add(sun, earth, moon)
 
-        <span class="token comment"># 地球绕太阳转</span>
-        <span class="token keyword">def</span> <span class="token function">update_earth</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>dt<span class="token punctuation">,</span> about_point<span class="token operator">=</span>sun<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        # 地球绕太阳转
+        def update_earth(m: Mobject, dt: float):
+            m.rotate(dt, about_point=sun.get_center())
 
-        <span class="token keyword">def</span> <span class="token function">update_moon</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token comment"># 强行移动到地球的右侧</span>
-            m<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span>earth<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> RIGHT<span class="token punctuation">)</span>
-            <span class="token comment"># 根据动画已经运行的时间来旋转</span>
-            <span class="token comment"># self.time 是 Scene 的属性，用于记录动画总的运行时间</span>
-            <span class="token comment"># 其实用了 self.time 稍微就有点违背了原本的想法了，虽然这样写比较简单</span>
-            m<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>self<span class="token punctuation">.</span>time <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">,</span> about_point<span class="token operator">=</span>earth<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        def update_moon(m: Mobject, dt: float):
+            # 强行移动到地球的右侧
+            m.move_to(earth.get_center() + 2 * RIGHT)
+            # 根据动画已经运行的时间来旋转
+            # self.time 是 Scene 的属性，用于记录动画总的运行时间
+            # 其实用了 self.time 稍微就有点违背了原本的想法了，虽然这样写比较简单
+            m.rotate(self.time * 3, about_point=earth.get_center())
 
-        earth<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>update_earth<span class="token punctuation">)</span>
-        moon<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>update_moon<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+        earth.add_updater(update_earth)
+        moon.add_updater(update_moon)
+        self.wait(10)
 </code></pre>
 </blockquote>
 </details><h5>2. 李萨如曲线：让一个物件按照李撒如图形的轨迹持续运动。李萨如图形的参数可自己给定。</h5>
@@ -981,124 +981,124 @@ self<span class="token punctuation">.</span>wait<span class="token punctuation">
 <details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
 <div class="callout-fold"></div></summary><blockquote>
 <p>在这里同样也用了 <code>self.time</code> 这个变量，处理更加方便一些</p>
-<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LissajousExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        u <span class="token operator">=</span> <span class="token number">4</span>
-        v <span class="token operator">=</span> <span class="token number">5</span>
-        <span class="token comment"># 李萨如图形的参数曲线</span>
-        lissajous <span class="token operator">=</span> ParametricCurve<span class="token punctuation">(</span>
-            <span class="token keyword">lambda</span> t<span class="token punctuation">:</span> <span class="token number">3</span> <span class="token operator">*</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>
-                np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>u <span class="token operator">*</span> t<span class="token punctuation">)</span><span class="token punctuation">,</span>
-                np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>v <span class="token operator">*</span> t<span class="token punctuation">)</span><span class="token punctuation">,</span>
-                <span class="token number">0</span>
-            <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            t_range<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> TAU<span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            stroke_color<span class="token operator">=</span>GREY
-        <span class="token punctuation">)</span>
+<pre><code class="language-python">class LissajousExample(Scene):
+    def construct(self):
+        u = 4
+        v = 5
+        # 李萨如图形的参数曲线
+        lissajous = ParametricCurve(
+            lambda t: 3 * np.array([
+                np.sin(u * t),
+                np.sin(v * t),
+                0
+            ]),
+            t_range=[0, TAU, 0.1],
+            stroke_color=GREY
+        )
 
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>lissajous<span class="token punctuation">)</span>
+        self.add(lissajous)
 
-        dot <span class="token operator">=</span> Dot<span class="token punctuation">(</span>color<span class="token operator">=</span>YELLOW<span class="token punctuation">)</span>
+        dot = Dot(color=YELLOW)
 
-        <span class="token keyword">def</span> <span class="token function">update_dot</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            m<span class="token punctuation">.</span>move_to<span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">*</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>
-                np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>u <span class="token operator">*</span> self<span class="token punctuation">.</span>time <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>v <span class="token operator">*</span> self<span class="token punctuation">.</span>time <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                <span class="token number">0</span>
-            <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        dot<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>update_dot<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>dot<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+        def update_dot(m: Mobject, dt: float):
+            m.move_to(3 * np.array([
+                np.sin(u * self.time / 3),
+                np.sin(v * self.time / 3),
+                0
+            ]))
+        dot.add_updater(update_dot)
+        self.add(dot)
+        self.wait(10)
 </code></pre>
 </blockquote>
 </details><h5>3. 追逐曲线：一个正三角形的三个顶点分别以一定速度靠近同一侧相邻的顶点，画出每一帧三角形的位置。</h5>
 <p><video controls="controls" src="/updater/TracingCurveExample.mp4" alt="updater/TracingCurveExample.mp4" style="width: 100%; height: 100%;"></video></p>
 <details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
 <div class="callout-fold"></div></summary><blockquote>
-<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TracingCurveExample</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment"># 极坐标转换为笛卡尔坐标</span>
-    <span class="token keyword">def</span> <span class="token function">polar2xyz</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pho<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">,</span> theta<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> pho <span class="token operator">*</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>
-            np<span class="token punctuation">.</span>cos<span class="token punctuation">(</span>theta<span class="token punctuation">)</span><span class="token punctuation">,</span>
-            np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>theta<span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token number">0</span>
-        <span class="token punctuation">]</span><span class="token punctuation">)</span>
+<pre><code class="language-python">class TracingCurveExample(Scene):
+    # 极坐标转换为笛卡尔坐标
+    def polar2xyz(self, pho: float, theta: float):
+        return pho * np.array([
+            np.cos(theta),
+            np.sin(theta),
+            0
+        ])
 
-    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        r <span class="token operator">=</span> <span class="token number">3</span>
-        <span class="token comment"># 3 个顶点</span>
-        a <span class="token operator">=</span> Dot<span class="token punctuation">(</span>self<span class="token punctuation">.</span>polar2xyz<span class="token punctuation">(</span>r<span class="token punctuation">,</span> PI <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>YELLOW<span class="token punctuation">)</span>
-        b <span class="token operator">=</span> Dot<span class="token punctuation">(</span>self<span class="token punctuation">.</span>polar2xyz<span class="token punctuation">(</span>r<span class="token punctuation">,</span> PI <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">+</span> TAU <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>YELLOW<span class="token punctuation">)</span>
-        c <span class="token operator">=</span> Dot<span class="token punctuation">(</span>self<span class="token punctuation">.</span>polar2xyz<span class="token punctuation">(</span>r<span class="token punctuation">,</span> PI <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">-</span> TAU <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>YELLOW<span class="token punctuation">)</span>
+    def construct(self):
+        r = 3
+        # 3 个顶点
+        a = Dot(self.polar2xyz(r, PI / 2), color=YELLOW)
+        b = Dot(self.polar2xyz(r, PI / 2 + TAU / 3), color=YELLOW)
+        c = Dot(self.polar2xyz(r, PI / 2 - TAU / 3), color=YELLOW)
 
-        <span class="token comment"># 3 条边</span>
-        ab <span class="token operator">=</span> Line<span class="token punctuation">(</span>a<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> b<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>GOLD<span class="token punctuation">)</span>
-        bc <span class="token operator">=</span> Line<span class="token punctuation">(</span>b<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> c<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>GOLD<span class="token punctuation">)</span>
-        ca <span class="token operator">=</span> Line<span class="token punctuation">(</span>c<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> a<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token operator">=</span>GOLD<span class="token punctuation">)</span>
+        # 3 条边
+        ab = Line(a.get_center(), b.get_center(), color=GOLD)
+        bc = Line(b.get_center(), c.get_center(), color=GOLD)
+        ca = Line(c.get_center(), a.get_center(), color=GOLD)
 
-        <span class="token comment"># 使 3 条边始终连接 3 个顶点</span>
-        ab<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> l<span class="token punctuation">:</span> l<span class="token punctuation">.</span>put_start_and_end_on<span class="token punctuation">(</span>a<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> b<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        bc<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> l<span class="token punctuation">:</span> l<span class="token punctuation">.</span>put_start_and_end_on<span class="token punctuation">(</span>b<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> c<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        ca<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> l<span class="token punctuation">:</span> l<span class="token punctuation">.</span>put_start_and_end_on<span class="token punctuation">(</span>c<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> a<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        # 使 3 条边始终连接 3 个顶点
+        ab.add_updater(lambda l: l.put_start_and_end_on(a.get_center(), b.get_center()))
+        bc.add_updater(lambda l: l.put_start_and_end_on(b.get_center(), c.get_center()))
+        ca.add_updater(lambda l: l.put_start_and_end_on(c.get_center(), a.get_center()))
 
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>ab<span class="token punctuation">,</span> bc<span class="token punctuation">,</span> ca<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+        self.add(ab, bc, ca)
+        self.add(a, b, c)
 
-        <span class="token comment"># 3 个顶点随时间向同一侧相邻点靠近</span>
-        a<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> m<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> m<span class="token punctuation">.</span>shift<span class="token punctuation">(</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> m<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> dt<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        b<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> m<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> m<span class="token punctuation">.</span>shift<span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> m<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> dt<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        c<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span><span class="token keyword">lambda</span> m<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> m<span class="token punctuation">.</span>shift<span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> m<span class="token punctuation">.</span>get_center<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> dt<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        # 3 个顶点随时间向同一侧相邻点靠近
+        a.add_updater(lambda m, dt: m.shift((b.get_center() - m.get_center()) * dt))
+        b.add_updater(lambda m, dt: m.shift((c.get_center() - m.get_center()) * dt))
+        c.add_updater(lambda m, dt: m.shift((a.get_center() - m.get_center()) * dt))
 
-        <span class="token comment"># 轨迹</span>
-        trace <span class="token operator">=</span> VGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        # 轨迹
+        trace = VGroup()
 
-        <span class="token comment"># 向轨迹中不断添加三角形三边的拷贝</span>
-        <span class="token keyword">def</span> <span class="token function">update_trace</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            m<span class="token punctuation">.</span>add<span class="token punctuation">(</span>ab<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>clear_updaters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>set_stroke<span class="token punctuation">(</span>width<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            m<span class="token punctuation">.</span>add<span class="token punctuation">(</span>bc<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>clear_updaters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>set_stroke<span class="token punctuation">(</span>width<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            m<span class="token punctuation">.</span>add<span class="token punctuation">(</span>ca<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>clear_updaters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>set_stroke<span class="token punctuation">(</span>width<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        # 向轨迹中不断添加三角形三边的拷贝
+        def update_trace(m: Mobject, dt: float):
+            m.add(ab.copy().clear_updaters().set_stroke(width=1))
+            m.add(bc.copy().clear_updaters().set_stroke(width=1))
+            m.add(ca.copy().clear_updaters().set_stroke(width=1))
 
-        trace<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>update_trace<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>trace<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+        trace.add_updater(update_trace)
+        self.add(trace)
+        self.wait(4)
 </code></pre>
 </blockquote>
 </details><h5>4. 东方弹幕游戏：对手每一帧都会改变弹幕的发射角，但是当弹幕发射出去之后，只会进行匀速直线运动，直至飞出屏幕。你需要制作一张螺旋符卡，拥有至少 3 条伪线，且发射角匀速变化。</h5>
 <p><img src="/updater/danmaku01.png" alt="updater/danmaku01.png"></p>
 <details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
 <div class="callout-fold"></div></summary><blockquote>
-<pre class="language-python"><code class="language-python"><span class="token comment"># 子弹物件封装</span>
-<span class="token keyword">class</span> <span class="token class-name">Bullet</span><span class="token punctuation">(</span>ArrowTip<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> angle<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token string">"points"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">+=</span> LEFT<span class="token operator">*</span><span class="token number">0.5</span>
-        self<span class="token punctuation">.</span>scale<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>rotate<span class="token punctuation">(</span>angle <span class="token operator">+</span> PI<span class="token punctuation">)</span>
-        <span class="token comment"># 子弹朝向所对应的向量</span>
-        self<span class="token punctuation">.</span>vector <span class="token operator">=</span> normalize<span class="token punctuation">(</span>rotate_vector<span class="token punctuation">(</span>RIGHT<span class="token punctuation">,</span> angle<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre><code class="language-python"># 子弹物件封装
+class Bullet(ArrowTip):
+    def __init__(self, angle=0, **kwargs):
+        super().__init__(**kwargs)
+        self.data[&quot;points&quot;][4] += LEFT*0.5
+        self.scale(0.5)
+        self.rotate(angle + PI)
+        # 子弹朝向所对应的向量
+        self.vector = normalize(rotate_vector(RIGHT, angle))
 
-color_list <span class="token operator">=</span> <span class="token punctuation">[</span>RED<span class="token punctuation">,</span> GOLD<span class="token punctuation">,</span> YELLOW<span class="token punctuation">,</span> GREEN<span class="token punctuation">,</span> TEAL<span class="token punctuation">,</span> BLUE<span class="token punctuation">,</span> PURPLE<span class="token punctuation">]</span>
-v <span class="token operator">=</span> <span class="token number">2</span>
+color_list = [RED, GOLD, YELLOW, GREEN, TEAL, BLUE, PURPLE]
+v = 2
 
-<span class="token keyword">class</span> <span class="token class-name">Danmaku01</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        danmaku <span class="token operator">=</span> VGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+class Danmaku01(Scene):
+    def construct(self):
+        danmaku = VGroup()
 
-        <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token comment"># 每一帧都向集合中添加一颗子弹，初始角度为 self.time * 50</span>
-            m<span class="token punctuation">.</span>add<span class="token punctuation">(</span>Bullet<span class="token punctuation">(</span>self<span class="token punctuation">.</span>time <span class="token operator">*</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token comment"># 渐变着色</span>
-            m<span class="token punctuation">.</span>set_color_by_gradient<span class="token punctuation">(</span><span class="token operator">*</span>color_list<span class="token punctuation">)</span>
+        def update(m: Mobject, dt: float):
+            # 每一帧都向集合中添加一颗子弹，初始角度为 self.time * 50
+            m.add(Bullet(self.time * 50))
+            # 渐变着色
+            m.set_color_by_gradient(*color_list)
 
-            <span class="token keyword">for</span> b <span class="token keyword">in</span> m<span class="token punctuation">:</span>
-                <span class="token comment"># 子弹匀速直线运动</span>
-                b<span class="token punctuation">.</span>shift<span class="token punctuation">(</span>v <span class="token operator">*</span> dt <span class="token operator">*</span> b<span class="token punctuation">.</span>vector<span class="token punctuation">)</span>
-                <span class="token comment"># 删除屏幕外的子弹</span>
-                <span class="token keyword">if</span> b<span class="token punctuation">.</span>is_off_screen<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                    m<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+            for b in m:
+                # 子弹匀速直线运动
+                b.shift(v * dt * b.vector)
+                # 删除屏幕外的子弹
+                if b.is_off_screen():
+                    m.remove(b)
 
-        danmaku<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>update<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>danmaku<span class="token punctuation">)</span>
+        danmaku.add_updater(update)
+        self.add(danmaku)
 </code></pre>
 <p>当然这里的例子我并没有进行优化，如果是游戏开发者，肯定了解过<mark>对象池</mark>的概念，它能有效优化对象频繁创建和析构带来的性能损失问题。</p>
 </blockquote>
@@ -1107,21 +1107,21 @@ v <span class="token operator">=</span> <span class="token number">2</span>
 <details class="custom-callout example"><summary class="callout-title"><div>参考解答</div>
 <div class="callout-fold"></div></summary><blockquote>
 <p>其实只需要改第 6 行就可以了。只要发射角的变化是非线性的，就可以达到这样的效果。当然，如果觉得子弹还不够密集（因为 60 帧下每秒只有 60 颗）可以再加几组。</p>
-<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Danmaku01</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">construct</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        danmaku <span class="token operator">=</span> VGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre><code class="language-python">class Danmaku01(Scene):
+    def construct(self):
+        danmaku = VGroup()
 
-        <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> Mobject<span class="token punctuation">,</span> dt<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            m<span class="token punctuation">.</span>add<span class="token punctuation">(</span>Bullet<span class="token punctuation">(</span>self<span class="token punctuation">.</span>time <span class="token operator">**</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            m<span class="token punctuation">.</span>set_color_by_gradient<span class="token punctuation">(</span><span class="token operator">*</span>color_list<span class="token punctuation">)</span>
+        def update(m: Mobject, dt: float):
+            m.add(Bullet(self.time ** 2 * 2))
+            m.set_color_by_gradient(*color_list)
 
-            <span class="token keyword">for</span> b <span class="token keyword">in</span> m<span class="token punctuation">:</span>
-                b<span class="token punctuation">.</span>shift<span class="token punctuation">(</span>v <span class="token operator">*</span> dt <span class="token operator">*</span> b<span class="token punctuation">.</span>vector<span class="token punctuation">)</span>
-                <span class="token keyword">if</span> b<span class="token punctuation">.</span>is_off_screen<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                    m<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+            for b in m:
+                b.shift(v * dt * b.vector)
+                if b.is_off_screen():
+                    m.remove(b)
 
-        danmaku<span class="token punctuation">.</span>add_updater<span class="token punctuation">(</span>update<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>add<span class="token punctuation">(</span>danmaku<span class="token punctuation">)</span>
+        danmaku.add_updater(update)
+        self.add(danmaku)
 </code></pre>
 </blockquote>
 </details>]]></content:encoded>
