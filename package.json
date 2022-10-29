@@ -50,6 +50,7 @@
     "markdown-it-link-attributes": "^4.0.1",
     "markdown-it-new-katex": "^2.0.3",
     "markdown-it-prism": "^2.2.4",
+    "markdown-it-shiki": "^0.5.1",
     "markdown-it-table-of-contents": "^0.6.0",
     "mdit-plg-double-bracket-link": "^0.0.1",
     "mdit-plg-double-bracket-media": "^0.0.2",

@@ -293,7 +293,7 @@ font-face {
   text-align: start;
 }
 
-.heti pre {
+pre.shiki  {
   margin-block-start: 12px;
   margin-block-end: 12px;
   margin-inline-start: 0;
@@ -307,9 +307,8 @@ font-face {
   white-space: pre;
   word-wrap: normal;
   border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.054);
 }
-
+/*
 .dark .heti pre {
   background-color: rgba(255, 255, 255, 0.054);
 }
@@ -318,7 +317,7 @@ font-face {
   [data-darkmode="auto"] .heti pre {
     background-color: rgba(255, 255, 255, 0.054);
   }
-}
+}*/
 
 .heti pre code {
   margin: 0;

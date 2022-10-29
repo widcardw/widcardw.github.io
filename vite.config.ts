@@ -10,7 +10,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import Markdown from 'vite-plugin-vue-markdown'
-import Prism from 'markdown-it-prism'
+// import Prism from 'markdown-it-prism'
 import matter from 'gray-matter'
 import LinkAttributes from 'markdown-it-link-attributes'
 // @ts-expect-error declaration
@@ -23,6 +23,7 @@ import markdownItMark from 'markdown-it-mark'
 import DoubleBracketMedia from 'mdit-plg-double-bracket-media'
 import DoubleBracketLink from 'mdit-plg-double-bracket-link'
 import CalloutPlugin from 'mdit-plugin-callouts'
+import Shiki from 'markdown-it-shiki'
 import { mermaidPlugin } from './src/composables/plugins/mermaid'
 import type { MyRouteMeta } from './src/composables/types'
 
@@ -107,7 +108,7 @@ export default defineConfig({
       headEnabled: true,
       markdownItSetup(md) {
         // https://prismjs.com/
-        md.use(Prism)
+        // md.use(Prism)
         md.use(LinkAttributes, {
           matcher: (link: string) => /^https?:\/\//.test(link),
           attrs: {
@@ -126,6 +127,12 @@ export default defineConfig({
           containerHeaderHtml: '<h3>目录</h3>',
         })
         md.use(mermaidPlugin)
+        md.use(Shiki, {
+          theme: {
+            light: 'vitesse-light',
+            dark: 'vitesse-dark',
+          },
+        })
       },
     }),
   ],

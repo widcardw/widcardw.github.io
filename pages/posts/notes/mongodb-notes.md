@@ -14,7 +14,7 @@ article: true
 
 如果是原生 MongoDB 启动服务，那么应该是没有验证的。但是如果在配置文件中写入
 
-```yml
+```yaml
 security:
   authentication: enabled
 ```
@@ -33,27 +33,29 @@ mongod --config /opt/homebrew/etc/mongod.conf
 
 给 admin 表添加管理员
 
-```mongodb
-use admin
+```js
+// use admin
 db.createUser({
-  user: "admin", pwd: "123456",
-  roles: [{ role: "userAdminAnyDatabase", db: "admin" }]
+  user: 'admin',
+  pwd: '123456',
+  roles: [{ role: 'userAdminAnyDatabase', db: 'admin' }]
 })
 ```
 
 给 test 表添加用户 admin
 
-```mongodb
-use test
+```js
+// use test
 db.createUser({
-  user: "admin", pwd: "123456",
-  roles: [{ role: "dbOwner", db: "test" }]
+  user: 'admin',
+  pwd: '123456',
+  roles: [{ role: 'dbOwner', db: 'test' }]
 })
 ```
 
 于是我们可以在进入这个数据库后，使用命令
 
-```mongodb
+```js
 db.auth('admin', '123456')
 ```
 
@@ -63,7 +65,7 @@ db.auth('admin', '123456')
 
 进入 mongo
 
-```mongodb
+```js
 db.shutdownServer()
 ```
 
@@ -77,7 +79,7 @@ db.shutdownServer()
 
 这块其实感觉没什么好讲的，对于这样的==文档查询==，就是去匹配键值对，也就是说可以这样去描述查询语句
 
-```mongodb
+```js
 db.students.find({ name: 'Jack' })
 ```
 
@@ -95,15 +97,15 @@ db.students.find({ name: 'Jack' })
 
 与此同时，还有一些例如 `insertMany` 之类的批量插入的方法，传入的就是列表了。
 
-```mongodb
+```js
 db.students.insert({
-    name: 'Milly',
-    age: 18
+  name: 'Milly',
+  age: 18
 })
 
 db.students.insertMany([
-    { name: 'Jack', age: 20 },
-    { name: 'Tim', age: 22, salary: 3000 },
+  { name: 'Jack', age: 20 },
+  { name: 'Tim', age: 22, salary: 3000 },
 ])
 ```
 
@@ -111,7 +113,7 @@ db.students.insertMany([
 
 #### 使用 update 方法
 
-```mongodb
+```text
 db.collection.update(
     <query>,   // 查询的条件
     <update>,  // 更新的对象和一些操作符
@@ -128,15 +130,15 @@ db.collection.update(
 - 如果直接写一个对象，那么应该会将匹配到的这个文档==直接替换==为新给定的文档
 - 使用 `$set: { key: value }` 可以只将对象的这个属性更新为新的值
 
-```mongodb
+```js
 db.students.update(
-    { name: 'Jack' },
-    { $set: { age: 20 } }  // 只将年龄更新为 20
+  { name: 'Jack' },
+  { $set: { age: 20 } } // 只将年龄更新为 20
 )
 
 db.students.update(
-    { name: 'Tim' },
-    { $inc: { salary: 2000 } }  // 给 Tim 增加 2000 工资
+  { name: 'Tim' },
+  { $inc: { salary: 2000 } } // 给 Tim 增加 2000 工资
 )
 ```
 
@@ -146,7 +148,7 @@ db.students.update(
 
 ### 2.4. 删除
 
-```mongodb
+```js
 db.collection.deleteOne(query)
 db.collection.deleteMany(query)
 ```
@@ -157,7 +159,7 @@ db.collection.deleteMany(query)
 
 找出大于 19 岁的对象
 
-```mongodb
+```js
 db.students.find({ age: { $gt: 19 } })
 ```
 
@@ -174,7 +176,7 @@ db.students.find({ age: { $gt: 19 } })
 
 查询第 11 条到 15 条记录
 
-```mongodb
+```js
 db.students.find().skip(10).limit(5)
 ```
 
@@ -182,7 +184,7 @@ db.students.find().skip(10).limit(5)
 
 `key` 指定排序的字段，1 指定为升序，-1 为降序
 
-```mongodb
+```js
 db.students.find().sort({ age: 1 })
 ```
 
@@ -190,7 +192,7 @@ db.students.find().sort({ age: 1 })
 
 > 建议使用 MongoDB Compass 作为辅助
 
-```mongodb
+```js
 db.collection.aggregate(AGGREGATE_OPERATION)
 ```
 

@@ -30,7 +30,7 @@ article: true
 
 mix 函数会对传入的两个值进行插值运算，即有
 
-```glsl
+```cpp
 genType mix(genType x, genType y, float a) {
     return (1. - a) * x + a * y;
 }
@@ -40,13 +40,13 @@ genType mix(genType x, genType y, float a) {
 
 泛型有
 
-```glsl
+```cpp
 genType smoothstep(genType edge_0, genType edge_1, genType x);
 ```
 
 对于浮点类型有
 
-```glsl
+```cpp
 float smoothstep(float edge_0, float edge_1, float x);
 ```
 
@@ -76,7 +76,7 @@ float smoothstep(float edge_0, float edge_1, float x);
 
 听上去还是云里雾里的，那举个例子吧。假设我们想要画一个圆，我们首先会想到，定义一个函数，返回值为 4 分量的颜色，然后调用这个函数，把得到的颜色直接涂到片段 frag_color 上。
 
-```glsl
+```cpp
 vec4 circle(vec2 coord, vec2 pos, float radius) {
     if (length(coord - pos) <= radius) {
         return vec4(1.0, 1.0, 0.0, 1.0);
@@ -90,7 +90,7 @@ vec4 circle(vec2 coord, vec2 pos, float radius) {
 
 此时，我们回到符号距离函数上来，即用符号来定义距离。我们让圆内的点，返回值都大于 0，圆外的点，返回值都小于 0。此时，函数的返回值就是一个 float 类型。
 
-```glsl
+```cpp
 float sdfCircle(vec2 coord, vec2 pos, float radius) {
     return radius - length(coord - pos);
 }
@@ -98,7 +98,7 @@ float sdfCircle(vec2 coord, vec2 pos, float radius) {
 
 这时，我们已经成功用符号来区分片段了。那么怎样才能将这种区分体现到着色的片段上呢？这就需要使用 mix 函数了。于是，我们根据刚才得到的 sdf，尝试一下。
 
-```glsl
+```cpp
 float f = sdfCircle(coord, vec2(0.), 1.);
 color = mix(color, vec3(1.), f);
 ```
@@ -109,7 +109,7 @@ color = mix(color, vec3(1.), f);
 
 此时我们请出 smoothstep 函数，让小于 0 的片段结果都为 0，大于 0 的片段都为 1，我们可以得到这样的结果
 
-```glsl
+```cpp
 float f = smoothstep(0., fwidth(uv.x), sdfCircle(coord, vec2(0.), 1.));
 color = mix(color, vec3(1.), f);
 ```
@@ -166,7 +166,7 @@ color = mix(color, vec3(1.), f);
 
 同时，需要在头部加上输入布局修饰符
 
-```glsl
+```cpp
 layout (triangles) in;  // 输入图元为三角形
 ```
 
@@ -178,7 +178,7 @@ layout (triangles) in;  // 输入图元为三角形
 
 在头部加上输出布局修饰符，几何着色器同时希望我们设置一个它==最大能够输出的顶点数量==（如果你超过了这个值，OpenGL 将不会绘制多出的顶点），这个也可以在 out 关键字的布局修饰符中设置。
 
-```glsl
+```cpp
 layout (triangle_strip, max_vertices = 5) out;  // 输出图元为三角形，最大顶点数为 5
 ```
 
@@ -188,7 +188,7 @@ layout (triangle_strip, max_vertices = 5) out;  // 输出图元为三角形，�
 
 对于图元也是可以用这样类似的方法来理解。例如我们就拿上面给到的，输入图元为三角形，输出图元最大顶点数为 5 作为例子。假设有输入输出变量如下：
 
-```glsl
+```cpp
 in vec3 v_points[3];  // 输入图元的三个顶点
 in vec4 v_color[3];   // 三个顶点对应的颜色
 out vec4 color;       // 输出颜色
@@ -275,7 +275,7 @@ Primitive << gl_Position << color << Emit
 
 在源码中，其开头是这样的
 
-```glsl
+```cpp
 layout (triangles) in;  // 输入图元
 layout (triangle_strip, max_vertices = 5) out;  // 输出图元
 ```
@@ -344,7 +344,7 @@ layout (triangle_strip, max_vertices = 5) out;  // 输出图元
 
 几何着色器的开头声明如下
 
-```glsl
+```cpp
 layout (triangles) in;  // 输入图元
 layout (triangle_strip, max_vertices = 5) out;  // 输出图元
 ```
