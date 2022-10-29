@@ -34,7 +34,7 @@ conda install python=3.10
 这样，zsh 就会显示成这样
 
 ```sh
-(base) ~ 
+(base) ~
 $ python --version
 Python 3.10.6
 ```
@@ -156,11 +156,11 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 其实这样是间接的使用了 <FileName name="wid_manim/manimlib/__main__.py" icon="i-vscode-icons-file-type-python" /> 来启动，其实可以达到几乎相同的效果。而用这条命令可以导入其他包，例如 `manim_sandbox` 中的工具类。而如果想要直接用 `manimgl` 命令来执行的话，这就必须采用上面的软链接的方式，将它链接到虚拟环境中。
 
 > 其实用这个长命令的话，就可以使用
-> 
+>
 > ```py
 > from wid_manim.manimlib import *
 > ```
-> 
+>
 > 来引入 `manimlib` 了，环境是不会报错的。
 
 这条命令很长，我们依然是采用一个 <FileName name="launch.json" icon="i-vscode-icons-file-type-json" /> 脚本来启动它。
@@ -174,7 +174,7 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
       "type": "python",
       "request": "launch",
       "cwd": "${workspaceFolder}", // 设置当前工作路径
-      "env":{
+      "env": {
         "PYTHONPATH": "${workspaceFolder}" // 设置 Python 运行环境变量
       },
       "program": "${workspaceFolder}/wid_manim/manimlib/__main__.py", // 设置运行程序
@@ -195,7 +195,7 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 manimgl example.py
 ```
 
-那么，你的主程序应当是 `manimgl`，而非上述的 `__main__.py` 文件。因此，你需要做出以下修改
+那么，你的主程序应当是 `manimgl`，而非上述的 <FileName name="__main__.py" icon="i-vscode-icons-file-type-python" /> 文件。因此，你需要做出以下修改
 
 ```diff
 - "program": "${workspaceFolder}/wid_manim/manimlib/__main__.py",
