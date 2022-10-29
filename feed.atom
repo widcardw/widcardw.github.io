@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://widcard.win/</id>
     <title>widcardw</title>
-    <updated>2022-10-29T13:18:01.758Z</updated>
+    <updated>2022-10-29T13:28:26.633Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>widcardw</name>
@@ -34,7 +34,7 @@ brew uninstall python@3.9
 <pre class="language-sh"><code class="language-sh">conda <span class="token function">install</span> <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3.10</span>
 </code></pre>
 <p>这样，zsh 就会显示成这样</p>
-<pre class="language-sh"><code class="language-sh"><span class="token punctuation">(</span>base<span class="token punctuation">)</span> ~ 
+<pre class="language-sh"><code class="language-sh"><span class="token punctuation">(</span>base<span class="token punctuation">)</span> ~
 $ python <span class="token parameter variable">--version</span>
 Python <span class="token number">3.10</span>.6
 </code></pre>
@@ -128,7 +128,7 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
       <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"python"</span><span class="token punctuation">,</span>
       <span class="token property">"request"</span><span class="token operator">:</span> <span class="token string">"launch"</span><span class="token punctuation">,</span>
       <span class="token property">"cwd"</span><span class="token operator">:</span> <span class="token string">"${workspaceFolder}"</span><span class="token punctuation">,</span> <span class="token comment">// 设置当前工作路径</span>
-      <span class="token property">"env"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+      <span class="token property">"env"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"PYTHONPATH"</span><span class="token operator">:</span> <span class="token string">"${workspaceFolder}"</span> <span class="token comment">// 设置 Python 运行环境变量</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token property">"program"</span><span class="token operator">:</span> <span class="token string">"${workspaceFolder}/wid_manim/manimlib/__main__.py"</span><span class="token punctuation">,</span> <span class="token comment">// 设置运行程序</span>
@@ -145,7 +145,7 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 <p>其中，<code>program</code> 关键字指定了运行的主程序，如果读者直接使用 pypi 包安装，并且使用的是下面的命令来启动</p>
 <pre class="language-sh"><code class="language-sh">manimgl example.py
 </code></pre>
-<p>那么，你的主程序应当是 <code>manimgl</code>，而非上述的 <code>__main__.py</code> 文件。因此，你需要做出以下修改</p>
+<p>那么，你的主程序应当是 <code>manimgl</code>，而非上述的 <FileName name="__main__.py" icon="i-vscode-icons-file-type-python" /> 文件。因此，你需要做出以下修改</p>
 <pre class="language-diff"><code class="language-diff"><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line"> "program": "${workspaceFolder}/wid_manim/manimlib/__main__.py",
 </span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> "program": "${workspaceFolder}/venv/bin/manimgl",
 </span></span></code></pre>
