@@ -55,8 +55,8 @@ function renderGiscus(): VNode {
     </div>
     <p v-if="route.path !== '/'">
       <a
-        href="#" class="font-mono no-underline opacity-50 hover:opacity-75"
-        @click="router.back()"
+        href="javascript:void(0)" class="font-mono no-underline opacity-50 hover:opacity-75"
+        @click="route.matched[0].path.startsWith('/:all') ? router.push('/') : router.back()"
       >
         back
       </a>
