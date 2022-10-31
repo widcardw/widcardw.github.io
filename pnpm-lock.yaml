@@ -30,7 +30,7 @@ specifiers:
   markdown-it-link-attributes: ^4.0.1
   markdown-it-mark: ^3.0.1
   markdown-it-new-katex: ^2.0.3
-  markdown-it-shiki: ^0.5.1
+  markdown-it-shiki: ^0.6.0
   markdown-it-table-of-contents: ^0.6.0
   mdit-plg-double-bracket-link: ^0.0.1
   mdit-plg-double-bracket-media: ^0.0.2
@@ -50,6 +50,7 @@ specifiers:
   vite-plugin-vue-layouts: ^0.6.0
   vite-plugin-vue-markdown: ^0.22.1
   vite-ssg: ^0.20.2
+  vite-ssg-sitemap: ^0.4.3
   vitest: ^0.23.2
   vue: ^3.2.38
   vue-glsl: ^1.1.27
@@ -96,7 +97,7 @@ devDependencies:
   markdown-it-anchor: 8.6.4
   markdown-it-link-attributes: 4.0.1
   markdown-it-new-katex: 2.0.3
-  markdown-it-shiki: 0.5.1
+  markdown-it-shiki: 0.6.0
   markdown-it-table-of-contents: 0.6.0
   mdit-plg-double-bracket-link: 0.0.1
   mdit-plg-double-bracket-media: 0.0.2
@@ -110,6 +111,7 @@ devDependencies:
   vite: 3.1.0
   vite-plugin-pages: 0.26.0_vite@3.1.0
   vite-plugin-vue-layouts: 0.6.0_a2sahflhi63saacouskatgpqeq
+  vite-ssg-sitemap: 0.4.3
   vitest: 0.23.2_jsdom@20.0.0
   vue-glsl: 1.1.27
   vue-tsc: 0.40.8_typescript@4.8.2
@@ -4238,12 +4240,12 @@ packages:
       katex: 0.12.0
     dev: true
 
-  /markdown-it-shiki/0.5.1:
-    resolution: {integrity: sha512-cidjLEt5C6x/bmhyO+JqOy92M1qPF/bu6BN8nxaah/8YpOB4gA168NoLfnSSZATf6Btr/qxn3r1Ihy75b894zw==}
+  /markdown-it-shiki/0.6.0:
+    resolution: {integrity: sha512-9n9L6jBrlEe1EuIEegVZ0lWVPzmj+lw45q/NvOVHYKixutZ2y9SQKHv9tjtq2ysU1/qCtrwyIc7YSP5KezFW2g==}
     dependencies:
       debug: 4.3.4
-      shiki: 0.10.1
-      synckit: 0.7.3
+      shiki: 0.11.1
+      synckit: 0.8.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -5316,12 +5318,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /shiki/0.10.1:
-    resolution: {integrity: sha512-VsY7QJVzU51j5o1+DguUd+6vmCmZ5v/6gYu4vyYAhzjuNQU6P/vmSy4uQaOhvje031qQMiW0d2BwgMH52vqMng==}
+  /shiki/0.11.1:
+    resolution: {integrity: sha512-EugY9VASFuDqOexOgXR18ZV+TbFrQHeCpEYaXamO+SZlsnT/2LxuLBX25GGtIrwaEVFXUAbUQ601SWE2rMwWHA==}
     dependencies:
       jsonc-parser: 3.1.0
       vscode-oniguruma: 1.6.2
-      vscode-textmate: 5.2.0
+      vscode-textmate: 6.0.0
     dev: true
 
   /side-channel/1.0.4:
@@ -5536,9 +5538,9 @@ packages:
   /symbol-tree/3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
 
-  /synckit/0.7.3:
-    resolution: {integrity: sha512-jNroMv7Juy+mJ/CHW5H6TzsLWpa1qck6sCHbkv8YTur+irSq2PjbvmGnm2gy14BUQ6jF33vyR4DPssHqmqsDQw==}
-    engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+  /synckit/0.8.4:
+    resolution: {integrity: sha512-Dn2ZkzMdSX827QbowGbU/4yjWuvNaCoScLLoMo/yKbu+P4GBR6cRGKZH27k6a9bRzdqcyd1DE96pQtQ6uNkmyw==}
+    engines: {node: ^14.18.0 || >=16.0.0}
     dependencies:
       '@pkgr/utils': 2.3.1
       tslib: 2.4.0
@@ -5975,6 +5977,10 @@ packages:
       vite: 3.1.0
     dev: false
 
+  /vite-ssg-sitemap/0.4.3:
+    resolution: {integrity: sha512-9ZIRBRCgM1Q4RtXXEBHIu8gotbx9LCnHZOZXtdSzR0DnjN9H5IYGY3yGoxI6VX8dScXiluxOODFlNlr7ydyI9A==}
+    dev: true
+
   /vite-ssg/0.20.2_ryi4fbu3kitsydym7dahf27c2i:
     resolution: {integrity: sha512-XtBgJEDrN9cL6pgzXvThrTS7Pm5zwZZnBt50EmL/O+QbdhD/ZjCbcp4GmIrWFBWjVBFcgfwgPccmWv3DAF6s/w==}
     engines: {node: '>=14.0.0'}
@@ -6080,8 +6086,8 @@ packages:
     resolution: {integrity: sha512-KH8+KKov5eS/9WhofZR8M8dMHWN2gTxjMsG4jd04YhpbPR91fUj7rYQ2/XjeHCJWbg7X++ApRIU9NUwM2vTvLA==}
     dev: true
 
-  /vscode-textmate/5.2.0:
-    resolution: {integrity: sha512-Uw5ooOQxRASHgu6C7GVvUxisKXfSgW4oFlO+aa+PAkgmH89O3CXxEEzNRNtHSqtXFTl0nAC1uYj0GMSH27uwtQ==}
+  /vscode-textmate/6.0.0:
+    resolution: {integrity: sha512-gu73tuZfJgu+mvCSy4UZwd2JXykjK9zAZsfmDeut5dx/1a7FeTk0XwJsSuqQn+cuMCGVbIBfl+s53X4T19DnzQ==}
     dev: true
 
   /vue-demi/0.13.6_vue@3.2.38:

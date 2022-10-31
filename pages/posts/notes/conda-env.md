@@ -21,6 +21,18 @@ pip3 uninstall -r requirements.txt -y
 brew uninstall python@3.9
 ```
 
+> [!warning]
+> `brew uninstall python@3.9` 并不会同时卸载掉 `pip`，因此可能还需要手动把 `pip` 的可执行程序删除。
+>
+> 在 bash 中，使用 `which` 命令查看 `pip` 的位置
+>
+> ```sh
+> which pip
+> /opt/homebrew/bin
+> ```
+>
+> 在访达中，使用 <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>G</kbd> 进入这个目录，把 `pip` 和 `pip3` 这两个可执行程序删除。~~虽然这么做好像有点暴力，但是它有效~~
+
 因为我对那些图形之类的库需求并不是很强硬，所以我就安装了 [miniconda](https://docs.conda.io/en/latest/miniconda.html)，直接下载 sh 文件就可以双击运行了。
 
 ## 3. 创建环境

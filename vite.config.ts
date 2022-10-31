@@ -7,6 +7,7 @@ import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import generateSitemap from 'vite-ssg-sitemap'
 import Unocss from 'unocss/vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import Markdown from 'vite-plugin-vue-markdown'
@@ -139,5 +140,7 @@ export default defineConfig({
   ssgOptions: {
     formatting: 'minify',
     format: 'cjs',
+    script: 'async',
+    onFinished() { generateSitemap() },
   },
 })

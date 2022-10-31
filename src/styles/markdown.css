@@ -1,14 +1,16 @@
 @import 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.15.3/katex.min.css';
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
-html.dark .shiki-light {
-  display: none;
-}
+
 
 .shiki-light {
   background: #f8f8f8 !important;
 }
 .shiki-dark {
   background: #0e0e0e !important;
+}
+
+html.dark .shiki-light {
+  display: none;
 }
 
 html:not(.dark) .shiki-dark {
