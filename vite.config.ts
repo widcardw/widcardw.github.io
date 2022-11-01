@@ -53,6 +53,7 @@ export default defineConfig({
     Pages({
       extensions: ['vue', 'md'],
       dirs: 'pages',
+      exclude: ['**/templates/*.md'],
       extendRoute(route) {
         const path = resolve(__dirname, route.component.slice(1))
 
