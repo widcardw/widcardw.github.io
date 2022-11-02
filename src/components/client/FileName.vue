@@ -9,8 +9,8 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <label space="x-0.5" whitespace-nowrap>
-    <div :class="icon" text="[0.625em]" inline-block />
+  <label space="x-0.5" whitespace-nowrap underline="~ dotted gray/30">
+    <div :class="icon" text="[0.625em]" mb="[-0.1rem]" inline-block />
     <span font-mono text-sm>{{ name }}</span>
   </label>
 </template>
