@@ -21,7 +21,7 @@ pip3 uninstall -r requirements.txt -y
 brew uninstall python@3.9
 ```
 
-> [!warning]
+> [!caution]
 > `brew uninstall python@3.9` 并不会同时卸载掉 `pip`，因此可能还需要手动把 `pip` 的可执行程序删除。
 >
 > 在 bash 中，使用 `which` 命令查看 `pip` 的位置
@@ -31,7 +31,7 @@ brew uninstall python@3.9
 > /opt/homebrew/bin
 > ```
 >
-> 在访达中，使用 <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>G</kbd> 进入这个目录，把 `pip` 和 `pip3` 这两个可执行程序删除。~~虽然这么做好像有点暴力，但是它有效~~
+> 在访达中，使用 <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>G</kbd> 进入这个目录（或者使用 `rm` 命令），把 `pip` 和 `pip3` 这两个可执行程序删除。~~虽然这么做好像有点暴力，但是它有效~~
 
 因为我对那些图形之类的库需求并不是很强硬，所以我就安装了 [miniconda](https://docs.conda.io/en/latest/miniconda.html)，直接下载 sh 文件就可以双击运行了。
 
@@ -74,16 +74,16 @@ $ conda install python=3.10
 
 ```text
 manim
-  +--- .vscode            # 一些运行配置
-  +--- wid_manim          # 我从 3b1b 处 fork 的 manim
-  |      +--- docs
-  |      +--- logo
-  |      +--- manimlib    # 核心包都在这里
-  |      +--- ...
-  +--- manim_sandbox      # mk 写的一些 utils
-  +--- my_videos          # 我做视频的源码
-  +--- mk_homepage        # manim.org.cn 的主页
-  +--- custom_config.yml
+  |--- .vscode            # 一些运行配置
+  |--- wid_manim          # 我从 3b1b 处 fork 的 manim
+  |      |--- docs
+  |      |--- logo
+  |      |--- manimlib    # 核心包都在这里
+  |      |--- ...
+  |--- manim_sandbox      # mk 写的一些 utils
+  |--- my_videos          # 我做视频的源码
+  |--- mk_homepage        # manim.org.cn 的主页
+  |--- custom_config.yml  # 自定义配置
 ```
 
 我们将 manim 看作是一个工程来管理，因此我们将依赖都安装在一个虚拟环境里。因此我们首先创建一个虚拟环境。
@@ -148,6 +148,9 @@ ModuleNotFoundError: No module named 'wid_manim'
 $ ln -s /Users/name/Documents/manim/wid_manim/manimlib \
     venv/lib/python3.10/site-packages/manimlib
 ```
+
+> [!caution]
+> `/Users/name/Documents/manim/wid_manim/manimlib` 这个路径必须是完整的==绝对路径==，否则链接创建会失败！
 
 打开 <FileName name="venv/lib/python3.10/site-packages" icon="i-vscode-icons-default-folder-opened" /> 文件夹，可以发现多了一个 <FileName name="manimlib" icon="i-vscode-icons-file-type-lnk" /> 的链接。此时， <FileName name="my_videos" icon="i-vscode-icons-default-folder-opened" /> 中的模块也被正确引入了，用下面这条命令运行，也是成功的。
 

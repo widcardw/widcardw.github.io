@@ -13,6 +13,8 @@ import DoubleBracketLink from 'mdit-plg-double-bracket-link'
 import CalloutPlugin from 'mdit-plugin-callouts'
 import matter from 'gray-matter'
 
+const THIRTY_DAYS = 1000 * 60 * 60 * 24 * 30
+
 const md = new MarkdownIt({
   html: true,
   breaks: true,
@@ -65,7 +67,8 @@ async function buildBlogRSS() {
   }
   const posts: any[] = (
     await Promise.all(
-      files.filter(i => !i.includes('index'))
+      files
+        .filter(i => !i.includes('index'))
         .map(async (i) => {
           const raw = await fs.readFile(i, 'utf-8')
           const { data, content } = matter(raw)
@@ -87,6 +90,7 @@ async function buildBlogRSS() {
     ))
     .filter(Boolean)
     .sort((a, b) => +new Date(b.date) - +new Date(a.date))
+    .filter(it => Date.now() - it.date.getTime() <= THIRTY_DAYS)
     .slice(0, 10)
 
   await writeFeed('feed', options, posts)
