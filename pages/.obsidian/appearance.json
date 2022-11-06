@@ -1,7 +1,7 @@
 {
   "accentColor": "#6ba5ef",
   "theme": "moonstone",
-  "textFontFamily": "Latin Modern Math,Songti SC",
+  "textFontFamily": "CMU Serif,Songti SC",
   "monospaceFontFamily": "PT Mono,system-ui",
   "enabledCssSnippets": [
     "code-highlight",
