@@ -14,8 +14,8 @@ import Markdown from 'vite-plugin-vue-markdown'
 // import Prism from 'markdown-it-prism'
 import matter from 'gray-matter'
 import LinkAttributes from 'markdown-it-link-attributes'
-// @ts-expect-error declaration
-import markdownItKatex from 'markdown-it-new-katex'
+// // @ts-expect-error declaration
+// import markdownItKatex from 'markdown-it-new-katex'
 import markdownItAnchor from 'markdown-it-anchor'
 // @ts-expect-error declaration
 import markdownItTableOfContents from 'markdown-it-table-of-contents'
@@ -25,6 +25,7 @@ import DoubleBracketMedia from 'mdit-plg-double-bracket-media'
 import DoubleBracketLink from 'mdit-plg-double-bracket-link'
 import CalloutPlugin from 'mdit-plugin-callouts'
 import Shiki from 'markdown-it-shiki'
+import AmIt from '@widcardw/markdown-it-asciimath'
 import { mermaidPlugin } from './src/composables/plugins/mermaid'
 import type { MyRouteMeta } from './src/composables/types'
 
@@ -118,7 +119,12 @@ export default defineConfig({
             rel: 'noopener',
           },
         })
-        md.use(markdownItKatex)
+        md.use(AmIt, {
+          inline: {
+            open: '`$', close: '$`',
+          },
+          enableOriginalKatex: true,
+        })
         md.use(markdownItMark)
         md.use(markdownItAnchor)
         md.use(CalloutPlugin)

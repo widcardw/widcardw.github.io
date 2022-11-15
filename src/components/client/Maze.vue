@@ -20,7 +20,7 @@ const shaderCode = computed(() => `
       vec2 uv = 20. * (gl_FragCoord.xy - .5 * iResolution.xy) / min(iResolution.x, iResolution.y);
       uv += iTime / 5. * vec2(${parseFloat(seeds.value[0]) > 500 ? '1.' : '-1.'}, ${parseFloat(seeds.value[1]) > 497 ? '-1.' : '1.'});
       vec3 color = vec3(line(fract(uv) - .5, noise(floor(uv))));
-      ${isDark.value ? 'vec3 c = mix(vec3(0.1), vec3(0.125), color)' : 'vec3 c = mix(vec3(1.0), vec3(0.94), color)'};
+      ${isDark.value ? 'vec3 c = mix(vec3(0.1), vec3(0.145), color)' : 'vec3 c = mix(vec3(1.0), vec3(0.94), color)'};
       gl_FragColor = vec4(c, 1.);
   }`)
 </script>
