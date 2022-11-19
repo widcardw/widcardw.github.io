@@ -34,7 +34,7 @@ class Mobject(object):
             self.init_points()
             self.init_colors()
             self.init_shader_data()
-    
+
             if self.depth_test:
                 self.apply_depth_test()
 ```
@@ -75,10 +75,10 @@ def update(self, dt: float = 0, recurse: bool = True):
 
 > [!note] 一些动画的概念
 > 首先，动画其实也是有 finite 和 infinite 的区分，也就是说，动画可以分为==有始有终==的动画和==无限播放==的动画。
-> 
+>
 > - 针对有穷动画，大多数情况下，我们都会要求它有==起始点==和==结束点==，分别定义为 `begin` 和 `finish`
 > - 针对无穷动画，我们可能只需要考虑它的起始点，之后就可以任其发展了
->   
+>
 > 在这里所提到的，继承于 `Animation` 的动画，大多是有穷动画。而有穷动画的过程，大多都是由==插值==来完成的。
 
 我们常常这样编写动画
@@ -143,32 +143,32 @@ class Animation(object):
 ![[public/updater/InterpolateExampleScene.png]]
 
 > [!example] 源码
-> 
+>
 > ```python
 > class InterpolateExampleScene(Scene):
 >     def construct(self):
 >         square = Square(side_length=4, color=YELLOW) \
 >             .shift(LEFT*4).insert_n_curves(4)
 >         circle = Circle(radius=2).shift(RIGHT*4)
-> 
+>
 >         interpolates = VGroup()
-> 
+>
 >         # 创建补间物件
 >         # 新版 decorator 包装过的 `set_points` 方法好像无法正常 `return self`
 >         # 因此只能用 for 循环了
 >         for alpha in np.linspace(0.1, 1, 9):
 >             v = VMobject(color=GREY)
 >             v.set_points(interpolate(
->                 square.get_points(), 
->                 circle.get_points(), 
+>                 square.get_points(),
+>                 circle.get_points(),
 >                 alpha
 >             ))
 >             interpolates.add(v)
-> 
+>
 >         # 添加到场景
 >         self.add(interpolates)
 >         self.add(square, circle)
-> 
+>
 >         # 正方形的锚点索引
 >         square_points = VGroup(*[
 >             Integer(i, color=GOLD)
@@ -176,7 +176,7 @@ class Animation(object):
 >                 .scale(0.5).move_to(p)
 >             for (i, p) in enumerate(square.get_points())
 >         ])
-> 
+>
 >         # 圆的锚点索引
 >         circle_points = VGroup(*[
 >             Integer(i, color=GOLD)
@@ -184,9 +184,9 @@ class Animation(object):
 >                 .scale(0.5).move_to(p)
 >             for (i, p) in enumerate(circle.get_points())
 >         ])
-> 
+>
 >         self.add(square_points, circle_points)
-> 
+>
 > ```
 
 之所以要创建初始物件的拷贝，其实也是为了能够在插值的过程中，可以方便调用。在动画运行的过程中，物件自身会随着动画不断的变化，而 `starting_submobject` 永远不变，为生成中间物件做准备。
@@ -194,23 +194,23 @@ class Animation(object):
 对于像是 `Write` 之类的看上去比较高级的动画效果，不过是在实现上加了一点点细节罢了，其本质依然是生成补间动画。
 
 > [!example] Write 原理 (较长 酌情阅读)
-> 
+>
 > 这个动画其实分为两个过程：绘制轮廓、淡入填充。下面对其实现细节进行分析
-> 
+>
 > ```python {6}
 > def begin(self) -> None:
 >     # Trigger triangulation calculation
 >     for submob in self.mobject.get_family():
 >         submob.get_triangulation()
-> 
+>
 >     self.outline = self.get_outline()
 >     super().begin()
 >     self.mobject.match_style(self.outline)
 >     self.mobject.lock_matching_data(self.mobject, self.outline)
 > ```
-> 
+>
 > 在 `begin` 方法中，首先需要拷贝一份物件的轮廓，而后才能开启动画。其中 `lock_data` 的作用是对动画的执行效率进行了一些优化
-> 
+>
 > ```python {19-22}
 > def interpolate_submobject(
 >     self,
@@ -220,7 +220,7 @@ class Animation(object):
 >     alpha: float
 > ) -> None:
 >     index, subalpha = integer_interpolate(0, 2, alpha)
-> 
+>
 >     if index == 1 and self.sm_to_index[hash(submob)] == 0:
 >         # First time crossing over
 >         submob.set_data(outline.data)
@@ -229,43 +229,43 @@ class Animation(object):
 >             submob.lock_matching_data(submob, start)
 >         submob.needs_new_triangulation = False
 >         self.sm_to_index[hash(submob)] = 1
-> 
+>
 >     if index == 0:
 >         submob.pointwise_become_partial(outline, 0, subalpha)
 >     else:
 >         submob.interpolate(outline, start, subalpha)
 > ```
-> 
+>
 > 此处实现了 `Animation` 的抽象方法 `interpolate_submobject`。`integer_interpolate` 函数将 `alpha` 从 $[0,1]$ 的定义域拆成两部分
-> 
+>
 > ![[public/updater/updater_01interpolate.svg]]
-> 
+>
 > - 当 index = 0 时，仅仅绘制轮廓
 > - 当到达两段动画的交界点时，做一些数据处理和效率优化
 > - 当 index = 1 时，仅仅绘制填充色
-> 
+>
 > 这样 `Write` 动画就完成了。
-> 
+>
 > 有人说：“不对呀，为什么 `Animation` 的 `interpolate_submobject` 抽象方法只接收 3 个参数，而这里能接受 4 个参数呢？”
-> 
+>
 > ==这是“黑魔法”！==
-> 
+>
 > 还记得是谁调用 `interpolate_submobject` 的吗？是 `interpolate_mobject`
-> 
+>
 > ```python {4}
 > def interpolate_mobject(self, alpha: float) -> None:
 >     for i, mobs in enumerate(self.families):
 >         sub_alpha = self.get_sub_alpha(alpha, i, len(self.families))
 >         self.interpolate_submobject(*mobs, sub_alpha)
 > ```
-> 
+>
 > 这里的 `*mob` 提取了动画的成员变量 `families`，也就是说，参数数量其实就取决于这里的成员变量。而 `Write` 又重写了 `get_all_mobjects` 方法，让 `families` 发生了变化
-> 
+>
 > ```python
 > def get_all_mobjects(self) -> list[VMobject]:
 >     return [*super().get_all_mobjects(), self.outline]
 > ```
-> 
+>
 > 如果用 PyCharm 打开 manim 工程，会发现 `Write` 的这个方法有警告，确实是黑魔法。
 
 ## Scene
