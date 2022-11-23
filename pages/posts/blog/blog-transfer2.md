@@ -8,11 +8,12 @@ abstract: 又是喜新厌旧的博客换主题
 
 # 关于博客又搬家
 
+
 明明 Vuepress 和 Vitepress 已经足够好了，为什么我还要重新自己搞一个博客呢，真是太折腾了。但其实通过这么一路下来，总算是了解了普通的 Vue app 和 SSG 之间的区别。
 
 ## 问题发现
 
-在新博客系统最开始，我使用的是 [vitesse-lite](https://github.com/antfy/vitesse-lite) 搭建的，其中并不包含 SSG，这也就导致了博客并不是每个页面都生成一个 html 文件，而是只有一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" />，而它的路由其实可以理解为都是脚本动态生成的。也就是说，只要刷新页面，这个页面就会失效。如果有良好的 <FileName name="_redirect" /> 声明，那么网页就会跳转到根路由。而没有 <FileName name="_redirect" /> 的网页 app，将会直接 404。如果细究其打包完成后的 <FileName name="dist" icon="i-vscode-icons-default-folder-opened" /> 目录，可以发现 Vue app 中只有一个 <FileName name="index.html" icon="i-vscode-icons-file-type-html" />，静态媒体资源，以及在 <FileName name="assets" icon="i-vscode-icons-default-folder-opened" /> 中的一堆 js 和 css 文件。在 [官方文档](https://cn.vuejs.org/guide/scaling-up/ssr.html#why-ssr) 中，这种 app 被称为 SPA，即客户端的单页应用。
+在新博客系统最开始，我使用的是 [vitesse-lite](https://github.com/antfy/vitesse-lite) 搭建的，其中并不包含 SSG，这也就导致了博客并不是每个页面都生成一个 html 文件，而是只有一个 `/ico i-vscode-icons-file-type-html;index.html`，而它的路由其实可以理解为都是脚本动态生成的。也就是说，只要刷新页面，这个页面就会失效。如果有良好的 `/ico ;_redirect` 声明，那么网页就会跳转到根路由。而没有 `/ico ;_redirect` 的网页 app，将会直接 404。如果细究其打包完成后的 `/ico i-vscode-icons-default-folder-opened;dist` 目录，可以发现 Vue app 中只有一个 `/ico i-vscode-icons-file-type-html;index.html`，静态媒体资源，以及在 `/ico i-vscode-icons-default-folder-opened;assets` 中的一堆 js 和 css 文件。在 [官方文档](https://cn.vuejs.org/guide/scaling-up/ssr.html#why-ssr) 中，这种 app 被称为 SPA，即客户端的单页应用。
 
 而 SSG (Static-site Generation 静态站点生成 )，它所构建的所有网页，都可以认为是静态的，每个网页路由都有各自的文件，直接输入 url 将会直接加载对应的网页文件，而不是像上面所说的，所有路由都是动态生成。SSG 打包后，每个页面都有对应的 html 文件，每个页面都能够各自加载自己的资源和脚本，当然代价就是打包所耗费的资源多了一些。
 
@@ -102,7 +103,7 @@ const html = computed(() => renderFunction())
 
 然而，同样是在 server 编译的时候，GLSL 的组件报错了，原因是它使用了 `window.requestAnimationFrame`，而 server 端是无 DOM 的。
 
-然而，Vue GLSL 作为一个封装好的组件库，需要在合适的时候将组件挂载到 App 上，我们通常是在 <FileName name="main.ts" icon="i-vscode-icons-file-type-typescript-official" /> 中做这件事的。我们依然使用 `onMounted` 来包裹这一引入的语句。
+然而，Vue GLSL 作为一个封装好的组件库，需要在合适的时候将组件挂载到 App 上，我们通常是在 `/ico i-vscode-icons-file-type-typescript-official;main.ts` 中做这件事的。我们依然使用 `onMounted` 来包裹这一引入的语句。
 
 ```ts
 onMounted(async () => {
@@ -119,7 +120,7 @@ onMounted(async () => {
 
 如果加一个背景的开关，那么重新启动一下背景就能渲染出来了。但是这样显得有点麻烦捏。
 
-这里我采取的方案是，在 <FileName name="App.vue" icon="i-vscode-icons-file-type-vue" /> 中加载这一组件，加载完成后再启用背景。具体方式是这样的：
+这里我采取的方案是，在 `/ico i-vscode-icons-file-type-vue;App.vue` 中加载这一组件，加载完成后再启用背景。具体方式是这样的：
 
 ```ts
 // 获取当前实例

@@ -110,17 +110,17 @@ $ cd wid_manim
 $ pip install -e .
 ```
 
-安装完成后，在 <FileName name="venv" icon="i-vscode-icons-default-folder-opened" /> 目录下，能看到 <FileName name="bin" icon="i-vscode-icons-default-folder-opened" /> 和 <FileName name="lib" icon="i-vscode-icons-default-folder-opened" /> 中已经出现了很多包，这说明依赖差不多就已经装好了。
+安装完成后，在 `/ico i-vscode-icons-default-folder-opened;venv` 目录下，能看到 `/ico i-vscode-icons-default-folder-opened;bin` 和 `/ico i-vscode-icons-default-folder-opened;lib` 中已经出现了很多包，这说明依赖差不多就已经装好了。
 
 ### 4.4. 关于模块的引入
 
-打开 <FileName name="my_videos" icon="i-vscode-icons-default-folder-opened" /> 文件夹，发现原来的引入语句报错了，不能通过下面
+打开 `/ico i-vscode-icons-default-folder-opened;my_videos` 文件夹，发现原来的引入语句报错了，不能通过下面
 
 ```py
 from manimlib import *
 ```
 
-这条语句来导入 manim 的方法。原因其实也很简单，因为在 <FileName name="venv/lib/Python3.10/site-packages" icon="i-vscode-icons-default-folder-opened" /> 中，并没有 `manimlib` 这个包，我们需要想办法从 <FileName name="wid_manim" icon="i-vscode-icons-default-folder-opened" /> 中导入进来。
+这条语句来导入 manim 的方法。原因其实也很简单，因为在 `/ico i-vscode-icons-default-folder-opened;venv/lib/Python3.10/site-packages` 中，并没有 `manimlib` 这个包，我们需要想办法从 `/ico i-vscode-icons-default-folder-opened;wid_manim` 中导入进来。
 
 解决方案很明显，我可以这样干：
 
@@ -152,7 +152,7 @@ $ ln -s /Users/name/Documents/manim/wid_manim/manimlib \
 > [!caution]
 > `/Users/name/Documents/manim/wid_manim/manimlib` 这个路径必须是完整的==绝对路径==，否则链接创建会失败！
 
-打开 <FileName name="venv/lib/python3.10/site-packages" icon="i-vscode-icons-default-folder-opened" /> 文件夹，可以发现多了一个 <FileName name="manimlib" icon="i-vscode-icons-file-type-lnk" /> 的链接。此时， <FileName name="my_videos" icon="i-vscode-icons-default-folder-opened" /> 中的模块也被正确引入了，用下面这条命令运行，也是成功的。
+打开 `/ico i-vscode-icons-default-folder-opened;venv/lib/python3.10/site-packages` 文件夹，可以发现多了一个 `/ico i-vscode-icons-file-type-lnk;manimlib` 的链接。此时， `/ico i-vscode-icons-default-folder-opened;my_videos` 中的模块也被正确引入了，用下面这条命令运行，也是成功的。
 
 ```sh
 (manim) (venv) ~/Documents/manim
@@ -168,7 +168,7 @@ $ manimgl my_videos/videos/danmku.py
 $ python wid_manim/manimlib my_videos/videos/danmaku.py
 ```
 
-其实这样是间接的使用了 <FileName name="wid_manim/manimlib/__main__.py" icon="i-vscode-icons-file-type-python" /> 来启动，其实可以达到几乎相同的效果。而用这条命令可以导入其他包，例如 `manim_sandbox` 中的工具类。而如果想要直接用 `manimgl` 命令来执行的话，这就必须采用上面的软链接的方式，将它链接到虚拟环境中。
+其实这样是间接的使用了 `/ico i-vscode-icons-file-type-python;wid_manim/manimlib/__main__.py` 来启动，其实可以达到几乎相同的效果。而用这条命令可以导入其他包，例如 `manim_sandbox` 中的工具类。而如果想要直接用 `manimgl` 命令来执行的话，这就必须采用上面的软链接的方式，将它链接到虚拟环境中。
 
 > 其实用这个长命令的话，就可以使用
 >
@@ -178,7 +178,7 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 >
 > 来引入 `manimlib` 了，环境是不会报错的。
 
-这条命令很长，我们依然是采用一个 <FileName name="launch.json" icon="i-vscode-icons-file-type-json" /> 脚本来启动它。
+这条命令很长，我们依然是采用一个 `/ico i-vscode-icons-file-type-json;launch.json` 脚本来启动它。
 
 ```json
 {
@@ -210,7 +210,7 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 manimgl example.py
 ```
 
-那么，你的主程序应当是 `manimgl`，而非上述的 <FileName name="__main__.py" icon="i-vscode-icons-file-type-python" /> 文件。因此，你需要做出以下修改
+那么，你的主程序应当是 `manimgl`，而非上述的 `/ico i-vscode-icons-file-type-python;__main__.py` 文件。因此，你需要做出以下修改
 
 ```diff
 - "program": "${workspaceFolder}/wid_manim/manimlib/__main__.py",

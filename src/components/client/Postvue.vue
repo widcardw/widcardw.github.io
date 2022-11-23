@@ -23,7 +23,7 @@ function renderGiscus(): VNode {
     repoid: 'R_kgDOHOA75A',
     category: 'Announcements',
     categoryid: 'DIC_kwDOHOA75M4COuTG',
-    term: 'Welcome to giscus!',
+    term: 'Welcome',
     mapping: 'url',
     reactionsenabled: '1',
     emitmetadata: '0',

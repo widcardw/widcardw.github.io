@@ -28,6 +28,7 @@ import Shiki from 'markdown-it-shiki'
 import AmIt from '@widcardw/markdown-it-asciimath'
 import { mermaidPlugin } from './src/composables/plugins/mermaid'
 import type { MyRouteMeta } from './src/composables/types'
+import FileIconPlugin from './src/md-plugins/file-icon'
 
 export default defineConfig({
   resolve: {
@@ -141,6 +142,7 @@ export default defineConfig({
             dark: 'vitesse-dark',
           },
         })
+        md.use(FileIconPlugin, { prefix: '/ico' })
       },
     }),
   ],
