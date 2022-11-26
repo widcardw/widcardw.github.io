@@ -42,6 +42,7 @@ export default defineConfig({
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/],
+      exclude: [/\.excalidraw\.md$/],
       reactivityTransform: true,
       template: {
         compilerOptions: {
@@ -55,7 +56,7 @@ export default defineConfig({
     Pages({
       extensions: ['vue', 'md'],
       dirs: 'pages',
-      exclude: ['**/templates/*.md'],
+      exclude: ['**/templates/*.md', '**/Excalidraw/*.md'],
       extendRoute(route) {
         const path = resolve(__dirname, route.component.slice(1))
 
@@ -110,6 +111,7 @@ export default defineConfig({
     Markdown({
       wrapperComponent: 'Postvue',
       headEnabled: true,
+      exclude: [/\.excalidraw\.md$/],
       markdownItSetup(md) {
         // https://prismjs.com/
         // md.use(Prism)
