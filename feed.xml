@@ -4,7 +4,7 @@
         <title>widcardw</title>
         <link>https://widcard.win/</link>
         <description>widcardw's blog</description>
-        <lastBuildDate>Tue, 15 Nov 2022 11:41:01 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 26 Nov 2022 14:08:48 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,217 @@
             <link>https://widcard.win/</link>
         </image>
         <atom:link href="https://widcard.win/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[关于 manim 中贝塞尔曲线上色的细节补充]]></title>
+            <link>https://widcard.win/posts/notes/details-about-shader-of-bezier-curve</link>
+            <guid>https://widcard.win/posts/notes/details-about-shader-of-bezier-curve</guid>
+            <pubDate>Sat, 26 Nov 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>关于 manim 中贝塞尔曲线上色的细节补充</h1>
+<h2>前言</h2>
+<p>在近两天，有群友发出了疑惑，为什么在 manim 中，无论怎样旋转视角，线都是有宽度的。因为我之前稍微研究了一下上色机制，所以在应该会更加清楚它的处理逻辑，顺带着也是把之前讲到的内容，稍微再做一些补充。</p>
+<h2>为什么</h2>
+<p>为什么旋转视角时，仿佛就是空间中的一根棍子，永远都有宽度呢？甚至连空间中的曲线也是这样？</p>
+<blockquote>
+<p>回想起之前看到 B 站的一个<a href="https://www.bilibili.com/video/BV1GD4y1t7iF">视频</a>，讲解了如何使用 After Effects 制作 <em>ANIPLEX</em> 的片头，而他的矩形就是一个平面上的矩形，是没有厚度的，想要做出厚度，就必须再拼上一层 3D 圆柱。</p>
+</blockquote>
+<p>有厚度这不是正合我意吗？这样就不会有旋转造成视觉上扁平的问题了呀。</p>
+<p><video controls="controls" src="https://widcard.win/updater/DifferenceBetweenLines.mp4" alt="updater/DifferenceBetweenLines.mp4" style="width: 100%; height: 100%;"></video></p>
+<pre><code class="language-python">line1 = Line(
+	np.array([-2.5, 1, 1]), np.array([2.5, 1, 1]),
+	stroke_width=10, color=GREEN)
+line2 = Rectangle(5, 0.1, stroke_width=0,
+	fill_opacity=1, fill_color=RED).shift(DOWN + IN)
+</code></pre>
+<h3>分析</h3>
+<p>我们来思考一下，在 OpenGL 的着色中，什么步骤会导致将一个平面图形，在旋转视角之后，会导致它变成扁平的？</p>
+<p>是<strong>透视变换</strong>。</p>
+<p>我们的直观感受中，总会觉得远小近大，因此我们在 OpenGL 的着色设计上，就会加入透视变换。那么我们就顺着透视变换，去寻找其根源。</p>
+<h3>回顾上色机制和步骤</h3>
+<p>让我们回顾一下<a href="/posts/notes/quadratic_bezier_shader">二阶贝塞尔曲线上色机制</a>中的着色流程。</p>
+<p><img src="/posts-imgs/quadratic_bezier_stroke_shader.svg" alt="posts-imgs/quadratic_bezier_stroke_shader.svg"></p>
+<p>顶点着色器在 <code>position_point_into_frame</code> 这个方法中，将顶点乘上了一个相机的旋转，这一步应该是要为透视变换做一些准备。</p>
+<p>几何着色器的工作很多，透视变换的步骤是排在相对靠前的。而我们又知道，贝塞尔曲线的绘制步骤是：先用一个<a href="/posts/notes/quadratic_bezier_shader#geometry-shader">五边形</a>盖住这条曲线，再把剩余部分用<strong>片段着色器</strong>擦除。</p>
+<p>这个五边形是什么时候出现的呢？是 <code>get_corners</code> 方法得到的。我们来看一下它的源码，接下来我们将逐步讲解它。</p>
+<pre><code class="language-csharp">int get_corners(
+	vec2 controls[3], 
+	int degree, 
+	float stroke_widths[3], 
+	out vec2 corners[5]
+) {
+	// 拿到曲线的三个锚点
+    vec2 p0 = controls[0];
+    vec2 p1 = controls[1];
+    vec2 p2 = controls[2];
+
+    // 将向量单位化
+    vec2 v10 = normalize(p0 - p1);
+    vec2 v12 = normalize(p2 - p1);
+    vec2 v01 = -v10;
+    vec2 v21 = -v12;
+	// 将向量 v01 逆时针旋转 90 度
+    vec2 p0_perp = vec2(-v01.y, v01.x);
+    // 将向量 v12 逆时针旋转 90 度
+    vec2 p2_perp = vec2(-v12.y, v12.x);
+
+    // aaw is the added width given around the polygon for antialiasing.
+    // In case the normal is faced away from (0, 0, 1), the vector to the
+    // camera, this is scaled up.
+    // 抗锯齿
+    float aaw = anti_alias_width;
+    float buff0 = 0.5 * stroke_widths[0] + aaw;
+    float buff2 = 0.5 * stroke_widths[2] + aaw;
+    float aaw0 = (1 - has_prev) * aaw;
+    float aaw2 = (1 - has_next) * aaw;
+
+	// 构造额外的顶点，以构成五边形
+	// p0 右侧
+    vec2 c0 = p0 - buff0 * p0_perp + aaw0 * v10;
+    // p0 左侧
+    vec2 c1 = p0 + buff0 * p0_perp + aaw0 * v10;
+    // p2 左侧
+    vec2 c2 = p2 + buff2 * p2_perp + aaw2 * v12;
+    // p2 右侧
+    vec2 c3 = p2 - buff2 * p2_perp + aaw2 * v12;
+
+    // 如果是中间段的曲线，则需要创建转接点
+    if(has_prev &gt; 0) 
+	    create_joint(angle_from_prev, v01, buff0, c0, c0, c1, c1);
+    if(has_next &gt; 0) 
+	    create_joint(angle_to_next, v21, buff2, c3, c3, c2, c2);
+
+    // 直线，直接按照矩形来渲染
+    //  c1 ---------------- c2
+    //  | ///////////////// |
+    //  p0 ////// p1 ////// p2
+    //  | ///////////////// |
+    //  c0 ---------------- c3
+    // 上面斜线的部分即为着色的部分
+    if(degree == 1){
+        // The order of corners should be for a triangle_strip.
+        // Last entry is a dummy
+        corners = vec2[5](c0, c1, c3, c2, vec2(0.0));
+        return 4;
+    }
+
+    // 曲线，需要用五边形来覆盖它
+    float orientation = sign(cross2d(v01, v12));  // Positive for ccw curves
+    if(orientation &gt; 0) corners = vec2[5](c0, c1, p1, c2, c3);
+    else                corners = vec2[5](c1, c0, p1, c3, c2);
+    // Replace corner[2] with convex hull point accounting for stroke width
+    find_intersection(corners[0], v01, corners[4], v21, corners[2]);
+    return 5;
+}
+</code></pre>
+<h3>分析五边形的顶点如何计算</h3>
+<h4>一些预处理</h4>
+<p>这些预处理大多是为了后续变量处理方便。</p>
+<p>注意，Grant 机缘巧合的使用了 <code>normalize</code> 这个函数，得到了两个单位向量。而实际上就是因为单位化的操作在这一步，所以曲线一定有宽度。</p>
+<p>前面我们提到了，在生成五边形之前，有一个<strong>透视变换</strong>，而这个透视变换就已经将三维的点都投影到二维的平面上了。在此之后的所有向量运算，几乎都不可能离开这个平面。</p>
+<details class="custom-callout note"><summary class="callout-title"><div class="callout-icon"></div><div>关于镜头距离导致的曲线粗细变化 可暂时不看</div>
+<div class="callout-fold"></div></summary><blockquote>
+<p>由于我们感官上的远小近大，越远的曲线理应看上去越细。很幸运，有一个数组变量 <code>stroke_widths[]</code> 做了这个工作。在透视变换的时候，程序就会按照相机的距离去计算线的粗细应该怎样变化，之后这个数组被传入 <code>get_corners</code> 函数，用于生成五边形的顶点。</p>
+</blockquote>
+</details><pre><code class="language-c">// 拿到曲线的三个锚点
+vec2 p0 = controls[0];
+vec2 p1 = controls[1];
+vec2 p2 = controls[2];
+
+// 将向量单位化
+vec2 v10 = normalize(p0 - p1);
+vec2 v12 = normalize(p2 - p1);
+vec2 v01 = -v10;
+vec2 v21 = -v12;
+// 将向量 v01 逆时针旋转 90 度
+vec2 p0_perp = vec2(-v01.y, v01.x);
+// 将向量 v12 逆时针旋转 90 度
+vec2 p2_perp = vec2(-v12.y, v12.x);
+</code></pre>
+<h4>抗锯齿</h4>
+<p>这部分是为了优化视觉上的体验，在逻辑上问题不是很大。</p>
+<pre><code class="language-c">float aaw = anti_alias_width;
+float buff0 = 0.5 * stroke_widths[0] + aaw;
+float buff2 = 0.5 * stroke_widths[2] + aaw;
+float aaw0 = (1 - has_prev) * aaw;
+float aaw2 = (1 - has_next) * aaw;
+</code></pre>
+<h4>构造顶点</h4>
+<p>为曲线原本的三个锚点，创建相对偏移的点，以便构成五边形，将整条曲线覆盖。</p>
+<blockquote>
+<p>这些顶点用作备用，有些可能用到，有些不一定用得到。</p>
+</blockquote>
+<pre><code class="language-c">// p0 右侧
+vec2 c0 = p0 - buff0 * p0_perp + aaw0 * v10;
+// p0 左侧
+vec2 c1 = p0 + buff0 * p0_perp + aaw0 * v10;
+// p2 左侧
+vec2 c2 = p2 + buff2 * p2_perp + aaw2 * v12;
+// p2 右侧
+vec2 c3 = p2 - buff2 * p2_perp + aaw2 * v12;
+</code></pre>
+<h4>创建转接点</h4>
+<p>由于长的曲线都是用短的二阶贝塞尔曲线拼接而成的，因此需要创建转接点，本质上应该是做一些偏移，让曲线之间的连接没有那么突兀。</p>
+<pre><code class="language-c">if(has_prev &gt; 0) 
+	create_joint(angle_from_prev, v01, buff0, c0, c0, c1, c1);
+if(has_next &gt; 0) 
+	create_joint(angle_to_next, v21, buff2, c3, c3, c2, c2);
+</code></pre>
+<h4>处理直线</h4>
+<p>直线也是由一段二阶贝塞尔曲线构成的，只要三个锚点共线，长度上均匀分布，那应该就是直线段。直线段只需使用矩形的方式将它绘制出来就可以了。</p>
+<p>这里的 <code>corners[]</code> 前 4 个值有效，最后一个无效。返回值为 4，说明按照四边形的方式来着色。</p>
+<pre><code class="language-c">if(degree == 1){
+	corners = vec2[5](c0, c1, c3, c2, vec2(0.0));
+	return 4;
+}
+</code></pre>
+<p><img src="/gl/line-shader.excalidraw.png" alt="gl/line-shader.excalidraw.png"></p>
+<h4>处理曲线</h4>
+<p>曲线的处理方式可能还有一些特殊，它需要计算一个 <code>orientation</code> 值，用于指示曲线方向是顺时针还是逆时针。至于它具体有什么用，应该是用于<strong>纠正顶点索引</strong>，使得每个图形都按照正确的三角形图元上色。</p>
+<pre><code class="language-csharp">float orientation = sign(cross2d(v01, v12));  // Positive for ccw curves
+if(orientation &gt; 0) corners = vec2[5](c0, c1, p1, c2, c3);
+else                corners = vec2[5](c1, c0, p1, c3, c2);
+// Replace corner[2] with convex hull point accounting for stroke width
+find_intersection(corners[0], v01, corners[4], v21, corners[2]);
+return 5;
+</code></pre>
+<p><img src="/gl/pentagon-out.excalidraw.png" alt="gl/pentagon-out.excalidraw.png"></p>
+<p><img src="/gl/pentagon-in.excalidraw.png" alt="gl/pentagon-in.excalidraw.png"></p>
+<p>果不其然，在计算出五边形顶点坐标之后，紧接着的就是顶点索引表。通过索引表的方式，用更少的内存单元，就能生成三个三角形，来填充为一个五边形。</p>
+<pre><code class="language-csharp">int index_map[5] = int[5](0, 0, 1, 2, 2);
+if(n_corners == 4) index_map[2] = 2;  // 对于直线，可以单独处理
+</code></pre>
+<details class="custom-callout faq"><summary class="callout-title"><div class="callout-icon"></div><div>为什么这么做？</div>
+<div class="callout-fold"></div></summary><blockquote>
+<p>参考 <a href="https://learnopengl-cn.github.io/01%20Getting%20started/04%20Hello%20Triangle/">Learn OpenGL 教程</a>。</p>
+<p>如果想要创建一个四边形，我们通常会用两个三角形拼起来。而这样的话，我们可以传入的是 6 个顶点，分别绘制，单这样显然浪费了内存资源，我们明明可以只用 4 个顶点就表示出一个四边形。</p>
+<p>于是，我们通过索引表的方式，将重合的顶点复用起来，虽然好像对于人去计算的话可能麻烦了一点，但是这样提高了一定的性能。</p>
+</blockquote>
+</details><h4>计算颜色</h4>
+<p>细心的读者应该会发现，在 manimgl 场景中的三维物体，甚至连二维物体，它都是有一些光影渐变的效果的，而这还得归功于 <code>finalize_color</code> 这个函数。</p>
+<p>这个函数实际上就是通过相机距离、光源位置等参数，来计算最终要渲染到画布上的颜色。感兴趣的读者，可以在 <a href="https://github.com/3b1b/manim/tree/master/manimlib/shaders/inserts"><code>/ico i-vscode-icons-default-folder-opened;inserts</code></a> 中查看，这个文件夹里面还包含了不少有用的工具函数。</p>
+<h4><code>get_gl_Position</code></h4>
+<p>这是干啥用的？ 之前不是已经做过三维到二维的映射了吗？为什么还要做映射呢？</p>
+<p>没错，前面确实有一个透视变换，把三维的图像投影到了二维的平面上。但是考虑到片段着色器接受的是这样一个区域的像素点</p>
+<p>$$</p>
+<p>\displaystyle {\left\lbrace{\left( x, y\right)}\mid x\in{\left[ 0, 1\right]}, y\in{\left[ 0, 1\right]}\right\rbrace}</p>
+<p>$$</p>
+<p>因此，我们需要将想象中的 $\displaystyle  1920\times 1080$ 画布，重新缩放到适合片段着色器的区域中。</p>
+<p>在释放图元的时候，需要逐个顶点来释放，因此，我们可以看到，在一个循环语句中，将计算出来的 5 个或者 4 个顶点逐一映射，并赋值给 <code>gl_Position</code> 变量，然和调用 <code>EmitVertex</code> 释放。</p>
+<p>然而，笔者在这里有一些疑惑。<code>gl_Position</code> 变量被赋值为一个 4 维的向量，但是不知道在 Fragment shader 中，<mark>是谁来接受这个被释放的顶点</mark>，而且<mark>为什么是 4 维的</mark>，正常来说不是应该只需要三维的就可以了吗？</p>
+<details class="custom-callout faq" open><summary class="callout-title"><div class="callout-icon"></div><div>针对这些问题的猜想</div>
+<div class="callout-fold"></div></summary><blockquote>
+<p>对于后面的这个问题，众所周知，在三维物体计算的时候，我们通常会使用四元数运算，而且目前运用的相当广泛，毕竟使用这种方式能够避免很多致命的问题。</p>
+<p>然而对于前面那个问题，我在源码中并没有找到什么明显的线索，或许是隐含在其中，直接按照释放的图元来<mark>绘制成多边形</mark>。而我图形学的编程基础也不是那么好，所以如果有大佬了解这方面的话，欢迎评论指出！</p>
+</blockquote>
+</details><h4>片段着色器</h4>
+<p>在之前的文章中，我也叙述过，它的职责主要是计算出一个片段，使得这个片段看起来像是一段曲线。之后再通过<mark>调整透明度</mark>的方式，擦除不需要的片段。</p>
+<pre><code class="language-cpp">frag_color.a *= smoothstep(0.5, -0.5, signed_dist / uv_anti_alias_width);
+</code></pre>
+<h2>后记</h2>
+<p>图形学这方面是真的复杂，感觉历史包袱也蛮重的，想要写好 OpenGL 需要花费非常大的精力，像我就还不能从容的面对这些带有<strong>繁重数学运算</strong>，同时还被<strong>严格限制在固定规范中</strong>的代码，那就只能慢慢学，或者去寻找更好的方法吧。</p>
+<p></p>
+]]></content:encoded>
+            <author>widcardw@foxmail.com (widcardw)</author>
+        </item>
         <item>
             <title><![CDATA[折腾 conda 环境]]></title>
             <link>https://widcard.win/posts/notes/conda-env</link>
@@ -88,12 +299,12 @@ $ cd wid_manim
 (manim) (venv) ~/Documents/manim/wid_manim
 $ pip install -e .
 </code></pre>
-<p>安装完成后，在 <FileName name="venv" icon="i-vscode-icons-default-folder-opened" /> 目录下，能看到 <FileName name="bin" icon="i-vscode-icons-default-folder-opened" /> 和 <FileName name="lib" icon="i-vscode-icons-default-folder-opened" /> 中已经出现了很多包，这说明依赖差不多就已经装好了。</p>
+<p>安装完成后，在 <code>/ico i-vscode-icons-default-folder-opened;venv</code> 目录下，能看到 <code>/ico i-vscode-icons-default-folder-opened;bin</code> 和 <code>/ico i-vscode-icons-default-folder-opened;lib</code> 中已经出现了很多包，这说明依赖差不多就已经装好了。</p>
 <h3>4.4. 关于模块的引入</h3>
-<p>打开 <FileName name="my_videos" icon="i-vscode-icons-default-folder-opened" /> 文件夹，发现原来的引入语句报错了，不能通过下面</p>
+<p>打开 <code>/ico i-vscode-icons-default-folder-opened;my_videos</code> 文件夹，发现原来的引入语句报错了，不能通过下面</p>
 <pre><code class="language-py">from manimlib import *
 </code></pre>
-<p>这条语句来导入 manim 的方法。原因其实也很简单，因为在 <FileName name="venv/lib/Python3.10/site-packages" icon="i-vscode-icons-default-folder-opened" /> 中，并没有 <code>manimlib</code> 这个包，我们需要想办法从 <FileName name="wid_manim" icon="i-vscode-icons-default-folder-opened" /> 中导入进来。</p>
+<p>这条语句来导入 manim 的方法。原因其实也很简单，因为在 <code>/ico i-vscode-icons-default-folder-opened;venv/lib/Python3.10/site-packages</code> 中，并没有 <code>manimlib</code> 这个包，我们需要想办法从 <code>/ico i-vscode-icons-default-folder-opened;wid_manim</code> 中导入进来。</p>
 <p>解决方案很明显，我可以这样干：</p>
 <pre><code class="language-py">from wid_manim.manimlib import *
 </code></pre>
@@ -115,7 +326,7 @@ $ ln -s /Users/name/Documents/manim/wid_manim/manimlib \
 <div class="callout-fold"></div></summary><blockquote>
 <p><code>/Users/name/Documents/manim/wid_manim/manimlib</code> 这个路径必须是完整的<mark>绝对路径</mark>，否则链接创建会失败！</p>
 </blockquote>
-</details><p>打开 <FileName name="venv/lib/python3.10/site-packages" icon="i-vscode-icons-default-folder-opened" /> 文件夹，可以发现多了一个 <FileName name="manimlib" icon="i-vscode-icons-file-type-lnk" /> 的链接。此时， <FileName name="my_videos" icon="i-vscode-icons-default-folder-opened" /> 中的模块也被正确引入了，用下面这条命令运行，也是成功的。</p>
+</details><p>打开 <code>/ico i-vscode-icons-default-folder-opened;venv/lib/python3.10/site-packages</code> 文件夹，可以发现多了一个 <code>/ico i-vscode-icons-file-type-lnk;manimlib</code> 的链接。此时， <code>/ico i-vscode-icons-default-folder-opened;my_videos</code> 中的模块也被正确引入了，用下面这条命令运行，也是成功的。</p>
 <pre><code class="language-sh">(manim) (venv) ~/Documents/manim
 $ manimgl my_videos/videos/danmku.py
 </code></pre>
@@ -124,14 +335,14 @@ $ manimgl my_videos/videos/danmku.py
 <pre><code class="language-sh">(manim) (venv) ~/Documents/manim
 $ python wid_manim/manimlib my_videos/videos/danmaku.py
 </code></pre>
-<p>其实这样是间接的使用了 <FileName name="wid_manim/manimlib/__main__.py" icon="i-vscode-icons-file-type-python" /> 来启动，其实可以达到几乎相同的效果。而用这条命令可以导入其他包，例如 <code>manim_sandbox</code> 中的工具类。而如果想要直接用 <code>manimgl</code> 命令来执行的话，这就必须采用上面的软链接的方式，将它链接到虚拟环境中。</p>
+<p>其实这样是间接的使用了 <code>/ico i-vscode-icons-file-type-python;wid_manim/manimlib/__main__.py</code> 来启动，其实可以达到几乎相同的效果。而用这条命令可以导入其他包，例如 <code>manim_sandbox</code> 中的工具类。而如果想要直接用 <code>manimgl</code> 命令来执行的话，这就必须采用上面的软链接的方式，将它链接到虚拟环境中。</p>
 <blockquote>
 <p>其实用这个长命令的话，就可以使用</p>
 <pre><code class="language-py">from wid_manim.manimlib import *
 </code></pre>
 <p>来引入 <code>manimlib</code> 了，环境是不会报错的。</p>
 </blockquote>
-<p>这条命令很长，我们依然是采用一个 <FileName name="launch.json" icon="i-vscode-icons-file-type-json" /> 脚本来启动它。</p>
+<p>这条命令很长，我们依然是采用一个 <code>/ico i-vscode-icons-file-type-json;launch.json</code> 脚本来启动它。</p>
 <pre><code class="language-json">{
   &quot;version&quot;: &quot;0.2.0&quot;,
   &quot;configurations&quot;: [
@@ -157,7 +368,7 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 <p>其中，<code>program</code> 关键字指定了运行的主程序，如果读者直接使用 pypi 包安装，并且使用的是下面的命令来启动</p>
 <pre><code class="language-sh">manimgl example.py
 </code></pre>
-<p>那么，你的主程序应当是 <code>manimgl</code>，而非上述的 <FileName name="__main__.py" icon="i-vscode-icons-file-type-python" /> 文件。因此，你需要做出以下修改</p>
+<p>那么，你的主程序应当是 <code>manimgl</code>，而非上述的 <code>/ico i-vscode-icons-file-type-python;__main__.py</code> 文件。因此，你需要做出以下修改</p>
 <pre><code class="language-diff">- &quot;program&quot;: &quot;${workspaceFolder}/wid_manim/manimlib/__main__.py&quot;,
 + &quot;program&quot;: &quot;${workspaceFolder}/venv/bin/manimgl&quot;,
 </code></pre>
