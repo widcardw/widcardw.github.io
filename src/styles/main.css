@@ -43,3 +43,7 @@ body,
   background: #7f7f7f20;
   border-radius: 8px;
 }
+
+giscus-widget::part(iframe) {
+  color-scheme: light dark;
+}

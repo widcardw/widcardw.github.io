@@ -1,6 +1,6 @@
 ---
 title: 关于 manim 中贝塞尔曲线上色的细节补充
-date: 2022-11-19
+date: 2022-11-26
 category: 'manim'
 tags: ['shader', 'OpenGL', 'manim', 'bezier curve', 'bezier']
 abstract: 为什么贝塞尔曲线着色并不是扁的，而是有厚度的？无论我怎样旋转视角都一样？
@@ -206,7 +206,7 @@ if(degree == 1){
 }
 ```
 
-![[Excalidraw/line-shader.excalidraw]]
+![[public/gl/line-shader.excalidraw.png]]
 
 #### 处理曲线
 
@@ -221,9 +221,9 @@ find_intersection(corners[0], v01, corners[4], v21, corners[2]);
 return 5;
 ```
 
-![[Excalidraw/pentagon-out.excalidraw]]
+![[public/gl/pentagon-out.excalidraw.png]]
 
-![[Excalidraw/pentagon-in.excalidraw]]
+![[public/gl/pentagon-in.excalidraw.png]]
 
 果不其然，在计算出五边形顶点坐标之后，紧接着的就是顶点索引表。通过索引表的方式，用更少的内存单元，就能生成三个三角形，来填充为一个五边形。
 
@@ -238,5 +238,45 @@ if(n_corners == 4) index_map[2] = 2;  // 对于直线，可以单独处理
 > 如果想要创建一个四边形，我们通常会用两个三角形拼起来。而这样的话，我们可以传入的是 6 个顶点，分别绘制，单这样显然浪费了内存资源，我们明明可以只用 4 个顶点就表示出一个四边形。
 > 
 > 于是，我们通过索引表的方式，将重合的顶点复用起来，虽然好像对于人去计算的话可能麻烦了一点，但是这样提高了一定的性能。
+
+#### 计算颜色
+
+细心的读者应该会发现，在 manimgl 场景中的三维物体，甚至连二维物体，它都是有一些光影渐变的效果的，而这还得归功于 `finalize_color` 这个函数。
+
+这个函数实际上就是通过相机距离、光源位置等参数，来计算最终要渲染到画布上的颜色。感兴趣的读者，可以在 [`/ico i-vscode-icons-default-folder-opened;inserts`](https://github.com/3b1b/manim/tree/master/manimlib/shaders/inserts) 中查看，这个文件夹里面还包含了不少有用的工具函数。
+
+#### `get_gl_Position`
+
+这是干啥用的？ 之前不是已经做过三维到二维的映射了吗？为什么还要做映射呢？
+
+没错，前面确实有一个透视变换，把三维的图像投影到了二维的平面上。但是考虑到片段着色器接受的是这样一个区域的像素点
+
+$$
+\displaystyle {\left\lbrace{\left( x, y\right)}\mid x\in{\left[ 0, 1\right]}, y\in{\left[ 0, 1\right]}\right\rbrace}
+$$
+
+因此，我们需要将想象中的 $\displaystyle  1920\times 1080$ 画布，重新缩放到适合片段着色器的区域中。
+
+在释放图元的时候，需要逐个顶点来释放，因此，我们可以看到，在一个循环语句中，将计算出来的 5 个或者 4 个顶点逐一映射，并赋值给 `gl_Position` 变量，然和调用 `EmitVertex` 释放。
+
+然而，笔者在这里有一些疑惑。`gl_Position` 变量被赋值为一个 4 维的向量，但是不知道在 Fragment shader 中，==是谁来接受这个被释放的顶点==，而且==为什么是 4 维的==，正常来说不是应该只需要三维的就可以了吗？
+
+> [!faq] 针对这些问题的猜想
+> 
+> 对于后面的这个问题，众所周知，在三维物体计算的时候，我们通常会使用四元数运算，而且目前运用的相当广泛，毕竟使用这种方式能够避免很多致命的问题。
+> 
+> 然而对于前面那个问题，我在源码中并没有找到什么明显的线索，或许是隐含在其中，直接按照释放的图元来==绘制成多边形==。而我图形学的编程基础也不是那么好，所以如果有大佬了解这方面的话，欢迎评论指出！
+
+#### 片段着色器
+
+在之前的文章中，我也叙述过，它的职责主要是计算出一个片段，使得这个片段看起来像是一段曲线。之后再通过==调整透明度==的方式，擦除不需要的片段。
+
+```cpp
+frag_color.a *= smoothstep(0.5, -0.5, signed_dist / uv_anti_alias_width);
+```
+
+## 后记
+
+图形学这方面是真的复杂，感觉历史包袱也蛮重的，想要写好 OpenGL 需要花费非常大的精力，像我就还不能从容的面对这些带有**繁重数学运算**，同时还被**严格限制在固定规范中**的代码，那就只能慢慢学，或者去寻找更好的方法吧。
 
 
