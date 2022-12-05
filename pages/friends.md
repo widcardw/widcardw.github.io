@@ -7,7 +7,8 @@
 > {
 >   "name": "widcardw",
 >   "link": "https://widcard.win",
->   "avatar": "https://widcard.win/avatar/avatar.jpg",
+>   "avatar": "https://widcard.win/avatar/avatar.jpg",  // 低清晰度
+>   // "avatar_hd": "https://cdn.widcard.win/manim/avatar/widcardw.webp",  // 高清，可选
 >   "desc": "不是多面手"
 > }
 > ```
