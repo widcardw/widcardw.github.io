@@ -52,9 +52,9 @@ line2 = Rectangle(5, 0.1, stroke_width=0,
 
 ```csharp
 int get_corners(
-	vec2 controls[3], 
-	int degree, 
-	float stroke_widths[3], 
+	vec2 controls[3],
+	int degree,
+	float stroke_widths[3],
 	out vec2 corners[5]
 ) {
 	// 拿到曲线的三个锚点
@@ -93,9 +93,9 @@ int get_corners(
     vec2 c3 = p2 - buff2 * p2_perp + aaw2 * v12;
 
     // 如果是中间段的曲线，则需要创建转接点
-    if(has_prev > 0) 
+    if(has_prev > 0)
 	    create_joint(angle_from_prev, v01, buff0, c0, c0, c1, c1);
-    if(has_next > 0) 
+    if(has_next > 0)
 	    create_joint(angle_to_next, v21, buff2, c3, c3, c2, c2);
 
     // 直线，直接按照矩形来渲染
@@ -133,10 +133,10 @@ int get_corners(
 前面我们提到了，在生成五边形之前，有一个**透视变换**，而这个透视变换就已经将三维的点都投影到二维的平面上了。在此之后的所有向量运算，几乎都不可能离开这个平面。
 
 > [!note|closed] 关于镜头距离导致的曲线粗细变化 可暂时不看
-> 
+>
 > 由于我们感官上的远小近大，越远的曲线理应看上去越细。很幸运，有一个数组变量 `stroke_widths[]` 做了这个工作。在透视变换的时候，程序就会按照相机的距离去计算线的粗细应该怎样变化，之后这个数组被传入 `get_corners` 函数，用于生成五边形的顶点。
 
-```c
+```csharp
 // 拿到曲线的三个锚点
 vec2 p0 = controls[0];
 vec2 p1 = controls[1];
@@ -157,7 +157,7 @@ vec2 p2_perp = vec2(-v12.y, v12.x);
 
 这部分是为了优化视觉上的体验，在逻辑上问题不是很大。
 
-```c
+```csharp
 float aaw = anti_alias_width;
 float buff0 = 0.5 * stroke_widths[0] + aaw;
 float buff2 = 0.5 * stroke_widths[2] + aaw;
@@ -171,7 +171,7 @@ float aaw2 = (1 - has_next) * aaw;
 
 > 这些顶点用作备用，有些可能用到，有些不一定用得到。
 
-```c
+```csharp
 // p0 右侧
 vec2 c0 = p0 - buff0 * p0_perp + aaw0 * v10;
 // p0 左侧
@@ -186,10 +186,10 @@ vec2 c3 = p2 - buff2 * p2_perp + aaw2 * v12;
 
 由于长的曲线都是用短的二阶贝塞尔曲线拼接而成的，因此需要创建转接点，本质上应该是做一些偏移，让曲线之间的连接没有那么突兀。
 
-```c
-if(has_prev > 0) 
+```csharp
+if(has_prev > 0)
 	create_joint(angle_from_prev, v01, buff0, c0, c0, c1, c1);
-if(has_next > 0) 
+if(has_next > 0)
 	create_joint(angle_to_next, v21, buff2, c3, c3, c2, c2);
 ```
 
@@ -199,14 +199,14 @@ if(has_next > 0)
 
 这里的 `corners[]` 前 4 个值有效，最后一个无效。返回值为 4，说明按照四边形的方式来着色。
 
-```c
+```csharp
 if(degree == 1){
 	corners = vec2[5](c0, c1, c3, c2, vec2(0.0));
 	return 4;
 }
 ```
 
-![[public/gl/line-shader.excalidraw.png]]
+![[public/gl/line-shader.excalidraw.svg]]
 
 #### 处理曲线
 
@@ -221,9 +221,9 @@ find_intersection(corners[0], v01, corners[4], v21, corners[2]);
 return 5;
 ```
 
-![[public/gl/pentagon-out.excalidraw.png]]
+![[public/gl/pentagon-out.excalidraw.svg]]
 
-![[public/gl/pentagon-in.excalidraw.png]]
+![[public/gl/pentagon-in.excalidraw.svg]]
 
 果不其然，在计算出五边形顶点坐标之后，紧接着的就是顶点索引表。通过索引表的方式，用更少的内存单元，就能生成三个三角形，来填充为一个五边形。
 
@@ -234,9 +234,9 @@ if(n_corners == 4) index_map[2] = 2;  // 对于直线，可以单独处理
 
 > [!faq|closed] 为什么这么做？
 > 参考 [Learn OpenGL 教程](https://learnopengl-cn.github.io/01%20Getting%20started/04%20Hello%20Triangle/)。
-> 
-> 如果想要创建一个四边形，我们通常会用两个三角形拼起来。而这样的话，我们可以传入的是 6 个顶点，分别绘制，单这样显然浪费了内存资源，我们明明可以只用 4 个顶点就表示出一个四边形。
-> 
+>
+> 如果想要创建一个四边形，我们通常会用两个三角形拼起来。而这样的话，我们可以传入的是 6 个顶点，分别绘制，但这样显然浪费了内存资源，我们明明可以只用 4 个顶点就表示出一个四边形。
+>
 > 于是，我们通过索引表的方式，将重合的顶点复用起来，虽然好像对于人去计算的话可能麻烦了一点，但是这样提高了一定的性能。
 
 #### 计算颜色
@@ -262,16 +262,16 @@ $$
 然而，笔者在这里有一些疑惑。`gl_Position` 变量被赋值为一个 4 维的向量，但是不知道在 Fragment shader 中，==是谁来接受这个被释放的顶点==，而且==为什么是 4 维的==，正常来说不是应该只需要三维的就可以了吗？
 
 > [!faq] 针对这些问题的猜想
-> 
+>
 > 对于后面的这个问题，众所周知，在三维物体计算的时候，我们通常会使用四元数运算，而且目前运用的相当广泛，毕竟使用这种方式能够避免很多致命的问题。
-> 
+>
 > 然而对于前面那个问题，我在源码中并没有找到什么明显的线索，或许是隐含在其中，直接按照释放的图元来==绘制成多边形==。而我图形学的编程基础也不是那么好，所以如果有大佬了解这方面的话，欢迎评论指出！
 
 #### 片段着色器
 
 在之前的文章中，我也叙述过，它的职责主要是计算出一个片段，使得这个片段看起来像是一段曲线。之后再通过==调整透明度==的方式，擦除不需要的片段。
 
-```cpp
+```csharp
 frag_color.a *= smoothstep(0.5, -0.5, signed_dist / uv_anti_alias_width);
 ```
 

@@ -28,3 +28,15 @@ html:not(.dark) .shiki-dark {
 .custom-callout>blockquote>pre:first-child {
   margin-top: -1.5rem;
 }
+
+code[v-pre] {
+  display: flex;
+  flex-direction: column;
+}
+
+.shiki .highlighted {
+  background: #7f7f7f20;
+  display: block;
+  margin: 0 -1rem;
+  padding: 0 1rem;
+}

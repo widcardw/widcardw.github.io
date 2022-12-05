@@ -53,6 +53,8 @@ sub-ass-force-margins
 b        add  video-rotate 15      # 旋转15度
 n        set  video-rotate 0       # 重置旋转角度
 c        seek 0 absolute-percent ; set pause no  # 重新播放
+up       add volume 2
+down     add volume -2
 ```
 
 ## 再次研究

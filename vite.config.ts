@@ -143,6 +143,7 @@ export default defineConfig({
             light: 'vitesse-light',
             dark: 'vitesse-dark',
           },
+          highlightLines: true,
         })
         md.use(FileIconPlugin, { prefix: '/ico' })
       },
