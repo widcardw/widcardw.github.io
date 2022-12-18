@@ -26,6 +26,8 @@ import DoubleBracketLink from 'mdit-plg-double-bracket-link'
 import CalloutPlugin from 'mdit-plugin-callouts'
 import Shiki from 'markdown-it-shiki'
 import AmIt from '@widcardw/markdown-it-asciimath'
+// @ts-expect-error declaration
+import markdownItFootnote from 'markdown-it-footnote'
 import { mermaidPlugin } from './src/composables/plugins/mermaid'
 import type { MyRouteMeta } from './src/composables/types'
 import FileIconPlugin from './src/md-plugins/file-icon'
@@ -146,6 +148,7 @@ export default defineConfig({
           highlightLines: true,
         })
         md.use(FileIconPlugin, { prefix: '/ico' })
+        md.use(markdownItFootnote)
       },
     }),
   ],

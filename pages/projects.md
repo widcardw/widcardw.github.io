@@ -46,6 +46,11 @@ projects:
       link: 'https://github.com/widcardw/mdit-plg-double-bracket-link'
       desc: 'Wiki link for markdown-it'
       icon: 'i-ri-link'
+  Obsidian Plugin:
+    - name: 'Asciimath'
+      link: 'https://github.com/widcardw/obsidian-asciimath'
+      desc: 'Asciimath support for Obsidian'
+      icon: 'i-ri-markdown-line'
   Apps:
     - name: 'D4nm4ku'
       link: 'https://github.com/widcardw/D4nm4ku'

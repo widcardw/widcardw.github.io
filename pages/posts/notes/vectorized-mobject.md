@@ -28,9 +28,33 @@ article: true
 >
 > 矢量图是根据几何特性来绘制图形，矢量可以是一个点或一条线，矢量图只能靠软件生成，**文件占用内在空间较小**，因为这种类型的图像文件包含独立的分离图像，可以自由无限制的重新组合。它的特点是**放大后图像不会失真**，和分辨率无关，适用于图形设计、文字设计和一些标志设计、版式设计等。
 
-如果我们以文本格式打开一个矢量图（以 svg 为例），那么就会看到类似这样的内容。
+如果我们以文本格式打开一个矢量图（以 svg 为例），那么就会看到类似这样的内容[^1]。
 
-> [!example] 摘自菜鸟教程，详见 https://www.runoob.com/svg/svg-path.html
+```html
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <path id="lineAB" d="M 100 350 l 150 -300" stroke="red"
+  stroke-width="3" fill="none" />
+  <path id="lineBC" d="M 250 50 l 150 300" stroke="red"
+  stroke-width="3" fill="none" />
+  <path d="M 175 200 l 150 0" stroke="green" stroke-width="3"
+  fill="none" />
+  <path d="M 100 350 q 150 -300 300 0" stroke="blue"
+  stroke-width="5" fill="none" />
+  <!-- Mark relevant points -->
+  <g stroke="black" stroke-width="3" fill="black">
+    <circle id="pointA" cx="100" cy="350" r="3" />
+    <circle id="pointB" cx="250" cy="50" r="3" />
+    <circle id="pointC" cx="400" cy="350" r="3" />
+  </g>
+  <!-- Label the points -->
+  <g font-size="30" font="sans-serif" fill="black" stroke="none"
+  text-anchor="middle">
+    <text x="100" y="350" dx="-30">A</text>
+    <text x="250" y="50" dy="-10">B</text>
+    <text x="400" y="350" dx="30">C</text>
+  </g>
+</svg>
+```
 
 可以看到，文件的内容大致都是**坐标**，**颜色**，**路径**，**填充**等内容。也正是因为这一个因素，在一些动画软件如 Flash, Animation 中能够对矢量图进行图形的**补间**操作。而**补间**的本质，就是**插值(interpolate)**。这一部分将会在之后的**动画**模块里面详细阐述。
 
@@ -64,9 +88,7 @@ B(t) = sum _(i=0) ^n (n;i) P_i (1-t)^i t^(n-i), t in [0,1]
 
 基于贝塞尔曲线的知识，我们回到 svg 格式的路径，看到 `<path>` 标签的内容。
 
-> *该部分内容来自 [w3school](https://www.w3school.com.cn/svg/svg_path.asp)*
->
-> 下面的命令可用于路径数据：
+> 下面的命令可用于路径数据[^2]：
 > - M = moveto
 > - L = lineto
 > - H = horizontal lineto
@@ -78,7 +100,7 @@ B(t) = sum _(i=0) ^n (n;i) P_i (1-t)^i t^(n-i), t in [0,1]
 > - A = elliptical Arc
 > - Z = closepath
 
-> [!example] w3school 绘制曲线的例子 <https://www.w3school.com.cn/svg/index.asp>
+我们顺着继续看一些绘制曲线的[例子](https://www.w3school.com.cn/svg/svg_examples.asp)，其中，[螺旋的例子](https://www.w3school.com.cn/svg/path2.svg)是比较瞩目的，因为他没有使用原生的矩形、椭圆等工具来绘制，而是纯路径绘制。
 
 这里出现了我们的老朋友贝塞尔曲线。如果我们打开一个由 manim 生成的 Text 的 svg 文件，那么就会看到有大量的 `C x1 y1 x2 y2 x3 y3`，这就对应了二阶贝塞尔曲线中的三个二维坐标，回到上面的[动图](#bezier-generate)，看一眼它的生成过程，再体会一下用**很多段二阶贝塞尔曲线拼接成**一段完整的路径。
 
@@ -295,3 +317,6 @@ class AllPointsIndex(VGroup):
             point_id.move_to(points)
             self.add(point_id)
 ```
+
+[^1]: 菜鸟教程，详见 https://www.runoob.com/svg/svg-path.html
+[^2]: w3school, https://www.w3school.com.cn/svg/svg_path.asp

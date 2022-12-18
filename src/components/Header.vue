@@ -20,8 +20,8 @@ const router = useRouter()
       <a icon-btn i-ri-article-line title="blog" @click="router.push('/posts')" />
       <a icon-btn i-ri-apps-line title="project" @click="router.push('/projects')" />
       <a icon-btn i-ri-link-m title="links" @click="router.push('/friends')" />
-      <a href="https://space.bilibili.com/31976300" target="_blank" icon-btn i-ri-bilibili-fill title="bilibili" />
-      <a href="https://www.zhihu.com/people/wu-hua-rou-68-55" target="_blank" icon-btn i-ri-zhihu-fill title="zhihu" />
+      <!-- <a href="https://space.bilibili.com/31976300" target="_blank" icon-btn i-ri-bilibili-fill title="bilibili" /> -->
+      <!-- <a href="https://www.zhihu.com/people/wu-hua-rou-68-55" target="_blank" icon-btn i-ri-zhihu-fill title="zhihu" /> -->
       <a href="https://widcard.win/feed.xml" target="_blank" icon-btn i-ri-rss-line title="rss" />
       <a href="https://github.com/widcardw" target="_blank" icon-btn i-ri-github-fill title="github" />
       <div icon-btn @click="toggleDark()">

@@ -110,13 +110,13 @@ $ cd wid_manim
 $ pip install -e .
 ```
 
-安装完成后，在 `/ico i-vscode-icons-default-folder-opened;venv` 目录下，能看到 `/ico i-vscode-icons-default-folder-opened;bin` 和 `/ico i-vscode-icons-default-folder-opened;lib` 中已经出现了很多包，这说明依赖差不多就已经装好了。
+等待命令执行结束，在 `/ico i-vscode-icons-default-folder-opened;venv` 目录下，能看到 `/ico i-vscode-icons-default-folder-opened;bin` 和 `/ico i-vscode-icons-default-folder-opened;lib` 中出现了很多包，这说明依赖已经装好了。
 
 ### 4.4. 关于模块的引入
 
 打开 `/ico i-vscode-icons-default-folder-opened;my_videos` 文件夹，发现原来的引入语句报错了，不能通过下面
 
-```py
+```python
 from manimlib import *
 ```
 
@@ -124,13 +124,13 @@ from manimlib import *
 
 解决方案很明显，我可以这样干：
 
-```py
+```python
 from wid_manim.manimlib import *
 ```
 
 这样，模块就被正确导入进来了。但是运行的时候，环境又不承认了
 
-```
+```sh
 (manim) (venv) ~/Documents/manim
 $ manimgl my_videos/videos/danmku.py
   ...
@@ -159,6 +159,12 @@ $ ln -s /Users/name/Documents/manim/wid_manim/manimlib \
 $ manimgl my_videos/videos/danmku.py
 ```
 
+当然，如果嫌每次都启动一遍环境很麻烦的话，可以给 `/ico ;.zshrc` 添加一个 alias
+
+```sh
+alias ma='cd /Users/name/Documents/manim && conda activate manim && source venv/bin/activate'
+```
+
 ## 5. 再扯一下 manim 的运行
 
 事实上，因为我选择了本地安装，manimgl 还可以通过下面的命令运行
@@ -172,7 +178,7 @@ $ python wid_manim/manimlib my_videos/videos/danmaku.py
 
 > 其实用这个长命令的话，就可以使用
 >
-> ```py
+> ```python
 > from wid_manim.manimlib import *
 > ```
 >
