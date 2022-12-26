@@ -4,7 +4,7 @@
         <title>widcardw</title>
         <link>https://widcard.win/</link>
         <description>widcardw's blog</description>
-        <lastBuildDate>Sun, 18 Dec 2022 15:12:11 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 26 Dec 2022 13:59:21 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -14,213 +14,324 @@
         </image>
         <atom:link href="https://widcard.win/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
-            <title><![CDATA[关于 manim 中贝塞尔曲线上色的细节补充]]></title>
-            <link>https://widcard.win/posts/notes/details-about-shader-of-bezier-curve</link>
-            <guid>https://widcard.win/posts/notes/details-about-shader-of-bezier-curve</guid>
-            <pubDate>Sat, 26 Nov 2022 00:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<h1>关于 manim 中贝塞尔曲线上色的细节补充</h1>
-<h2>前言</h2>
-<p>在近两天，有群友发出了疑惑，为什么在 manim 中，无论怎样旋转视角，线都是有宽度的。因为我之前稍微研究了一下上色机制，所以在应该会更加清楚它的处理逻辑，顺带着也是把之前讲到的内容，稍微再做一些补充。</p>
-<h2>为什么</h2>
-<p>为什么旋转视角时，仿佛就是空间中的一根棍子，永远都有宽度呢？甚至连空间中的曲线也是这样？</p>
+            <title><![CDATA[重新学习如何使用 Git 和 GitHub]]></title>
+            <link>https://widcard.win/posts/blog/re-learn-git</link>
+            <guid>https://widcard.win/posts/blog/re-learn-git</guid>
+            <pubDate>Mon, 26 Dec 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>重新学习如何使用 Git 和 GitHub</h1>
+<h2>Status</h2>
+<pre><code class="language-shell">git status -s
+</code></pre>
+<p>我没想到竟然还能加一个 <code>-s</code> 参数，它的输出是这样的</p>
+<pre><code class="language-shell">git status -s
+ M pages/.obsidian/community-plugins.json
+ M pages/.obsidian/core-plugins.json
+ M pages/index.md
+ M pages/posts/notes/editor-shortcut.md
+?? pages/.obsidian/core-plugins-migration.json
+?? pages/posts/blog/re-learn-git.md
+</code></pre>
+<p>而直接使用 <code>git status</code> 命令的输出结果是这样的</p>
+<pre><code class="language-shell">git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+	modified:   pages/.obsidian/community-plugins.json
+	modified:   pages/.obsidian/core-plugins.json
+	modified:   pages/index.md
+	modified:   pages/posts/notes/editor-shortcut.md
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+	pages/.obsidian/core-plugins-migration.json
+	pages/posts/blog/re-learn-git.md
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre>
+<p>其中，untracked files 是指一些可能是新增的，还没有被 git 追踪的文件，而上面的 modified 是指已经追踪的，并且已经修改过的文件。</p>
+<h2>Add</h2>
+<pre><code class="language-shell">git add [file1] [file2] ...
+</code></pre>
+<p>可以将一个或多个文件添加到缓冲区。</p>
+<pre><code class="language-shell">git add .
+</code></pre>
+<p>可以将当前目录下的文件全部添加到缓冲区。</p>
+<pre><code class="language-shell">git add [dir]
+</code></pre>
+<p>可以将某个目录下的文件添加到缓冲区内。</p>
+<p>当使用 add 将文件添加到缓冲区后，这些文件就被标记为了 staged，如果不清楚的话，可以使用 VSCode 的 git 插件可视化的查看。</p>
+<p>如果想要取消添加刚才的文件，可以点击 VSCode 的 unstage 操作。当然，也可以再次使用 <code>git status</code> 命令，查看当前状态。此时，它就会提醒我们用这条命令来取消添加</p>
+<pre><code class="language-shell">use &quot;git restore --staged &lt;file&gt;...&quot; to unstage
+</code></pre>
+<h2>Commit</h2>
+<p>提交并需要附带本次提交的信息。在 VSCode 的 Git 插件中，其实也给了 commit 附带提交信息的功能。</p>
+<pre><code class="language-shell">git commit -m 'commit message'
+</code></pre>
+<p>其中，提交信息应当按照一定的格式来编写。一般的，如果只是使用 <code>git commit</code> 命令，将会引导用户进入一个很像 vim 的编辑界面。</p>
+<pre><code class="language-shell"> 1
+ 2 # Please enter the commit message for your changes. Lines starting
+ 3 # with '#' will be ignored, and an empty message aborts the commit.
+ 4 #
+ 5 # On branch master
+ 6 # Your branch is up to date with 'origin/master'.
+ 7 #
+ 8 # Changes to be committed:
+ 9 #       modified:   README.md
+10 #
+~
+</code></pre>
+<p>提交格式应该是这样的[^1]</p>
+<pre><code class="language-text">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+&lt;BLANKLINE&gt;
+&lt;body&gt;
+&lt;BLANKLINE&gt;
+&lt;footer&gt;
+</code></pre>
+<ul>
+<li><code>type</code> 表示提交类别，必须存在</li>
+<li><code>scope</code> 表示修改范围</li>
+<li><code>subject</code> 表示标题行</li>
+<li><code>body</code> 表示主体的描述部分</li>
+</ul>
+<p>[^1]: 这部分来自 <a href="https://www.jianshu.com/p/ff4f98695c2c">https://www.jianshu.com/p/ff4f98695c2c</a></p>
+<h3>type</h3>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>feat</code></td>
+<td>添加新特性</td>
+</tr>
+<tr>
+<td><code>fix</code></td>
+<td>修复 bug</td>
+</tr>
+<tr>
+<td><code>docs</code></td>
+<td>仅仅修改了文档</td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td>仅仅修改了空格、格式缩进、逗号等等，不改变代码逻辑</td>
+</tr>
+<tr>
+<td><code>refactor</code></td>
+<td>代码重构，没有加新功能或者修复 bug</td>
+</tr>
+<tr>
+<td><code>perf</code></td>
+<td>优化相关，比如提升性能、体验</td>
+</tr>
+<tr>
+<td><code>test</code></td>
+<td>增加测试用例</td>
+</tr>
+<tr>
+<td><code>chore</code></td>
+<td>改变构建流程、或者增加依赖库、工具等</td>
+</tr>
+<tr>
+<td><code>revert</code></td>
+<td><s>滚回</s>回滚到上一个版本</td>
+</tr>
+</tbody>
+</table>
+<h3>scope</h3>
+<p>非必填，用于说明 commit 影响的范围</p>
+<h3>subject</h3>
+<p>是 commit 的简短描述，必填，在 50 个字符以内。</p>
+<ul>
+<li>动词开头，第一人称现在时</li>
+<li>第一个字母小写</li>
+<li>句尾不加句号</li>
+</ul>
+<h3>body</h3>
+<p>非必填，可以描述当前修改的详细信息或修改的目的。</p>
+<h3>footer</h3>
+<p>非必填，一般描述 BREAKING CHANGE. 以 <code>BREAKING CHANGE</code> 开头，后面是对变动的描述、以及变动理由和迁移方法。</p>
+<h3>一个样例</h3>
+<pre><code class="language-shell">git config core.editor hx  # 将默认编辑器更改为 hx
+git add .
+git commit
+</code></pre>
+<pre><code class="language-shell"> 1 chore: format README
+ 2
+ 3 Use the default feature of helix-editor to format README.
+
+:wq
+</code></pre>
+<p>保存后会自动提交信息。</p>
+<pre><code class="language-shell">git commit
+[master ccad09a] chore: format README
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+</code></pre>
+<h2>restore</h2>
+<p>前面提到了，用 restore 可以取消添加已经 stage 的文件，但是它还有其他的功能。如果在还未 add 的时候，使用 <code>git status</code> 可以看到有这样的提示</p>
+<pre><code class="language-shell">(use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+(use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+</code></pre>
+<p>它可以取消所作的更改，万一你直接跑了这条命令，那么你在上一次提交之后写的代码就白写了。</p>
+<h2>rm</h2>
+<p>用于删除文件。</p>
+<pre><code class="language-shell">git rm [file]
+</code></pre>
+<p>这条指令会将文件从暂存区和工作区删除。</p>
+<p>如果删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项 <code>-f</code>.</p>
+<p>如果想把文件从暂存区域移除，但仍然希望保留在当前工作目录中，换句话说，仅是从跟踪清单中删除，使用 <code>--cached</code> 选项即可</p>
+<pre><code class="language-shell">git rm --cached &lt;file&gt;
+</code></pre>
+<p>这条命令在我手中常用于 <code>/ico ;.gitignore</code> 中变更后，某些文件不应该继续被追踪而实际上还在被追踪的情况。这时就需要把文件从暂存区删除并重新添加。</p>
+<h2>checkout</h2>
+<p>用于切换分支。<code>-b</code> 选项可以在当前提交的基础上新建一个分支并切换到该分支上。</p>
+<pre><code class="language-shell">~/Documents/project git:(main)
+git checkout -b dev
+~/Documents/project git:(dev)
+</code></pre>
+<p>如果当前有多个分支时，可以使用 <code>checkout</code> 来切换到其他的分支</p>
+<pre><code class="language-shell">~/Documents/project git:(main)
+git checout patch-1
+~/Documents/project git:(patch-1)
+</code></pre>
+<h2>branch</h2>
+<p>用于查看和管理分支。</p>
+<h3>查看分支</h3>
+<pre><code class="language-shell">git branch
+  main
+  dev
+* patch-1  # 当前所在的分支
+</code></pre>
+<h3>查看本地和远程分支</h3>
+<pre><code class="language-shell">git branch -a
+</code></pre>
+<h3>修改分支名称</h3>
+<pre><code class="language-shell">git branch -m &lt;old-name&gt; &lt;new-name&gt;
+</code></pre>
+<h3>删除某个分支</h3>
+<pre><code class="language-shell">~/Documents/project git:(main)
+git branch -D patch-1
+</code></pre>
+<h2>merge</h2>
+<p>合并分支。</p>
+<p><img src="https://widcard.win/learn-git/git-merge.excalidraw.svg" alt="learn-git/git-merge.excalidraw.svg"></p>
+<pre><code class="language-shell">~/Documents/project git:(feature)
+git checkout main
+~/Documents/project git:(main)
+git merge feature
+</code></pre>
 <blockquote>
-<p>回想起之前看到 B 站的一个<a href="https://www.bilibili.com/video/BV1GD4y1t7iF">视频</a>，讲解了如何使用 After Effects 制作 <em>ANIPLEX</em> 的片头，而他的矩形就是一个平面上的矩形，是没有厚度的，想要做出厚度，就必须再拼上一层 3D 圆柱。</p>
+<p>一直有人在争吵 merge 好还是 rebase 好，我真的觉得没什么必要，这还是得看使用场景。</p>
 </blockquote>
-<p>有厚度这不是正合我意吗？这样就不会有旋转造成视觉上扁平的问题了呀。</p>
-<p><video controls="controls" src="https://widcard.win/updater/DifferenceBetweenLines.mp4" alt="updater/DifferenceBetweenLines.mp4" style="width: 100%; height: 100%;"></video></p>
-<pre><code class="language-python">line1 = Line(
-	np.array([-2.5, 1, 1]), np.array([2.5, 1, 1]),
-	stroke_width=10, color=GREEN)
-line2 = Rectangle(5, 0.1, stroke_width=0,
-	fill_opacity=1, fill_color=RED).shift(DOWN + IN)
-</code></pre>
-<h3>分析</h3>
-<p>我们来思考一下，在 OpenGL 的着色中，什么步骤会导致将一个平面图形，在旋转视角之后，会导致它变成扁平的？</p>
-<p>是<strong>透视变换</strong>。</p>
-<p>我们的直观感受中，总会觉得远小近大，因此我们在 OpenGL 的着色设计上，就会加入透视变换。那么我们就顺着透视变换，去寻找其根源。</p>
-<h3>回顾上色机制和步骤</h3>
-<p>让我们回顾一下<a href="/posts/notes/quadratic_bezier_shader">二阶贝塞尔曲线上色机制</a>中的着色流程。</p>
-<p><img src="/posts-imgs/quadratic_bezier_stroke_shader.svg" alt="posts-imgs/quadratic_bezier_stroke_shader.svg"></p>
-<p>顶点着色器在 <code>position_point_into_frame</code> 这个方法中，将顶点乘上了一个相机的旋转，这一步应该是要为透视变换做一些准备。</p>
-<p>几何着色器的工作很多，透视变换的步骤是排在相对靠前的。而我们又知道，贝塞尔曲线的绘制步骤是：先用一个<a href="/posts/notes/quadratic_bezier_shader#geometry-shader">五边形</a>盖住这条曲线，再把剩余部分用<strong>片段着色器</strong>擦除。</p>
-<p>这个五边形是什么时候出现的呢？是 <code>get_corners</code> 方法得到的。我们来看一下它的源码，接下来我们将逐步讲解它。</p>
-<pre><code class="language-csharp">int get_corners(
-	vec2 controls[3],
-	int degree,
-	float stroke_widths[3],
-	out vec2 corners[5]
-) {
-	// 拿到曲线的三个锚点
-    vec2 p0 = controls[0];
-    vec2 p1 = controls[1];
-    vec2 p2 = controls[2];
-
-    // 将向量单位化
-    vec2 v10 = normalize(p0 - p1);
-    vec2 v12 = normalize(p2 - p1);
-    vec2 v01 = -v10;
-    vec2 v21 = -v12;
-	// 将向量 v01 逆时针旋转 90 度
-    vec2 p0_perp = vec2(-v01.y, v01.x);
-    // 将向量 v12 逆时针旋转 90 度
-    vec2 p2_perp = vec2(-v12.y, v12.x);
-
-    // aaw is the added width given around the polygon for antialiasing.
-    // In case the normal is faced away from (0, 0, 1), the vector to the
-    // camera, this is scaled up.
-    // 抗锯齿
-    float aaw = anti_alias_width;
-    float buff0 = 0.5 * stroke_widths[0] + aaw;
-    float buff2 = 0.5 * stroke_widths[2] + aaw;
-    float aaw0 = (1 - has_prev) * aaw;
-    float aaw2 = (1 - has_next) * aaw;
-
-	// 构造额外的顶点，以构成五边形
-	// p0 右侧
-    vec2 c0 = p0 - buff0 * p0_perp + aaw0 * v10;
-    // p0 左侧
-    vec2 c1 = p0 + buff0 * p0_perp + aaw0 * v10;
-    // p2 左侧
-    vec2 c2 = p2 + buff2 * p2_perp + aaw2 * v12;
-    // p2 右侧
-    vec2 c3 = p2 - buff2 * p2_perp + aaw2 * v12;
-
-    // 如果是中间段的曲线，则需要创建转接点
-    if(has_prev &gt; 0)
-	    create_joint(angle_from_prev, v01, buff0, c0, c0, c1, c1);
-    if(has_next &gt; 0)
-	    create_joint(angle_to_next, v21, buff2, c3, c3, c2, c2);
-
-    // 直线，直接按照矩形来渲染
-    //  c1 ---------------- c2
-    //  | ///////////////// |
-    //  p0 ////// p1 ////// p2
-    //  | ///////////////// |
-    //  c0 ---------------- c3
-    // 上面斜线的部分即为着色的部分
-    if(degree == 1){
-        // The order of corners should be for a triangle_strip.
-        // Last entry is a dummy
-        corners = vec2[5](c0, c1, c3, c2, vec2(0.0));
-        return 4;
-    }
-
-    // 曲线，需要用五边形来覆盖它
-    float orientation = sign(cross2d(v01, v12));  // Positive for ccw curves
-    if(orientation &gt; 0) corners = vec2[5](c0, c1, p1, c2, c3);
-    else                corners = vec2[5](c1, c0, p1, c3, c2);
-    // Replace corner[2] with convex hull point accounting for stroke width
-    find_intersection(corners[0], v01, corners[4], v21, corners[2]);
-    return 5;
-}
-</code></pre>
-<h3>分析五边形的顶点如何计算</h3>
-<h4>一些预处理</h4>
-<p>这些预处理大多是为了后续变量处理方便。</p>
-<p>注意，Grant 机缘巧合的使用了 <code>normalize</code> 这个函数，得到了两个单位向量。而实际上就是因为单位化的操作在这一步，所以曲线一定有宽度。</p>
-<p>前面我们提到了，在生成五边形之前，有一个<strong>透视变换</strong>，而这个透视变换就已经将三维的点都投影到二维的平面上了。在此之后的所有向量运算，几乎都不可能离开这个平面。</p>
-<details class="custom-callout note"><summary class="callout-title"><div class="callout-icon"></div><div>关于镜头距离导致的曲线粗细变化 可暂时不看</div>
+<p>merge 会留下一切可追溯的信息，也基本上是最常用的合并方式。在<a href="https://zhuanlan.zhihu.com/p/75499871">知乎的一条回答</a>中<a href="%E8%BF%99%E4%B8%AA%E7%9F%A5%E4%B9%8E%E7%9A%84%E6%96%87%E7%AB%A0%E5%8F%AF%E4%BB%A5%E4%B8%8D%E7%9C%8B%EF%BC%8C%E6%98%8E%E6%98%BE%E7%9A%84%E5%B0%B1%E6%98%AF%E4%B8%80%E8%BE%B9%E5%80%92%EF%BC%8C%E6%8D%A7%E4%B8%80%E8%B8%A9%E4%B8%80">^2</a>，rebase 的最大好处不是消除了 merge，而是避免与 merge 的交织。在下面的这个情况中，就有可能需要用到 rebase.</p>
+<p><img src="/learn-git/rebase-2.excalidraw.svg" alt="learn-git/rebase-2.excalidraw.svg"></p>
+<p>仓库主更新非常勤快，以至于你 fork 之后，在 dev 分支做了修改，想要 pull request 的时候，仓库主已经又加了很多次提交。此时，你可以先切换到主分支，拉取已经提交的修改，然后将自己的修改 rebase 一下，以最新的 commit 为基准来提交贡献，避免把的冲突留给太多的人去解决。</p>
+<h2>rebase</h2>
+<p>在 <a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA">git-scm 官方文档</a> 中有这么一个提示</p>
+<details class="custom-callout quote" open><summary class="callout-title"><div class="callout-icon"></div><div><strong>变基的风险</strong></div>
 <div class="callout-fold"></div></summary><blockquote>
-<p>由于我们感官上的远小近大，越远的曲线理应看上去越细。很幸运，有一个数组变量 <code>stroke_widths[]</code> 做了这个工作。在透视变换的时候，程序就会按照相机的距离去计算线的粗细应该怎样变化，之后这个数组被传入 <code>get_corners</code> 函数，用于生成五边形的顶点。</p>
+<p>呃，奇妙的变基也并非完美无缺，要用它得遵守一条准则：</p>
+<p><strong>如果提交存在于你的仓库之外，而别人可能基于这些提交进行开发，那么不要执行变基。</strong></p>
+<p>如果你遵循这条金科玉律，就不会出差错。 否则，人民群众会仇恨你，你的朋友和家人也会嘲笑你，唾弃你。</p>
+<p>变基操作的实质是丢弃一些现有的提交，然后相应地新建一些内容一样但实际上不同的提交。 如果你已经将提交推送至某个仓库，而其他人也已经从该仓库拉取提交并进行了后续工作，此时，如果你用 <code>git rebase</code> 命令重新整理了提交并再次推送，你的同伴因此将不得不再次将他们手头的工作与你的提交进行整合，如果接下来你还要拉取并整合他们修改过的提交，事情就会变得一团糟。</p>
 </blockquote>
-</details><pre><code class="language-csharp">// 拿到曲线的三个锚点
-vec2 p0 = controls[0];
-vec2 p1 = controls[1];
-vec2 p2 = controls[2];
+</details><p>总之，还是需要在合适的时候使用 rebase，而不是乱用一通。</p>
+<p>下面是 merge 和 rebase 的一些区别。</p>
+<h3>rebase</h3>
+<pre><code class="language-shell">git checkout feature
+git rebase main
+</code></pre>
+<p>经过上面两条命令，git 做了这样的操作。它本身的含义叫作 “变基”，在图中就是把 feature 分支上的修改挪到了 main 分支上。</p>
+<p><img src="/learn-git/git-rebase.excalidraw.svg" alt="learn-git/git-rebase.excalidraw.svg"></p>
+<h3>merge</h3>
+<pre><code class="language-shell">git checkout main
+git merge feature
+</code></pre>
+<p>在 merge 操作中，git 做了下面这样的操作。当然，在此处的 merge 过程中，或许也会有一些 conflicts，需要我们手动处理。从下图中来理解，那就是 main 分支接受了 main 上和 feature 上双方的修改，也就是说，它几乎保留了所有分支的记录。</p>
+<p><img src="/learn-git/git-merge.excalidraw.svg" alt="learn-git/git-merge.excalidraw.svg"></p>
+<h2>stash</h2>
+<p>某个人正在 dev 分支上开发新功能，但是有人发了一个 issue，说 main 分支上有个非常严重的 Bug，急需修复。dev 分支还没开发完，此时只提交一半的修改，这样不是很好。他直接使用 <code>git checkout main</code> 命令，却得到了这样一串报错。</p>
+<pre><code class="language-shell">git checkout main
+error: Your local changes to the following files would be overwritten by checkout:
+	readme.md
+Please commit your changes or stash them before you switch branches.
+Aborting
+</code></pre>
+<p>因为此时，git 树（链表）的结构是这样的</p>
+<p><img src="/learn-git/stash-1.excalidraw.svg" alt="learn-git/stash-1.excalidraw.svg"></p>
+<p>此时，如果直接切换分支，那么 dev 分支的修改应该何去何从？</p>
+<p>如果不想提前提交，那么就需要使用 <code>git stash</code> 了。这条命令会将当前修改存储在一个栈中，并标记当前分支是 WIP (Work in progress)，此时就可以切回 main 分支了。</p>
+<pre><code class="language-shell">~/Documents/project git:(dev)
+git stash
+Saved working directory and index state WIP on dev: a0262af chore: first commit
+~/Documents/project git:(dev)
+git checkout main
+Switched to branch 'main'
+~/Documents/project git:(main)
+</code></pre>
+<p>等待他修好 main 分支，将所有更改都提交后，再切回 dev 分支，使用下面的命令从栈中取出前面最近一次保存的，未提交的修改：</p>
+<pre><code class="language-shell">~/Documents/project git:(dev)
+git stash pop
+On branch dev
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+	modified:   readme.md
 
-// 将向量单位化
-vec2 v10 = normalize(p0 - p1);
-vec2 v12 = normalize(p2 - p1);
-vec2 v01 = -v10;
-vec2 v21 = -v12;
-// 将向量 v01 逆时针旋转 90 度
-vec2 p0_perp = vec2(-v01.y, v01.x);
-// 将向量 v12 逆时针旋转 90 度
-vec2 p2_perp = vec2(-v12.y, v12.x);
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+Dropped refs/stash@{0} (47e2c480a199ff07025b31c83e1c7a62592c1974)
 </code></pre>
-<h4>抗锯齿</h4>
-<p>这部分是为了优化视觉上的体验，在逻辑上问题不是很大。</p>
-<pre><code class="language-csharp">float aaw = anti_alias_width;
-float buff0 = 0.5 * stroke_widths[0] + aaw;
-float buff2 = 0.5 * stroke_widths[2] + aaw;
-float aaw0 = (1 - has_prev) * aaw;
-float aaw2 = (1 - has_next) * aaw;
+<p>当然，也可以在栈中保存多个快照，使用 <code>git stash list</code> 查看所有保存的快照。</p>
+<p>最后，等到 dev 分支开发完成，提交所有代码后，可以使用 merge 或者 rebase 进行合并。</p>
+<ul>
+<li>如果他是仓库主，有 main 的操作权限，将 dev 分支合并到 main，处理冲突之后，提交到远端</li>
+<li>如果他只是贡献者，没有 main 的操作权限，可以将 dev 分支 rebase 到最新的 main 尾部，然后再提交 pull request</li>
+</ul>
+<h2>reset</h2>
+<p>reset 用于回退版本，可以指定回退某一次提交的版本</p>
+<pre><code class="language-shell">git reset HEAD^   # 回退到上个版本
+git reset HEAD~2  # 回退到上上个版本
+git reset 052e34  # 回退到指定版本，版本号可以通过 git log 查看
 </code></pre>
-<h4>构造顶点</h4>
-<p>为曲线原本的三个锚点，创建相对偏移的点，以便构成五边形，将整条曲线覆盖。</p>
-<blockquote>
-<p>这些顶点用作备用，有些可能用到，有些不一定用得到。</p>
-</blockquote>
-<pre><code class="language-csharp">// p0 右侧
-vec2 c0 = p0 - buff0 * p0_perp + aaw0 * v10;
-// p0 左侧
-vec2 c1 = p0 + buff0 * p0_perp + aaw0 * v10;
-// p2 左侧
-vec2 c2 = p2 + buff2 * p2_perp + aaw2 * v12;
-// p2 右侧
-vec2 c3 = p2 - buff2 * p2_perp + aaw2 * v12;
+<p>其中，可以添加 <code>--soft</code> 和 <code>--hard</code> 参数选项</p>
+<ul>
+<li><code>--soft</code> 会将提交信息回退到以前的版本，但是已经做出的修改不会被撤销</li>
+<li><code>--hard</code> 会撤销工作区中<mark>所有未提交的修改内容</mark>，将暂存区与工作区都回到指定的版本，并删除之前的所有信息提交</li>
+</ul>
+<p><img src="/learn-git/git-reset.excalidraw.svg" alt="learn-git/git-reset.excalidraw.svg"></p>
+<h2>revert</h2>
+<p>revert 也能用于回退版本，它用来<mark>重做</mark>某一个 commit 提交的内容。这么说可能并不明白到底做了什么，还得是看图。</p>
+<p><img src="/learn-git/git-revert.excalidraw.svg" alt="learn-git/git-revert.excalidraw.svg"></p>
+<pre><code class="language-shell">git revert HEAD^
 </code></pre>
-<h4>创建转接点</h4>
-<p>由于长的曲线都是用短的二阶贝塞尔曲线拼接而成的，因此需要创建转接点，本质上应该是做一些偏移，让曲线之间的连接没有那么突兀。</p>
-<pre><code class="language-csharp">if(has_prev &gt; 0)
-	create_joint(angle_from_prev, v01, buff0, c0, c0, c1, c1);
-if(has_next &gt; 0)
-	create_joint(angle_to_next, v21, buff2, c3, c3, c2, c2);
-</code></pre>
-<h4>处理直线</h4>
-<p>直线也是由一段二阶贝塞尔曲线构成的，只要三个锚点共线，长度上均匀分布，那应该就是直线段。直线段只需使用矩形的方式将它绘制出来就可以了。</p>
-<p>这里的 <code>corners[]</code> 前 4 个值有效，最后一个无效。返回值为 4，说明按照四边形的方式来着色。</p>
-<pre><code class="language-csharp">if(degree == 1){
-	corners = vec2[5](c0, c1, c3, c2, vec2(0.0));
-	return 4;
-}
-</code></pre>
-<p><img src="/gl/line-shader.excalidraw.svg" alt="gl/line-shader.excalidraw.svg"></p>
-<h4>处理曲线</h4>
-<p>曲线的处理方式可能还有一些特殊，它需要计算一个 <code>orientation</code> 值，用于指示曲线方向是顺时针还是逆时针。至于它具体有什么用，应该是用于<strong>纠正顶点索引</strong>，使得每个图形都按照正确的三角形图元上色。</p>
-<pre><code class="language-csharp">float orientation = sign(cross2d(v01, v12));  // Positive for ccw curves
-if(orientation &gt; 0) corners = vec2[5](c0, c1, p1, c2, c3);
-else                corners = vec2[5](c1, c0, p1, c3, c2);
-// Replace corner[2] with convex hull point accounting for stroke width
-find_intersection(corners[0], v01, corners[4], v21, corners[2]);
-return 5;
-</code></pre>
-<p><img src="/gl/pentagon-out.excalidraw.svg" alt="gl/pentagon-out.excalidraw.svg"></p>
-<p><img src="/gl/pentagon-in.excalidraw.svg" alt="gl/pentagon-in.excalidraw.svg"></p>
-<p>果不其然，在计算出五边形顶点坐标之后，紧接着的就是顶点索引表。通过索引表的方式，用更少的内存单元，就能生成三个三角形，来填充为一个五边形。</p>
-<pre><code class="language-csharp">int index_map[5] = int[5](0, 0, 1, 2, 2);
-if(n_corners == 4) index_map[2] = 2;  // 对于直线，可以单独处理
-</code></pre>
-<details class="custom-callout faq"><summary class="callout-title"><div class="callout-icon"></div><div>为什么这么做？</div>
-<div class="callout-fold"></div></summary><blockquote>
-<p>参考 <a href="https://learnopengl-cn.github.io/01%20Getting%20started/04%20Hello%20Triangle/">Learn OpenGL 教程</a>。</p>
-<p>如果想要创建一个四边形，我们通常会用两个三角形拼起来。而这样的话，我们可以传入的是 6 个顶点，分别绘制，但这样显然浪费了内存资源，我们明明可以只用 4 个顶点就表示出一个四边形。</p>
-<p>于是，我们通过索引表的方式，将重合的顶点复用起来，虽然好像对于人去计算的话可能麻烦了一点，但是这样提高了一定的性能。</p>
-</blockquote>
-</details><h4>计算颜色</h4>
-<p>细心的读者应该会发现，在 manimgl 场景中的三维物体，甚至连二维物体，它都是有一些光影渐变的效果的，而这还得归功于 <code>finalize_color</code> 这个函数。</p>
-<p>这个函数实际上就是通过相机距离、光源位置等参数，来计算最终要渲染到画布上的颜色。感兴趣的读者，可以在 <a href="https://github.com/3b1b/manim/tree/master/manimlib/shaders/inserts"><code>/ico i-vscode-icons-default-folder-opened;inserts</code></a> 中查看，这个文件夹里面还包含了不少有用的工具函数。</p>
-<h4><code>get_gl_Position</code></h4>
-<p>这是干啥用的？ 之前不是已经做过三维到二维的映射了吗？为什么还要做映射呢？</p>
-<p>没错，前面确实有一个透视变换，把三维的图像投影到了二维的平面上。但是考虑到片段着色器接受的是这样一个区域的像素点</p>
-<p>$$</p>
-<p>\displaystyle {\left\lbrace{\left( x, y\right)}\mid x\in{\left[ 0, 1\right]}, y\in{\left[ 0, 1\right]}\right\rbrace}</p>
-<p>$$</p>
-<p>因此，我们需要将想象中的 $\displaystyle  1920\times 1080$ 画布，重新缩放到适合片段着色器的区域中。</p>
-<p>在释放图元的时候，需要逐个顶点来释放，因此，我们可以看到，在一个循环语句中，将计算出来的 5 个或者 4 个顶点逐一映射，并赋值给 <code>gl_Position</code> 变量，然和调用 <code>EmitVertex</code> 释放。</p>
-<p>然而，笔者在这里有一些疑惑。<code>gl_Position</code> 变量被赋值为一个 4 维的向量，但是不知道在 Fragment shader 中，<mark>是谁来接受这个被释放的顶点</mark>，而且<mark>为什么是 4 维的</mark>，正常来说不是应该只需要三维的就可以了吗？</p>
-<details class="custom-callout faq" open><summary class="callout-title"><div class="callout-icon"></div><div>针对这些问题的猜想</div>
-<div class="callout-fold"></div></summary><blockquote>
-<p>对于后面的这个问题，众所周知，在三维物体计算的时候，我们通常会使用四元数运算，而且目前运用的相当广泛，毕竟使用这种方式能够避免很多致命的问题。</p>
-<p>然而对于前面那个问题，我在源码中并没有找到什么明显的线索，或许是隐含在其中，直接按照释放的图元来<mark>绘制成多边形</mark>。而我图形学的编程基础也不是那么好，所以如果有大佬了解这方面的话，欢迎评论指出！</p>
-</blockquote>
-</details><h4>片段着色器</h4>
-<p>在之前的文章中，我也叙述过，它的职责主要是计算出一个片段，使得这个片段看起来像是一段曲线。之后再通过<mark>调整透明度</mark>的方式，擦除不需要的片段。</p>
-<pre><code class="language-csharp">frag_color.a *= smoothstep(0.5, -0.5, signed_dist / uv_anti_alias_width);
-</code></pre>
-<h2>后记</h2>
-<p>图形学这方面是真的复杂，感觉历史包袱也蛮重的，想要写好 OpenGL 需要花费非常大的精力，像我就还不能从容的面对这些带有<strong>繁重数学运算</strong>，同时还被<strong>严格限制在固定规范中</strong>的代码，那就只能慢慢学，或者去寻找更好的方法吧。</p>
-<p></p>
+<p>这条命令将当前状态恢复到了上一次提交的状态，但与 reset 不同的是，他不会删除以前已经提交过的信息，而是<mark>创建一个新的 commit</mark>，将回退到之前版本所需要进行的变更写到这个 commit 中。因此，它整个 git 树是<mark>前进</mark>的，而不是倒退的。</p>
+<h2>关于开发</h2>
+<h3>reset vs. revert</h3>
+<p>在一个大项目的主分支中，版本一定是<mark>只能前进，不能后退</mark>的。因为其他所有人都是依据你这个主分支 fork 出来的分支来进行开发的。如果你使用 reset 命令，那么所有人都必须一同删除这些 commit。而如果将某个提交 (我们称之为 <code>C1</code>) 删除了，有可能会导致基于 <code>C1</code> 开发的分支都面临很大的风险。</p>
+<p>而 revert 只是相当于所有人都接受了一个新的提交，并不会对那些其他分支造成太大的污染。因此，在某个工程的主分支中，应尽可能使用 revert，而避免使用 reset.</p>
+<p>但是对于你自己开发的分支，发现提交错了，reset 也没事。</p>
+<p><img src="/learn-git/reset-danger.excalidraw.svg" alt="learn-git/reset-danger.excalidraw.svg"></p>
+<h3>如何 pull request</h3>
+<p>首先要明确一点，就是任何主分支都是雷打不动地向前迈进的，使用删除记录的方式回退的风险上面也都阐述了。</p>
+<p>其次，pull request 应当是将某个仓库的一个分支（通常是主分支）fork 过来，然后基于这个分支开发。</p>
+<p>接着，或许你对这个仓库非常了解，甚至有很多个好的点子想贡献给仓库原作者，那么你应当开多个 pull request，每个 PR 处理一个 feature，而避免在一个 PR 中编写不相关的、过多的特性。</p>
+<p>最后，你应当基于这个 fork，<mark>另开一个 branch 再进行修改</mark>，而不是在你 fork 来的分支上直接修改。为什么？请看下图。</p>
+<p><img src="/learn-git/pull-request-wrong.excalidraw.svg" alt="learn-git/pull-request-wrong.excalidraw.svg"></p>
+<p>发现问题了吗？</p>
+<p>什么？你竟然看不出来？</p>
+<p>在这棵 git 树中，出现了 <mark>“你合我，我合你”</mark> 的现象。如果你还看不出来，那么你可以看一下我曾经提过的一个 <a href="https://github.com/antfu/markdown-it-shiki/pull/13">PR</a>.</p>
+<p><img src="/learn-git/mdit-shiki-pr.png" alt="learn-git/mdit-shiki-pr.png"></p>
+<p>我给 <a href="https://github.com/antfu/markdown-it-shiki">markdown-it-shiki</a> 提过两次 PR，而去两次都是在 main 分支直接修改的。Antfu 好像使用了 rebase 来合并修改，而如果我想要继续提 PR，我想我应该先更新到最新的版本，然后再进行修改，这样应该是理所应当的。</p>
+<p>而当我使用 <code>git pull</code> 来拉取最新的代码时，发现我竟然还需要把仓库原作者的提交也给合并到我自己的分支中。这样其实就陷入了无止境的相互合并当中，虽然仓库原作者需要合并是理所当然的，但是我还需要再合并，这就很不应该。从这次 PR 当中，我深刻体会到了开发的规范性在这方面的重要性。</p>
+<p>说得这么沉重，还是来看一个比较规范的 PR 例子吧。仓库链接是 <a href="https://github.com/cunzaizhuyi/bat-sharp/pulls?q=is%3Apr+is%3Aclosed">cunzaizhuyi/bat-sharp</a></p>
+<p>在这个仓库的贡献中，我几乎每次加新功能时，都开启了一个新的分支。在 PR 被合并之后，我只需在 <a href="https://github.com/widcardw/bat-sharp">widcardw/bat-sharp</a> 中点一下 <span class="btn">Sync fork</span> 就可以拉取最新的、已经合并的代码。后续贡献中，我只需切换到 master 分支，pull 一下最新代码，就可以得到与远程一模一样的状态，不再需要重新 merge 仓库原作者做出的更改了。我现在多出来的，不过是一些分支罢了，反正这些分支已经合并到主分支了，删与不删其实都无所谓了，删除分支并不意味着删除 commit[^3].</p>
+<p>[^3]: 详情见 <a href="https://qastack.cn/programming/10765321/should-i-delete-a-branch-after-merging-it">https://qastack.cn/programming/10765321/should-i-delete-a-branch-after-merging-it</a></p>
 ]]></content:encoded>
             <author>widcardw@foxmail.com (widcardw)</author>
         </item>
