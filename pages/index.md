@@ -2,7 +2,7 @@
 
 # Hi there
 
-I am widcardw, a student major in Computer Science.
+I am widcardw, a student of Computer Science.
 
 Member of [Manim Kindergarten](https://manim.org.cn).  
 Shotacon.
@@ -22,4 +22,3 @@ widcardw (c) 2022
 meta:
     layout: home
 </route>
-

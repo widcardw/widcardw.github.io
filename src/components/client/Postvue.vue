@@ -38,6 +38,22 @@ function renderGiscus(): VNode {
       : createTextVNode('Loading...'),
   )
 }
+
+function slashNum(s: string) {
+  return s.replaceAll(/[^/]/g, '').length
+}
+
+function backPage() {
+  const p = route.matched[0].path
+  if (p.startsWith('/:all'))
+    return
+  const slashNumber = slashNum(p)
+  if (slashNumber >= 2)
+    router.push(p.slice(0, p.indexOf('/', 1)))
+
+  else
+    router.push('/')
+}
 </script>
 
 <template>
@@ -56,7 +72,7 @@ function renderGiscus(): VNode {
     <p v-if="route.path !== '/'">
       <a
         :href="route.matched[0].path.startsWith('/:all') ? '/' : 'javascript:void(0)'" class="font-mono no-underline opacity-50 hover:opacity-75"
-        @click="!route.matched[0].path.startsWith('/:all') && router.back()"
+        @click="backPage"
       >
         back
       </a>
