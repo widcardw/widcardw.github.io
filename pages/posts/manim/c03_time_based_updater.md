@@ -43,29 +43,29 @@ if "dt" in get_parameters(update_function):
 
 ```python {16}
 @handle_play_like_call
-    def wait(
-        self,
-        duration: float = DEFAULT_WAIT_TIME,
-        ...
-    ):
-        self.update_mobjects(dt=0)  # Any problems with this?
-        # 处理演讲者模式
-        if ...:
-            ...
-        else:
-            time_progression = \
-                self.get_wait_time_progression(duration, stop_condition)
-            last_t = 0
-            for t in time_progression:
-                dt = t - last_t
-                last_t = t
-                # 处理更新
-                self.update_frame(dt)
-                self.emit_frame()
-                if stop_condition is not None and stop_condition():
-                    break
-        self.refresh_static_mobjects()
-        return self
+def wait(
+	self,
+	duration: float = DEFAULT_WAIT_TIME,
+	...
+):
+	self.update_mobjects(dt=0)  # Any problems with this?
+	# 处理演讲者模式
+	if ...:
+		...
+	else:
+		time_progression = \
+			self.get_wait_time_progression(duration, stop_condition)
+		last_t = 0
+		for t in time_progression:
+			dt = t - last_t
+			last_t = t
+			# 处理更新
+			self.update_frame(dt)
+			self.emit_frame()
+			if stop_condition is not None and stop_condition():
+				break
+	self.refresh_static_mobjects()
+	return self
 ```
 
 可以看到，`wait` 方法中，其实也是做了一些关于 updater 的处理，这样就能做到 `wait` 时也能处理基于时间的更新了。

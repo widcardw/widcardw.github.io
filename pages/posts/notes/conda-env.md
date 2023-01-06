@@ -9,7 +9,7 @@ tags: ['python', 'conda', 'manim', '环境配置', 'env']
 
 ## 1. 起因
 
-逛 Github 的时候发现了一个好玩的工具 [bcut_asr](https://github.com/SocialSisterYi/bcut-asr)，可以调用 B 站字幕识别的接口，想下载下来玩玩。然而他的环境是 Python 3.10，而我当年为了图方便，就直接用 homebrew 安装了 Python，版本是 3.9，也不知道怎么更新，于是在**大滑稽**的指导下，我开始使用 conda 了。
+逛 GitHub 的时候发现了一个好玩的工具 [bcut_asr](https://github.com/SocialSisterYi/bcut-asr)，可以调用 B 站字幕识别的接口，想下载下来玩玩。然而他的环境是 Python 3.10，而我当年为了图方便，就直接用 homebrew 安装了 Python，版本是 3.9，也不知道怎么更新，于是在**大滑稽**的指导下，我开始使用 conda 了。
 
 ## 2. 安装
 

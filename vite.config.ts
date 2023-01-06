@@ -31,6 +31,7 @@ import markdownItFootnote from 'markdown-it-footnote'
 import { mermaidPlugin } from './src/composables/plugins/mermaid'
 import type { MyRouteMeta } from './src/composables/types'
 import FileIconPlugin from './src/md-plugins/file-icon'
+import { SupAnchor } from './src/md-plugins/sup-anchor'
 
 export default defineConfig({
   resolve: {
@@ -149,6 +150,7 @@ export default defineConfig({
         })
         md.use(FileIconPlugin, { prefix: '/ico' })
         md.use(markdownItFootnote)
+        md.use(SupAnchor)
       },
     }),
   ],

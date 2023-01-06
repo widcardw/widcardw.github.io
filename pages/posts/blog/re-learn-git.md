@@ -222,7 +222,7 @@ git checkout -b dev
 
 ```shell
 ~/Documents/project git:(main)
-git checout patch-1
+git checkout patch-1
 ~/Documents/project git:(patch-1)
 ```
 
@@ -434,7 +434,7 @@ git revert HEAD^
 
 ![[public/learn-git/mdit-shiki-pr.png]]
 
-我给 [markdown-it-shiki](https://github.com/antfu/markdown-it-shiki) 提过两次 PR，而去两次都是在 main 分支直接修改的。Antfu 好像使用了 rebase 来合并修改，而如果我想要继续提 PR，我想我应该先更新到最新的版本，然后再进行修改，这样应该是理所应当的。
+我给 [markdown-it-shiki](https://github.com/antfu/markdown-it-shiki) 提过两次 PR，而且两次都是在 main 分支直接修改的。Antfu 好像使用了 rebase 来合并修改，而如果我想要继续提 PR，我想我应该先更新到最新的版本，然后再进行修改，这样应该是理所应当的。
 
 而当我使用 `git pull` 来拉取最新的代码时，发现我竟然还需要把仓库原作者的提交也给合并到我自己的分支中。这样其实就陷入了无止境的相互合并当中，虽然仓库原作者需要合并是理所当然的，但是我还需要再合并，这就很不应该。从这次 PR 当中，我深刻体会到了开发的规范性在这方面的重要性。
 
