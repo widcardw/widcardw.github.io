@@ -1,17 +1,15 @@
 .heti code {
-    padding: 0.2rem 0.2rem;
-    border-radius: 0.1rem;
-    background-color: rgba(0, 0, 0, 0.054);
+  padding: 0.2rem 0.2rem;
+  border-radius: 0.1rem;
+  background-color: rgba(0, 0, 0, 0.054);
 }
 
-@media (prefers-color-theme: dark) {
-    .heti code {
-        background-color: rgba(255, 255, 255, 0.054);
-    }
+.dark :where(:not(pre)) code {
+  background-color: rgba(255, 255, 255, 0.054);
 }
 
 .heti a {
-    color: #4387f4;
+  color: #4387f4;
 }
 
 .heti img {
