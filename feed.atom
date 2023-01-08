@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://widcard.win/</id>
     <title>widcardw</title>
-    <updated>2023-01-06T14:31:19.804Z</updated>
+    <updated>2023-01-08T15:35:11.964Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>widcardw</name>
@@ -83,14 +83,14 @@
 </code></pre>
 <p>实现方法其实也很简单，就是根据已有的参数 <code>submobject</code>, <code>starting_submobject</code>, <code>alpha</code> 参数，以及可能会用到的成员变量，更改 <code>submobject</code> 这个对象，让它成为动画过程中对应时间点理应成为的状态。</p>
 <details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div>Note</div>
-<div class="callout-fold"></div></summary><blockquote>
+<div class="callout-fold"></div></summary><div class="callout-body">
 <p>Grant 在这里巧妙地使用了 <code>*mobs</code> 将这个元组展开，简直就是黑魔法，在这里看上去是把一个<mark>二元组</mark>展开为 <code>submobject</code> 和 <code>starting_submobject</code> 两个元素，但是在函数重载之后，会有更加巧妙的用法。</p>
 <pre><code class="language-python">def interpolate_mobject(self, alpha: float) -&gt; None:
     for i, mobs in enumerate(self.families):
        sub_alpha = self.get_sub_alpha(alpha, i, len(self.families))
        self.interpolate_submobject(*mobs, sub_alpha)
 </code></pre>
-</blockquote>
+</div>
 </details><h3>动画的结束</h3>
 <p>Scene 其实要做的事情很简单，就是调用每个 <code>animation</code> 的 <code>finish</code> 方法，并将可能需要移除的物件都从场景中移除。</p>
 <p>Animation 的工作其实也不多，就是将 <code>alpha</code> 设置为结束时的值，并且解除正在运行动画的状态。如果前面有禁用 <code>updater</code> 的物件，那么就把它的 <code>updater</code> 恢复回来。</p>
@@ -120,9 +120,9 @@
 <p>这一行是为了 Transform 的核心——插值——而生的。我们在前面也学习到，所有的 <code>VMobject</code> 都是由许多贝塞尔曲线构成的，而这些贝塞尔曲线又少不了它的控制点。所以如果直接操作这些控制点（锚点），那么就可以直接改变呈现出的物件形状。</p>
 <p>而 Transform 的本质，实际上也就是将两个物件对应的锚点<mark>一一匹配</mark>起来，然后按照给定的轨迹，从一端运动到另一端。<code>align_data_and_family</code> 这个方法就是让物件的初始状态和终止状态的锚点等属性<mark>相互匹配</mark>，以便<mark>每个配对</mark>都可以按照给定的规则来执行插值。</p>
 <details class="custom-callout quote" open><summary class="callout-title"><div class="callout-icon"></div><div>Quote</div>
-<div class="callout-fold"></div></summary><blockquote>
+<div class="callout-fold"></div></summary><div class="callout-body">
 <p>在我之前的<a href="https://www.bilibili.com/video/BV1EA411g7tz">视频</a> 3:00 处提到的“对于锚点较少的那个图形的锚点进行插值”其实也不能说很准确，但其实也就是上面的意思。</p>
-</blockquote>
+</div>
 </details><p>在调用父类的 <code>begin</code> 函数之后，有这样一个操作</p>
 <pre><code class="language-python">if not self.mobject.has_updaters:
 	self.mobject.lock_matching_data(
@@ -208,9 +208,9 @@
         super().__init__(mobject, **kwargs)
 </code></pre>
 <details class="custom-callout caution" open><summary class="callout-title"><div class="callout-icon"></div><div>Caution</div>
-<div class="callout-fold"></div></summary><blockquote>
+<div class="callout-fold"></div></summary><div class="callout-body">
 <p>至于为什么我不用 <code>CONFIG</code> 字典来写入参数，是因为在撰写这篇文章的时候，Grant 已经在一个 PR 中把 <code>CONFIG</code> 字典给扬了。为了避免各种版本之间的冲突，我就直接用成员变量了。</p>
-</blockquote>
+</div>
 </details><h4>begin</h4>
 <p>想要物件最终旋转到正确的角度，那么必须在一开始，让初始状态向反方向旋转相应的角度，那么也就有了这样的实现。</p>
 <pre><code class="language-python"># 使用 `rotate` 方法
@@ -495,12 +495,12 @@ git merge feature
 <h2>rebase</h2>
 <p>在 <a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA">git-scm 官方文档</a> 中有这么一个提示</p>
 <details class="custom-callout quote" open><summary class="callout-title"><div class="callout-icon"></div><div><strong>变基的风险</strong></div>
-<div class="callout-fold"></div></summary><blockquote>
+<div class="callout-fold"></div></summary><div class="callout-body">
 <p>呃，奇妙的变基也并非完美无缺，要用它得遵守一条准则：</p>
 <p><strong>如果提交存在于你的仓库之外，而别人可能基于这些提交进行开发，那么不要执行变基。</strong></p>
 <p>如果你遵循这条金科玉律，就不会出差错。 否则，人民群众会仇恨你，你的朋友和家人也会嘲笑你，唾弃你。</p>
 <p>变基操作的实质是丢弃一些现有的提交，然后相应地新建一些内容一样但实际上不同的提交。 如果你已经将提交推送至某个仓库，而其他人也已经从该仓库拉取提交并进行了后续工作，此时，如果你用 <code>git rebase</code> 命令重新整理了提交并再次推送，你的同伴因此将不得不再次将他们手头的工作与你的提交进行整合，如果接下来你还要拉取并整合他们修改过的提交，事情就会变得一团糟。</p>
-</blockquote>
+</div>
 </details><p>总之，还是需要在合适的时候使用 rebase，而不是乱用一通。</p>
 <p>下面是 merge 和 rebase 的一些区别。</p>
 <h3>rebase</h3>
