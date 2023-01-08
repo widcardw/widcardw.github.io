@@ -35,7 +35,7 @@ specifiers:
   markdown-it-table-of-contents: ^0.6.0
   mdit-plg-double-bracket-link: ^0.0.1
   mdit-plg-double-bracket-media: ^0.0.2
-  mdit-plugin-callouts: ^1.1.2
+  mdit-plugin-callouts: ^1.2.0
   mermaid: ^9.1.6
   nanoid: ^4.0.0
   nprogress: ^0.2.0
@@ -103,7 +103,7 @@ devDependencies:
   markdown-it-table-of-contents: 0.6.0
   mdit-plg-double-bracket-link: 0.0.1
   mdit-plg-double-bracket-media: 0.0.2
-  mdit-plugin-callouts: 1.1.2
+  mdit-plugin-callouts: 1.2.0
   pnpm: 7.11.0
   taze: 0.8.0
   typescript: 4.8.2
@@ -4232,8 +4232,8 @@ packages:
     resolution: {integrity: sha512-7ud8U73s/UuB5DsyWH/mRQUqF9LrAEWIQNer04d0PQeyZ4meC3SL0wH7wOANmXBoGOQ9OymyLAnOgcq8NzGFNQ==}
     dev: true
 
-  /mdit-plugin-callouts/1.1.2:
-    resolution: {integrity: sha512-s8QpAz8OLWqLfHfAf9Mb7qJ5v3INUkUEnCVUphb1scZQ3dHhQeR65KpnTVTMaXXiCXJ0bwwvvG6Um8Kzf2dAWQ==}
+  /mdit-plugin-callouts/1.2.0:
+    resolution: {integrity: sha512-V/7s2JkxEVAdxIdTVskc8nWMtIZsVLB7tJizi2v3fL30OFhlpsgfrNcWyf/A7aMvmvXZZvKwz0NWTvAReef+Rg==}
     dev: true
 
   /mdn-data/2.0.28:

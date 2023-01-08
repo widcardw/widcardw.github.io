@@ -17,21 +17,25 @@ html:not(.dark) .shiki-dark {
   display: none;
 }
 
-.heti blockquote>p {
+.heti .callout-body>p {
   margin-block-end: 12px;
 }
 
-.custom-callout>blockquote>pre:last-child {
+.custom-callout>.callout-body>pre:last-child {
   margin-bottom: -1.5rem;
 }
 
-.custom-callout>blockquote>pre:first-child {
+.custom-callout>.callout-body>pre:first-child {
   margin-top: -1.5rem;
 }
 
 code[v-pre] {
   display: flex;
   flex-direction: column;
+}
+
+code[v-pre] :not(:last-child).line {
+  height: 1.2rem;
 }
 
 .shiki .highlighted {

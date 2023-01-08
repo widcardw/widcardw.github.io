@@ -71,7 +71,7 @@ def wait(
 可以看到，`wait` 方法中，其实也是做了一些关于 updater 的处理，这样就能做到 `wait` 时也能处理基于时间的更新了。
 
 > [!example] 玩笑归玩笑，时钟的例子还是得给答案的
-> 
+>
 > ```python
 > class ClockExampleScene(Scene):
 >     def construct(self):
@@ -87,28 +87,28 @@ def wait(
 >             else:
 >                 cir.add(Line(cir.pfp(percent), cir.pfp(percent) * 0.95))
 >         self.add(cir)
->         
+>
 >         # 秒针 分针 时针
 >         sec_handle = Line(DOWN / 4, UP * 2.7, stroke_width=3)
 >         minute_handle = Line(DOWN / 4, UP * 2, stroke_width=6)
 >         hour_handle = Line(DOWN / 4, UP * 1.5, stroke_width=9)
-> 
+>
 >         self.add(hour_handle, minute_handle, sec_handle)
-> 
+>
 >         def updater_sec(m: Mobject, dt: float):
 >             m.rotate(omega * dt, about_point=ORIGIN)
-> 
+>
 >         def updater_minute(m: Mobject, dt: float):
 >             m.rotate(omega * dt / 60, about_point=ORIGIN)
->         
+>
 >         def updater_hour(m: Mobject, dt: float):
 >             m.rotate(omega * dt / 3600, about_point=ORIGIN)
-> 
+>
 >         # 分别添加与时间相关的更新
 >         sec_handle.add_updater(updater_sec)
 >         minute_handle.add_updater(updater_minute)
 >         hour_handle.add_updater(updater_hour)
-> 
+>
 >         self.wait(10)
 > ```
 
@@ -151,16 +151,16 @@ self.wait(10)
 >         sun = Sphere(radius=1, color=RED)
 >         earth = Sphere(radius=0.5, color=BLUE)
 >         moon = Sphere(radius=0.2, color=YELLOW_A)
-> 
+>
 >         earth.move_to(sun.get_center() + 3.5 * RIGHT)
 >         moon.move_to(earth.get_center() + 2 * RIGHT)
-> 
+>
 >         self.add(sun, earth, moon)
-> 
+>
 >         # 地球绕太阳转
 >         def update_earth(m: Mobject, dt: float):
 >             m.rotate(dt, about_point=sun.get_center())
-> 
+>
 >         def update_moon(m: Mobject, dt: float):
 >             # 强行移动到地球的右侧
 >             m.move_to(earth.get_center() + 2 * RIGHT)
@@ -168,7 +168,7 @@ self.wait(10)
 >             # self.time 是 Scene 的属性，用于记录动画总的运行时间
 >             # 其实用了 self.time 稍微就有点违背了原本的想法了，虽然这样写比较简单
 >             m.rotate(self.time * 3, about_point=earth.get_center())
-> 
+>
 >         earth.add_updater(update_earth)
 >         moon.add_updater(update_moon)
 >         self.wait(10)
@@ -180,7 +180,7 @@ self.wait(10)
 
 > [!example] 参考解答
 > 在这里同样也用了 `self.time` 这个变量，处理更加方便一些
-> 
+>
 > ```python
 > class LissajousExample(Scene):
 >     def construct(self):
@@ -196,11 +196,11 @@ self.wait(10)
 >             t_range=[0, TAU, 0.1],
 >             stroke_color=GREY
 >         )
-> 
+>
 >         self.add(lissajous)
-> 
+>
 >         dot = Dot(color=YELLOW)
-> 
+>
 >         def update_dot(m: Mobject, dt: float):
 >             m.move_to(3 * np.array([
 >                 np.sin(u * self.time / 3),
@@ -227,41 +227,41 @@ self.wait(10)
 >             np.sin(theta),
 >             0
 >         ])
-> 
+>
 >     def construct(self):
 >         r = 3
 >         # 3 个顶点
 >         a = Dot(self.polar2xyz(r, PI / 2), color=YELLOW)
 >         b = Dot(self.polar2xyz(r, PI / 2 + TAU / 3), color=YELLOW)
 >         c = Dot(self.polar2xyz(r, PI / 2 - TAU / 3), color=YELLOW)
-> 
+>
 >         # 3 条边
 >         ab = Line(a.get_center(), b.get_center(), color=GOLD)
 >         bc = Line(b.get_center(), c.get_center(), color=GOLD)
 >         ca = Line(c.get_center(), a.get_center(), color=GOLD)
-> 
+>
 >         # 使 3 条边始终连接 3 个顶点
 >         ab.add_updater(lambda l: l.put_start_and_end_on(a.get_center(), b.get_center()))
 >         bc.add_updater(lambda l: l.put_start_and_end_on(b.get_center(), c.get_center()))
 >         ca.add_updater(lambda l: l.put_start_and_end_on(c.get_center(), a.get_center()))
-> 
+>
 >         self.add(ab, bc, ca)
 >         self.add(a, b, c)
-> 
+>
 >         # 3 个顶点随时间向同一侧相邻点靠近
 >         a.add_updater(lambda m, dt: m.shift((b.get_center() - m.get_center()) * dt))
 >         b.add_updater(lambda m, dt: m.shift((c.get_center() - m.get_center()) * dt))
 >         c.add_updater(lambda m, dt: m.shift((a.get_center() - m.get_center()) * dt))
-> 
+>
 >         # 轨迹
 >         trace = VGroup()
-> 
+>
 >         # 向轨迹中不断添加三角形三边的拷贝
 >         def update_trace(m: Mobject, dt: float):
 >             m.add(ab.copy().clear_updaters().set_stroke(width=1))
 >             m.add(bc.copy().clear_updaters().set_stroke(width=1))
 >             m.add(ca.copy().clear_updaters().set_stroke(width=1))
-> 
+>
 >         trace.add_updater(update_trace)
 >         self.add(trace)
 >         self.wait(4)
@@ -282,31 +282,31 @@ self.wait(10)
 >         self.rotate(angle + PI)
 >         # 子弹朝向所对应的向量
 >         self.vector = normalize(rotate_vector(RIGHT, angle))
-> 
+>
 > color_list = [RED, GOLD, YELLOW, GREEN, TEAL, BLUE, PURPLE]
 > v = 2
-> 
+>
 > class Danmaku01(Scene):
 >     def construct(self):
 >         danmaku = VGroup()
-> 
+>
 >         def update(m: Mobject, dt: float):
 >             # 每一帧都向集合中添加一颗子弹，初始角度为 self.time * 50
 >             m.add(Bullet(self.time * 50))
 >             # 渐变着色
 >             m.set_color_by_gradient(*color_list)
-> 
+>
 >             for b in m:
 >                 # 子弹匀速直线运动
 >                 b.shift(v * dt * b.vector)
 >                 # 删除屏幕外的子弹
 >                 if b.is_off_screen():
 >                     m.remove(b)
-> 
+>
 >         danmaku.add_updater(update)
 >         self.add(danmaku)
 > ```
-> 
+>
 > 当然这里的例子我并没有进行优化，如果是游戏开发者，肯定了解过==对象池==的概念，它能有效优化对象频繁创建和析构带来的性能损失问题。
 
 ##### 5. 东方弹幕游戏进阶：境符「波と粒の境界」可谓是观赏性极高的符卡之一，现在紫妈要求你用 manim 来实现它。
@@ -315,21 +315,21 @@ self.wait(10)
 
 > [!example] 参考解答
 > 其实只需要改第 6 行就可以了。只要发射角的变化是非线性的，就可以达到这样的效果。当然，如果觉得子弹还不够密集（因为 60 帧下每秒只有 60 颗）可以再加几组。
-> 
+>
 > ```python {6}
-> class Danmaku01(Scene):
+> class Danmaku02(Scene):
 >     def construct(self):
 >         danmaku = VGroup()
-> 
+>
 >         def update(m: Mobject, dt: float):
 >             m.add(Bullet(self.time ** 2 * 2))
 >             m.set_color_by_gradient(*color_list)
-> 
+>
 >             for b in m:
 >                 b.shift(v * dt * b.vector)
 >                 if b.is_off_screen():
 >                     m.remove(b)
-> 
+>
 >         danmaku.add_updater(update)
 >         self.add(danmaku)
 > ```
