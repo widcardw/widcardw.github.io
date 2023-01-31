@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://widcard.win/</id>
     <title>widcardw</title>
-    <updated>2023-01-09T06:49:39.951Z</updated>
+    <updated>2023-01-31T03:19:30.703Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>widcardw</name>
@@ -14,6 +14,162 @@
     <subtitle>widcardw's blog</subtitle>
     <logo>https://widcard.win/avatar/avatar-round.png</logo>
     <icon>https://widcard.win/avatar/avatar-round.png</icon>
+    <entry>
+        <title type="html"><![CDATA[尝试编写一个编译器]]></title>
+        <id>https://widcard.win/posts/notes/write-a-parser</id>
+        <link href="https://widcard.win/posts/notes/write-a-parser"/>
+        <updated>2023-01-30T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h1>尝试编写一个编译器</h1>
+<h2>起因</h2>
+<p>Manim 群友 Fran 做了一个 <a href="https://github.com/zmx0142857/qq-tex-bot">QQ tex bot</a> 并引入了群聊，看起来挺好用的，只需要满足匹配规则的消息就能生成公式的图片。它的依赖是 Fran 自改的 asciimathml 工具，能够使用比较简单的 ASCII 字符来表达比较复杂的公式。</p>
+<p>这个原项目其实应该说年代有点久远了，而且源码与 DOM 是强耦合的，导致在 Node.js 环境下会有很多潜在的问题，而且也没有类型提示，所以我就有了重构它的想法。</p>
+<p>我想做的其实就只是把 asciimath 格式的字符串转化为 $\LaTeX$ 格式的字符串，并不想去把 asciimathml 这种带标签的字符串转换为 $\LaTeX$ 的 DOM 元素了，毕竟现在也有 $\KaTeX$ 和 MathJax 这些工具，也就没有必要再去做这个工作了。</p>
+<p>同时，前面也说到，旧代码与 DOM 耦合度非常高，因此，我想要做的，就是纯字符串处理的一个程序，而基本上完全与 DOM 隔离开。</p>
+<h2>项目编写流程</h2>
+<h3>Tokenize</h3>
+<p>先看一个例子，下面的数学公式应该被渲染为 <code>$int_0^(+oo) &quot;e&quot;^(-x) dx = 1$</code></p>
+<pre><code class="language-text">int_0^(+oo) &quot;e&quot;^(-x) dx = 1
+</code></pre>
+<p>我们发现，这个公式包含了非常多的关键字，以及一些可以直接作为 $\LaTeX$ 代码字符串的部分，我们需要找出所有的关键字，把它们包装成一些指定的类型（例如普通关键字、带有一个参数的关键字、带有多个参数的关键字等等），形成一个 token 序列，然后把它们传给下一级做进一步处理。</p>
+<p>然而，asciimath 中内置的关键字就有 200 多个，而且应当还能添加自定义关键字，如果读取不固定的字符串，与非常大的一个集合去匹配，这样做显然是不明智的。对于这种情况，我们也就理所应当地使用<mark>字典树</mark>来进行匹配了[^1]。</p>
+<p>[^1]: 当然询问 Fran 之后，发现原本就是用字典树来匹配的</p>
+<h4>构建字典树</h4>
+<p>我们在算法中认识的字典树，通常每个节点内字符元素的长度是 26，因为我们常用的也就是 26 个英文字母。而在这里，关键字可能包含大小写、一些特殊符号等，所以还必须向节点中额外添加一些元素，以满足当前的要求。</p>
+<p>然而，这样又会让由字符找到数组索引较为困难。由于 Ascii 字符也不是很多，因此直接用一个 <code>Map</code> 映射就可以了。当然，应该还有更好的解决方案<s>只是现在代码已经写完了，我也懒得改了</s>。</p>
+<details class="custom-callout tip" open><summary class="callout-title"><div class="callout-icon"></div><div>JavaScript 中带有 emoji 的字符串</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p>Fran 在阅读我的代码的时候，发现我使用了 C 语言的方式来遍历字符串，并没有考虑到超过 <code>\uffff</code> 的字符，因此建议使用 <code>[...str].forEach</code> 这种方式来遍历字符串。<s>虽然我并没有用 emoji 作为关键字的打算</s></p>
+</div>
+</details><h4>搜索关键字</h4>
+<p>其实这棵字典树承担了 Tokenize 的所有工作，包括识别关键字、数字、其他符号等。另外受 markdown 启发，用一个空行来表示换行，因此也就用这种方式来作为 align 环境下的换行符了。</p>
+<p>这样我们就有了这样的优先级排序</p>
+<details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div>空行 <code>$&gt;-$</code> 跳过空白 <code>$&gt;-$</code> 关键字 <code>$&gt;-$</code> 数字 <code>$&gt;-$</code> 正体文字 (<code>\text</code> 环境) <code>$&gt;-$</code> 任意字符</div>
+</summary></details><p>与此同时，将这些 token 分类，得到一个序列，而后传给下一步骤。</p>
+<details class="custom-callout faq" open><summary class="callout-title"><div class="callout-icon"></div><div>碎碎念</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p>具体分类详见 <a href="https://github.com/widcardw/asciimath-parser/blob/main/src/symbols.ts#L1">https://github.com/widcardw/asciimath-parser/blob/main/src/symbols.ts#L1</a></p>
+<p>其实我是没想到竟然需要分这么多类，但是 asciimath 确实有这么多种分类，根据这么多分类，才能在 Parse 阶段转换为合理的 AST ¯\_(ツ)_/¯</p>
+</div>
+</details><h3>Parse</h3>
+<p>对于一个扁平的 token 序列，我们肯定需要使用<mark>递归</mark>才能创建一个树形的结构，而整个程序的流程大概就是这样</p>
+<pre><code class="language-ts">function parser(tokens: TokenizedValue[]) {
+  const root = createRootNode()
+  let current = 0
+  while (current &lt; tokens.length) {
+    const res = walk(tokens, current) // 读取并处理一个节点
+    root.body.push(res.node)          // 将读取到的节点加入序列中
+    current = res.current             // 更新当前指针
+  }
+  return root
+}
+</code></pre>
+<p>而最关键的逻辑就在 <code>walk</code> 中了。</p>
+<h4>简单的 Token 处理方法</h4>
+<p>对于数字、正体文本、可以单独使用的符号，可以直接简单的创建对应的节点即可，不需要递归处理，这其实也就相当于是递归的一部分终止情况。</p>
+<h4>被左右括号包裹的情况</h4>
+<p>我们将 <code>[1,2,3]</code> 这种仅仅包含逗号的序列，直接作为普通的数组来看，因此事实上可以直接依次返回，但我们还是将它包裹为一个节点的序列，将整个节点序列封装为一个新的节点而后返回。</p>
+<details class="custom-callout faq" open><summary class="callout-title"><div class="callout-icon"></div><div>为什么需要这样处理</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p>从最开始的例子中，我们发现 <code>(-x)</code> 也是被包裹在一对括号中的，整个节点都被当作一个上标作为了 <code>^</code> 的参数，因此还是有必要这样处理的。</p>
+</div>
+</details><p>如果这个被括号包裹的序列中出现了分号，那么我们就需要将它处理为矩阵。例如 <code>[1,2;3,4]</code></p>
+<pre><code class="language-am">[1,2;3,4]
+</code></pre>
+<p>这样其实逻辑就很明了了，只需要逐行地去构建矩阵就行了。</p>
+<p>然而，我在 <a href="http://asciimath.org">asciimath.org</a> 看到了另外的一个用法，我也想把它复刻过来</p>
+<pre><code class="language-am">[1,2|3;4,5|6]
+</code></pre>
+<pre><code class="language-text">[1, 2 | 3; 4, 5 | 6]
+</code></pre>
+<p>思路是，在 <code>matrix</code> 环境内再嵌套一个 <code>array</code> 环境，使用 <code>{cc|c}</code> 参数来指定分割线的位置。为了简单化处理，在扫描矩阵的每一行时，每当遇到 <code>|</code> 时，都记录下当前竖线所在矩阵的位置，最后汇总所有竖线应当出现的列数，得到对应的 <code>{cc|c}</code> 参数即可。</p>
+<p>综上，这一段程序需要不断向后查找，直到找到匹配的右括号，还需要判断在这一段 token 序列中是否出现了分号，以此来判断要将它处理为数组、矩阵还是其他类型。</p>
+<h4>被竖线包裹的表达式</h4>
+<p>竖线作为一个非常特殊的存在，可以作为绝对值两侧的包裹，也可以作为矩阵行列式的左右包裹，还能单独使用，因此也是需要像上面矩阵中说到的那样预先判断，而后才能进一步处理。</p>
+<p>有以下这些情况，分别处理即可。</p>
+<ul>
+<li>单独使用 <code>${(x,y)|x^2+y^2&lt;=1}$</code></li>
+<li>绝对值 <code>$|ln x|$</code></li>
+<li>行列式 <code>$|1,2;3,4|$</code></li>
+</ul>
+<h4>除法</h4>
+<p>我们希望用一个 <code>/</code> 符号就能表示除法，并将这个表达式转换为分式 <code>frac</code> 的形式，那么就不得不在读取完当前节点 $A$ 后，立即向后观察是否存在除法。如果存在，那么还需要进一步读取，得到分母 $B$ 后，将它渲染为 <code>\frac{A}{B}</code> 的形式。于是，<code>walk</code> 程序应当这样安排。</p>
+<pre><code class="language-ts">function walk(tokens: TokenizedValue[], current: number) {
+  // 将当前的 token 处理为 ast 的节点，并使指针前进
+  const token = tokens[current]
+  let { node, cur } = processCurrentToken(token)
+  current = cur
+  if (current &lt; tokens.length) {
+    const nextToken = tokens[current]
+    // 检测下一个 token 是否为除法
+    if (nextToken.type === TokenTypes.Div) {
+      // 创建一个双参数节点
+      const newNode = createNodeWithTwoParams('\\frac')
+      current++
+      // 读取分母
+      const b = walk(tokens, current)
+      current = b.current
+      // 分子
+      newNode.param[0] = node
+      // 分母
+      newNode.param[1] = b.node
+      node = newNode
+    }
+  }
+  return { node, current }
+}
+</code></pre>
+<p>当然，有一个优先级也比较高的运算符——阶乘，只不过它不需要继续向后读取了，用更简单的方式处理即可。</p>
+<h4>带有参数的表达式</h4>
+<h5>上下标</h5>
+<p>上下标应当是优先级最高的，比除法的优先级更高，应当把 <code>pi^2/6</code> 渲染为 <code>$pi^2/6$</code> 而不是 <code>$pi^(2/6)$</code></p>
+<p>基于这个例子，我们进行这样的分析：在读取完当前的 token 之后，继续向后看一个 token，如果是上下标，那么需要继续向后读取，直到组成一个符合语法的上下标为止。但是考虑到一些优先级的关系，又有下面的情况</p>
+<ul>
+<li>对于 <code>pi^2</code> 这样简单的式子，无须考虑优先级</li>
+<li>对于 <code>pi^2/6</code> 带有除法的，读取到上标为止就直接结束，将 <code>pi^2</code> 打包为一个节点，再处理除法</li>
+<li>对于 <code>a_1^2</code> 既有下标又有上标的，读取到一个下标就结束，将 <code>a_1</code> 打包为一个节点，再处理上标</li>
+</ul>
+<p>这样，只需在 look forward 阶段加一个循环，不断将第一个合法的节点包装起来，进入下一个循环继续读取即可。</p>
+<h5>其他带有一个或两个参数的表达式</h5>
+<p>例如 <code>sqrt</code>, <code>abs</code>, <code>frac</code> 这类的表达式，它们只需向后读取一个或两个节点，即可依据这些节点，生成一个新的表达式节点，似乎反而不需要考虑优先级了。</p>
+<h3>Code Generation</h3>
+<p>在上一步中，我们已经构建好了 AST 树，在代码生成阶段，只需深度优先遍历这棵树即可。上一步生成的节点类型有以下几类，由于类型较少，所以处理起来就相当方便了。</p>
+<pre><code class="language-ts">enum NodeTypes {
+  Root = 'Root',
+  Const = 'Const',       // 可直接生成目标代码的节点
+  ParamOne = 'ParamOne', // 带有一个参数的节点
+  ParamTwo = 'ParamTwo', // 带有两个参数的节点
+  Matrix = 'Matrix',     // 矩阵
+  Flat = 'Flat',         // 包裹了一系列节点的节点
+}
+</code></pre>
+<p>由于是深度优先遍历，那么就不可避免的需要用到递归。</p>
+<h3>Const 节点</h3>
+<p>可以直接查询该节点对应的 tex 代码输出即可。</p>
+<h3>根节点 &amp; Flat 节点</h3>
+<p>由于根节点其实跟 Flat 节点没有本质的区别，因此可以用类似的方式处理：直接遍历节点内包裹的系列节点并生成对应的代码即可。</p>
+<details class="custom-callout tip" open><summary class="callout-title"><div class="callout-icon"></div><div>一些处理上的区别</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p>由于修改版的 asciimath 支持 aligned 环境，因此还需要检测根节点中是否存在 aligned 环境相关的节点。若存在，那么就包裹上 aligned 环境即可。</p>
+</div>
+</details><h3>矩阵节点</h3>
+<p>由于矩阵节点在 parse 阶段被处理成了二维数组，只需遍历就可以翻译成扁平的 $\LaTeX$ 代码了。</p>
+<h3>带有参数的节点</h3>
+<p>由于 <a href="https://github.com/widcardw/asciimath-parser/blob/main/src/symbols.ts#L214"><code>/ico i-vscode-icons-file-type-typescript-official;symbols.ts</code></a> 的 <code>tex</code> 关键字中，我使用了 <code>$1</code> 和 <code>$2</code> 这样的标识符来占位，因此在代码生成阶段，可以直接使用字符串替换即可传递参数。</p>
+<h2>完整代码</h2>
+<p><a href="https://github.com/widcardw/asciimath-parser">https://github.com/widcardw/asciimath-parser</a></p>
+<h2>参考资料</h2>
+<ul>
+<li>Fran 自改的 <a href="https://github.com/zmx0142857/asciimathml">asciimathml</a> 以及<a href="https://zmx0142857.github.io/note">在线公式编辑器</a></li>
+<li>Asciimathml <a href="https://github.com/asciimath/asciimathml">原项目</a>及其<a href="http://asciimath.org">官网</a></li>
+<li><a href="https://space.bilibili.com/175301983/channel/collectiondetail?sid=654698">手写一个编译器</a> - 阿崔 cxr</li>
+</ul>
+]]></content>
+        <author>
+            <name>widcardw</name>
+            <email>widcardw@foxmail.com</email>
+            <uri>https://widcard.win</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[编写自己的动画]]></title>
         <id>https://widcard.win/posts/manim/create-your-own-animation</id>
@@ -252,346 +408,6 @@ def interpolate_mobject(self, alpha: float):
 <p>——这真的是用 manim 写出来的吗？</p>
 <p>——是的，源码在 <a href="https://github.com/widcardw/my-manim-projects/blob/master/videos/aniplex.py">GitHub 仓库</a>。</p>
 <p>因为我懒，所以感兴趣的读者直接看源码吧，当时也只是灵感乍现随便写的，各种参数调的还不是很好，如果之后有机会的话那我就把这个坑填上吧。</p>
-]]></content>
-        <author>
-            <name>widcardw</name>
-            <email>widcardw@foxmail.com</email>
-            <uri>https://widcard.win</uri>
-        </author>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[绯 · N]]></title>
-        <id>https://widcard.win/secrets/ake/chapter-02</id>
-        <link href="https://widcard.win/secrets/ake/chapter-02"/>
-        <updated>2022-12-28T00:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h1>绯 · N</h1>
-<p>人类，终究是有它的两面性的。</p>
-]]></content>
-        <author>
-            <name>widcardw</name>
-            <email>widcardw@foxmail.com</email>
-            <uri>https://widcard.win</uri>
-        </author>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[重新学习如何使用 Git 和 GitHub]]></title>
-        <id>https://widcard.win/posts/blog/re-learn-git</id>
-        <link href="https://widcard.win/posts/blog/re-learn-git"/>
-        <updated>2022-12-26T00:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h1>重新学习如何使用 Git 和 GitHub</h1>
-<h2>Status</h2>
-<pre><code class="language-shell">git status -s
-</code></pre>
-<p>我没想到竟然还能加一个 <code>-s</code> 参数，它的输出是这样的</p>
-<pre><code class="language-shell">git status -s
- M pages/.obsidian/community-plugins.json
- M pages/.obsidian/core-plugins.json
- M pages/index.md
- M pages/posts/notes/editor-shortcut.md
-?? pages/.obsidian/core-plugins-migration.json
-?? pages/posts/blog/re-learn-git.md
-</code></pre>
-<p>而直接使用 <code>git status</code> 命令的输出结果是这样的</p>
-<pre><code class="language-shell">git status
-On branch master
-Your branch is up to date with 'origin/master'.
-
-Changes not staged for commit:
-  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
-	modified:   pages/.obsidian/community-plugins.json
-	modified:   pages/.obsidian/core-plugins.json
-	modified:   pages/index.md
-	modified:   pages/posts/notes/editor-shortcut.md
-
-Untracked files:
-  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
-	pages/.obsidian/core-plugins-migration.json
-	pages/posts/blog/re-learn-git.md
-
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
-</code></pre>
-<p>其中，untracked files 是指一些可能是新增的，还没有被 git 追踪的文件，而上面的 modified 是指已经追踪的，并且已经修改过的文件。</p>
-<h2>Add</h2>
-<pre><code class="language-shell">git add [file1] [file2] ...
-</code></pre>
-<p>可以将一个或多个文件添加到缓冲区。</p>
-<pre><code class="language-shell">git add .
-</code></pre>
-<p>可以将当前目录下的文件全部添加到缓冲区。</p>
-<pre><code class="language-shell">git add [dir]
-</code></pre>
-<p>可以将某个目录下的文件添加到缓冲区内。</p>
-<p>当使用 add 将文件添加到缓冲区后，这些文件就被标记为了 staged，如果不清楚的话，可以使用 VSCode 的 git 插件可视化的查看。</p>
-<p>如果想要取消添加刚才的文件，可以点击 VSCode 的 unstage 操作。当然，也可以再次使用 <code>git status</code> 命令，查看当前状态。此时，它就会提醒我们用这条命令来取消添加</p>
-<pre><code class="language-shell">use &quot;git restore --staged &lt;file&gt;...&quot; to unstage
-</code></pre>
-<h2>Commit</h2>
-<p>提交并需要附带本次提交的信息。在 VSCode 的 Git 插件中，其实也给了 commit 附带提交信息的功能。</p>
-<pre><code class="language-shell">git commit -m 'commit message'
-</code></pre>
-<p>其中，提交信息应当按照一定的格式来编写。一般的，如果只是使用 <code>git commit</code> 命令，将会引导用户进入一个很像 vim 的编辑界面。</p>
-<pre><code class="language-shell"> 1
- 2 # Please enter the commit message for your changes. Lines starting
- 3 # with '#' will be ignored, and an empty message aborts the commit.
- 4 #
- 5 # On branch master
- 6 # Your branch is up to date with 'origin/master'.
- 7 #
- 8 # Changes to be committed:
- 9 #       modified:   README.md
-10 #
-~
-</code></pre>
-<p>提交格式应该是这样的[^1]</p>
-<pre><code class="language-text">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
-&lt;BLANKLINE&gt;
-&lt;body&gt;
-&lt;BLANKLINE&gt;
-&lt;footer&gt;
-</code></pre>
-<ul>
-<li><code>type</code> 表示提交类别，必须存在</li>
-<li><code>scope</code> 表示修改范围</li>
-<li><code>subject</code> 表示标题行</li>
-<li><code>body</code> 表示主体的描述部分</li>
-</ul>
-<p>[^1]: 这部分来自 <a href="https://www.jianshu.com/p/ff4f98695c2c">https://www.jianshu.com/p/ff4f98695c2c</a></p>
-<h3>type</h3>
-<table>
-<thead>
-<tr>
-<th>关键字</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>feat</code></td>
-<td>添加新特性</td>
-</tr>
-<tr>
-<td><code>fix</code></td>
-<td>修复 bug</td>
-</tr>
-<tr>
-<td><code>docs</code></td>
-<td>仅仅修改了文档</td>
-</tr>
-<tr>
-<td><code>style</code></td>
-<td>仅仅修改了空格、格式缩进、逗号等等，不改变代码逻辑</td>
-</tr>
-<tr>
-<td><code>refactor</code></td>
-<td>代码重构，没有加新功能或者修复 bug</td>
-</tr>
-<tr>
-<td><code>perf</code></td>
-<td>优化相关，比如提升性能、体验</td>
-</tr>
-<tr>
-<td><code>test</code></td>
-<td>增加测试用例</td>
-</tr>
-<tr>
-<td><code>chore</code></td>
-<td>改变构建流程、或者增加依赖库、工具等</td>
-</tr>
-<tr>
-<td><code>revert</code></td>
-<td><s>滚回</s>回滚到上一个版本</td>
-</tr>
-</tbody>
-</table>
-<h3>scope</h3>
-<p>非必填，用于说明 commit 影响的范围</p>
-<h3>subject</h3>
-<p>是 commit 的简短描述，必填，在 50 个字符以内。</p>
-<ul>
-<li>动词开头，第一人称现在时</li>
-<li>第一个字母小写</li>
-<li>句尾不加句号</li>
-</ul>
-<h3>body</h3>
-<p>非必填，可以描述当前修改的详细信息或修改的目的。</p>
-<h3>footer</h3>
-<p>非必填，一般描述 BREAKING CHANGE. 以 <code>BREAKING CHANGE</code> 开头，后面是对变动的描述、以及变动理由和迁移方法。</p>
-<h3>一个样例</h3>
-<pre><code class="language-shell">git config core.editor hx  # 将默认编辑器更改为 hx
-git add .
-git commit
-</code></pre>
-<pre><code class="language-shell"> 1 chore: format README
- 2
- 3 Use the default feature of helix-editor to format README.
-
-:wq
-</code></pre>
-<p>保存后会自动提交信息。</p>
-<pre><code class="language-shell">git commit
-[master ccad09a] chore: format README
- 1 file changed, 6 insertions(+), 6 deletions(-)
-</code></pre>
-<h2>restore</h2>
-<p>前面提到了，用 restore 可以取消添加已经 stage 的文件，但是它还有其他的功能。如果在还未 add 的时候，使用 <code>git status</code> 可以看到有这样的提示</p>
-<pre><code class="language-shell">(use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-(use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
-</code></pre>
-<p>它可以取消所作的更改，万一你直接跑了这条命令，那么你在上一次提交之后写的代码就白写了。</p>
-<h2>rm</h2>
-<p>用于删除文件。</p>
-<pre><code class="language-shell">git rm [file]
-</code></pre>
-<p>这条指令会将文件从暂存区和工作区删除。</p>
-<p>如果删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项 <code>-f</code>.</p>
-<p>如果想把文件从暂存区域移除，但仍然希望保留在当前工作目录中，换句话说，仅是从跟踪清单中删除，使用 <code>--cached</code> 选项即可</p>
-<pre><code class="language-shell">git rm --cached &lt;file&gt;
-</code></pre>
-<p>这条命令在我手中常用于 <code>/ico ;.gitignore</code> 中变更后，某些文件不应该继续被追踪而实际上还在被追踪的情况。这时就需要把文件从暂存区删除并重新添加。</p>
-<h2>checkout</h2>
-<p>用于切换分支。<code>-b</code> 选项可以在当前提交的基础上新建一个分支并切换到该分支上。</p>
-<pre><code class="language-shell">~/Documents/project git:(main)
-git checkout -b dev
-~/Documents/project git:(dev)
-</code></pre>
-<p>如果当前有多个分支时，可以使用 <code>checkout</code> 来切换到其他的分支</p>
-<pre><code class="language-shell">~/Documents/project git:(main)
-git checkout patch-1
-~/Documents/project git:(patch-1)
-</code></pre>
-<h2>branch</h2>
-<p>用于查看和管理分支。</p>
-<h3>查看分支</h3>
-<pre><code class="language-shell">git branch
-  main
-  dev
-* patch-1  # 当前所在的分支
-</code></pre>
-<h3>查看本地和远程分支</h3>
-<pre><code class="language-shell">git branch -a
-</code></pre>
-<h3>修改分支名称</h3>
-<pre><code class="language-shell">git branch -m &lt;old-name&gt; &lt;new-name&gt;
-</code></pre>
-<h3>删除某个分支</h3>
-<pre><code class="language-shell">~/Documents/project git:(main)
-git branch -D patch-1
-</code></pre>
-<h2>merge</h2>
-<p>合并分支。</p>
-<p><img src="https://widcard.win/learn-git/git-merge.excalidraw.svg" alt="learn-git/git-merge.excalidraw.svg"></p>
-<pre><code class="language-shell">~/Documents/project git:(feature)
-git checkout main
-~/Documents/project git:(main)
-git merge feature
-</code></pre>
-<blockquote>
-<p>一直有人在争吵 merge 好还是 rebase 好，我真的觉得没什么必要，这还是得看使用场景。</p>
-</blockquote>
-<p>merge 会留下一切可追溯的信息，也基本上是最常用的合并方式。在<a href="https://zhuanlan.zhihu.com/p/75499871">知乎的一条回答</a>中<a href="%E8%BF%99%E4%B8%AA%E7%9F%A5%E4%B9%8E%E7%9A%84%E6%96%87%E7%AB%A0%E5%8F%AF%E4%BB%A5%E4%B8%8D%E7%9C%8B%EF%BC%8C%E6%98%8E%E6%98%BE%E7%9A%84%E5%B0%B1%E6%98%AF%E4%B8%80%E8%BE%B9%E5%80%92%EF%BC%8C%E6%8D%A7%E4%B8%80%E8%B8%A9%E4%B8%80">^2</a>，rebase 的最大好处不是消除了 merge，而是避免与 merge 的交织。在下面的这个情况中，就有可能需要用到 rebase.</p>
-<p><img src="/learn-git/rebase-2.excalidraw.svg" alt="learn-git/rebase-2.excalidraw.svg"></p>
-<p>仓库主更新非常勤快，以至于你 fork 之后，在 dev 分支做了修改，想要 pull request 的时候，仓库主已经又加了很多次提交。此时，你可以先切换到主分支，拉取已经提交的修改，然后将自己的修改 rebase 一下，以最新的 commit 为基准来提交贡献，避免把的冲突留给太多的人去解决。</p>
-<h2>rebase</h2>
-<p>在 <a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA">git-scm 官方文档</a> 中有这么一个提示</p>
-<details class="custom-callout quote" open><summary class="callout-title"><div class="callout-icon"></div><div><strong>变基的风险</strong></div>
-<div class="callout-fold"></div></summary><div class="callout-body">
-<p>呃，奇妙的变基也并非完美无缺，要用它得遵守一条准则：</p>
-<p><strong>如果提交存在于你的仓库之外，而别人可能基于这些提交进行开发，那么不要执行变基。</strong></p>
-<p>如果你遵循这条金科玉律，就不会出差错。 否则，人民群众会仇恨你，你的朋友和家人也会嘲笑你，唾弃你。</p>
-<p>变基操作的实质是丢弃一些现有的提交，然后相应地新建一些内容一样但实际上不同的提交。 如果你已经将提交推送至某个仓库，而其他人也已经从该仓库拉取提交并进行了后续工作，此时，如果你用 <code>git rebase</code> 命令重新整理了提交并再次推送，你的同伴因此将不得不再次将他们手头的工作与你的提交进行整合，如果接下来你还要拉取并整合他们修改过的提交，事情就会变得一团糟。</p>
-</div>
-</details><p>总之，还是需要在合适的时候使用 rebase，而不是乱用一通。</p>
-<p>下面是 merge 和 rebase 的一些区别。</p>
-<h3>rebase</h3>
-<pre><code class="language-shell">git checkout feature
-git rebase main
-</code></pre>
-<p>经过上面两条命令，git 做了这样的操作。它本身的含义叫作 “变基”，在图中就是把 feature 分支上的修改挪到了 main 分支上。</p>
-<p><img src="/learn-git/git-rebase.excalidraw.svg" alt="learn-git/git-rebase.excalidraw.svg"></p>
-<h3>merge</h3>
-<pre><code class="language-shell">git checkout main
-git merge feature
-</code></pre>
-<p>在 merge 操作中，git 做了下面这样的操作。当然，在此处的 merge 过程中，或许也会有一些 conflicts，需要我们手动处理。从下图中来理解，那就是 main 分支接受了 main 上和 feature 上双方的修改，也就是说，它几乎保留了所有分支的记录。</p>
-<p><img src="/learn-git/git-merge.excalidraw.svg" alt="learn-git/git-merge.excalidraw.svg"></p>
-<h2>stash</h2>
-<p>某个人正在 dev 分支上开发新功能，但是有人发了一个 issue，说 main 分支上有个非常严重的 Bug，急需修复。dev 分支还没开发完，此时只提交一半的修改，这样不是很好。他直接使用 <code>git checkout main</code> 命令，却得到了这样一串报错。</p>
-<pre><code class="language-shell">git checkout main
-error: Your local changes to the following files would be overwritten by checkout:
-	readme.md
-Please commit your changes or stash them before you switch branches.
-Aborting
-</code></pre>
-<p>因为此时，git 树（链表）的结构是这样的</p>
-<p><img src="/learn-git/stash-1.excalidraw.svg" alt="learn-git/stash-1.excalidraw.svg"></p>
-<p>此时，如果直接切换分支，那么 dev 分支的修改应该何去何从？</p>
-<p>如果不想提前提交，那么就需要使用 <code>git stash</code> 了。这条命令会将当前修改存储在一个栈中，并标记当前分支是 WIP (Work in progress)，此时就可以切回 main 分支了。</p>
-<pre><code class="language-shell">~/Documents/project git:(dev)
-git stash
-Saved working directory and index state WIP on dev: a0262af chore: first commit
-~/Documents/project git:(dev)
-git checkout main
-Switched to branch 'main'
-~/Documents/project git:(main)
-</code></pre>
-<p>等待他修好 main 分支，将所有更改都提交后，再切回 dev 分支，使用下面的命令从栈中取出前面最近一次保存的，未提交的修改：</p>
-<pre><code class="language-shell">~/Documents/project git:(dev)
-git stash pop
-On branch dev
-Changes not staged for commit:
-  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
-	modified:   readme.md
-
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
-Dropped refs/stash@{0} (47e2c480a199ff07025b31c83e1c7a62592c1974)
-</code></pre>
-<p>当然，也可以在栈中保存多个快照，使用 <code>git stash list</code> 查看所有保存的快照。</p>
-<p>最后，等到 dev 分支开发完成，提交所有代码后，可以使用 merge 或者 rebase 进行合并。</p>
-<ul>
-<li>如果他是仓库主，有 main 的操作权限，将 dev 分支合并到 main，处理冲突之后，提交到远端</li>
-<li>如果他只是贡献者，没有 main 的操作权限，可以将 dev 分支 rebase 到最新的 main 尾部，然后再提交 pull request</li>
-</ul>
-<h2>reset</h2>
-<p>reset 用于回退版本，可以指定回退某一次提交的版本</p>
-<pre><code class="language-shell">git reset HEAD^   # 回退到上个版本
-git reset HEAD~2  # 回退到上上个版本
-git reset 052e34  # 回退到指定版本，版本号可以通过 git log 查看
-</code></pre>
-<p>其中，可以添加 <code>--soft</code> 和 <code>--hard</code> 参数选项</p>
-<ul>
-<li><code>--soft</code> 会将提交信息回退到以前的版本，但是已经做出的修改不会被撤销</li>
-<li><code>--hard</code> 会撤销工作区中<mark>所有未提交的修改内容</mark>，将暂存区与工作区都回到指定的版本，并删除之前的所有信息提交</li>
-</ul>
-<p><img src="/learn-git/git-reset.excalidraw.svg" alt="learn-git/git-reset.excalidraw.svg"></p>
-<h2>revert</h2>
-<p>revert 也能用于回退版本，它用来<mark>重做</mark>某一个 commit 提交的内容。这么说可能并不明白到底做了什么，还得是看图。</p>
-<p><img src="/learn-git/git-revert.excalidraw.svg" alt="learn-git/git-revert.excalidraw.svg"></p>
-<pre><code class="language-shell">git revert HEAD^
-</code></pre>
-<p>这条命令将当前状态恢复到了上一次提交的状态，但与 reset 不同的是，他不会删除以前已经提交过的信息，而是<mark>创建一个新的 commit</mark>，将回退到之前版本所需要进行的变更写到这个 commit 中。因此，它整个 git 树是<mark>前进</mark>的，而不是倒退的。</p>
-<h2>关于开发</h2>
-<h3>reset vs. revert</h3>
-<p>在一个大项目的主分支中，版本一定是<mark>只能前进，不能后退</mark>的。因为其他所有人都是依据你这个主分支 fork 出来的分支来进行开发的。如果你使用 reset 命令，那么所有人都必须一同删除这些 commit。而如果将某个提交 (我们称之为 <code>C1</code>) 删除了，有可能会导致基于 <code>C1</code> 开发的分支都面临很大的风险。</p>
-<p>而 revert 只是相当于所有人都接受了一个新的提交，并不会对那些其他分支造成太大的污染。因此，在某个工程的主分支中，应尽可能使用 revert，而避免使用 reset.</p>
-<p>但是对于你自己开发的分支，发现提交错了，reset 也没事。</p>
-<p><img src="/learn-git/reset-danger.excalidraw.svg" alt="learn-git/reset-danger.excalidraw.svg"></p>
-<h3>如何 pull request</h3>
-<p>首先要明确一点，就是任何主分支都是雷打不动地向前迈进的，使用删除记录的方式回退的风险上面也都阐述了。</p>
-<p>其次，pull request 应当是将某个仓库的一个分支（通常是主分支）fork 过来，然后基于这个分支开发。</p>
-<p>接着，或许你对这个仓库非常了解，甚至有很多个好的点子想贡献给仓库原作者，那么你应当开多个 pull request，每个 PR 处理一个 feature，而避免在一个 PR 中编写不相关的、过多的特性。</p>
-<p>最后，你应当基于这个 fork，<mark>另开一个 branch 再进行修改</mark>，而不是在你 fork 来的分支上直接修改。为什么？请看下图。</p>
-<p><img src="/learn-git/pull-request-wrong.excalidraw.svg" alt="learn-git/pull-request-wrong.excalidraw.svg"></p>
-<p>发现问题了吗？</p>
-<p>什么？你竟然看不出来？</p>
-<p>在这棵 git 树中，出现了 <mark>“你合我，我合你”</mark> 的现象。如果你还看不出来，那么你可以看一下我曾经提过的一个 <a href="https://github.com/antfu/markdown-it-shiki/pull/13">PR</a>.</p>
-<p><img src="/learn-git/mdit-shiki-pr.png" alt="learn-git/mdit-shiki-pr.png"></p>
-<p>我给 <a href="https://github.com/antfu/markdown-it-shiki">markdown-it-shiki</a> 提过两次 PR，而且两次都是在 main 分支直接修改的。Antfu 好像使用了 rebase 来合并修改，而如果我想要继续提 PR，我想我应该先更新到最新的版本，然后再进行修改，这样应该是理所应当的。</p>
-<p>而当我使用 <code>git pull</code> 来拉取最新的代码时，发现我竟然还需要把仓库原作者的提交也给合并到我自己的分支中。这样其实就陷入了无止境的相互合并当中，虽然仓库原作者需要合并是理所当然的，但是我还需要再合并，这就很不应该。从这次 PR 当中，我深刻体会到了开发的规范性在这方面的重要性。</p>
-<p>说得这么沉重，还是来看一个比较规范的 PR 例子吧。仓库链接是 <a href="https://github.com/cunzaizhuyi/bat-sharp/pulls?q=is%3Apr+is%3Aclosed">cunzaizhuyi/bat-sharp</a></p>
-<p>在这个仓库的贡献中，我几乎每次加新功能时，都开启了一个新的分支。在 PR 被合并之后，我只需在 <a href="https://github.com/widcardw/bat-sharp">widcardw/bat-sharp</a> 中点一下 <span class="btn">Sync fork</span> 就可以拉取最新的、已经合并的代码。后续贡献中，我只需切换到 master 分支，pull 一下最新代码，就可以得到与远程一模一样的状态，不再需要重新 merge 仓库原作者做出的更改了。我现在多出来的，不过是一些分支罢了，反正这些分支已经合并到主分支了，删与不删其实都无所谓了，删除分支并不意味着删除 commit[^3].</p>
-<p>[^3]: 详情见 <a href="https://qastack.cn/programming/10765321/should-i-delete-a-branch-after-merging-it">https://qastack.cn/programming/10765321/should-i-delete-a-branch-after-merging-it</a></p>
 ]]></content>
         <author>
             <name>widcardw</name>
