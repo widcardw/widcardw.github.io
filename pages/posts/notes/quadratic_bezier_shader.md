@@ -317,7 +317,7 @@ layout (triangle_strip, max_vertices = 5) out;  // 输出图元
 
 ### 流程图
 
-![[public/posts-imgs/quadratic_bezier_stroke_shader.svg]]
+![[public/gl/quadratic-bezier-stroke-shader.excalidraw.svg]]
 
 ## 5. 二阶贝塞尔曲边图形填充色
 
@@ -392,6 +392,4 @@ layout (triangle_strip, max_vertices = 5) out;  // 输出图元
 
 ### 流程图
 
-![[public/posts-imgs/quadratic_bezier_fill_shader.svg]]
-
-
+![[public/gl/quadratic-bezier-fill-shader.excalidraw.svg]]

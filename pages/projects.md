@@ -28,6 +28,19 @@ projects:
       link: 'https://github.com/widcardw/vue-tsx-starter'
       desc: 'TSX starter for vue'
       icon: 'i-ri-rocket-2-line'
+  Tools:
+    - name: 'Asciimath Parser'
+      link: 'https://asciimath.widcard.win'
+      desc: 'Parse asciimath into LaTeX'
+      icon: 'tex-\TeX'
+    - name: 'ESLint Config'
+      link: 'https://github.com/widcardw/eslint-config'
+      desc: 'An eslint config that supports tsx'
+      icon: 'i-vscode-icons-file-type-eslint'
+    - name: 'Obsidian Asciimath'
+      link: 'https://github.com/widcardw/obsidian-asciimath'
+      desc: 'Asciimath support for Obsidian'
+      icon: 'i-ri-markdown-line'
   Games:
     - name: 'Lab'
       link: 'https://lab.widcard.win'
@@ -46,11 +59,6 @@ projects:
       link: 'https://github.com/widcardw/mdit-plg-double-bracket-link'
       desc: 'Wiki link for markdown-it'
       icon: 'i-ri-link'
-  Obsidian Plugin:
-    - name: 'Asciimath'
-      link: 'https://github.com/widcardw/obsidian-asciimath'
-      desc: 'Asciimath support for Obsidian'
-      icon: 'i-ri-markdown-line'
   Apps:
     - name: 'D4nm4ku'
       link: 'https://github.com/widcardw/D4nm4ku'

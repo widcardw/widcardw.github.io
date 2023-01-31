@@ -199,8 +199,17 @@ import { memory } from 'rsw-hello/rsw_hello_bg.wasm'
 ```ts
 import init from 'rsw-hello'
 
-const wasmInit = await init()
+const wasmInstance = await init()
 
-const memory = wasm.memory
+const memory = wasmInstance.memory
 ```
 
+vite 官方文档的 [WebAssembly](https://cn.vitejs.dev/guide/features.html#webassembly) 给出了一部分样例，可以按照官方文档的方案来引入。
+
+```ts
+import init from './example.wasm?init'
+
+init().then((instance) => {
+  instance.exports.test()
+})
+```

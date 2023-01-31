@@ -42,7 +42,7 @@ line2 = Rectangle(5, 0.1, stroke_width=0,
 
 让我们回顾一下[[posts/notes/quadratic_bezier_shader|二阶贝塞尔曲线上色机制]]中的着色流程。
 
-![[public/posts-imgs/quadratic_bezier_stroke_shader.svg]]
+![[public/gl/quadratic-bezier-stroke-shader.excalidraw.svg]]
 
 顶点着色器在 `position_point_into_frame` 这个方法中，将顶点乘上了一个相机的旋转，这一步应该是要为透视变换做一些准备。
 

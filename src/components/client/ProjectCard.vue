@@ -1,10 +1,17 @@
 <script setup lang="ts">
-defineProps<{
+import katex from 'katex'
+const props = defineProps<{
   name: string
   link?: string
   icon?: string
   desc?: string
 }>()
+
+const potentialTexIcon = (() => {
+  const match = props.icon?.match(/^tex-(.*)$/)
+  if (match)
+    return katex.renderToString(match[1])
+})()
 </script>
 
 <template>
@@ -19,6 +26,9 @@ defineProps<{
     >
       <template v-if="icon?.startsWith('i-')">
         <div :class="icon" text-2rem w-3rem />
+      </template>
+      <template v-else-if="icon?.startsWith('tex-')">
+        <div v-html="potentialTexIcon" />
       </template>
       <template v-else-if="icon === 'mk'">
         <div>
