@@ -440,7 +440,62 @@ git revert HEAD^
 
 说得这么沉重，还是来看一个比较规范的 PR 例子吧。仓库链接是 [cunzaizhuyi/bat-sharp](https://github.com/cunzaizhuyi/bat-sharp/pulls?q=is%3Apr+is%3Aclosed)
 
-在这个仓库的贡献中，我几乎每次加新功能时，都开启了一个新的分支。在 PR 被合并之后，我只需在 [widcardw/bat-sharp](https://github.com/widcardw/bat-sharp) 中点一下 <span class="btn">Sync fork</span> 就可以拉取最新的、已经合并的代码。后续贡献中，我只需切换到 master 分支，pull 一下最新代码，就可以得到与远程一模一样的状态，不再需要重新 merge 仓库原作者做出的更改了。我现在多出来的，不过是一些分支罢了，反正这些分支已经合并到主分支了，删与不删其实都无所谓了，删除分支并不意味着删除 commit[^3].
+在这个仓库的贡献中，我几乎每次加新功能时，都开启了一个新的分支。在 PR 被合并之后，我只需在 [widcardw/bat-sharp](https://github.com/widcardw/bat-sharp) 中点一下 <button class="btn">Sync fork</button> 就可以拉取最新的、已经合并的代码。后续贡献中，我只需切换到 master 分支，pull 一下最新代码，就可以得到与远程一模一样的状态，不再需要重新 merge 仓库原作者做出的更改了。我现在多出来的，不过是一些分支罢了，反正这些分支已经合并到主分支了，删与不删其实都无所谓了，删除分支并不意味着删除 commit[^3].
 
 [^3]: 详情见 https://qastack.cn/programming/10765321/should-i-delete-a-branch-after-merging-it
 
+## 使用 GitHub 官方的工具 `gh`
+
+### 修改并合并 Pull Request
+
+一般来说，如果收到他人的 PR，他的代码改得非常好，可以 merge，那么我们通常会直接点击 GitHub 页面上的 <button class='btn'>merge</button> 就好了。
+
+但是别人的代码有时并不像我们自己想的那样好，我们可以在 PR 下留下评论，要求他做出修改。
+
+然而，如果是一些小问题，我们可以直接代为修改，那么就可以使用 `gh` 工具来完成了。下面是我问 New Bing 得到的解答。
+
+> [!quote] Bing 的回答
+> One possible way to fix typos and merge a pull request with **gh pr** is:
+> 
+> - Check out the pull request locally with `gh pr checkout 1` where `1` is the pull request number
+> - Make changes to the code and commit them
+> - Push the changes to the remote branch of the pull request
+> - Merge the pull request with `gh pr merge 1`
+> 
+> Alternatively, you can also use **gh pr** to comment on the pull request and ask the author to fix the typos themselves.
+> 
+
+具体操作就是
+
+- 使用 `gh pr checkout 1` 命令行，将这个 PR 拿到本地，其中 `1` 就是 PR 的楼层数
+- 做出你想要的修改，然后提交
+- ==将变更推送到 PR 的远程端==
+- 使用 `gh pr merge 1` 将这个 PR 合并到主分支
+
+然而第三步中，直接使用 `git push` 是不对的，这样会推送到自己仓库的分支，于是我又问了问 New Bing. 
+
+> [!quote] Bing 的回答
+> To push changes to the remote branch of a pull request, you need to use the **git push** command with the name of the remote and the name of the branch¹. For example, if you checked out a pull request from a contributor named `contrib1` and their branch was named `feat1`, you can use:
+> 
+> ```sh
+> git push contrib1 feat1
+> ```
+> 
+> This will send your changes to their forked repository and update the pull request².
+> 
+> Alternatively, you can also create a new branch on your own repository and push your changes there. For example:
+> 
+> ```sh
+> git checkout -b contrib1-feat1
+> git push -u origin contrib1-feat1
+> ```
+> 
+> This will create a new branch on your repository and set it as upstream for your local branch. Then you can manually compose a URL for a new pull request or use **gh pr create**².
+> 
+> Does this answer your question? 😊
+> 
+> (1) Top Git Commands | How to Use Git Commands | Devmountain. https://devmountain.com/blog/top-git-commands-how-to-use/
+> (2) GitHub Pull Request without fork | Scientific Computing | SciVision. https://www.scivision.dev/github-pull-request-no-fork/
+> (3) [automated] Merge branch 'release/7.0.2xx' => 'release/7.0.3xx'. https://github.com/dotnet/sdk/pull/31108
+
+果然不负众望，New Bing 已经是我最得力的助手了。
