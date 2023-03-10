@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/avatar/avatar-round.png" type="image/svg+xml"><title>macOS Ventura 重新安装 Wireshark　</title><meta name="description" content="Opinionated Vite Starter Template"><script type="module" async="" crossorigin="" src="/assets/app.44746e38.js"></script><link rel="stylesheet" href="/assets/index.6400d90a.css"><link rel="modulepreload" crossorigin="" href="/assets/wireshark-install.da401512.js"><meta name="description" content="widcard.win"><meta name="theme-color" content="#ffffff"><meta property="og:title" content="macOS Ventura 重新安装 Wireshark　"><meta name="head:count" content="3"></head><body><div id="app" data-server-rendered="true"><!--[--><!----><main class="text-center text-gray-700 dark:text-gray-200"><div flex="" items-center="" p-4="" sm:p-6="" w-full="" h-3rem="" sm:h-4rem="" backdrop-blur="" class="font-serif" z-999="" sticky="" top-0px=""><a href="/" class="">widcardw</a><div flex-1=""></div><div flex="" space-x-4="" items-center=""><a icon-btn="" i-ri-article-line="" title="blog"></a><a icon-btn="" i-ri-apps-line="" title="project"></a><a icon-btn="" i-ri-link-m="" title="links"></a><a href="https://widcard.win/feed.xml" target="_blank" icon-btn="" i-ri-rss-line="" title="rss"></a><a href="https://github.com/widcardw" target="_blank" icon-btn="" i-ri-github-fill="" title="github"></a><div icon-btn=""><div i-ri-sun-line=""></div></div><div icon-btn="" i-ri-grid-line="" title="toggle background"></div></div></div><div class="heti heti--classic m-auto text-left p-4"><!--[--><div class="markdown-body"><h1 id="macos-ventura-%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85-wireshark" tabindex="-1">macOS Ventura 重新安装 Wireshark</h1><p><a href="https://gitlab.com/wireshark/wireshark/-/issues/18734" target="_blank" rel="noopener">https://gitlab.com/wireshark/wireshark/-/issues/18734</a></p><p><a href="https://gitlab.com/crapulas" target="_blank" rel="noopener">Sebastien Barbier</a></p><p>I had the same issue as all of you reported.</p><p>I found this in the legacy Wireshark Q&amp;A and executed the different commands to clean up the OS from Wireshark. Then I reinstalled in the following order: Wireshark / Add Wireshark to path pkg / ChmodBPF pkg It works now correctly with Ventura 13.2 even after a reboot.</p><p>Put the following text into a shell script and run that script:</p><pre><code class="language-sh"><div class="shiki-container"><pre class="shiki shiki-dark" style="background-color:#121212"><code v-pre=""><span class="line"><span style="color:#758575DD">#! /bin/sh</span></span>
+<span class="line"><span style="color:#dbd7CAEE">sudo rm -f \</span></span>
+<span class="line"><span style="color:#dbd7CAEE">/usr/local/bin/capinfos \</span></span>
+<span class="line"><span style="color:#dbd7CAEE">/usr/local/bin/dftest \</span></span>
+<span class="line"><span style="color:#dbd7CAEE">/usr/local/bin/dumpcap \</span></span>
+<span class="line"><span style="color:#dbd7CAEE">/usr/local/bin/editcap \</span></span>
+<span class="line"><span style="color:#dbd7CAEE">/usr/local/bin/mergecap \</span></span>
+<span class="line"><span style="color:#dbd7CAEE">/usr/local/bin/randpkt \</span></span>
+<span class="line"><span style="color:#dbd7CAEE">/usr/local/bin/rawshark \</span></span>
+<span class="line"><span style="color:#dbd7CAEE">/usr/local/bin/text2pcap \</span></span>
+<span class="line"><span style="color:#dbd7CAEE">/usr/local/bin/tshark \</span></span>
+<span class="line"><span style="color:#dbd7CAEE">/usr/local/bin/wireshark</span></span>
+<span class="line"><span style="color:#dbd7CAEE">sudo rm -f /etc/paths.d/Wireshark</span></span>
+<span class="line"><span style="color:#dbd7CAEE">sudo rm -f /etc/manpaths.d/Wireshark</span></span>
+<span class="line"><span style="color:#dbd7CAEE">sudo pkgutil --forget org.wireshark.cli.pkg</span></span>
+<span class="line"><span style="color:#dbd7CAEE">sudo rm -rf /Library/StartupItems/ChmodBPF</span></span>
+<span class="line"><span style="color:#dbd7CAEE">sudo rm -rf </span><span style="color:#c98A7DAA">"</span><span style="color:#c98a7d">/Library/Application Support/Wireshark</span><span style="color:#c98A7DAA">"</span></span>
+<span class="line"><span style="color:#dbd7CAEE">sudo launchctl unload /Library/LaunchDaemons/org.wireshark.ChmodBPF.plist</span></span>
+<span class="line"><span style="color:#dbd7CAEE">sudo rm -f /Library/LaunchDaemons/org.wireshark.ChmodBPF.plist</span></span>
+<span class="line"><span style="color:#dbd7CAEE">sudo pkgutil --forget org.wireshark.ChmodBPF.pkg</span></span>
+<span class="line"><span style="color:#dbd7CAEE">sudo rm -rf /Applications/Wireshark.app</span></span>
+<span class="line"><span style="color:#dbd7CAEE">sudo pkgutil --forget org.wireshark.Wireshark.pkg</span></span>
+<span class="line"></span></code></pre><pre class="shiki shiki-light" style="background-color:#fff"><code v-pre=""><span class="line"><span style="color:#a0ada0">#! /bin/sh</span></span>
+<span class="line"><span style="color:#393a34">sudo rm -f \</span></span>
+<span class="line"><span style="color:#393a34">/usr/local/bin/capinfos \</span></span>
+<span class="line"><span style="color:#393a34">/usr/local/bin/dftest \</span></span>
+<span class="line"><span style="color:#393a34">/usr/local/bin/dumpcap \</span></span>
+<span class="line"><span style="color:#393a34">/usr/local/bin/editcap \</span></span>
+<span class="line"><span style="color:#393a34">/usr/local/bin/mergecap \</span></span>
+<span class="line"><span style="color:#393a34">/usr/local/bin/randpkt \</span></span>
+<span class="line"><span style="color:#393a34">/usr/local/bin/rawshark \</span></span>
+<span class="line"><span style="color:#393a34">/usr/local/bin/text2pcap \</span></span>
+<span class="line"><span style="color:#393a34">/usr/local/bin/tshark \</span></span>
+<span class="line"><span style="color:#393a34">/usr/local/bin/wireshark</span></span>
+<span class="line"><span style="color:#393a34">sudo rm -f /etc/paths.d/Wireshark</span></span>
+<span class="line"><span style="color:#393a34">sudo rm -f /etc/manpaths.d/Wireshark</span></span>
+<span class="line"><span style="color:#393a34">sudo pkgutil --forget org.wireshark.cli.pkg</span></span>
+<span class="line"><span style="color:#393a34">sudo rm -rf /Library/StartupItems/ChmodBPF</span></span>
+<span class="line"><span style="color:#393a34">sudo rm -rf </span><span style="color:#b56959AA">"</span><span style="color:#b56959">/Library/Application Support/Wireshark</span><span style="color:#b56959AA">"</span></span>
+<span class="line"><span style="color:#393a34">sudo launchctl unload /Library/LaunchDaemons/org.wireshark.ChmodBPF.plist</span></span>
+<span class="line"><span style="color:#393a34">sudo rm -f /Library/LaunchDaemons/org.wireshark.ChmodBPF.plist</span></span>
+<span class="line"><span style="color:#393a34">sudo pkgutil --forget org.wireshark.ChmodBPF.pkg</span></span>
+<span class="line"><span style="color:#393a34">sudo rm -rf /Applications/Wireshark.app</span></span>
+<span class="line"><span style="color:#393a34">sudo pkgutil --forget org.wireshark.Wireshark.pkg</span></span>
+<span class="line"></span></code></pre></div></code></pre><h2 id="%E7%BF%BB%E8%AF%91" tabindex="-1">翻译</h2><ol><li>运行以上脚本</li><li>安装 Wireshark.app</li><li>将 Wireshark 添加到 <code>PATH</code></li><li>安装 ChmodBPF</li></ol></div><!--]--><div flex="~ wrap"><div flex="" items-center="" space-x-1="" bg="zinc/10" rounded="" px-2="" m="b-1 r-1"><!--[--><div i-ri-book-mark-line=""></div><!--]--><span>network</span><!----></div></div><div flex="~ wrap"><!--[--><div flex="" items-center="" space-x-1="" bg="zinc/10" rounded="" px-2="" m="b-1 r-1"><!--[--><div i-ri-hashtag=""></div><!--]--><span>network</span><!----></div><div flex="" items-center="" space-x-1="" bg="zinc/10" rounded="" px-2="" m="b-1 r-1"><!--[--><div i-ri-hashtag=""></div><!--]--><span>wireshark</span><!----></div><!--]--></div><p><a href="javascript:void(0)" class="font-mono no-underline opacity-50 hover:opacity-75">back</a></p><div>Loading...</div></div><div text="center zinc/50" p-4="" class="font-serif">widcardw © 2022 | Theme heti</div></main><!--]--></div><script>window.__INITIAL_STATE__='{"pinia":{"gl":{"isLoaded":false,"seeds":["849.58","975.92","564.04"]}}}'</script></body></html>
