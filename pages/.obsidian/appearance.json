@@ -1,11 +1,12 @@
 {
   "accentColor": "#6ba5ef",
-  "theme": "moonstone",
+  "theme": "system",
   "textFontFamily": "CMU Serif,Songti SC",
-  "monospaceFontFamily": "PT Mono,system-ui",
+  "monospaceFontFamily": "IBM Plex Mono,system-ui",
   "enabledCssSnippets": [
     "code-highlight",
-    "kbd"
+    "kbd",
+    "font"
   ],
   "translucency": false,
   "nativeMenus": true,

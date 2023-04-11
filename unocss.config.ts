@@ -23,7 +23,7 @@ export default defineConfig({
     }),
     presetWebFonts({
       fonts: {
-        mono: 'PT Mono',
+        mono: 'IBM Plex Mono',
       },
     }),
   ],

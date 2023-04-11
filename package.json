@@ -42,7 +42,7 @@
     "@unocss/reset": "^0.45.15",
     "@vitejs/plugin-vue": "^3.1.0",
     "@vue/test-utils": "^2.0.2",
-    "@widcardw/markdown-it-asciimath": "^0.5.1",
+    "@widcardw/markdown-it-asciimath": "^0.5.2",
     "eslint": "^8.23.0",
     "esno": "^0.16.3",
     "fast-glob": "^3.2.12",

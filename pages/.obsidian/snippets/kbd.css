@@ -1,6 +1,6 @@
 kbd {
     padding: 0.2rem 0.4rem;
-    font-family: PT Mono, system-ui, monospace;
+    font-family: IBM Plex Mono, system-ui, monospace;
     border-radius: 0.2rem;
     box-shadow: 0px 1px 3px var(--color-base-50);
 }
