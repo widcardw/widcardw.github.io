@@ -54,7 +54,7 @@ int_0^(+oo) "e"^(-x) dx = 1
 
 > [!faq] 碎碎念
 > 具体分类详见 https://github.com/widcardw/asciimath-parser/blob/main/src/symbols.ts#L1
-> 
+>
 > 其实我是没想到竟然需要分这么多类，但是 asciimath 确实有这么多种分类，根据这么多分类，才能在 Parse 阶段转换为合理的 AST ¯\\_(ツ)\_/¯
 
 ### Parse

@@ -17,7 +17,7 @@ specifiers:
   '@vue/test-utils': ^2.0.2
   '@vueuse/core': ^9.2.0
   '@vueuse/head': ^0.7.10
-  '@widcardw/markdown-it-asciimath': ^0.5.2
+  '@widcardw/markdown-it-asciimath': ^0.5.3
   eslint: ^8.23.0
   esno: ^0.16.3
   fast-glob: ^3.2.12
@@ -92,7 +92,7 @@ devDependencies:
   '@unocss/reset': 0.45.15
   '@vitejs/plugin-vue': 3.1.0_vite@3.1.0+vue@3.2.38
   '@vue/test-utils': 2.0.2_vue@3.2.38
-  '@widcardw/markdown-it-asciimath': 0.5.2
+  '@widcardw/markdown-it-asciimath': 0.5.3
   eslint: 8.23.0
   esno: 0.16.3
   fast-glob: 3.2.12
@@ -1103,8 +1103,8 @@ packages:
       - '@vue/composition-api'
       - vue
 
-  /@widcardw/markdown-it-asciimath/0.5.2:
-    resolution: {integrity: sha512-ezS8UMhe3z4rVevKG5cl3BxSWN5Hp604jbHrmdf2GWfNXpt0edsySej6WHyy/NiqGpFtQ0PLIRBI+HS7IdHZwA==}
+  /@widcardw/markdown-it-asciimath/0.5.3:
+    resolution: {integrity: sha512-pfAF4QW8yxpMASbkt5IV2sLIIw2rrwdBNJMSo8eJTQIIctXbzyHDWcFeWUyihm8h9wVBGdravvG65I5HJyWMwg==}
     dev: true
 
   /abab/2.0.6:

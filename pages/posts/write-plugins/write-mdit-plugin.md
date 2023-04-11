@@ -292,16 +292,16 @@ markdown-it 插件的生态还是相当丰富的，在 https://npmjs.com 搜索�
 Prism 和 Shiki 都是用于代码高亮的插件，原理是将包裹在代码块中的代码进行语法分析，然后更改每个片段的 CSS，最后将转换完成后的 HTML 字符串代替原来的 `<pre>` 块内的元素。具体的代码分析模块其实不是我们主要去研究的，我们要熟悉的是怎样将插件接入进去。
 
 ```ts {4}
-const MarkdownItShiki: MarkdownIt.PluginWithOptions<Options> 
+const MarkdownItShiki: MarkdownIt.PluginWithOptions<Options>
   = (markdownit, options = {}) => {
   // ... preprocessors
-  markdownit.options.highlight = (code, lang, attrs) => {
-    return highlightCode(
-      code,
-      lang || 'text',
-    )
+    markdownit.options.highlight = (code, lang, attrs) => {
+      return highlightCode(
+        code,
+        lang || 'text',
+      )
+    }
   }
-}
 ```
 
 上面的代码中，将高亮接入到 markdown-it 中的关键就在于修改 `options.highlight` 函数，使得这个函数返回已经高亮过的 HTML 字符串。其中，`code` 指代包在代码块中的代码字符串，`lang` 指代写在 \`\`\` 后的语言选项，`attrs` 指代写在语言后面的其他参数。
@@ -372,7 +372,7 @@ const MarkdownItKaTeX: MarkdownIt.PluginSimple = (md) => {
 Tokenizer 部分
 
 ```ts
-function math_inline (state: StateInline, silent: boolean) {
+function math_inline(state: StateInline, silent: boolean) {
   // 如果不符合 $(.+?)$ 的要求，返回 false
   if (!isValid(state))
     return false
@@ -397,7 +397,7 @@ function math_inline (state: StateInline, silent: boolean) {
 
 ```ts
 /** 生成 KaTeX 的 HTML 字符串 */
-function inlineRenderer (code: string) {
+function inlineRenderer(code: string) {
   try {
     return katex.renderToString(tex, { throwOnError: false })
   }
@@ -425,37 +425,37 @@ function inlineRenderer (code: string) {
 
 ```ts
 declare class StateInline {
-    constructor(src: string, md: MarkdownIt, env: any, outTokens: Token[])
-    /**
-     * 完整的 markdown 字符串
-     */
-    src: string
+  constructor(src: string, md: MarkdownIt, env: any, outTokens: Token[])
+  /**
+   * 完整的 markdown 字符串
+   */
+  src: string
 
-    /**
-     * token 序列
-     */
-    tokens: Token[]
-    tokens_meta: Array<StateInline.TokenMata | null>
+  /**
+   * token 序列
+   */
+  tokens: Token[]
+  tokens_meta: Array<StateInline.TokenMata | null>
 
-    /**
-     * markdown 字符串指针
-     */ 
-    pos: number
+  /**
+   * markdown 字符串指针
+   */
+  pos: number
 
-    /**
-     * 行尾的索引，如果 pos >= posMax 通常就不用再处理该行内元素了
-     */
-    posMax: number
-    level: number
-    pending: string
+  /**
+   * 行尾的索引，如果 pos >= posMax 通常就不用再处理该行内元素了
+   */
+  posMax: number
+  level: number
+  pending: string
 
-    md: markdownit
+  md: markdownit
 
-    /**
-     * 将新的 token 加入 token stream
-     * If pending text exists - flush it as text token
-     */
-    push(type: string, tag: string, nesting: Token.Nesting): Token
+  /**
+   * 将新的 token 加入 token stream
+   * If pending text exists - flush it as text token
+   */
+  push(type: string, tag: string, nesting: Token.Nesting): Token
 
 }
 ```
@@ -468,54 +468,54 @@ declare class StateInline {
 
 ```ts
 declare class StateBlock {
-    constructor(src: string, md: MarkdownIt, env: any, tokens: Token[])
-    /**
-     * 完整的 markdown 字符串
-     */
-    src: string
+  constructor(src: string, md: MarkdownIt, env: any, tokens: Token[])
+  /**
+   * 完整的 markdown 字符串
+   */
+  src: string
 
-    tokens: Token[]
+  tokens: Token[]
 
-    /**
-     * 行首的索引
-     */
-    bMarks: number[]
-    /**
-     * 行尾的索引
-     */
-    eMarks: number[]
-    /**
-     * 每一行中第一个不是空白字符串的索引
-     */
-    tShift: number[]
-    /**
-     * 每行的缩进
-     */
-    sCount: number[]
+  /**
+   * 行首的索引
+   */
+  bMarks: number[]
+  /**
+   * 行尾的索引
+   */
+  eMarks: number[]
+  /**
+   * 每一行中第一个不是空白字符串的索引
+   */
+  tShift: number[]
+  /**
+   * 每行的缩进
+   */
+  sCount: number[]
 
-    /**
-     * 当前指针所在的行号
-     */
-    line: number
-    /**
-     * 行数
-     */
-    lineMax: number
+  /**
+   * 当前指针所在的行号
+   */
+  line: number
+  /**
+   * 行数
+   */
+  lineMax: number
 
-    md: markdownit
+  md: markdownit
 
-    /**
-     * 将新的 token 加入 token stream
-     */
-    push(type: string, tag: string, nesting: Token.Nesting): Token
+  /**
+   * 将新的 token 加入 token stream
+   */
+  push(type: string, tag: string, nesting: Token.Nesting): Token
 }
 ```
 
 在不少插件的案例中，我们会有下面的定义，分别指代的是 `lineNum` 行的第一个非空白字符索引和和行尾索引。
 
 ```ts
-let start = state.bMarks[lineNum] + state.tShift[lineNum]
-let max   = state.eMarks[lineNum]
+const start = state.bMarks[lineNum] + state.tShift[lineNum]
+const max = state.eMarks[lineNum]
 ```
 
 在块元素中，我们用的索引就是 `line` 这个关键字了，处理完块元素之后，就需要让 `state.line` 移动到下一个块元素了。
@@ -534,7 +534,7 @@ let max   = state.eMarks[lineNum]
 
 > [!question] 作业
 > 编写一个 `wikilink` 的 markdown-it 插件，能够将 `![[./abc.png]]` 这种链接翻译为 `<img src='./abc.png' />`，同时也能够适配视频和音频，分别生成 `<video>` 和 `<audio>` 标签的元素。
-> 
+>
 > 作业答案可以参考 https://github.com/widcardw/mdit-plg-double-bracket-media
 
 
