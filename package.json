@@ -11,7 +11,7 @@
     "up": "taze major -I"
   },
   "dependencies": {
-    "@antfu/utils": "^0.5.2",
+    "@antfu/utils": "^0.7.3",
     "@giscus/vue": "^2.2.0",
     "@types/mermaid": "^8.2.9",
     "@vueuse/core": "^9.2.0",
