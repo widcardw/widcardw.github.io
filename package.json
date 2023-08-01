@@ -58,7 +58,7 @@
     "mdit-plg-double-bracket-link": "^0.0.1",
     "mdit-plg-double-bracket-media": "^0.0.2",
     "mdit-plugin-callouts": "^1.2.0",
-    "pnpm": "^7.11.0",
+    "pnpm": "^7.33.4",
     "taze": "^0.8.0",
     "typescript": "^4.8.2",
     "unocss": "^0.45.15",
