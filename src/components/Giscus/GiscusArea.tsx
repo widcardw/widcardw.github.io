@@ -48,7 +48,7 @@ const GiscusArea: Component<GiscusProps> = (props) => {
     <>
       <div 
         ref={r => setTarget(r)} 
-        style={{ 'margin': '4rem auto', 'opacity': 0.5, 'border-bottom': '1px solid #7f7f7f', 'max-width': '15rem' }}
+        style={{ 'margin': '4rem auto', 'max-width': '15rem' }}
       />
       <Show when={mounted() && visible()}>
         {/* @ts-expect-error giscus web component type error */}

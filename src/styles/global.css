@@ -288,6 +288,10 @@ button:hover {
   margin-bottom: 1rem;
 }
 
+.expressive-code {
+  margin: 1rem auto;
+}
+
 .font-bold {
   font-weight: bold;
 }
@@ -296,4 +300,11 @@ button:hover {
   --un-space-x-reverse: 0;
   margin-left: calc(1rem * calc(1 - var(--un-space-x-reverse)));
   margin-right: calc(1rem * var(--un-space-x-reverse));
+}
+
+[data-footnotes].footnotes::before {
+  display: block;
+  margin: 2rem auto;
+  content: '';
+  border-bottom: 1px solid #777;
 }

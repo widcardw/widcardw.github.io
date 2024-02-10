@@ -1,6 +1,7 @@
 ---
 title: 如何编写 remark 和 rehype 插件　
 pubDate: 2023-07-14
+updatedDate: 2024-02-10
 category: 'markdown'
 tags: ['markdown', 'remark', 'rehype', 'unified', 'mdx']
 description: 官方文档给的示例真少，我都不知道该怎么搞才好

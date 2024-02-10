@@ -4,8 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import { remarkMark } from 'remark-mark-highlight';
 import { remarkCallouts } from '@widcardw/remark-callouts';
 import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import { remarkAsciiMath } from '@widcardw/remark-asciimath';
+import rehypeAsciimath from '@widcardw/rehype-asciimath'
 import { remarkWikiLink } from './src/plugins/wiki/remarkWikiLink';
 import rehypeExternalLinks from 'rehype-external-links';
 import solidJs from "@astrojs/solid-js";
@@ -41,7 +40,7 @@ export default defineConfig({
       remarkCallouts,
       remarkMath,
       // used for math
-      remarkAsciiMath,
+      // remarkAsciiMath,
       // used for math
       [remarkWikiLink, {
         // wikiLinkResolver: wikilinkPageResolver
@@ -61,11 +60,11 @@ export default defineConfig({
       [remarkMermaid, { includeLoading: true }],
     ],
     rehypePlugins: [
-      rehypeKatex,
       [rehypeExternalLinks, {
         target: '_blank',
         rel: 'nofollow'
-      }]
+      }],
+      rehypeAsciimath,
     ],
     shikiConfig: {
       theme: 'nord'
