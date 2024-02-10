@@ -1,0 +1,85 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Friend from "../components/Friend.astro";
+import { Content as MyMeta } from '../components/MyMeta.md';
+
+const f = [
+  {
+    name: "鹤翔万里",
+    avatar: "/avatar/tonycrane.png",
+    desc: "翔哥永不咕！",
+    link: "http://blog.tonycrane.cc/",
+  },
+  {
+    name: "GZTime",
+    avatar: "/avatar/GZTime_2021.png",
+    desc: "Walking on the Time Axis.",
+    link: "https://blog.gztime.cc",
+  },
+  {
+    name: "Matheart",
+    avatar: "/avatar/matheart.webp",
+    desc: "Math Heart Ever.",
+    link: "https://matheart.github.io/",
+  },
+  {
+    name: "范滇东",
+    avatar: "/avatar/flwfdd.jpeg",
+    desc: "三体 × 摄影 × 造物",
+    link: "https://flwfdd.xyz/",
+  },
+  {
+    name: "HK-SHAO",
+    avatar: "/avatar/hk-shao.png",
+    desc: "A human.",
+    link: "https://shao.fun/",
+  },
+  {
+    name: "你们的小f",
+    avatar: "/avatar/fzf404.jpeg",
+    desc: "修炼中",
+    link: "https://www.fzf404.art/",
+  },
+  {
+    name: "SkyWT",
+    link: "https://skywt.cn",
+    avatar: "https://blog.skywt.cn/usr/themes/Daydream/assets/img/avatar.png",
+    desc: "我们的征途是星辰大海 ✨",
+  },
+  {
+    name: "半方池水半方田",
+    link: "https://uuanqin.top/",
+    avatar: "https://cdn.gallery.uuanqin.top/img/avatar.webp",
+    desc: "只能懂一点点",
+  },
+  {
+    name: '小鹿',
+    link: 'https://www.siena.zone',
+    avatar: 'https://www.siena.zone/favicon_compressed.png',
+    desc: '跳吧，在无比宏大的星系！',
+  }
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      <h1>Friends</h1>
+      <hr style="margin-bottom: 1rem" />
+      {f.map(i => (<Friend name={i.name} avatar={i.avatar} url={i.link} desc={i.desc} />))}
+      <hr />
+      <h4>我的友链信息</h4>
+      <MyMeta />
+      <p>如果想在本站添加友链，请至 <a href="https://github.com/widcardw/widcardw.github.io/issues/new" target="_blank">issue</a> 处按以上 json 格式提交，本站将不定期更新。</p>
+    </main>
+    <Footer />
+  </body>
+</html>

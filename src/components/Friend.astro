@@ -1,0 +1,38 @@
+---
+type Props = {
+  name: string;
+  avatar: string;
+  url: string;
+  desc: string;
+};
+const { name, avatar, url, desc } = Astro.props;
+---
+
+<div class="one-friend">
+  <img src={avatar} class="avatar" />
+  <div style="flex: 1">
+    <div class="friend-name"><a href={url} target="_blank">{name}</a></d>
+    <div class="friend-desc">{desc}</div>
+  </div>
+</div>
+
+<style scoped>
+  .one-friend {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 999px;
+  }
+  .friend-name {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .friend-desc {
+    font-weight: 400;
+    font-size: 1rem;
+  }
+</style>

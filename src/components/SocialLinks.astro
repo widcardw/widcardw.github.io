@@ -1,0 +1,39 @@
+---
+import { Icon } from "astro-icon/components";
+const socialLinks: Array<{
+  name: string;
+  friendlyName: string;
+  link: string;
+}> = [
+  {
+    name: "mdi:github",
+    friendlyName: "Github",
+    link: "https://github.com/widcardw",
+  },
+  {
+    name: "ri:bilibili-line",
+    friendlyName: "Bilibili",
+    link: "https://space.bilibili.com/31976300",
+  },
+  {
+    name: "mdi:email",
+    friendlyName: "email",
+    link: "mailto:widcardw@foxmail.com",
+  },
+];
+---
+
+{
+  socialLinks.map((i) => (
+    <a href={i.link} target="_blank" class="icon">
+      <Icon name={i.name} />
+      <span class="sr-only">{i.friendlyName}</span>
+    </a>
+  ))
+}
+
+<style>
+  .icon {
+    margin: 0 0.2rem;
+  }
+</style>

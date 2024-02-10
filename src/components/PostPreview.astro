@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+
+type Props = {
+  post: CollectionEntry<"blog">;
+  withDesc?: boolean;
+};
+
+const { post } = Astro.props;
+const postDate = post.data.updatedDate ?? post.data.pubDate;
+---
+
+<div class="line-1">
+  <div class="title">
+    <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+  </div>
+  <div class="date">
+    <FormattedDate date={postDate} />
+  </div>
+</div>
+<div class="description">{post.data.description}</div>
+<div class="tags-line">
+  {post.data.tags && post.data.tags.map((tag) => <code>#{tag}</code>)}
+</div>
+
+<style>
+  .date {
+    margin: 0;
+    color: rgb(var(--gray));
+  }
+  .line-1 {
+    display: flex;
+    align-items: center;
+  }
+  .line-1 .title {
+    flex: 1;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .tags-line {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .description {
+    color: var(--text-color-sec);
+  }
+  a {
+    text-decoration: none;
+  }
+</style>

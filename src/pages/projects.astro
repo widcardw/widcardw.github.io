@@ -1,0 +1,129 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import ProjectItem from "~/components/ProjectItem.astro";
+
+const projects = {
+  Personal: [
+    {
+      name: "My slides",
+      link: "https://slides.widcard.win",
+      desc: "Presentations",
+      icon: "ri:slideshow-2-line",
+    },
+    {
+      name: "My Notes",
+      link: "https://notes.widcard.win",
+      desc: "Notes of my courses",
+      icon: "ri:booklet-line",
+    },
+  ],
+  Manim: [
+    {
+      name: "Video Tutorials",
+      link: "https://space.bilibili.com/31976300/channel/collectiondetail?sid=79029&ctype=0",
+      desc: "Tutorial for updater",
+      icon: "ri:keynote-line",
+    },
+    {
+      name: "MK home page",
+      link: "https://manim.org.cn",
+      desc: "Manim Kindergarten",
+      icon: "mk",
+      img: "https://cdn.widcard.win/manim/favicon.svg",
+    },
+  ],
+  Tools: [
+    {
+      name: "Asciimath Parser",
+      link: "https://asciimath.widcard.win",
+      desc: "Parse asciimath into LaTeX",
+      icon: "mdi:math-integral-box",
+    },
+    {
+      name: "ESLint Config",
+      link: "https://github.com/widcardw/eslint-config",
+      desc: "An eslint config that supports tsx",
+      icon: "vscode-icons:file-type-eslint",
+    },
+  ],
+  Games: [
+    {
+      name: "Lab",
+      link: "https://lab.widcard.win",
+      desc: "数字华容道",
+      icon: "ri:gamepad-line",
+    },
+  ],
+  Markdown: [
+    {
+      name: "Callouts",
+      link: "https://github.com/widcardw/mdit-plugin-callouts",
+      desc: "Callout block for markdown-it",
+      icon: "ri:code-s-slash-line",
+    },
+    {
+      name: "Media",
+      link: "https://github.com/widcardw/mdit-plg-double-bracket-media",
+      desc: "Wikilink for markdown-it",
+      icon: "ri:image-2-line",
+    },
+    {
+      name: "Link",
+      link: "https://github.com/widcardw/mdit-plg-double-bracket-link",
+      desc: "Wiki link for markdown-it",
+      icon: "ri:link",
+    },
+  ],
+  Apps: [
+    {
+      name: "D4nm4ku",
+      link: "https://github.com/widcardw/D4nm4ku",
+      desc: "A danmaku viewer with tauri",
+      icon: "ri:bilibili-fill",
+    },
+    {
+      name: "Tauri-wubi",
+      link: "https://github.com/widcardw/tauri-wubi",
+      desc: "Wubi input method exerciser",
+      icon: "ri:wubi-input",
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      <h1>Projects</h1>
+      {Object.entries(projects).map(([k, v]) => (
+        <div class="project-section">
+          <h2>{k}</h2>
+          <div class="project-list">
+            {v.map(i => (<ProjectItem title={i.name} link={i.link} img={i.img} desc={i.desc} icon={i.icon} />))}
+          </div>
+        </div>
+      ))}
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+.project-section {
+  margin-top: 2rem;
+}
+.project-list {
+  /* two columns in grid */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+</style>

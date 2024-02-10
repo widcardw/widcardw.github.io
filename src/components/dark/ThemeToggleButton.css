@@ -1,0 +1,10 @@
+.input-theme {
+    display: none;
+}
+
+.input-theme+label {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+}

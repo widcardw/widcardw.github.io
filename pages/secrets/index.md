@@ -1,3 +1,0 @@
-## Secrets
-
-<ListPosts prefix="/secrets" />

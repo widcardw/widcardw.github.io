@@ -1,0 +1,49 @@
+---
+import { Sketch } from "./component";
+export interface Props {
+  frag: string;
+  width?: number;
+  height?: number;
+  fixUVenabled?: boolean;
+  fixUVratio?: number;
+  enableMouse?: boolean;
+  showSourceCode?: boolean;
+}
+
+const {
+  frag,
+  width = 200,
+  height = 200,
+  fixUVenabled = false,
+  fixUVratio = -1,
+  enableMouse = false,
+  showSourceCode = false,
+} = Astro.props;
+---
+
+<div style={{ display: "flex", "justify-content": "center", 'margin': '1rem auto' }}>
+  <Sketch
+    frag={frag}
+    width={width}
+    height={height}
+    fixUV={{
+      enabled: Boolean(fixUVenabled),
+      ratio: Number(fixUVratio),
+      mouse: Boolean(enableMouse),
+    }}
+    client:only="solid-js"
+  />
+</div>
+
+{
+  showSourceCode && (
+    <details class="callout example">
+      <summary class="callout-title">
+        <div class="callout-icon" />
+        <div>展开源码</div>
+        <div class="callout-fold" />
+      </summary>
+      <slot />
+    </details>
+  )
+}

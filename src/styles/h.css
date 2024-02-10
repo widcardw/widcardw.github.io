@@ -1,0 +1,39 @@
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+    position: absolute;
+    color: #7f7f7f50;
+    transform: translateX(-120%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+h2::before {
+    content: 'h2';
+}
+
+h3::before {
+    content: "h3";
+}
+
+h4::before {
+    content: "h4";
+}
+
+h5::before {
+    content: "h5";
+}
+
+h6::before {
+    content: "h6";
+}
+
+h2:hover::before,
+h3:hover::before,
+h4:hover::before,
+h5:hover::before,
+h6:hover::before {
+    opacity: 1;
+}

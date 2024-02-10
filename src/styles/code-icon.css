@@ -1,0 +1,18 @@
+.code-icon {
+    display: inline-block;
+    outline: 1px dotted #777;
+    border-radius: 0.1rem;
+    padding: 0 0.1rem;
+    font-size: 0.85rem;
+}
+
+.code-icon>svg {
+    width: 16px;
+    height: 16px;
+    margin-bottom: -0.2rem;
+}
+
+.code-icon-text {
+    margin-left: 0.1rem;
+    font-family: var(--font-mono);
+}

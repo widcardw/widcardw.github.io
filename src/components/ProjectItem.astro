@@ -1,0 +1,53 @@
+---
+export interface Props {
+  icon: string;
+  title: string;
+  desc: string;
+  link: string;
+  img?: string;
+}
+import { Icon } from "astro-icon/components";
+
+const { icon, title, desc, link, img } = Astro.props;
+---
+
+<!-- add a project card -->
+<a href={link} target="_blank" class="project-item">
+  <div class="project-image">
+    {
+      img 
+      ? (<img src={img} alt={title} />) 
+      : (<Icon class="project-icon" name={icon} />)
+    }
+  </div>
+  <div class="project-info">
+    <div class="project-title">{title}</div>
+    <div class="project-desc">{desc}</div>
+  </div>
+</a>
+
+<style>
+  .project-item {
+    display: flex;
+    padding: 1rem;
+  }
+  .project-item:hover {
+    background-color: #7f7f7f18;
+  }
+  .project-image {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1rem;
+  }
+  .project-icon {
+    width: 4rem;
+    height: 4rem;
+  }
+  .project-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  .project-desc {
+    font-size: 1rem;
+  }
+</style>
