@@ -1,10 +1,12 @@
 ---
 title: updater 文档 | 第 1 章 前置知识
 pubDate: 2022-06-30
-tags: ['manim','updater','教程']
+tags:
+  - manim
+  - updater
+  - 教程
 category: manim
-article: true
-description: '从 Mobject 到 Animation 再到 Scene，分析 manim 是如何构建动画的'
+description: 从 Mobject 到 Animation 再到 Scene，分析 manim 是如何构建动画的
 ---
 
 

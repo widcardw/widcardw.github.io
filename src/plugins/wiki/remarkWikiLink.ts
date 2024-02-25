@@ -16,12 +16,8 @@ function remarkWikiLink(opts: RemarkWikiLinkOptions = {}) {
 
   if (
     !warningIssued &&
-    ((this.Parser &&
-      this.Parser.prototype &&
-      this.Parser.prototype.blockTokenizers) ||
-      (this.Compiler &&
-        this.Compiler.prototype &&
-        this.Compiler.prototype.visitors))
+    ((this.Parser?.prototype?.blockTokenizers) ||
+      (this.Compiler?.prototype?.visitors))
   ) {
     warningIssued = true;
     console.warn(

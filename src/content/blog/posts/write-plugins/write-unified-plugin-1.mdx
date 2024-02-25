@@ -1,17 +1,22 @@
 ---
-title: 如何编写 remark 和 rehype 插件　
+title: 如何编写 unified 插件 (1) remark
 pubDate: 2023-07-14
-updatedDate: 2024-02-10
-category: 'markdown'
-tags: ['markdown', 'remark', 'rehype', 'unified', 'mdx']
-description: 官方文档给的示例真少，我都不知道该怎么搞才好
+updatedDate: 2024-02-11
+category: markdown
+tags:
+  - markdown
+  - remark
+  - rehype
+  - unified
+  - mdx
+description: 官方文档给了示例，只是需要我们非常仔细地去找才能找到，同时这类插件本身就比较难写，所以还是值得整理一下的。本篇进行一些基本介绍和简单 remark 插件编写的引入。
 ---
 
 ## 前言
 
 Markdown 有众多的编译器，例如前面提到了 markdown-it，marked.js，以及基于 python 的 mkdocs 等等。这些工具都能将标准的 markdown 文件翻译为对应的 html 代码。
 
-而 unified 组织尝试开发了一套更加通用的 markdown 工具，能够让 markdown，语法分析树，html 代码相互无缝转换，其中的桥梁就是==语法分析树==。
+而 unified 组织尝试开发了一套通用的 markdown 工具，能够让 markdown，语法分析树，html 代码相互无缝转换，其中的桥梁就是==语法分析树==。
 
 然而呢，浏览 unified 所创建的框架，下面主要包含的就有三个小组织：remark, syntax-tree, rehype。另外，还有不少官方维护者创建的民间小组织，例如 micro-mark, mdast 等等。这么一看，确实乱糟糟的，与之前写的 markdown-it 来比，不说难以弄清，至少也是无从下手。
 
@@ -63,8 +68,6 @@ unified
 
 ### html to markdown
 
-说实话这部分应该相当不常用。
-
 ```js ins={4}
 unified
   .use(rehypeParse)
@@ -78,17 +81,21 @@ unified
 
 ## 插件编写方式
 
-目前 remark 插件的编写方式似乎主要有两种。一种是由 worm 主导的 JSDoc，`enter` & `exit` 写法，另一种是写起来更方便的 `visit` 写法。
+目前 remark 插件的编写方式似乎主要有两种。一种是由 wooorm 主导的 JSDoc，`enter` & `exit` 写法，这种方式诞生于其生态中的 [micromark](https://github.com/micromark/micromark) 模块，将 markdown 转换为 tokens，然后经过 mdast-util 转换为 mdast 中的节点。
+
+另一种是写起来更方便的 `visit` 写法。仅仅通过 `unist-util-visit` 这个模块中的 `visit` 方法，在遍历语法树的同时，更改树上的节点，从而影响下游的生成结果。该部分来源于 unifiedjs 官网给出的一个[教程](https://unifiedjs.com/learn/guide/create-a-plugin/)。
 
 rehype 插件的编写方式主要就是通过 `visit` 方法遍历语法树，对特殊节点进行特殊处理。
 
 ## remark 插件
 
-由于 `enter` & `exit` 的编写方式过于困难，所以这里就只使用 `visit` 方式了。
+本篇先讨论如何使用 `visit` 方式编写 remark 插件，后续将会补充如何使用 micromark 编写插件。
+
+这里给出一个参考：[`@widcardw/remark-callouts`](https://github.com/widcardw/remark-callouts)，是一个比较标准的，纯粹使用 `visit` 方法来编写的 remark 插件。
 
 ### 插件主体
 
-我发现，可以用一个比较好的模板，只需编写 `visitBlock` 方法即可完成节点的修改了。
+我发现，可以用一个比较好的模板，只需编写 `visitBlock` 方法即可完成节点的修改了。只需将这个函数导出，即可作为一个插件。
 
 ```ts {3}
 export function plugin() {
@@ -112,6 +119,8 @@ import type { BuildVisitor } from 'unist-util-visit'
 function visitBlock(ast) {
   const visitor: BuildVisitor<Mdast, 'element_type'> = (node, index, parent) => {
     // ...
+    // const newWrapper = { ... }
+    // parent.children.splice(index, 1, newWrapper)
   }
   return visit(ast, 'element_type', visitor)
 }
@@ -122,8 +131,6 @@ function visitBlock(ast) {
 ```ts
 parent.children.splice(index, 1, newWrapper)
 ```
-
-> 不会还有人不知道 `splice` 的作用吧
 
 ### 节点编辑
 
@@ -159,9 +166,6 @@ const n = {
 }
 ```
 
-这样的一个节点对应的就是包含 `class` 为 `color-red` 的 `span` 元素，文本内容是 `abc`。
+这样的一个节点对应的就是包含 `class` 为 `color-red` 的 `span` 元素，文本内容是 `abc`。这样的 JS 对象与 HTML 中的 DOM 可以相互转换。接着，利用上述 `splice` 方法，将新的节点插入到相应的位置，即可完成对节点树的修改。
 
-## rehype 插件的编写
-
-
-
+通过上述的流程，我们可以在一个 `/ico vscode-icons:file-type-typescript-official;index.ts` 文件中，快速地实现一个插件的功能。

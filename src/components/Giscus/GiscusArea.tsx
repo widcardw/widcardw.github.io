@@ -1,5 +1,12 @@
-import { createSignal, type Component, onMount, Show, createEffect, onCleanup } from "solid-js";
-import { colorTheme } from "../dark/ThemeToggle";
+import {
+  createSignal,
+  type Component,
+  onMount,
+  Show,
+  createEffect,
+  onCleanup,
+} from 'solid-js'
+import { colorTheme } from '../dark/ThemeToggle'
 
 interface GiscusProps {
   id: string
@@ -19,8 +26,7 @@ interface GiscusProps {
 const GiscusArea: Component<GiscusProps> = (props) => {
   const [mounted, setMounted] = createSignal(false)
   createEffect(() => {
-    if (mounted())
-      return
+    if (mounted()) return
     import('giscus')
     setMounted(true)
   })
@@ -46,9 +52,9 @@ const GiscusArea: Component<GiscusProps> = (props) => {
 
   return (
     <>
-      <div 
-        ref={r => setTarget(r)} 
-        style={{ 'margin': '4rem auto', 'max-width': '15rem' }}
+      <div
+        ref={(r) => setTarget(r)}
+        style={{ margin: '4rem auto', 'max-width': '15rem' }}
       />
       <Show when={mounted() && visible()}>
         {/* @ts-expect-error giscus web component type error */}
@@ -72,10 +78,6 @@ const GiscusArea: Component<GiscusProps> = (props) => {
   )
 }
 
-export {
-  GiscusArea,
-}
+export { GiscusArea }
 
-export type {
-  GiscusProps,
-}
+export type { GiscusProps }

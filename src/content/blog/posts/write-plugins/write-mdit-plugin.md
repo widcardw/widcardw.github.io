@@ -1,9 +1,12 @@
 ---
-title: 如何编写 Markdown-it 插件
+title: 如何编写 markdown-it 插件
 pubDate: 2023-02-27
-category: 'markdown'
-tags: ['markdown-it', 'plugins']
-description: 仅仅作为一份参考，详细的信息还是去看官方文档吧　
+category: markdown
+tags:
+  - markdown-it
+  - plugins
+description: 作为一份 markdown-it 插件编写的参考，引导新手认识这一生态和里面可以做修改的属性
+updatedDate: 2024-02-14
 ---
 
 ## 前言
@@ -45,6 +48,8 @@ Markdown-it 对于 markdown 的处理是基于 token stream 的，因此想要�
 >   "hidden": true
 > }
 > ```
+> 
+> 其对应的 HTML 就是 `<p>`，如果 `attrs` 中有值，则将会作为这个标签的属性。
 
 上面这个样例中，`type` 字段表明当前 token 的类型，同时也解答了[官方给的插件案例](https://github.com/markdown-it/markdown-it/blob/master/docs/examples/renderer_rules.md)中，莫名其妙冒出来的 `bullet_list_open` 是从哪来的。也就是说，只需要在 demo 网站上编写 markdown，转到 debug 标签栏，就可以查看当前 token 的类型，即可按照官方案例那样进行修改了。
 
@@ -286,7 +291,7 @@ markdown-it 插件的生态还是相当丰富的，在 https://npmjs.com 搜索�
 
 ### 基于 Code Block 的插件
 
-这类插件还是非常丰富的，包括 [`markdown-it-prism`](https://github.com/jGleitz/markdown-it-prism), [`markdown-it-shiki`](https://github.com/antfu/markdown-it-shiki), [`markdown-it-mermaid`](https://www.npmjs.com/package/@wekanteam/markdown-it-mermaid) 等等。
+这类插件还是非常丰富的，包括 [`markdown-it-prism`](https://github.com/jGleitz/markdown-it-prism), [`markdown-it-shiki`](https://github.com/antfu/markdown-it-shiki), [`markdown-it-mermaid`](https://www.npmjs.com/package/@wekanteam/markdown-it-mermaid) 等等。它们的共同特征就是扩展了 code block 的语法，通过识别当前代码块的语言，从而进行自定义的预处理。
 
 #### 代码高亮插件
 
@@ -315,7 +320,7 @@ const MarkdownItShiki: MarkdownIt.PluginWithOptions<Options>
 
 ![[_public/md-plugins/fence-processor.excalidraw.svg]]
 
-一旦涉及到更改原有的函数，我们又不可能考虑的非常全面，因此就需要保存原生的元然函数作为 fallback.
+一旦涉及到更改原有的函数，我们又不可能考虑的非常全面，因此就需要保存原生的渲染函数作为 fallback.
 
 ```ts
 const defaultRenderer = md.renderer.rules.fence!.bind(md.renderer.rules)
@@ -478,11 +483,11 @@ declare class StateBlock {
   tokens: Token[]
 
   /**
-   * 行首的索引
+   * 行首的索引，即每行第一个字符在 src 中的 index
    */
   bMarks: number[]
   /**
-   * 行尾的索引
+   * 行尾的索引，即每行最后一个字符在 src 中的 index
    */
   eMarks: number[]
   /**
@@ -499,7 +504,7 @@ declare class StateBlock {
    */
   line: number
   /**
-   * 行数
+   * 总行数
    */
   lineMax: number
 
@@ -531,12 +536,16 @@ const max = state.eMarks[lineNum]
 
 ## 作业
 
-有了这些基础，我相信读者应该也有一定的能力依葫芦画瓢写一个插件了，那么就布置一个作业吧。
+有了这些基础，我相信读者应该也有一定的能力依葫芦画瓢写一个插件了，那么就布置个作业吧。
 
-> [!question] 作业
+> [!question] 作业 1
 >
 > 编写一个 `wikilink` 的 markdown-it 插件，能够将 `![[./abc.png]]` 这种链接翻译为 `<img src='./abc.png' />`，同时也能够适配视频和音频，分别生成 `<video>` 和 `<audio>` 标签的元素。
 >
 > 作业答案可以参考 https://github.com/widcardw/mdit-plg-double-bracket-media
 
+> [!question] 作业 2
+> 编写一个 `callouts` 的 markdown-it 插件，能够将 Obsidian 的 Callouts 语法，翻译为带标题和内容的一个自定义块。要求标题和内容能够满足：标题中可以渲染诸如行内代码、数学公式（依靠已有的 markdown-it-katex 插件）等，内容中支持 markdwon 元素渲染、Callouts 的嵌套等功能。
+> 
+> 作业答案可以参考 [mdit-plugin-callouts](https://github.com/widcardw/mdit-plugin-callouts)，支持嵌套的难度可能稍大，可以留意 `state.md.block.tokenize` 方法。
 

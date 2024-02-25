@@ -1,9 +1,14 @@
 ---
-title: MongoDB Writeup
+title: MongoDB 基本使用记录
 pubDate: 2022-05-25
-category: '数据库'
-tags: ['MongoDB', '数据库', 'NoSQL']
-description: MongoDB 基本使用的说明
+category: 数据库
+tags:
+  - MongoDB
+  - 数据库
+  - NoSQL
+  - Database
+description: MongoDB 基本使用的说明，大部分内容来自 runoob
+updatedDate: 2022-05-25
 ---
 
 

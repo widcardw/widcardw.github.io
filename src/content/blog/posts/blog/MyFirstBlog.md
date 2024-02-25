@@ -1,11 +1,10 @@
 ---
 title: 第一篇博客
 pubDate: 2020-10-07
-tags: 
+tags:
   - 日常
 category: 杂物箱
-article: true
-description: '自我介绍'
+description: 自我介绍
 ---
 
 ## Self Introduction

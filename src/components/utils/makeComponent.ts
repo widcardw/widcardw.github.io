@@ -1,9 +1,9 @@
 // borrowed from astro documentation
-import type { BlockContent } from 'mdast';
-import type { MdxJsxAttribute, MdxJsxFlowElement } from 'mdast-util-mdx-jsx';
+import type { BlockContent } from 'mdast'
+import type { MdxJsxAttribute, MdxJsxFlowElement } from 'mdast-util-mdx-jsx'
 
 interface NodeProps {
-  attributes?: Record<string, string | boolean | number | undefined | null>;
+  attributes?: Record<string, string | boolean | number | undefined | null>
 }
 
 /**
@@ -30,5 +30,5 @@ export function makeComponentNode(
         value: value as MdxJsxAttribute['value'],
       })),
     children,
-  };
+  }
 }

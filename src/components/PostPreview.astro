@@ -4,14 +4,50 @@ import FormattedDate from "./FormattedDate.astro";
 
 type Props = {
   post: CollectionEntry<"blog">;
+  withTags?: boolean;
   withDesc?: boolean;
 };
 
-const { post } = Astro.props;
+const { post, withTags = false, withDesc = false } = Astro.props;
 const postDate = post.data.updatedDate ?? post.data.pubDate;
 ---
 
-<div class="line-1">
+<div>
+  {post.data.draft && <span class="draft">(Draft)</span>}
+  <a href={`/blog/${post.slug}/`}>{post.data.title.trim()}</a> ·
+  <FormattedDate date={postDate} style={{ opacity: 0.4, fontSize: "0.85em" }} />
+  {withDesc && <i>{post.data.description}</i>}
+  {
+    withTags && post.data.tags && (
+      <div>
+        {post.data.tags.map((tag) => (
+          <>
+            <code>#{tag}</code>{" "}
+          </>
+        ))}
+      </div>
+    )
+  }
+</div>
+
+<style>
+  i {
+    font-size: 0.85em;
+    color: var(--text-color-sec);
+    display: block;
+  }
+
+  .draft {
+    font-size: 0.85em;
+    color: var(--accent);
+  }
+
+  code {
+    font-size: 0.75em;
+  }
+</style>
+
+<!-- <div class="line-1">
   <div class="title">
     <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
   </div>
@@ -41,7 +77,7 @@ const postDate = post.data.updatedDate ?? post.data.pubDate;
   .tags-line {
     display: flex;
     gap: 0.5rem;
-    font-size: 0.85rem;
+    font-size: 0.85em;
   }
   .description {
     color: var(--text-color-sec);
@@ -49,4 +85,4 @@ const postDate = post.data.updatedDate ?? post.data.pubDate;
   a {
     text-decoration: none;
   }
-</style>
+</style> -->

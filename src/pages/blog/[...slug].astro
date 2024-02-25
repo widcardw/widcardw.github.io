@@ -1,18 +1,18 @@
 ---
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
-import { GiscusArea } from '~/components/Giscus/GiscusArea'
-import { GISCUS } from '~/consts'
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+import { GiscusArea } from "~/components/Giscus/GiscusArea";
+import { GISCUS } from "~/consts";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection("blog");
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: post,
   }));
 }
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await post.render();
@@ -20,37 +20,50 @@ const { Content } = await post.render();
 
 <BlogPost {...post.data}>
   <Content />
-  {GISCUS.enabled && (
-    <GiscusArea
-      id={GISCUS.id}
-      term={GISCUS.term}
-      repo={GISCUS.repo}
-      repoId={GISCUS.repoId}
-      category={GISCUS.category}
-      categoryId={GISCUS.categoryId}
-      mapping={GISCUS.mapping}
-      reactionsEnabled={GISCUS.reactionsEnabled}
-      emitMetadata={GISCUS.emitMetadata}
-      inputPosition={GISCUS.inputPosition}
-      lang={GISCUS.lang}
-      loading={GISCUS.loading}
-      client:only="solid-js"
-    />
-  )}
+  {
+    post.data.tags && post.data.tags.map((tag) => (
+        <>
+          <code>#{tag}</code>{" "}
+        </>
+      ))
+  }
+  {
+    GISCUS.enabled && (
+      <GiscusArea
+        id={GISCUS.id}
+        term={GISCUS.term}
+        repo={GISCUS.repo}
+        repoId={GISCUS.repoId}
+        category={GISCUS.category}
+        categoryId={GISCUS.categoryId}
+        mapping={GISCUS.mapping}
+        reactionsEnabled={GISCUS.reactionsEnabled}
+        emitMetadata={GISCUS.emitMetadata}
+        inputPosition={GISCUS.inputPosition}
+        lang={GISCUS.lang}
+        loading={GISCUS.loading}
+        client:only="solid-js"
+      />
+    )
+  }
 </BlogPost>
 
 <script type="module">
-  if (document.querySelector('.mermaid')){
+  if (document.querySelector(".mermaid")) {
     // @ts-expect-error import lib from cdn
-    const mermaid = (await import('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.4.0/mermaid.min.js')).default
-    mermaid.initialize({ 
+    const mermaid = (
+      await import(
+        "https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.4.0/mermaid.min.js"
+      )
+    ).default;
+    mermaid.initialize({
       startOnLoad: false,
-    })
+    });
     mermaid.run().then(() => {
-      const els = document.querySelectorAll('.mermaid')
+      const els = document.querySelectorAll(".mermaid");
       for (const el of els) {
-        el.classList.remove('loading')
+        el.classList.remove("loading");
       }
-    })
+    });
   }
 </script>

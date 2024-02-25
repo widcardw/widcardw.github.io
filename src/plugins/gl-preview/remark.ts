@@ -1,13 +1,13 @@
 import { visit } from 'unist-util-visit'
 import type { BuildVisitor } from 'unist-util-visit'
 import type { BlockContent, Root, Parent } from 'mdast'
-import type { AstroIntegration } from 'astro';
-import { makeComponentNode } from '../../components/utils/makeComponent';
+import type { AstroIntegration } from 'astro'
+import { makeComponentNode } from '../../components/utils/makeComponent'
 
 export const P5GlSketchTagname = 'AutoImportedP5GlSketch'
 export const sketchAutoImport: Record<string, [string, string][]> = {
   '~/components/Sketch/index.astro': [['default', P5GlSketchTagname]],
-};
+}
 
 function visitBlock(ast: Root) {
   const visitor: BuildVisitor<Root, 'code'> = (node, index, parent) => {
@@ -15,7 +15,8 @@ function visitBlock(ast: Root) {
     if (parent === null || index === null) return
     const { lang, meta, value } = node
     if (lang !== 'glsl' || !meta?.startsWith('preview')) return
-    let width = 0, height = 0
+    let width = 0
+    let height = 0
     meta.replace(/w=(\d+) h=(\d+)/, (_, w: string, h: string) => {
       width = Number(w)
       height = Number(h)
@@ -46,14 +47,15 @@ function visitBlock(ast: Root) {
       {
         attributes: {
           frag: value,
-          width, height,
+          width,
+          height,
           fixUVenabled: ratio !== -1,
           fixUVratio: ratio,
           enableMouse,
           showSourceCode,
-        }
+        },
       },
-      node
+      node,
     )
     parent?.children.splice(Number(index), 1, newNode)
   }
@@ -63,8 +65,7 @@ function visitBlock(ast: Root) {
 export function remarkTransformGlSketch() {
   return function transformer(ast: Root, vFile: any, next: any) {
     visitBlock(ast)
-    if (typeof next === 'function')
-      return next(null, ast, vFile)
+    if (typeof next === 'function') return next(null, ast, vFile)
     return ast
   }
 }
@@ -78,9 +79,8 @@ export function astroGlSketch(): AstroIntegration {
           markdown: {
             remarkPlugins: [remarkTransformGlSketch],
           },
-        });
+        })
       },
     },
-  };
+  }
 }
-

@@ -3,13 +3,13 @@
     outline: 1px dotted #777;
     border-radius: 0.1rem;
     padding: 0 0.1rem;
-    font-size: 0.85rem;
+    font-size: 0.85em;
 }
 
 .code-icon>svg {
     width: 16px;
     height: 16px;
-    margin-bottom: -0.2rem;
+    margin-bottom: -0.15rem;
 }
 
 .code-icon-text {

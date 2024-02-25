@@ -1,9 +1,11 @@
 ---
 title: updater 文档 | 第 2 节 基本使用
 pubDate: 2022-07-01
-tags: ['manim','updater','教程']
+tags:
+  - manim
+  - updater
+  - 教程
 category: manim
-article: true
 description: updater 难道不是和 up 约会的人吗？
 ---
 

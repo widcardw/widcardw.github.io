@@ -1,10 +1,12 @@
 ---
 title: updater 文档 | 第 4 节 Alpha 在动画中的作用
 pubDate: 2022-07-03
-tags: ['manim','updater','教程']
+tags:
+  - manim
+  - updater
+  - 教程
 category: manim
-article: true
-description: '从数学的角度了解补间'
+description: 从数学的角度了解补间
 ---
 
 ## 碎碎念

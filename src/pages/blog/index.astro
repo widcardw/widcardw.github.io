@@ -1,15 +1,12 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import { getCollection } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
-import PostPreview from '../../components/PostPreview.astro'
+import BaseHead from "~/components/BaseHead.astro";
+import Header from "~/components/Header.astro";
+import Footer from "~/components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "~/consts";
+import PostPreview from "~/components/PostPreview.astro";
+import { getAllPosts, sortMDByDate } from "~/utils/getAllPosts";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => -a.data.pubDate.valueOf() + b.data.pubDate.valueOf(),
-);
+const posts = sortMDByDate(await getAllPosts());
 ---
 
 <!doctype html>
@@ -30,19 +27,21 @@ const posts = (await getCollection("blog")).sort(
         transition: 0.2s ease;
       }
       ul li {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
       }
     </style>
   </head>
   <body>
     <Header />
     <main>
+      <h1>Blogs</h1>
+      <hr />
       <section>
         <ul>
           {
             posts.map((post) => (
               <li>
-                <PostPreview post={post} withDesc={true} />
+                <PostPreview post={post} withDesc withTags />
               </li>
             ))
           }

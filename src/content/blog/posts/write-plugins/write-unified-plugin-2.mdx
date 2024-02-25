@@ -1,0 +1,137 @@
+---
+title: 如何编写 unified 插件 (2) remark
+pubDate: 2024-02-11
+updatedDate: 2024-02-12
+tags:
+  - remark
+  - markdown
+  - unified
+  - mdx
+description: 接着上一篇，讲一讲 unified 生态，以及如何使用 enter & exit 方式来编写 remark 插件
+draft: true
+---
+
+## 回顾
+
+前面提到了用 `visit` 方法来修改节点树，从而编写一个 remark 插件。本文将从之前所述的另一种方法，来阐述一下 micromark 生态以及用这一个模块来编写插件的方法。
+
+以下为 Unified 中处理 markdown 的一个整个流程，一个 processor 中包含 parser, transformer(s), compiler. 
+
+```
+| ........................ process ........................... |
+| .......... parse ... | ... run ... | ... stringify ..........|
+
+          +--------+                     +----------+
+Input ->- | Parser | ->- Syntax Tree ->- | Compiler | ->- Output
+          +--------+          |          +----------+
+                              X
+                              |
+                       +--------------+
+                       | Transformers |
+                       +--------------+
+```
+
+对于使用下面的语句来进行 markdown to HTML 的转换的过程
+
+```ts {2,6}
+unified
+  .use(remarkParse)
+  .use(remarkPlugin) // remark 插件
+  .use(remarkRehype)
+  .use(rehypePlugin) // rehype 插件
+  .use(rehypeStringify)
+  .processSync('# Hello world')
+```
+
+- remarkParse 充当 parser 的身份，将文本转换为 AST
+- rehypeStringify 充当 compiler 的身份，将 AST 转换为字符串
+- 其他插件均可认为是 transformer
+
+## 从 RK 处得到的帮助
+
+我在 Bing 上搜索 remark-wikilink，偶然中发现了一篇最近几个月前才写的博客[^1]。这篇文章介绍了一些 unified 的生态，也为我理解这一系列内容提供了一些帮助。在阅读了 Ta 编写的 [remark-callout](https://github.com/rk-terence/gz-remark-callout) 插件后，感觉这位作者对这一生态是比较了解的，故通过邮件，得到了以下参考：
+
+- ==Mdast== is the AST of markdown, write a parser plugin that generates [mdast](https://github.com/syntax-tree/mdast).
+- You should know ==micromark==. [Creating a micromark extension](https://github.com/micromark/micromark?tab=readme-ov-file#creating-a-micromark-extension) is of great help.
+- After the micromark plugin generates tokens, ==mdast-util== can transform tokens into your customized mdast nodes by adding extra attributes to your nodes.
+- [Micromark common state machine](https://github.com/micromark/common-markup-state-machine) may be helpful when you are implementing your own state machine.
+
+[^1]: 这位作者是 [rk-terence](https://github.com/rk-terence/gz-remark-callout)，在此表示对该作者的感谢。博客原文：[编写 remark 插件实现自定义扩展语法](https://gzcloudhome.cn/posts/write-remark-plugin-to-customize-syntax/)
+
+## Unified 生态
+
+> 完整的生态建议查看 unified 官方 [README](https://github.com/unifiedjs/unified)
+
+由 unified 主导的组织有
+
+- [remark](https://github.com/remarkjs) 能够对 markdown 和 mdast 进行监测和修改，主导了 remark 插件
+- [syntax-tree](https://github.com/syntax-tree) 为语法分析树奠定基础，定义了 unist，并衍生出 mdast, hast, nlcst, esast 等。这个系列还包含了 mdast-util 和 hast-util
+- [rehype](https://github.com/rehypejs) 能够对 HTML 和 hast 进行监测和修改，主导了 rehype 插件
+- [retext](https://github.com/retextjs) 对英文自然语言进行一些分析
+- [micromark](https://github.com/micromark) 最小的通用 markdown 编译器，是 unified 新的基础
+
+在 micromark 出现后，我们依然可以使用 `unist-util-visit` 来对语法树进行修改，但是使用基于 micromark 的插件也拥有其优势。在代码结构上，虽然看起来更加复杂了，但是能够从 enter & exit 的角度，更加细粒度地修改语法树。同时，在阅读其源码中，也发现了 `toMarkdown` 和 `fromMarkdown` 的区分，使其能够从 AST 恢复到 markdown 的原始样貌。
+
+### 调用关系
+
+如果参考 remark-gfm 插件，会发现这里面引用的关系有点过于复杂。所以还是从一个稍微简单一点的 remark-math 中来看这几位之间的关系吧。
+
+- [remark-math](https://github.com/remarkjs/remark-math/blob/main/packages/remark-math/lib/index.js)
+	- 引用了 mdast-util-math 中的 `mathFromMarkDown` 和 `mathToMarkdown` 方法
+	- 引用了 micromark-extension-math 的 `math`
+	- 将这些程序分别加入到 remark 程序中的 `fromMarkdownExtensions`, `toMarkdownExtensions`, `micromarkExtensions` 中
+- [mdast-util-math](https://github.com/syntax-tree/mdast-util-math)
+	- fromMarkdown 返回了一个对象，其中包含了 `enter` 和 `exit` 对象
+		- `enter` 包含了进入某类节点的处理函数，过程中会指定对应语法树节点的一些属性
+		- `exit` 包含了退出某类节点的处理函数，当退出该节点时，在函数的成员方法中可以获取到节点内容的值
+	- toMarkdown 返回一个对象，其中包含了 `unsafe` 和 `handlers` 属性
+		- `unsafe` 包含了转换回 markdown 所需的字符和所属的阶段
+		- `handlers` 包含了转换回 markdown 的函数处理
+	- `/ico vscode-icons:file-type-typescript-official;index.d.ts` 类型说明文件中，指定了新规则的数据类型
+- [micromark-extension-math](https://github.com/micromark/micromark-extension-math)
+	- `/ico vscode-icons:file-type-js-official;syntax.js` 指定了从 markdown 转换为 AST 的函数
+	- `/ico vscode-icons:file-type-js-official;html.js` 指定了从 AST 转换为 HTML 的函数
+	- `/ico vscode-icons:file-type-typescript-official;index.d.ts` 指定了新的 `TokenTypeMap`
+
+### Micromark[^2]
+
+[^2]: 该部分信息来自 https://github.com/micromark/micromark#micromark
+
+Micromark 可以提供直接从 markdown 转换为 HTML 的功能，也可以获取每个 token 的详细信息，做细粒度的操作。作者说 micromark 是一个比较新的库，而且整个包很小，在 Common Mark 标准和包大小的层面上拥有优势。
+
+Remark 是建立在 micromark 和 AST 上的，remark 支持所有 micromark 的扩展，因此有很多基于 micromark 的插件，都会包装到 remark 上。
+
+Micromark 的插件包含 Syntax Extension 和 Html Extension 两类，前者指定了 markdown 如何解析，后者指定了最终编译为什么样的 HTML. 
+
+#### 编写 remark 插件的其他思路 · remark-directive
+
+同时，micromark 的主页建议我们，对于一些有特殊要求的，建议通过 [`remark-directive`](https://github.com/remarkjs/remark-directive) 插件来实现，从而避免从头开始写一个插件。
+
+`remark-directive` 是通过识别 `:name[attribute]` 的格式，然后自定义的编写一个非常简单的，通过 `visit` 来修改语法树的 remark 插件，来满足需求。关于如何使用 `visit` 来编写插件，`remark-directive` 插件的主页有编写指南，也可以参考笔者的上一篇博客。
+
+> 如果读者的需求比较简单，则本文阅读到此处即可。但我相信依然有硬着头皮继续研究的开发者，想要一探到底，那么我们继续。
+
+在 [create a micromark extension](https://github.com/micromark/micromark#creating-a-micromark-extension) 部分，需要有以下的预备知识
+
+> - 相当熟悉 JavaScript
+> - 阅读 [unified](https://github.com/unifiedjs/unified) 的 README 到 API 部分前，以便能够更好地理解 micromark 适用于哪里
+> - 阅读 [micromark#Architecture](https://github.com/micromark/micromark#architecture) 部分，以理解 micromark 如何运作
+> - 阅读 [micromark#Extending-markdown](https://github.com/micromark/micromark#extending-markdown) 部分，以确定扩展 markdown 的语法是否有意义
+
+### mdast-util
+
+
+
+## 如何编写 remark 插件
+
+这里给出一个使用 micromark 生态编写的插件：[`remark-callout`](https://github.com/rk-terence/gz-remark-callout)，可以与上一篇文章中所提到的的插件 [`@widcardw/remark-callouts`](https://github.com/widcardw/remark-callouts) 进行一下对比。
+
+
+
+- https://github.com/micromark/micromark#architecture
+- https://github.com/micromark/micromark/blob/main/packages/micromark/dev/lib/constructs.js
+- https://github.com/micromark/micromark-extension-math/blob/main/dev/lib/math-flow.js
+- https://github.com/micromark/micromark-extension-gfm-strikethrough/blob/main/dev/lib/syntax.js
+- https://github.com/syntax-tree/mdast-util-math/blob/main/index.d.ts
+- https://github.com/micromark/common-markup-state-machine/tree/main/build
+- https://github.com/micromark/micromark/blob/main/packages/micromark/dev/lib/constructs.js

@@ -1,12 +1,13 @@
 ---
 interface Props {
   date: Date;
+  style?: string | astroHTML.JSX.CSSProperties;
 }
 
-const { date } = Astro.props;
+const { date, style = '' } = Astro.props;
 ---
 
-<time datetime={date.toISOString()}>
+<time datetime={date.toISOString()} style={style}>
   {
     date.toLocaleDateString('en-us', {
       year: 'numeric',

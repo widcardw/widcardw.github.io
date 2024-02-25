@@ -1,14 +1,26 @@
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from 'astro:content'
 
-export async function getAllPosts() {
+export async function getAllPosts(): Promise<Array<CollectionEntry<'blog'>>> {
   return await getCollection('blog')
 }
 
-export async function getSortedPosts() {
-  const posts = await getAllPosts();
+export async function getSortedPosts(): Promise<
+  Array<CollectionEntry<'blog'>>
+> {
+  const posts = await getAllPosts()
   return posts.sort((a, b) => {
-    return new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf();
-  });
+    return (
+      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+    )
+  })
+}
+
+export function sortMDByDate(posts: Array<CollectionEntry<'blog'>>) {
+  return posts.sort((a, b) => {
+    const aDate = new Date(a.data.updatedDate ?? a.data.pubDate).valueOf()
+    const bDate = new Date(b.data.updatedDate ?? b.data.pubDate).valueOf()
+    return bDate - aDate
+  })
 }
 
 export function getAllTags(posts: Array<CollectionEntry<'blog'>>) {

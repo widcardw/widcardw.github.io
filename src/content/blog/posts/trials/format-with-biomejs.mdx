@@ -1,0 +1,58 @@
+---
+title: 使用 biomejs 进行代码格式化
+pubDate: 2024-02-21
+updatedDate: 2024-02-21
+tags:
+  - formatter
+  - linter
+description: Biomejs 支持的语言有 JS, TS, JSX, JSON, JSONC，那么以后 React 和 Solidjs 的工程就可以直接用这个来格式化了。Vue, Svelte, Astro 的支持还在跟进，还是挺期待的。
+---
+
+## 前言
+
+很久以前写了一个专门用于 JSX 的 eslint plugin，主要是应用于 Solidjs 的项目，但依然有很多不满意的地方，甚至经常会出现 BUG，那就直接不用了吧。
+
+## 配置
+
+在工程的根目录下创建 `/ico vscode-icons:file-type-json;biome.json`，下面是我的配置。
+
+```json
+{
+	"$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		}
+	},
+	"formatter": {
+		"indentStyle": "space",
+		"indentWidth": 2
+	},
+	"javascript": {
+		"formatter": {
+			"semicolons": "asNeeded",
+			"quoteStyle": "single"
+		}
+	}
+}
+```
+
+完成后，在 `/ico vscode-icons:file-type-json;packages.json` 中，增加一条运行脚本：
+
+```json
+{
+	"scripts": {
+		"format": "pnpm dlx @biomejs/biome format --write"
+	}
+}
+```
+
+即可通过下面的命令行来执行格式化了。
+
+```sh
+pnpm run format ./src
+```

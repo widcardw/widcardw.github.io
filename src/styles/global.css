@@ -159,7 +159,7 @@ img {
 
 code {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.85em;
   padding: 2px 5px;
   background-color: var(--code-bg);
   color: var(--text-color);
@@ -307,4 +307,9 @@ button:hover {
   margin: 2rem auto;
   content: '';
   border-bottom: 1px solid #777;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
 }

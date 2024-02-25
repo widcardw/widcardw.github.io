@@ -5,9 +5,9 @@ import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import SocialLinks from "~/components/SocialLinks.astro";
 import { getSortedPosts } from "~/utils/getAllPosts";
-import PostPreviewSimple from "~/components/PostPreviewSimple.astro";
+import PostPreview from "~/components/PostPreview.astro";
 
-const MAX_POSTS = 5;
+const MAX_POSTS = 10;
 const sortedPosts = await getSortedPosts();
 const shownPosts = sortedPosts.slice(0, MAX_POSTS);
 ---
@@ -24,16 +24,10 @@ const shownPosts = sortedPosts.slice(0, MAX_POSTS);
       <p>I am widcardw, a student of Computer Science.</p>
 
       <p>
-        Member of <a href="https://manim.org.cn" target="_blank"
-          >Manim Kindergarten</a
-        >.
-      </p>
-
-      <p>
-        I like to try new things.<br /> I am recently learning
+        I am recently learning
         <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a
         >,
-        <a href="https://rust-lang.org" target="_blank">Rust</a>, data science, AI for DB
+        <a href="https://rust-lang.org" target="_blank">Rust</a>, Data Science, AI for DB
         and so on.
 
         <p>
@@ -47,7 +41,7 @@ const shownPosts = sortedPosts.slice(0, MAX_POSTS);
         {
           shownPosts.map((post) => (
             <li>
-              <PostPreviewSimple post={post} />
+              <PostPreview post={post} />
             </li>
           ))
         }
