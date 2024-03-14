@@ -1,11 +1,19 @@
 ---
 title: 重新学习如何使用 Git 和 GitHub
 pubDate: 2022-12-26
-category: 'workflow'
-tags: ['git', 'GitHub', 'workflow']
-description: 只会 git add, commit, push 太丢人了
+category: workflow
+tags:
+  - git
+  - GitHub
+  - workflow
+description: 只会 git add, commit, push 太丢人了，必须要有解决问题的能力
 ---
 
+> [!note] 非常推荐去看一看[技术蛋老师](https://space.bilibili.com/327247876)的视频
+> 
+> - [给学完 Git，还不会用 GitHub 的朋友们](https://www.bilibili.com/video/BV1RC411W7UE)
+> - [OpenSSH 核心操作 | GitHub SSH 连接](https://www.bilibili.com/video/BV1Sx4y1y7B2)
+> - [Git 工作流和核心原理 | GitHub 基本操作 | VS Code 里使用 Git 和关联](https://www.bilibili.com/video/BV1r3411F7kn)
 
 ## Status
 
@@ -315,6 +323,8 @@ git rebase main
 经过上面两条命令，git 做了这样的操作。它本身的含义叫作 “变基”，在图中就是把 feature 分支上的修改挪到了 main 分支上。
 
 ![[_public/learn-git/git-rebase.excalidraw.svg]]
+
+适合 rebase 的情况通常为，当自己有多个分支，而想将某些分支合并在一起后再向主仓库 pull request，或者是当你想要 pull request 时，却发现 main 分支已经有了修改，为了避免冲突，你需要现将远程的 main 拉取下来合并，再将 feature 分支的修改变基到最新的节点上。
 
 ### merge
 

@@ -104,27 +104,41 @@ const projects = {
     <main>
       <h1>Projects</h1>
       <hr />
-      {Object.entries(projects).map(([k, v]) => (
-        <div class="project-section">
-          <h2>{k}</h2>
-          <div class="project-list">
-            {v.map(i => (<ProjectItem title={i.name} link={i.link} img={i.img} desc={i.desc} icon={i.icon} />))}
+      {
+        Object.entries(projects).map(([k, v]) => (
+          <div class="project-section">
+            <h2>{k}</h2>
+            <div class="project-list">
+              {v.map((i) => (
+                <ProjectItem
+                  title={i.name}
+                  link={i.link}
+                  img={i.img}
+                  desc={i.desc}
+                  icon={i.icon}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </main>
     <Footer />
-  </body>
+  </body><style>
+    .project-section {
+      margin-top: 2rem;
+    }
+    .project-list {
+      /* two columns in grid */
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 500px) {
+      .project-list {
+        /* two columns in grid */
+        display: block;
+      }
+    }
+  </style>
 </html>
-
-<style>
-.project-section {
-  margin-top: 2rem;
-}
-.project-list {
-  /* two columns in grid */
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-</style>

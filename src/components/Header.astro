@@ -2,16 +2,29 @@
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 import ThemeToggle from "./dark/ThemeToggle";
+import { Icon } from "astro-icon/components";
 ---
 
 <header>
   <nav>
     <div class="font-bold"><a href="/">{SITE_TITLE}</a></div>
     <div class="internal-links">
-      <HeaderLink href="/blog">Blogs</HeaderLink>
-      <HeaderLink href="/tags">Tags</HeaderLink>
-      <HeaderLink href="/links">Links</HeaderLink>
-      <HeaderLink href="/projects">Projects</HeaderLink>
+      <HeaderLink href="/blog" class="h-link">
+        <Icon name="ri:article-line" />
+        <span>Blogs</span>
+      </HeaderLink>
+      <HeaderLink href="/tags" class="h-link">
+        <Icon name="ri:hashtag" />
+        <span>Tags</span>
+      </HeaderLink>
+      <HeaderLink href="/links" class="h-link">
+        <Icon name="ri:attachment-line" />
+        <span>Links</span>
+      </HeaderLink>
+      <HeaderLink href="/projects" class="h-link">
+        <Icon name="ri:apps-line" />
+        <span>Projects</span>
+      </HeaderLink>
     </div>
     <ThemeToggle client:idle />
   </nav>
@@ -47,6 +60,16 @@ import ThemeToggle from "./dark/ThemeToggle";
     text-decoration: none;
     border-bottom-color: var(--accent);
   }
+  @media not screen and (max-width: 500px) {
+    .h-link > :first-child {
+      display: none;
+    }
+  }
+  @media (max-width: 500px) {
+    .h-link > :nth-child(2) {
+      display: none;
+    }
+  }
   .social-links,
   .social-links a {
     display: flex;
@@ -58,15 +81,10 @@ import ThemeToggle from "./dark/ThemeToggle";
   .theme-toggle {
     display: none;
   }
-  .theme-toggle+label {
+  .theme-toggle + label {
     width: 20px;
     height: 20px;
     display: flex;
     align-items: center;
   }
-  /* @media (max-width: 720px) {
-    .social-links {
-      display: none;
-    }
-  } */
 </style>

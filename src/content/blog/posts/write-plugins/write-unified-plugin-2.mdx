@@ -107,7 +107,9 @@ Micromark 的插件包含 Syntax Extension 和 Html Extension 两类，前者指
 
 同时，micromark 的主页建议我们，对于一些有特殊要求的，建议通过 [`remark-directive`](https://github.com/remarkjs/remark-directive) 插件来实现，从而避免从头开始写一个插件。
 
-`remark-directive` 是通过识别 `:name[attribute]` 的格式，然后自定义的编写一个非常简单的，通过 `visit` 来修改语法树的 remark 插件，来满足需求。关于如何使用 `visit` 来编写插件，`remark-directive` 插件的主页有编写指南，也可以参考笔者的上一篇博客。
+`remark-directive` 是通过识别 `:name[attribute]` 的格式，然后自定义的编写一个非常简单的，通过 `visit` 来修改语法树的 remark 插件，来满足需求。例如我们需要将 `:ico[vscode-icons:file-type-js-official]` 翻译为 iconify 的图标
+
+关于如何使用 `visit` 来编写插件，`remark-directive` 插件的主页有编写指南，也可以参考笔者的上一篇博客。
 
 > 如果读者的需求比较简单，则本文阅读到此处即可。但我相信依然有硬着头皮继续研究的开发者，想要一探到底，那么我们继续。
 
@@ -120,7 +122,31 @@ Micromark 的插件包含 Syntax Extension 和 Html Extension 两类，前者指
 
 ### mdast-util
 
+这部分的导出结构一般为
 
+```ts
+export function fromMarkdown() {
+  return {
+    enter: { ... },
+    exit: { ... },
+  }
+}
+
+export function toMarkdown() {
+  return {
+    unsafe: [ ... ],
+    handlers: { ... },
+  }
+}
+```
+
+> TODO: 暂时还不知道这是干啥用的。
+
+### remark
+
+在 wooorm 维护的插件中，通常是将上述声明的 micromark 插件和 mdast-util 都 push 到插件列表中。
+
+> TODO: 这部分也不是很懂，待完善
 
 ## 如何编写 remark 插件
 

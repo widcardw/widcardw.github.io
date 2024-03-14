@@ -50,9 +50,9 @@ float smoothstep(float edge_0, float edge_1, float x);
 
 它满足下面的性质
 
-- 当 $x<edge_0$ 时，返回值为 0
-- 当 $x>edge_1$ 时，返回值为 1
-- 当 $edge_0 < x < edge_1$ 时，返回值为从 0 到 1 的一个平滑插值
+- 当 $x<"edge"_0$ 时，返回值为 0
+- 当 $x>"edge"_1$ 时，返回值为 1
+- 当 $"edge"_0 < x < "edge"_1$ 时，返回值为从 0 到 1 的一个平滑插值
 
 ```glsl preview fixUV=1.5 w=300 h=200
 float grid(vec2 uv) {
@@ -73,11 +73,11 @@ void main() {
 }
 ```
 
-特别的，如果 $edge_1 < edge_0$ 时，满足下面的性质
+特别的，如果 $"edge"_1 < "edge"_0$ 时，满足下面的性质
 
-- 当 $x<edge_1$ 时，返回值为 1
-- 当 $x>edge_0$ 时，返回值为 0
-- 当 $edge_1 < x < edge_0$ 时，返回值为从 1 到 0 的一个平滑插值
+- 当 $x<"edge"_1$ 时，返回值为 1
+- 当 $x>"edge"_0$ 时，返回值为 0
+- 当 $"edge"_1 < x < "edge"_0$ 时，返回值为从 1 到 0 的一个平滑插值
 
 
 ```glsl preview fixUV=1.5 w=300 h=200
