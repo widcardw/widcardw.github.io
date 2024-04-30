@@ -16,7 +16,7 @@ function visitBlock(ast: Root) {
     if (!iconName || iconName.trim() === '')
       iconName = 'vscode-icons:default-file'
     const newNode = makeComponentNode(
-      'label',
+      'span',
       { attributes: { className: 'code-icon' } },
       makeComponentNode('Icon', { attributes: { name: iconName } }),
       makeComponentNode(

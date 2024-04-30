@@ -42,13 +42,13 @@ const meta = {
 const paginationProps = {
   ...(page.url.prev && {
     prevUrl: {
-      text: `← Previous Tags`,
+      text: '← Previous Tags',
       url: page.url.prev,
     },
   }),
   ...(page.url.next && {
     nextUrl: {
-      text: `Next Tags →`,
+      text: 'Next Tags →',
       url: page.url.next,
     },
   }),
@@ -88,7 +88,7 @@ const paginationProps = {
       {
         page.data.map((p) => (
           <li>
-            <PostPreview post={p} withDesc />
+            <PostPreview post={p} withDesc withTags />
           </li>
         ))
       }

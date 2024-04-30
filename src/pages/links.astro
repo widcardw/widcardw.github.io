@@ -4,7 +4,8 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Friend from "../components/Friend.astro";
-import { Content as MyMeta } from '../components/MyMeta.md';
+import { Content as MyMeta } from "../components/MyMeta.md";
+import BaseLayout from "~/layouts/Base.astro";
 
 const f = [
   {
@@ -56,36 +57,40 @@ const f = [
     desc: "只能懂一点点",
   },
   {
-    name: '小鹿',
-    link: 'https://www.siena.zone',
-    avatar: 'https://www.siena.zone/favicon_compressed.png',
-    desc: '跳吧，在无比宏大的星系！',
+    name: "小鹿",
+    link: "https://www.siena.zone",
+    avatar: "/avatar/Lulu.png",
+    desc: "跳吧，在无比宏大的星系！",
   },
   {
-    name: '锦恢',
-    link: 'https://kirigaya.cn',
-    avatar: '/avatar/kirigaya.jpg',
-    desc: 'If you cannot be a poet, be the poem.',
-  }
+    name: "锦恢",
+    link: "https://kirigaya.cn",
+    avatar: "/avatar/kirigaya.jpg",
+    desc: "If you cannot be a poet, be the poem.",
+  },
 ];
+
+const meta = {
+  title: "Links",
+  description: "友情链接",
+};
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header title={SITE_TITLE} />
-    <main>
-      <h1>Friends</h1>
-      <hr style="margin-bottom: 1rem" />
-      {f.map(i => (<Friend name={i.name} avatar={i.avatar} url={i.link} desc={i.desc} />))}
-      <hr />
-      <h4>我的友链信息</h4>
-      <MyMeta />
-      <p>如果想在本站添加友链，请至 <a href="https://github.com/widcardw/widcardw.github.io/issues/new" target="_blank">issue</a> 处按以上 json 格式提交，本站将不定期更新。</p>
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseLayout meta={meta}>
+  <h1>Friends</h1>
+  <hr style="margin-bottom: 1rem" />
+  {
+    f.map((i) => (
+      <Friend name={i.name} avatar={i.avatar} url={i.link} desc={i.desc} />
+    ))
+  }
+  <hr />
+  <h4>我的友链信息</h4>
+  <MyMeta />
+  <p>
+    如果想在本站添加友链，请至 <a
+      href="https://github.com/widcardw/widcardw.github.io/issues/new"
+      target="_blank">issue</a
+    > 处按以上 json 格式提交，本站将不定期更新。
+  </p>
+</BaseLayout>

@@ -33,8 +33,8 @@ const [theme, setTheme] = createSignal(
   (() => {
     if (import.meta.env.SSR) return undefined
 
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme'))
-      return localStorage.getItem('theme')
+    // if (typeof localStorage !== 'undefined' && localStorage.getItem('theme'))
+    //   return localStorage.getItem('theme')
 
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark'
 
@@ -65,10 +65,10 @@ const ThemeToggle: Component = () => {
           checked={theme() === 'dark'}
           onChange={(v) => {
             if (v.target.checked) {
-              localStorage.setItem('theme', 'dark')
+              // localStorage.setItem('theme', 'dark')
               setTheme('dark')
             } else {
-              localStorage.setItem('theme', 'light')
+              // localStorage.setItem('theme', 'light')
               setTheme('light')
             }
           }}

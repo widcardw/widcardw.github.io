@@ -21,6 +21,7 @@
     "formatter": {
       "semicolons": "asNeeded",
       "quoteStyle": "single"
-    }
+    },
+    "globals": ["Astro"]
   }
 }

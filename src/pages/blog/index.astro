@@ -1,53 +1,42 @@
 ---
-import BaseHead from "~/components/BaseHead.astro";
-import Header from "~/components/Header.astro";
-import Footer from "~/components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "~/consts";
+import BaseLayout from "~/layouts/Base.astro";
 import PostPreview from "~/components/PostPreview.astro";
 import { getAllPosts, sortMDByDate } from "~/utils/getAllPosts";
 
 const posts = sortMDByDate(await getAllPosts());
+
+const meta = {
+  description: "A list of posts.",
+  title: "All Blogs",
+};
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      main {
-        width: 768px;
+<BaseLayout meta={meta}>
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul li * {
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+    ul li {
+      margin-bottom: 1rem;
+    }
+  </style>
+  <h1>Blogs</h1>
+  <hr />
+  <section>
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <PostPreview post={post} withDesc withTags />
+          </li>
+        ))
       }
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-      ul li * {
-        text-decoration: none;
-        transition: 0.2s ease;
-      }
-      ul li {
-        margin-bottom: 1rem;
-      }
-    </style>
-  </head>
-  <body>
-    <Header />
-    <main>
-      <h1>Blogs</h1>
-      <hr />
-      <section>
-        <ul>
-          {
-            posts.map((post) => (
-              <li>
-                <PostPreview post={post} withDesc withTags />
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-    </main>
-    <Footer />
-  </body>
-</html>
+    </ul>
+  </section>
+</BaseLayout>

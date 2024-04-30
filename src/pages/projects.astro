@@ -1,11 +1,21 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import ProjectItem from "~/components/ProjectItem.astro";
+import BaseLayout from "~/layouts/Base.astro";
 
-const projects = {
+interface IProjectItem {
+  name: string;
+  link: string;
+  desc: string;
+  icon: string;
+  img?: string;
+}
+
+const meta = {
+  title: "Projects",
+  description: "My projects",
+};
+
+const projects: Record<string, Array<IProjectItem>> = {
   Personal: [
     {
       name: "My slides",
@@ -94,37 +104,28 @@ const projects = {
 };
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header title={SITE_TITLE} />
-    <main>
-      <h1>Projects</h1>
-      <hr />
-      {
-        Object.entries(projects).map(([k, v]) => (
-          <div class="project-section">
-            <h2>{k}</h2>
-            <div class="project-list">
-              {v.map((i) => (
-                <ProjectItem
-                  title={i.name}
-                  link={i.link}
-                  img={i.img}
-                  desc={i.desc}
-                  icon={i.icon}
-                />
-              ))}
-            </div>
-          </div>
-        ))
-      }
-    </main>
-    <Footer />
-  </body><style>
+<BaseLayout meta={meta}>
+  <h1>Projects</h1>
+  <hr />
+  {
+    Object.entries(projects).map(([k, v]) => (
+      <div class="project-section">
+        <h2>{k}</h2>
+        <div class="project-list">
+          {v.map((i) => (
+            <ProjectItem
+              title={i.name}
+              link={i.link}
+              img={i.img}
+              desc={i.desc}
+              icon={i.icon}
+            />
+          ))}
+        </div>
+      </div>
+    ))
+  }
+  <style>
     .project-section {
       margin-top: 2rem;
     }
@@ -134,11 +135,11 @@ const projects = {
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       .project-list {
         /* two columns in grid */
         display: block;
       }
     }
   </style>
-</html>
+</BaseLayout>

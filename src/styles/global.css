@@ -21,11 +21,13 @@
   --gray: 96, 115, 159;
   --gray-light: 229, 233, 240;
   --gray-dark: 34, 41, 57;
+  --gray-black: 27, 33, 44;
   --gray-gradient: rgba(var(--gray-light), 50%), #fff;
   --box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
     0 16px 32px rgba(var(--gray), 33%);
   --header-color: #fff;
   --text-color: var(--gray-dark);
+  --link-color: var(--gray-black);
   --text-color-sec: rgba(var(--gray-dark), 50%);
   --code-bg: rgb(var(--gray-light));
   --callout-bg-color: #7f7f7f10;
@@ -33,10 +35,8 @@
   --bg-secondary: rgba(234, 234, 234, 1);
   --kbd-bg: linear-gradient(-225deg, #dbdbe4, #f8f8f8);
   --kbd-shadow: inset 0 -2px 0 0 #cdcde6, inset 0 0 1px 1px #fff, 0 1px 2px 1px rgba(30, 35, 40, .4);
-  --font-serif: 'PingFang SC', 'Helvetica Neue', Helvetica, 'San Francisco', Arial, 'Droid Sans', 'Microsoft YaHei', sans-serif;
-  --font-mono: 'IBM Plex Mono', Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
-    'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono',
-    'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
+  --font-serif: 'Inter', 'PingFang SC', 'Helvetica Neue', Helvetica, 'San Francisco', Arial, 'Droid Sans', 'Microsoft YaHei', sans-serif;
+  --font-mono: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;
 }
 
 .mark,
@@ -46,11 +46,12 @@ mark {
 }
 
 html[data-theme="dark"] {
-  --header-color: #000;
-  --text-color: #ddd;
-  --text-color-sec: #ddd7;
-  --code-bg: #3a3d40;
-  --gray-gradient: rgba(var(--gray-light), 5%), #121212;
+  --header-color: #121212;
+  --link-color: #ddd;
+  --text-color: #999;
+  --text-color-sec: #7777;
+  --code-bg: #2a2c2e;
+  --gray-gradient: rgba(var(--gray-black), 30%), #121212;
   --bg-secondary: rgb(33, 37, 41);
   background-color: #121212;
   --kbd-bg: linear-gradient(-225deg, #222222, #454545);
@@ -86,7 +87,7 @@ h4,
 h5,
 h6 {
   margin: 2rem 0 0.5rem 0;
-  color: var(--text-color);
+  color: var(--link-color);
   line-height: 1.2;
 }
 
@@ -120,7 +121,7 @@ a {
   text-decoration-style: dashed;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.25rem;
-  color: var(--text-color);
+  color: var(--link-color);
   transition: 0.1s;
 }
 
