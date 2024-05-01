@@ -46,6 +46,9 @@ export default defineConfig({
         // return default selector
         return `[data-theme="${theme.name}"]`
       },
+      styleOverrides: {
+        codeFontFamily: 'var(--font-mono)',
+      },
     }),
     mdx(),
     icon(),

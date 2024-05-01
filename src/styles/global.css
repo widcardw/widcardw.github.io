@@ -8,8 +8,9 @@
 @import './code-icon.css';
 @import './mermaid.css';
 @import './h.css';
-@import './fonts.css';
 @import './table.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=PT+Mono&display=swap');
 
 :root {
   --accent: #007fff;
@@ -36,7 +37,7 @@
   --kbd-bg: linear-gradient(-225deg, #dbdbe4, #f8f8f8);
   --kbd-shadow: inset 0 -2px 0 0 #cdcde6, inset 0 0 1px 1px #fff, 0 1px 2px 1px rgba(30, 35, 40, .4);
   --font-serif: 'Inter', 'PingFang SC', 'Helvetica Neue', Helvetica, 'San Francisco', Arial, 'Droid Sans', 'Microsoft YaHei', sans-serif;
-  --font-mono: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;
+  --font-mono: 'PT Mono',ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;
 }
 
 .mark,

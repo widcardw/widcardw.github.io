@@ -16,18 +16,6 @@ const icons = [
     height="20"
     viewBox="0 0 32 32"
   >
-    <title>Auto</title>
-    <path
-      fill="currentColor"
-      d="M26 24.005H6a2.002 2.002 0 0 1-2-2v-14a2.002 2.002 0 0 1 2-2h20a2.002 2.002 0 0 1 2 2v14a2.003 2.003 0 0 1-2 2Zm-20-16v14h20v-14Zm-4 18h28v2H2z"
-    />
-  </svg>,
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 32 32"
-  >
     <title>Light Mode</title>
     <path
       fill="currentColor"
@@ -48,17 +36,12 @@ const icons = [
   </svg>,
 ]
 
-type Theme = 'auto' | 'light' | 'dark'
+type Theme = 'light' | 'dark'
 
-const STATES: Theme[] = ['auto', 'light', 'dark']
-
-function parseTheme(theme: unknown): Theme {
-  if (theme === 'auto' || theme === 'light' || theme === 'dark') return theme
-  return 'auto'
-}
+const STATES: Theme[] = ['light', 'dark']
 
 function getPreferredTheme(): Theme {
-  if (typeof window === 'undefined') return 'auto'
+  if (typeof window === 'undefined') return 'light'
   return window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light'
@@ -66,14 +49,11 @@ function getPreferredTheme(): Theme {
 
 const [theme, setTheme] = createSignal<Theme>(
   (() => {
-    if (import.meta.env.SSR) return 'auto'
-
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme'))
-      return parseTheme(localStorage.getItem('theme'))
+    if (import.meta.env.SSR) return 'light'
 
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark'
 
-    return 'auto'
+    return 'light'
   })(),
 )
 
@@ -86,15 +66,8 @@ const ThemeToggle: Component = () => {
   onMount(() => {
     createEffect(() => {
       const root = document.documentElement
+      console.log('effect', theme())
       switch (theme()) {
-        case 'auto': {
-          const preferredTheme = getPreferredTheme()
-          root.setAttribute('data-theme', preferredTheme)
-          preferredTheme === 'dark'
-            ? root.classList.add('dark')
-            : root.classList.remove('dark')
-          break
-        }
         case 'light': {
           root.setAttribute('data-theme', 'light')
           root.classList.remove('dark')
@@ -121,11 +94,7 @@ const ThemeToggle: Component = () => {
         <input
           type="button"
           class="input-theme"
-          onClick={() => {
-            const t = nextTheme()
-            setTheme(t)
-            localStorage.setItem('theme', t)
-          }}
+          onClick={() => setTheme(nextTheme())}
         />
         <Switch>
           <For each={STATES}>
@@ -139,4 +108,4 @@ const ThemeToggle: Component = () => {
 
 export default ThemeToggle
 
-export { theme as colorTheme }
+export { theme as colorTheme, getPreferredTheme }

@@ -2,9 +2,14 @@
     display: none;
 }
 
-.input-theme+label {
+.theme-toggle label {
     width: 20px;
     height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle {
     display: flex;
     align-items: center;
 }
