@@ -1,7 +1,7 @@
 ---
 title: 使用 biomejs 进行代码格式化
 pubDate: 2024-02-21
-updatedDate: 2024-02-21
+updatedDate: 2024-05-21
 tags:
   - formatter
   - linter
@@ -18,26 +18,47 @@ description: Biomejs 支持的语言有 JS, TS, JSX, JSON, JSONC，那么以后 
 
 ```json
 {
-	"$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true
-		}
-	},
-	"formatter": {
-		"indentStyle": "space",
-		"indentWidth": 2
-	},
-	"javascript": {
-		"formatter": {
-			"semicolons": "asNeeded",
-			"quoteStyle": "single"
-		}
-	}
+  "$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "a11y": {
+        "useButtonType": "off",
+        "useKeyWithClickEvents": "off",
+        "noSvgWithoutTitle": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "off",
+        "useImportType": "warn"
+      },
+      "complexity": {
+        "noForEach": "off",
+        "useArrowFunction": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noEmptyInterface": "off"
+      }
+    },
+    "ignore": ["node_modules/**", "dist/**", ".vscode/**"]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "ignore": ["node_modules/**", "dist/**", ".vscode/**"],
+    "lineEnding": "lf"
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded",
+      "quoteStyle": "single"
+    }
+  }
 }
 ```
 
@@ -45,9 +66,9 @@ description: Biomejs 支持的语言有 JS, TS, JSX, JSON, JSONC，那么以后 
 
 ```json
 {
-	"scripts": {
-		"format": "pnpm dlx @biomejs/biome format --write"
-	}
+  "scripts": {
+    "format": "biome format --write ."
+  }
 }
 ```
 
@@ -56,3 +77,20 @@ description: Biomejs 支持的语言有 JS, TS, JSX, JSON, JSONC，那么以后 
 ```sh
 pnpm run format ./src
 ```
+
+## 二编
+
+刚开始用的时候配置的规则稍，按照他本身的规则来写代码是真难受啊。尤其是 `import` 语句，VSCode 不会自动给引入的 `interface` 和 `type` 加上 `import type` 的提示，然后 biome 不做配置就不会自动修复。
+
+翻来找去找文档，终于在 `.vscode/settings.json` 的配置中找到了答案。
+
+```json
+{
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  }
+}
+```
+
+我估计之后还是会回到 eslint，毕竟有个亲民的大佬 [@antfu](https://eslint-config.antfu.me) 在不断地做贡献啊。
