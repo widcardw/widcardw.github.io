@@ -60,6 +60,7 @@ export default defineConfig({
   markdown: {
     gfm: true,
     remarkPlugins: [
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       remarkMark as any,
       remarkCallouts,
       remarkMath,
