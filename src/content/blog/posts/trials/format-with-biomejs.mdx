@@ -80,7 +80,7 @@ pnpm run format ./src
 
 ## 二编
 
-刚开始用的时候配置的规则稍，按照他本身的规则来写代码是真难受啊。尤其是 `import` 语句，VSCode 不会自动给引入的 `interface` 和 `type` 加上 `import type` 的提示，然后 biome 不做配置就不会自动修复。
+刚开始用的时候配置的规则稍有繁琐，按照他本身的规则来写代码是真难受啊。尤其是 `import` 语句，VSCode 不会自动给引入的 `interface` 和 `type` 加上 `import type` 的提示，然后 biome 不做配置就不会自动修复。
 
 翻来找去找文档，终于在 `.vscode/settings.json` 的配置中找到了答案。
 
@@ -94,3 +94,6 @@ pnpm run format ./src
 ```
 
 我估计之后还是会回到 eslint，毕竟有个亲民的大佬 [@antfu](https://eslint-config.antfu.me) 在不断地做贡献啊。
+
+
+
