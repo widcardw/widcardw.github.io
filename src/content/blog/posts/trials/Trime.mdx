@@ -14,10 +14,55 @@ description: Gboard 输入法虽然用起来还好，但自动填充的字会经
 
 - Windows 小狼毫输入法，使用 `/ico vscode-icons:file-type-light-yaml;weasel.custom.yaml` 作为配置文件
 - macOS 鼠须管输入法，使用 `/ico vscode-icons:file-type-light-yaml;squirrel.custom.yaml` 作为配置文件
-- Trime 同文输入法，使用 `/ico vscode-icons:file-type-light-yaml;trime.yaml` 或 `/ico vscode-icons:file-type-light-yaml;tongwenfeng.trime.yaml` 作为配置文件
+- Trime 同文输入法，使用 `/ico vscode-icons:file-type-light-yaml;trime.yaml` 或 `/ico vscode-icons:file-type-light-yaml;tongwenfeng.trime.yaml` 作为配置文件，分别对应“默认”和“同文风”
 
 ## 安装
 
-首先在 https://github.com/osfans/trime 下载最新版的 Trime 安装包
+首先在 https://github.com/osfans/trime 下载最新版的 Trime 安装包，大多数应该都是选择 arm64 版本。
 
+安装后，是不会自带输入法方案的，因此我们需要手动导入输入方案，而后才能正常启动输入法。我的解决方案是：在 Windows 的“程序文件夹”中，将 data 目录下的方案全部都拷贝进手机 `/ico vscode-icons:folder-type-android;/sdcard/rime`，然后点击部署即可。
 
+然而，自带的输入法方案总不能满足我们的需求，我觉得最满意的输入法方案是[雾凇拼音](https://github.com/iDvel/rime-ice)。其使用方案，也就是跟电脑端基本一致，将方案拷贝到本地即可。
+
+## 同文风皮肤修改
+
+在默认配置下，同文风的皮肤更好看，但是 26 键真的很难把所有的数字和符号都塞进去。于是我考虑将顶部切换中英文、符号全角半角的后面空间，用剪贴板补上。但这个 bar 是属于输入方案的，所以需要在输入方案中来修改。这部分感谢 Fran 佬做的解答。
+
+```yaml title="rime_ice.schema.yaml" ins={13-20}
+switches:
+  - name: ascii_mode
+    states: [ 中, En ]
+    reset: 0
+  - name: ascii_punct
+    states: [ ￥, $ ]
+  - name: traditionalization
+    states: [ 简, 繁 ]
+  - name: emoji
+    states: [ 😄, 💀 ]
+  - name: full_shape
+    states: [ 半, 全 ]
+  - options: [ _key_select_all ]
+    states: [ 全选 ]
+  - options: [ _key_cut ]
+    states: [ 剪切 ]
+  - options: [ _key_copy ]
+    states: [ 复制 ]
+  - options: [ _key_paste ]
+    states: [ 粘贴 ]
+```
+
+## 按键映射修改
+
+需要在 `/ico vscode-icons:file-type-light-yaml;tongwenfeng.trime.yaml` 中进行修改。我比较喜欢长按 Enter 键时，隐藏输入法面板，于是需要在首选的键盘中，搜索 Enter 键的配置，做出一些修改。
+
+```yaml title="tongwenfeng.trime.yaml" ins=/long_click: Hide/
+preset_keyboards:
+  default:
+    author: 暖暖
+    keys:
+      - {click: Return, swipe_up: Escape, long_click: Hide}
+```
+
+上面的意义为，当上滑 Enter 键时，能触发按下 Esc 键，长按 Enter 键时，能触发隐藏输入法面板。
+
+其他的部分，长按按键触发的全选复制粘贴，就可以替换成我们更常用的按键了。
