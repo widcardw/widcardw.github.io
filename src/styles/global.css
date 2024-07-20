@@ -10,7 +10,7 @@
 @import './h.css';
 @import './table.css';
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=PT+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=DM+Mono&display=swap');
 
 :root {
   --accent: #007fff;
@@ -37,7 +37,7 @@
   --kbd-bg: linear-gradient(-225deg, #dbdbe4, #f8f8f8);
   --kbd-shadow: inset 0 -2px 0 0 #cdcde6, inset 0 0 1px 1px #fff, 0 1px 2px 1px rgba(30, 35, 40, .4);
   --font-serif: 'Inter', 'PingFang SC', 'Helvetica Neue', Helvetica, 'San Francisco', Arial, 'Droid Sans', 'Microsoft YaHei', sans-serif;
-  --font-mono: 'PT Mono',ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;
+  --font-mono: 'DM Mono',ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;
 }
 
 .mark,
@@ -47,14 +47,14 @@ mark {
 }
 
 html[data-theme="dark"] {
-  --header-color: #121212;
+  --header-color: #121418;
   --link-color: #ddd;
   --text-color: #999;
   --text-color-sec: #7777;
   --code-bg: #2a2c2e;
-  --gray-gradient: rgba(var(--gray-black), 30%), #121212;
+  --gray-gradient: rgba(var(--gray-black), 30%), #121418;
   --bg-secondary: rgb(33, 37, 41);
-  background-color: #121212;
+  background-color: #121418;
   --kbd-bg: linear-gradient(-225deg, #222222, #454545);
   --kbd-shadow: inset 0 -2px 0 0 #282828, inset 0 0 1px 1px #444, 0 1px 2px 1px rgba(128, 128, 128, .4);
 }

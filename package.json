@@ -15,6 +15,7 @@
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.4",
     "@astrojs/solid-js": "^4.1.0",
+    "@solid-primitives/storage": "^3.7.1",
     "astro": "^4.7.0",
     "solid-js": "^1.8.17"
   },

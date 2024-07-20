@@ -1,6 +1,7 @@
 import type { Component } from 'solid-js'
 import { Show, createEffect, createSignal, onMount } from 'solid-js'
 import './ThemeToggleButton.css'
+import { makePersisted } from '@solid-primitives/storage'
 
 const icons = [
   <svg
@@ -29,7 +30,7 @@ const icons = [
   </svg>,
 ]
 
-const [theme, setTheme] = createSignal(
+const [theme, setTheme] = makePersisted(createSignal(
   (() => {
     if (import.meta.env.SSR) return undefined
 
@@ -37,7 +38,7 @@ const [theme, setTheme] = createSignal(
 
     return 'light'
   })(),
-)
+), { name: 'theme' })
 
 const ThemeToggle: Component = () => {
   onMount(() => {
