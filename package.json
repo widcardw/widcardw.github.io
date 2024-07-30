@@ -17,6 +17,7 @@
     "@astrojs/solid-js": "^4.4.0",
     "@solid-primitives/storage": "^3.8.0",
     "astro": "^4.12.2",
+    "sharp": "^0.33.4",
     "solid-js": "^1.8.18"
   },
   "devDependencies": {
