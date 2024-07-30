@@ -1,0 +1,11 @@
+.callout > .callout-content:has(.expressive-code) {
+    padding: 0;
+}
+
+.callout > .callout-content > .expressive-code:first-child {
+    margin-top: 0;
+}
+
+.callout > .callout-content > .expressive-code:last-child {
+    margin-bottom: 0;
+}
