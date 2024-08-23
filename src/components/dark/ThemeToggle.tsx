@@ -38,7 +38,7 @@ const [theme, setTheme] = makePersisted(createSignal(
 
     return 'light'
   })(),
-), { name: 'theme' })
+))
 
 const ThemeToggle: Component = () => {
   onMount(() => {
