@@ -30,15 +30,19 @@ const icons = [
   </svg>,
 ]
 
-const [theme, setTheme] = makePersisted(createSignal(
-  (() => {
-    if (import.meta.env.SSR) return undefined
+const [theme, setTheme] = makePersisted(
+  createSignal(
+    (() => {
+      if (import.meta.env.SSR) return undefined
 
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark'
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+        return 'dark'
 
-    return 'light'
-  })(),
-))
+      return 'light'
+    })(),
+  ),
+  { name: 'storage-theme' },
+)
 
 const ThemeToggle: Component = () => {
   onMount(() => {

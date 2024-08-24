@@ -2,7 +2,9 @@
 title: Codemirror 主题更改问题
 pubDate: 2024-08-24
 updatedDate: 2024-08-24
-tags: ['codemirror', 'theme']
+tags: 
+  - codemirror
+  - theme
 description: 从各处挖来的代码，合并到一起做个整理。
 ---
 
@@ -64,9 +66,9 @@ function setEditorTheme (dark: boolean) {
   })
 }
 
-// Solid.js
+// Solidjs
 createEffect(on(isDark, (v) => setEditorTheme(v)))
-// Vue.js
+// Vuejs
 let watchDarkStop = watch(isDark, v => setEditorTheme(v))
 onBeforeUnmount(() => { watchDarkStop?.() })
 ```
