@@ -20,7 +20,7 @@ let editor = new EditorView({
 })
 ```
 
-当组件声明周期结束时析构编辑器
+当组件生命周期结束时析构编辑器
 
 ```js
 onCleanup(() => editor?.destroy())
@@ -30,7 +30,7 @@ onCleanup(() => editor?.destroy())
 
 像这样的样式，可以从 extensions 中去添加
 
-```js
+```js ins={5-7}
 import { highlightActiveLine, scrollPastEnd } from '@codemirror/view'
 
 let editor = new EditorView({
@@ -67,7 +67,7 @@ function setEditorTheme (dark: boolean) {
 }
 
 // Solidjs
-createEffect(on(isDark, (v) => setEditorTheme(v)))
+createEffect(on(isDark, v => setEditorTheme(v)))
 // Vuejs
 let watchDarkStop = watch(isDark, v => setEditorTheme(v))
 onBeforeUnmount(() => { watchDarkStop?.() })
