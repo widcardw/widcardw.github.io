@@ -1,15 +1,15 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import FormattedDate from "./FormattedDate.astro";
+import type { CollectionEntry } from 'astro:content'
+import FormattedDate from './FormattedDate.astro'
 
 type Props = {
-  post: CollectionEntry<"blog">;
-  withTags?: boolean;
-  withDesc?: boolean;
-};
+  post: CollectionEntry<'blog'>
+  withTags?: boolean
+  withDesc?: boolean
+}
 
-const { post, withTags = false, withDesc = false } = Astro.props;
-const postDate = post.data.updatedDate ?? post.data.pubDate;
+const { post, withTags = false, withDesc = false } = Astro.props
+const postDate = post.data.updatedDate ?? post.data.pubDate
 ---
 
 <div>

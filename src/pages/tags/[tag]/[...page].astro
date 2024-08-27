@@ -1,43 +1,43 @@
 ---
-import type { GetStaticPaths, Page } from "astro";
-import type { CollectionEntry } from "astro:content";
-import Paginator from "../../../components/Paginator.astro";
-import PostPreview from "../../../components/PostPreview.astro";
-import BaseLayout from "../../../layouts/Base.astro";
+import type { GetStaticPaths, Page } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+import Paginator from '~/components/Paginator.astro'
+import PostPreview from '~/components/PostPreview.astro'
+import BaseLayout from '~/layouts/Base.astro'
 
 import {
   getAllPosts,
   getUniqueTags,
   sortMDByDate,
-} from "../../../utils/getAllPosts";
+} from '~/utils/getAllPosts'
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
-  const allPosts = await getAllPosts();
-  const allPostsByDate = sortMDByDate(allPosts);
-  const uniqueTags = getUniqueTags(allPostsByDate);
+  const allPosts = await getAllPosts()
+  const allPostsByDate = sortMDByDate(allPosts)
+  const uniqueTags = getUniqueTags(allPostsByDate)
 
   return uniqueTags.flatMap((tag) => {
     const filterPosts = allPostsByDate.filter((post) =>
       post.data.tags.includes(tag),
-    );
+    )
     return paginate(filterPosts, {
       pageSize: 10,
       params: { tag },
-    });
-  });
-};
-
-interface Props {
-  page: Page<CollectionEntry<"blog">>;
+    })
+  })
 }
 
-const { page } = Astro.props;
-const { tag } = Astro.params;
+interface Props {
+  page: Page<CollectionEntry<'blog'>>
+}
+
+const { page } = Astro.props
+const { tag } = Astro.params
 
 const meta = {
   description: `View all posts with the tag - ${tag}`,
   title: `Tag: ${tag}`,
-};
+}
 
 const paginationProps = {
   ...(page.url.prev && {
@@ -52,7 +52,7 @@ const paginationProps = {
       url: page.url.next,
     },
   }),
-};
+}
 ---
 
 <BaseLayout meta={meta}>

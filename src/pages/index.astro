@@ -1,15 +1,15 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import SocialLinks from "~/components/SocialLinks.astro";
-import { getSortedPosts } from "~/utils/getAllPosts";
-import PostPreview from "~/components/PostPreview.astro";
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
+import SocialLinks from '~/components/SocialLinks.astro'
+import { getSortedPosts } from '~/utils/getAllPosts'
+import PostPreview from '~/components/PostPreview.astro'
 
-const MAX_POSTS = 10;
-const sortedPosts = await getSortedPosts();
-const shownPosts = sortedPosts.slice(0, MAX_POSTS);
+const MAX_POSTS = 10
+const sortedPosts = await getSortedPosts()
+const shownPosts = sortedPosts.slice(0, MAX_POSTS)
 ---
 
 <!doctype html>
@@ -27,7 +27,8 @@ const shownPosts = sortedPosts.slice(0, MAX_POSTS);
         I am recently learning
         <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a
         >,
-        <a href="https://rust-lang.org" target="_blank">Rust</a>, Data Science, AI for DB
+        <a href="https://rust-lang.org" target="_blank">Rust</a>,
+        <a href="https://python.org/" target="_blank">Python</a>, Data Science, AI for DB
         and so on.
 
         <p>

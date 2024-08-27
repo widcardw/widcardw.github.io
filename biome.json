@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
   "organizeImports": {
     "enabled": true
   },
@@ -7,21 +7,37 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "a11y": {
+        "useButtonType": "off",
+        "useKeyWithClickEvents": "off",
+        "noSvgWithoutTitle": "off"
+      },
       "style": {
-        "noNonNullAssertion": "off"
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "off",
+        "useImportType": "warn"
+      },
+      "complexity": {
+        "noForEach": "off",
+        "useArrowFunction": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noEmptyInterface": "off"
       }
     },
-    "ignore": ["node_modules/**", "**/dist/**", "src/content/blog/**"]
+    "ignore": ["node_modules/**", "dist/**", ".vscode/**"]
   },
   "formatter": {
     "indentStyle": "space",
-    "indentWidth": 2
+    "indentWidth": 2,
+    "ignore": ["node_modules/**", "dist/**", ".vscode/**"],
+    "lineEnding": "lf"
   },
   "javascript": {
     "formatter": {
       "semicolons": "asNeeded",
       "quoteStyle": "single"
-    },
-    "globals": ["Astro"]
+    }
   }
 }

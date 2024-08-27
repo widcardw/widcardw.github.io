@@ -1,10 +1,10 @@
 ---
 interface Props {
-  date: Date;
-  style?: string | astroHTML.JSX.CSSProperties;
+  date: Date
+  style?: string | astroHTML.JSX.CSSProperties
 }
 
-const { date, style = '' } = Astro.props;
+const { date, style = '' } = Astro.props
 ---
 
 <time datetime={date.toISOString()} style={style}>

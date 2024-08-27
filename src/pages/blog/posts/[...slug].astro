@@ -1,14 +1,16 @@
 ---
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import BlogPost from "../../layouts/BlogPost.astro";
+import BlogPost from "~/layouts/BlogPost.astro";
 import { GiscusArea } from "~/components/Giscus/GiscusArea";
 import { GISCUS } from "~/consts";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    // 因为 ...slugs 路径进来了一层 posts
+    // 所以要把从 getCollections('blog') 获取到的 posts/ 前缀删掉
+    params: { slug: post.slug.replace("posts/", "") },
     props: post,
   }));
 }
@@ -21,7 +23,8 @@ const { Content } = await post.render();
 <BlogPost {...post.data}>
   <Content />
   {
-    post.data.tags && post.data.tags.map((tag) => (
+    post.data.tags &&
+      post.data.tags.map((tag) => (
         <>
           <code>#{tag}</code>{" "}
         </>

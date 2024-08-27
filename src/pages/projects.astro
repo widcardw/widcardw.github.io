@@ -1,107 +1,98 @@
 ---
-import ProjectItem from "~/components/ProjectItem.astro";
-import BaseLayout from "~/layouts/Base.astro";
+import ProjectItem from '~/components/ProjectItem.astro'
+import BaseLayout from '~/layouts/Base.astro'
 
 interface IProjectItem {
-  name: string;
-  link: string;
-  desc: string;
-  icon: string;
-  img?: string;
+  name: string
+  link: string
+  desc: string
+  icon: string
+  img?: string
 }
 
 const meta = {
-  title: "Projects",
-  description: "My projects",
-};
+  title: 'Projects',
+  description: 'My projects',
+}
 
 const projects: Record<string, Array<IProjectItem>> = {
   Personal: [
     {
-      name: "My slides",
-      link: "https://slides.widcard.win",
-      desc: "Presentations",
-      icon: "ri:slideshow-2-line",
+      name: 'My slides',
+      link: 'https://slides.widcard.win',
+      desc: 'Presentations',
+      icon: 'slidev',
     },
     {
-      name: "My Notes",
-      link: "https://notes.widcard.win",
-      desc: "Notes of my courses",
-      icon: "ri:booklet-line",
+      name: 'My Notes',
+      link: 'https://notes.widcard.win',
+      desc: 'Notes of my courses',
+      icon: 'ri:booklet-line',
     },
   ],
   Manim: [
     {
-      name: "Video Tutorials",
-      link: "https://space.bilibili.com/31976300/channel/collectiondetail?sid=79029&ctype=0",
-      desc: "Tutorial for updater",
-      icon: "ri:keynote-line",
+      name: 'Video Tutorials',
+      link: 'https://space.bilibili.com/31976300/channel/collectiondetail?sid=79029&ctype=0',
+      desc: 'Tutorial for manim updater',
+      icon: 'ri:film-line',
     },
     {
-      name: "MK home page",
-      link: "https://manim.org.cn",
-      desc: "Manim Kindergarten",
-      icon: "mk",
-      img: "https://cdn.widcard.win/manim/favicon.svg",
+      name: 'MK home page',
+      link: 'https://manim.org.cn',
+      desc: 'Manim Kindergarten',
+      icon: 'page_flip',
     },
   ],
   Tools: [
     {
-      name: "Asciimath Parser",
-      link: "https://asciimath.widcard.win",
-      desc: "Parse asciimath into LaTeX",
-      icon: "mdi:math-integral-box",
+      name: 'Asciimath Parser',
+      link: 'https://asciimath.widcard.win',
+      desc: 'Parse asciimath into LaTeX',
+      icon: 'math',
     },
     {
-      name: "ESLint Config",
-      link: "https://github.com/widcardw/eslint-config",
-      desc: "An eslint config that supports tsx",
-      icon: "vscode-icons:file-type-eslint",
-    },
-  ],
-  Games: [
-    {
-      name: "Lab",
-      link: "https://lab.widcard.win",
-      desc: "数字华容道",
-      icon: "ri:gamepad-line",
+      name: 'Obsidian Asciimath',
+      link: 'https://github.com/widcardw/obsidian-asciimath',
+      desc: 'Use AsciiMath in Obsidian',
+      icon: 'obsidian',
     },
   ],
   Markdown: [
     {
-      name: "Callouts",
-      link: "https://github.com/widcardw/mdit-plugin-callouts",
-      desc: "Callout block for markdown-it",
-      icon: "ri:code-s-slash-line",
+      name: 'Callouts',
+      link: 'https://github.com/widcardw/mdit-plugin-callouts',
+      desc: 'Callout block for markdown-it',
+      icon: 'ri:code-s-slash-line',
     },
     {
-      name: "Media",
-      link: "https://github.com/widcardw/mdit-plg-double-bracket-media",
-      desc: "Wikilink for markdown-it",
-      icon: "ri:image-2-line",
+      name: 'Media',
+      link: 'https://github.com/widcardw/mdit-plg-double-bracket-media',
+      desc: 'Wikilink for markdown-it',
+      icon: 'ri:image-2-line',
     },
     {
-      name: "Link",
-      link: "https://github.com/widcardw/mdit-plg-double-bracket-link",
-      desc: "Wiki link for markdown-it",
-      icon: "ri:link",
+      name: 'Link',
+      link: 'https://github.com/widcardw/mdit-plg-double-bracket-link',
+      desc: 'Wiki link for markdown-it',
+      icon: 'ri:link',
     },
   ],
   Apps: [
     {
-      name: "D4nm4ku",
-      link: "https://github.com/widcardw/D4nm4ku",
-      desc: "A danmaku viewer with tauri",
-      icon: "ri:bilibili-fill",
+      name: 'D4nm4ku',
+      link: 'https://github.com/widcardw/D4nm4ku',
+      desc: 'A danmaku viewer with tauri',
+      icon: 'ri:bilibili-fill',
     },
     {
-      name: "Tauri-wubi",
-      link: "https://github.com/widcardw/tauri-wubi",
-      desc: "Wubi input method exerciser",
-      icon: "ri:wubi-input",
+      name: 'Tauri-wubi',
+      link: 'https://github.com/widcardw/tauri-wubi',
+      desc: 'Wubi input method exerciser',
+      icon: 'ri:wubi-input',
     },
   ],
-};
+}
 ---
 
 <BaseLayout meta={meta}>

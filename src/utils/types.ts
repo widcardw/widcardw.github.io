@@ -1,5 +1,5 @@
 export type PaginationLink = {
-	url: string;
-	text?: string;
-	srLabel?: string;
-};
+  url: string
+  text?: string
+  srLabel?: string
+}

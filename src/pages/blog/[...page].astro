@@ -1,0 +1,98 @@
+---
+import type { GetStaticPaths, GetStaticPathsResult, Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getAllPosts, sortMDByDate } from "~/utils/getAllPosts";
+import BaseLayout from "~/layouts/Base.astro";
+import PostPreview from "~/components/PostPreview.astro";
+import Paginator from "~/components/Paginator.astro";
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const posts = sortMDByDate(await getAllPosts());
+  return posts.flatMap((post) =>
+    paginate(posts, {
+      pageSize: 10,
+    }),
+  );
+};
+
+interface Props {
+  page: Page<CollectionEntry<"blog">>;
+}
+
+const { page } = Astro.props;
+
+const meta = {
+  description: "A list of posts.",
+  title: `Blogs Page ${page.currentPage}`,
+};
+
+const paginationProps = {
+  ...(page.url.prev && {
+    prevUrl: {
+      text: "Previous Page",
+      url: page.url.prev,
+    },
+  }),
+  ...(page.url.next && {
+    nextUrl: {
+      text: "Next Page",
+      url: page.url.next,
+    },
+  }),
+};
+---
+
+<BaseLayout meta={meta}>
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul li * {
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+    ul li {
+      margin-bottom: 1rem;
+    }
+  </style>
+  <h1>Blogs</h1>
+  <hr />
+  <section>
+    <ul>
+      {
+        page.data.map((post) => (
+          <li>
+            <PostPreview post={post} withDesc withTags />
+          </li>
+        ))
+      }
+    </ul>
+    <Paginator {...paginationProps} />
+  </section>
+</BaseLayout>
+
+<style>
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pagination-item,
+  .pagination-item > a {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  .pagination-item.active {
+    background-color: var(--bg-secondary);
+  }
+  .pagination-item:has(a):hover {
+    background-color: var(--bg-secondary);
+  }
+</style>

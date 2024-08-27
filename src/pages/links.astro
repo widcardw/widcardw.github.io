@@ -1,79 +1,79 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import Friend from "../components/Friend.astro";
-import { Content as MyMeta } from "../components/MyMeta.md";
-import BaseLayout from "~/layouts/Base.astro";
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
+import Friend from '../components/Friend.astro'
+import { Content as MyMeta } from '../components/MyMeta.md'
+import BaseLayout from '~/layouts/Base.astro'
 
 const f = [
   {
-    name: "鹤翔万里",
-    avatar: "/avatar/tonycrane.png",
-    desc: "翔哥永不咕！",
-    link: "http://blog.tonycrane.cc/",
+    name: '鹤翔万里',
+    avatar: '/avatar/tonycrane.png',
+    desc: '翔哥永不咕！',
+    link: 'http://blog.tonycrane.cc/',
   },
   {
-    name: "GZTime",
-    avatar: "/avatar/GZTime_2021.png",
-    desc: "Walking on the Time Axis.",
-    link: "https://blog.gztime.cc",
+    name: 'GZTime',
+    avatar: '/avatar/GZTime_2021.png',
+    desc: 'Walking on the Time Axis.',
+    link: 'https://blog.gztime.cc',
   },
   {
-    name: "Matheart",
-    avatar: "/avatar/matheart.webp",
-    desc: "Math Heart Ever.",
-    link: "https://matheart.github.io/",
+    name: 'Matheart',
+    avatar: '/avatar/matheart.webp',
+    desc: 'Math Heart Ever.',
+    link: 'https://matheart.github.io/',
   },
   {
-    name: "范滇东",
-    avatar: "/avatar/flwfdd.jpeg",
-    desc: "三体 × 摄影 × 造物",
-    link: "https://flwfdd.xyz/",
+    name: '范滇东',
+    avatar: '/avatar/flwfdd.jpeg',
+    desc: '三体 × 摄影 × 造物',
+    link: 'https://flwfdd.xyz/',
   },
   {
-    name: "HK-SHAO",
-    avatar: "/avatar/hk-shao.png",
-    desc: "A human.",
-    link: "https://shao.fun/",
+    name: 'HK-SHAO',
+    avatar: '/avatar/hk-shao.png',
+    desc: 'A human.',
+    link: 'https://shao.fun/',
   },
   {
-    name: "你们的小f",
-    avatar: "/avatar/fzf404.jpeg",
-    desc: "修炼中",
-    link: "https://www.fzf404.art/",
+    name: '你们的小f',
+    avatar: '/avatar/fzf404.jpeg',
+    desc: '修炼中',
+    link: 'https://www.fzf404.art/',
   },
   {
-    name: "SkyWT",
-    link: "https://skywt.cn",
-    avatar: "https://blog.skywt.cn/usr/themes/Daydream/assets/img/avatar.png",
-    desc: "我们的征途是星辰大海 ✨",
+    name: 'SkyWT',
+    link: 'https://skywt.cn',
+    avatar: 'https://blog.skywt.cn/usr/themes/Daydream/assets/img/avatar.png',
+    desc: '我们的征途是星辰大海 ✨',
   },
   {
-    name: "半方池水半方田",
-    link: "https://uuanqin.top/",
-    avatar: "https://cdn.gallery.uuanqin.top/img/avatar.webp",
-    desc: "只能懂一点点",
+    name: '半方池水半方田',
+    link: 'https://uuanqin.top/',
+    avatar: 'https://cdn.gallery.uuanqin.top/img/avatar.webp',
+    desc: '只能懂一点点',
   },
   {
-    name: "小鹿",
-    link: "https://www.siena.zone",
-    avatar: "/avatar/Lulu.png",
-    desc: "跳吧，在无比宏大的星系！",
+    name: '小鹿',
+    link: 'https://www.siena.zone',
+    avatar: '/avatar/Lulu.png',
+    desc: '跳吧，在无比宏大的星系！',
   },
   {
-    name: "锦恢",
-    link: "https://kirigaya.cn",
-    avatar: "/avatar/kirigaya.jpg",
-    desc: "If you cannot be a poet, be the poem.",
+    name: '锦恢',
+    link: 'https://kirigaya.cn',
+    avatar: '/avatar/kirigaya.jpg',
+    desc: 'If you cannot be a poet, be the poem.',
   },
-];
+]
 
 const meta = {
-  title: "Links",
-  description: "友情链接",
-};
+  title: 'Links',
+  description: '友情链接',
+}
 ---
 
 <BaseLayout meta={meta}>

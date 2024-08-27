@@ -1,6 +1,6 @@
-import { mergeProps } from "solid-js";
+import { mergeProps } from 'solid-js'
 import type { Component } from 'solid-js'
-import p5 from "p5";
+import p5 from 'p5'
 
 const vs = `
     //standard vertex shader
@@ -15,7 +15,7 @@ const vs = `
      
       // Send the vertex information on to the fragment shader
       gl_Position = positionVec4;
-    }`;
+    }`
 
 const GlSketch: Component<{
   frag: string
@@ -35,17 +35,21 @@ const GlSketch: Component<{
     uniform vec2 u_resolution;
     uniform vec2 u_mouse;
     uniform float u_time;
-    ${mp.fixUV?.enabled
-      ? `float ratio = ${mp.fixUV.ratio.toFixed(3)};
+    ${
+      mp.fixUV?.enabled
+        ? `float ratio = ${mp.fixUV.ratio.toFixed(3)};
          vec2 fixUV(in vec2 c) {
            return ratio * (c - ${(deviceRatio / 2).toFixed(2)} * u_resolution.xy) / min(u_resolution.x, u_resolution.y);
          }`
-      : ''}
-    ${mp.fixUV?.enabled && mp.fixUV.mouse
-      ? `vec2 fixMouse(in vec2 c) {
+        : ''
+    }
+    ${
+      mp.fixUV?.enabled && mp.fixUV.mouse
+        ? `vec2 fixMouse(in vec2 c) {
            return (vec2(ratio * 2. * c.x - u_resolution.x, - ratio * 2. * c.y + ${(2 * mp.fixUV.ratio - 1).toFixed(3)} * u_resolution.y)) / min(u_resolution.x, u_resolution.y);
          }`
-      : ''}
+        : ''
+    }
     ${mp.frag}`
   const createSketch = (ref: HTMLElement) => {
     let sd: p5.Shader
@@ -54,18 +58,18 @@ const GlSketch: Component<{
         const canvas = p.createCanvas(mp.width, mp.height, p.WEBGL)
         canvas.parent(ref)
         canvas.style('visibility:visible')
-        p.background(0);
-        p.noStroke();
+        p.background(0)
+        p.noStroke()
         sd = p.createShader(vs, mp.frag)
       }
       p.draw = () => {
-        sd.setUniform('u_resolution', [mp.width, mp.height]);
-        sd.setUniform('u_time', p.frameCount * .01);
+        sd.setUniform('u_resolution', [mp.width, mp.height])
+        sd.setUniform('u_time', p.frameCount * 0.01)
         if (p.mouseIsPressed) {
           sd.setUniform('u_mouse', [p.pmouseX, p.pmouseY])
         }
-        p.shader(sd);
-        p.rect(0, 0, 400, 400);
+        p.shader(sd)
+        p.rect(0, 0, 400, 400)
       }
     }
     new p5(sketch)
@@ -73,6 +77,4 @@ const GlSketch: Component<{
   return <div ref={createSketch} />
 }
 
-export {
-  GlSketch as Sketch
-}
+export { GlSketch as Sketch }

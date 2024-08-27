@@ -1,13 +1,13 @@
 ---
-import { Sketch } from "./component";
+import { Sketch } from './component'
 export interface Props {
-  frag: string;
-  width?: number;
-  height?: number;
-  fixUVenabled?: boolean;
-  fixUVratio?: number;
-  enableMouse?: boolean;
-  showSourceCode?: boolean;
+  frag: string
+  width?: number
+  height?: number
+  fixUVenabled?: boolean
+  fixUVratio?: number
+  enableMouse?: boolean
+  showSourceCode?: boolean
 }
 
 const {
@@ -18,7 +18,7 @@ const {
   fixUVratio = -1,
   enableMouse = false,
   showSourceCode = false,
-} = Astro.props;
+} = Astro.props
 ---
 
 <div style={{ display: "flex", "justify-content": "center", 'margin': '1rem auto' }}>

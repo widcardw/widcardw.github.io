@@ -1,37 +1,65 @@
 ---
-import type { PaginationLink } from "../utils/types";
+import type { PaginationLink } from '../utils/types'
+import { Icon } from 'astro-icon/components'
 
 interface Props {
-  nextUrl?: PaginationLink;
-  prevUrl?: PaginationLink;
+  nextUrl?: PaginationLink
+  prevUrl?: PaginationLink
 }
 
-const { nextUrl, prevUrl } = Astro.props;
+const { nextUrl, prevUrl } = Astro.props
 ---
 
 {
   (prevUrl || nextUrl) && (
     <nav class="mt-8 flex items-center gap-x-4">
       {prevUrl && (
-        <a
-          class="me-auto py-2 sm:hover:text-accent"
-          data-astro-prefetch
-          href={prevUrl.url}
-        >
-          {prevUrl.srLabel && <span class="sr-only">{prevUrl.srLabel}</span>}
-          {prevUrl.text ? prevUrl.text : "Previous"}
-        </a>
+            <a
+                class="me-auto py-2 flex items-center space-x-1"
+                data-astro-prefetch
+                href={prevUrl.url}
+            >
+            <Icon name="ri:arrow-drop-left-line" />
+            {prevUrl.srLabel && <span class="sr-only">{prevUrl.srLabel}</span>}
+            {prevUrl.text ? prevUrl.text : "Previous"}
+            </a>
       )}
       {nextUrl && (
         <a
-          class="ms-auto py-2 sm:hover:text-accent"
+          class="ms-auto py-2 flex items-center space-x-1"
           data-astro-prefetch
           href={nextUrl.url}
         >
           {nextUrl.srLabel && <span class="sr-only">{nextUrl.srLabel}</span>}
           {nextUrl.text ? nextUrl.text : "Next"}
+          <Icon name="ri:arrow-drop-right-line" />
         </a>
       )}
     </nav>
   )
 }
+
+<style>
+.mt-8 {
+    margin-top: 2rem;
+}
+.flex {
+    display: flex;
+}
+.items-center {
+    align-items: center;
+}
+.gap-x-4 {
+    column-gap: 1rem;
+}
+.me-auto {
+    margin-inline-end: auto;
+}
+.ms-auto {
+    margin-inline-start: auto;
+}
+.py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+</style>

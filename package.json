@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.6.3",
-    "@iconify-json/mdi": "^1.1.68",
     "@iconify-json/ri": "^1.1.22",
     "@iconify-json/vscode-icons": "^1.1.37",
     "@types/mdast": "^4.0.4",

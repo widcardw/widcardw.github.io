@@ -36,9 +36,6 @@ importers:
       '@biomejs/biome':
         specifier: 1.6.3
         version: 1.6.3
-      '@iconify-json/mdi':
-        specifier: ^1.1.68
-        version: 1.1.68
       '@iconify-json/ri':
         specifier: ^1.1.22
         version: 1.1.22
@@ -531,9 +528,6 @@ packages:
 
   '@expressive-code/plugin-text-markers@0.36.0':
     resolution: {integrity: sha512-R7FzCNp5w7qBjPtN6wR7E+ZLL23jnjBgiJPqeTAUPrRH2K+FVEES+a7RlDiApsq8pWKNGl+CfOOd+R1sRTXmIw==}
-
-  '@iconify-json/mdi@1.1.68':
-    resolution: {integrity: sha512-7//TKCiXLU6kNWeOJRTBbisofVO7rF1sD1TZTL4/V9nqlmVNczQ5IOY0GgKOTsitkcTnX9GXgrgbjw3OI5B69w==}
 
   '@iconify-json/ri@1.1.22':
     resolution: {integrity: sha512-Pi0I54CFXYSfWlm4xIAGqyDvtibNEpSSyQvHrSrfxFgZgDtFum9tbtYmaTKK0wJWWzYzF3XIpIJTC9/KVYX3SQ==}
@@ -3087,10 +3081,6 @@ snapshots:
   '@expressive-code/plugin-text-markers@0.36.0':
     dependencies:
       '@expressive-code/core': 0.36.0
-
-  '@iconify-json/mdi@1.1.68':
-    dependencies:
-      '@iconify/types': 2.0.0
 
   '@iconify-json/ri@1.1.22':
     dependencies:

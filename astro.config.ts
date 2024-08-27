@@ -20,7 +20,7 @@ import icon from 'astro-icon'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://widcard.win',
   integrations: [
     AutoImport({
       imports: [
@@ -60,8 +60,7 @@ export default defineConfig({
   markdown: {
     gfm: true,
     remarkPlugins: [
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-      remarkMark as any,
+      remarkMark,
       remarkCallouts,
       remarkMath,
       // used for math
