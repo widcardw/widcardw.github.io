@@ -1,4 +1,4 @@
-.input-theme {
+/* .input-theme {
     display: none;
 }
 
@@ -7,9 +7,14 @@
     height: 20px;
     display: flex;
     align-items: center;
-}
+} */
 
 .theme-toggle {
     display: flex;
     align-items: center;
+}
+
+.theme-toggle > svg {
+    width: 1.5rem;
+    height: 1.5rem;
 }

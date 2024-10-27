@@ -1,44 +1,59 @@
 import type { Component } from 'solid-js'
-import { Show, createEffect, createSignal, onMount } from 'solid-js'
+import { Match, Switch, createEffect, createSignal, onMount } from 'solid-js'
 import './ThemeToggleButton.css'
 import { makePersisted } from '@solid-primitives/storage'
 
 const icons = [
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="currentColor"
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
   >
-    <title>Light Mode</title>
     <path
-      fill-rule="evenodd"
-      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-      clip-rule="evenodd"
+      fill="currentColor"
+      d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6ZM5.394 6.813L6.81 5.399l3.505 3.506L8.9 10.319zM2 15.005h5v2H2zm3.394 10.193L8.9 21.692l1.414 1.414l-3.505 3.506zM15 25.005h2v5h-2zm6.687-1.9l1.414-1.414l3.506 3.506l-1.414 1.414zm3.313-8.1h5v2h-5zm-3.313-6.101l3.506-3.506l1.414 1.414l-3.506 3.506zM15 2.005h2v5h-2z"
     />
   </svg>,
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="currentColor"
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
   >
-    <title>Dark Mode</title>
-    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+    <path
+      fill="currentColor"
+      d="M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3Z"
+    />
+  </svg>,
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+  >
+    <path
+      fill="currentColor"
+      d="M15 2h2v3h-2zm12 13h3v2h-3zM15 27h2v3h-2zM2 15h3v2H2zm3.45-8.117L6.864 5.47l2.122 2.12L7.57 9.004zM23 7.581l2.12-2.121l1.414 1.414l-2.121 2.122zm.002 16.835l1.414-1.414l2.122 2.122l-1.414 1.414zM5.47 25.13L7.59 23L9 24.42l-2.12 2.12l-1.41-1.41zM16 8a8 8 0 1 0 8 8a8 8 0 0 0-8-8zm0 14a6 6 0 0 1 0-12z"
+    />
   </svg>,
 ]
+
+/**
+ * light
+ * dark
+ * auto
+ */
 
 const [theme, setTheme] = makePersisted(
   createSignal(
     (() => {
       if (import.meta.env.SSR) return undefined
 
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches)
-        return 'dark'
+      // if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+      //   return 'dark'
 
-      return 'light'
+      return 'auto'
     })(),
   ),
   { name: 'storage-theme' },
@@ -46,44 +61,58 @@ const [theme, setTheme] = makePersisted(
 
 const ThemeToggle: Component = () => {
   onMount(() => {
+    const root = document.documentElement
     createEffect(() => {
-      const root = document.documentElement
-      if (theme() === 'light') {
+      if (theme() === 'dark') {
+        root.classList.add('dark')
+        root.setAttribute('data-theme', 'dark')
+      } else if (theme() === 'light') {
         root.classList.remove('dark')
         root.setAttribute('data-theme', 'light')
       } else {
-        root.classList.add('dark')
-        root.setAttribute('data-theme', 'dark')
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          root.classList.add('dark')
+          root.setAttribute('data-theme', 'dark')
+        } else {
+          root.classList.remove('dark')
+          root.setAttribute('data-theme', 'light')
+        }
       }
     })
 
     window
       .matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', (e) => {
-        if (e.matches) setTheme('dark')
-        else setTheme('light')
+        console.log('theme change')
+        if (theme() === 'auto') {
+          if (e.matches) {
+            root.classList.add('dark')
+            root.setAttribute('data-theme', 'dark')
+          } else {
+            root.classList.remove('dark')
+            root.setAttribute('data-theme', 'light')
+          }
+        }
       })
   })
 
+  function cycleTheme() {
+    if (theme() === 'light') {
+      setTheme('dark')
+    } else if (theme() === 'dark') {
+      setTheme('auto')
+    } else {
+      setTheme('light')
+    }
+  }
+
   return (
-    <div class="theme-toggle">
-      <label>
-        <input
-          type="checkbox"
-          class="input-theme"
-          checked={theme() === 'dark'}
-          onChange={(v) => {
-            if (v.target.checked) {
-              setTheme('dark')
-            } else {
-              setTheme('light')
-            }
-          }}
-        />
-        <Show when={theme() === 'light'} fallback={icons[1]}>
-          {icons[0]}
-        </Show>
-      </label>
+    <div class="theme-toggle" onClick={cycleTheme}>
+      <Switch>
+        <Match when={theme() === 'light'}>{icons[0]}</Match>
+        <Match when={theme() === 'dark'}>{icons[1]}</Match>
+        <Match when={theme() === 'auto'}>{icons[2]}</Match>
+      </Switch>
     </div>
   )
 }
