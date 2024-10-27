@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js'
-import { Match, Switch, createEffect, createSignal, onMount } from 'solid-js'
+import { Match, Switch, createEffect, createSignal, on, onMount } from 'solid-js'
 import './ThemeToggleButton.css'
 import { makePersisted } from '@solid-primitives/storage'
 
@@ -59,44 +59,51 @@ const [theme, setTheme] = makePersisted(
   { name: 'storage-theme' },
 )
 
+const [realTheme, setRealTheme] = createSignal('light')
+
 const ThemeToggle: Component = () => {
   onMount(() => {
     const root = document.documentElement
-    createEffect(() => {
+    createEffect(on(theme, () => {
       if (theme() === 'dark') {
         root.classList.add('dark')
         root.setAttribute('data-theme', 'dark')
+        setRealTheme('dark')
       } else if (theme() === 'light') {
         root.classList.remove('dark')
         root.setAttribute('data-theme', 'light')
+        setRealTheme('light')
       } else {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
           root.classList.add('dark')
           root.setAttribute('data-theme', 'dark')
+          setRealTheme('dark')
         } else {
           root.classList.remove('dark')
           root.setAttribute('data-theme', 'light')
+          setRealTheme('light')
         }
       }
-    })
+    }))
 
     window
       .matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', (e) => {
-        console.log('theme change')
         if (theme() === 'auto') {
           if (e.matches) {
             root.classList.add('dark')
             root.setAttribute('data-theme', 'dark')
+            setRealTheme('dark')
           } else {
             root.classList.remove('dark')
             root.setAttribute('data-theme', 'light')
+            setRealTheme('light')
           }
         }
       })
   })
 
-  function cycleTheme() {
+  function toggleDark() {
     if (theme() === 'light') {
       setTheme('dark')
     } else if (theme() === 'dark') {
@@ -104,6 +111,32 @@ const ThemeToggle: Component = () => {
     } else {
       setTheme('light')
     }
+  }
+
+  function cycleTheme(event: MouseEvent) {
+    // toggleDark()
+    
+    const x = event?.clientX ?? window.innerWidth
+    const y = event?.clientY ?? 0
+
+    const transition = document.startViewTransition(() => {
+      toggleDark()
+    })
+  
+    const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
+    void transition.ready.then(() => {
+      const clipPath = [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`]
+      document.documentElement.animate(
+        {
+          clipPath: realTheme() === 'dark' ? clipPath : [...clipPath].reverse(),
+        },
+        {
+          duration: 500,
+          easing: 'ease-in',
+          pseudoElement: realTheme() === 'dark' ? '::view-transition-new(root)' : '::view-transition-old(root)',
+        },
+      )
+    })
   }
 
   return (
