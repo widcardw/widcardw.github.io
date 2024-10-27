@@ -153,3 +153,4 @@ const ThemeToggle: Component = () => {
 export default ThemeToggle
 
 export { theme as colorTheme }
+export { realTheme }

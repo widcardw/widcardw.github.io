@@ -6,7 +6,7 @@ import {
   createEffect,
   onCleanup,
 } from 'solid-js'
-import { colorTheme } from '../dark/ThemeToggle'
+import { realTheme } from '../dark/ThemeToggle'
 
 interface GiscusProps {
   id: string
@@ -71,7 +71,7 @@ const GiscusArea: Component<GiscusProps> = (props) => {
           input-position={props.inputPosition}
           lang={props.lang}
           loading={props.loading}
-          theme={colorTheme()}
+          theme={realTheme()}
         />
       </Show>
     </>
