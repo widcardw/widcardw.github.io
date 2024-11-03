@@ -3,6 +3,7 @@ import HeaderLink from './HeaderLink.astro'
 import { SITE_TITLE } from '../consts'
 import ThemeToggle from './dark/ThemeToggle'
 import { Icon } from 'astro-icon/components'
+import PageFind from './PageFind.astro'
 ---
 
 <header>
@@ -25,66 +26,73 @@ import { Icon } from 'astro-icon/components'
         <Icon name="ri:apps-line" />
         <span>Projects</span>
       </HeaderLink>
+      <a id="magnifying-glass" class="h-link" style="cursor: pointer;">
+        <Icon name="ri:search-line" />
+        <span>Search</span>
+      </a>
     </div>
     <ThemeToggle client:idle />
   </nav>
-</header>
-<style>
-  header {
-    margin: 0;
-    padding: 0 1em;
-    background: var(--header-color);
-    box-shadow: 0 2px 8px rgba(var(--text-color), 5%);
-  }
-  h2 {
-    margin: 0;
-    font-size: 1em;
-  }
 
-  h2 a,
-  h2 a.active {
-    text-decoration: none;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  nav a {
-    padding: 1em 0.5em;
-    color: var(--link-color);
-    border-bottom: 4px solid transparent;
-    text-decoration: none;
-  }
-  nav a.active {
-    text-decoration: none;
-    border-bottom-color: var(--accent);
-  }
-  @media not screen and (max-width: 500px) {
-    .h-link > :first-child {
+  <PageFind />
+
+  <style>
+    header {
+      margin: 0;
+      padding: 0 1em;
+      background: var(--header-color);
+      box-shadow: 0 2px 8px rgba(var(--text-color), 5%);
+    }
+    h2 {
+      margin: 0;
+      font-size: 1em;
+    }
+
+    h2 a,
+    h2 a.active {
+      text-decoration: none;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav a {
+      padding: 1em 0.5em;
+      color: var(--link-color);
+      border-bottom: 4px solid transparent;
+      text-decoration: none;
+    }
+    nav a.active {
+      text-decoration: none;
+      border-bottom-color: var(--accent);
+    }
+    @media not screen and (max-width: 600px) {
+      .h-link > :first-child {
+        display: none;
+      }
+    }
+    @media (max-width: 600px) {
+      .h-link > :nth-child(2) {
+        display: none;
+      }
+    }
+    .social-links,
+    .social-links a {
+      display: flex;
+    }
+    .theme-switch-button {
+      border: none;
+      background: none;
+    }
+    .theme-toggle {
       display: none;
     }
-  }
-  @media (max-width: 500px) {
-    .h-link > :nth-child(2) {
-      display: none;
+    .theme-toggle + label {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
     }
-  }
-  .social-links,
-  .social-links a {
-    display: flex;
-  }
-  .theme-switch-button {
-    border: none;
-    background: none;
-  }
-  .theme-toggle {
-    display: none;
-  }
-  .theme-toggle + label {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-  }
-</style>
+  </style>
+</header>

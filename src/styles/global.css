@@ -267,18 +267,19 @@ kbd {
 }
 
 button {
-    font-family: var(--font-serif);
-    padding: 0.2rem 0.4rem;
-    border: none;
-    border-radius: 0.2rem;
-    background: var(--accent);
-    box-shadow: inset 0 -2px 0 0 var(--accent-semidark), inset 0 0 1px 1px var(--accent-dim);
-    color: white;
+    border-radius: 8px;
+    border: 0px;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: var(--bg-secondary);
+    cursor: pointer;
+    transition: border-color 0.25s;
 }
-
-button:hover {
-    background: var(--accent-semidim);
-}
+  /* button:hover {
+    border-color: var(--accent);
+  } */
 
 [data-theme="dark"] .expressive-code.ec-theme-github-light {
     display: none;

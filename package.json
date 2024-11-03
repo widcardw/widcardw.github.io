@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "pnpm dlx @biomejs/biome format --write"
+    "format": "pnpm dlx @biomejs/biome format --write",
+    "postbuild": "pagefind --site dist"
   },
   "dependencies": {
     "@astrojs/mdx": "^3.1.4",
@@ -31,6 +32,7 @@
     "astro-auto-import": "^0.4.2",
     "astro-expressive-code": "^0.36.0",
     "astro-icon": "^1.1.1",
+    "astro-pagefind": "^1.6.0",
     "chroma-js": "^3.0.0",
     "giscus": "^1.5.0",
     "html-escaper": "^3.0.3",
@@ -38,6 +40,7 @@
     "mdast-util-wiki-link": "^0.1.2",
     "micromark-util-symbol": "1.0.1",
     "p5": "^1.10.0",
+    "pagefind": "^1.1.1",
     "parse-numeric-range": "^1.3.0",
     "rehype-external-links": "^3.0.0",
     "remark-mark-highlight": "^0.1.1",

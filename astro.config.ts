@@ -17,6 +17,7 @@ import { remarkCodeIcon } from './src/plugins/code-icon/remark'
 import { remarkMermaid } from './src/plugins/mermaid/remark'
 import { astroExpressiveCode } from 'astro-expressive-code'
 import icon from 'astro-icon'
+import pagefind from 'astro-pagefind'
 
 // https://astro.build/config
 export default defineConfig({
@@ -55,6 +56,7 @@ export default defineConfig({
     sitemap(),
     // astroCodeSnippets(),
     solidJs(),
+    pagefind(),
   ],
   publicDir: 'src/content/blog/_public',
   markdown: {
