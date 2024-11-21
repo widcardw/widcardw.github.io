@@ -34,7 +34,8 @@
     --code-bg: rgb(var(--gray-light));
     --callout-bg-color: #7f7f7f10;
     --mark-highlight-color: rgba(255, 255, 0, 0.5);
-    --bg-secondary: rgba(234, 234, 234, 1);
+    --bg-secondary: rgb(234, 234, 234);
+    --bg-secondary-v: 234, 234, 234;
     --kbd-bg: linear-gradient(-225deg, #dbdbe4, #f8f8f8);
     --kbd-shadow: inset 0 -2px 0 0 #cdcde6, inset 0 0 1px 1px #fff, 0 1px 2px 1px rgba(30, 35, 40, .4);
     --font-serif: 'Inter', 'PingFang SC', 'Helvetica Neue', Helvetica, 'San Francisco', Arial, 'Droid Sans', 'Microsoft YaHei', sans-serif;
@@ -56,6 +57,7 @@ html[data-theme="dark"] {
     --mark-highlight-color: rgba(0, 128, 255, 0.45);
     --gray-gradient: rgba(var(--gray-black), 30%), #121418;
     --bg-secondary: rgb(33, 37, 41);
+    --bg-secondary-v: 33, 37, 41;
     background-color: #121418;
     --kbd-bg: linear-gradient(-225deg, #222222, #454545);
     --kbd-shadow: inset 0 -2px 0 0 #282828, inset 0 0 1px 1px #444, 0 1px 2px 1px rgba(128, 128, 128, .4);
