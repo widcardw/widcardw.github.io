@@ -39,7 +39,7 @@ const GlSketch: Component<{
       mp.fixUV?.enabled
         ? `float ratio = ${mp.fixUV.ratio.toFixed(3)};
          vec2 fixUV(in vec2 c) {
-           return ratio * (c - ${(deviceRatio / 2).toFixed(2)} * u_resolution.xy) / min(u_resolution.x, u_resolution.y);
+           return ratio * ${(2 / deviceRatio).toFixed(2)} * (c - ${(deviceRatio / 2).toFixed(2)} * u_resolution.xy) / min(u_resolution.x, u_resolution.y);
          }`
         : ''
     }
