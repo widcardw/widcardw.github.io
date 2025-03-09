@@ -10,7 +10,7 @@ description: 备份一下，以便后续设备迁移后能找到对应列表
 
 ## 原神
 
-- Mihomo，启动！
+- [Mihomo](https://mihomo.party)，启动！
 
 ## 输入法
 
@@ -36,18 +36,23 @@ description: 备份一下，以便后续设备迁移后能找到对应列表
 ## 代码编辑器
 
 - [VSCode](https://code.visualstudio.com/)
+	- 点击 Other platforms 下载 Apple Silicon Zip 版本，则不会下载完整的 Universal 版本，更瘦身，[详情](https://twitter.com/yetone/status/1886814901051777118).
+	- Continue 插件接入 Deepseek API，实现代码辅助编写
 - [Zed](https://zed.dev)
+	- VSCode Icons Theme + Mariana Theme
 - [Sublime Text](https://www.sublimetext.com/download)
 - [Intellij IDEA](https://www.jetbrains.com.cn/idea/download/?section=mac) (Community)
 
 ## 命令行工具
 
-- [Warp](https://warp.dev) (目前用这个)
-- [iTerm2](https://iterm2.com)
+- [Warp](https://warp.dev) (目前用这个，不支持接入第三方 AI)
+- [iTerm2](https://iterm2.com) (可接入 AI)
 
 ## 开发环境
 
-- [miniconda](https://docs.anaconda.com/miniconda/)
+- Python [miniconda](https://docs.anaconda.com/miniconda/)
+	- 有人说 Mamba 更快，还没尝试过，感觉目前不刚需
+	- 杀出了一个 `uv`，据说也是依赖管理速度很快
 - Java
 	- [Zulu](https://www.azul.com/downloads/)
 	- [Oracle](https://www.oracle.com/java/technologies/downloads/#jdk23-mac)
@@ -60,7 +65,8 @@ description: 备份一下，以便后续设备迁移后能找到对应列表
 
 ## 浏览器
 
-- Edge (Chromium)
+- Edge (Chromium) 觉得更好用，所以就不用 Google Chrome 了
+- Google Chrome
 - Safari
 	- Darker
 	- JSONPeep
@@ -83,8 +89,8 @@ description: 备份一下，以便后续设备迁移后能找到对应列表
 - 截图 [Shottr](https://shottr.cc)
 - Hidden Bar (App Store)
 - 绘图
-	- tldraw
-	- Excalidraw
+	- [tldraw](https://tldraw.com)
+	- [Excalidraw](https://excalidraw.com) 有 Obsidian 插件
 	- InkScape (入门较困难)
 	- Ascii-d (forked version) (主分支长时间未维护)
 - 压缩软件 [MacZip](https://maczip.cn/)
@@ -96,13 +102,20 @@ description: 备份一下，以便后续设备迁移后能找到对应列表
 
 ## 下载工具
 
-- [NDM](https://www.neatdownloadmanager.com/index.php/en/) (最近常用)
+- [NDM](https://www.neatdownloadmanager.com/index.php/en/) 
+	- 最近常用，可进行资源嗅探
+	- 不支持 BT
 - Python you-get
-- [FDM](https://www.freedownloadmanager.org/) (没怎么用过，官网说支持 BT) (在[配置](https://www.zhihu.com/question/489562853/answer/64776078424)后达到更好的效果)
+- [FDM](https://www.freedownloadmanager.org/)
+	- 支持 BT，但在[配置](https://www.zhihu.com/question/489562853/answer/64776078424)后达到更好的效果
+	- FDM Elephant 插件可以解析并下载视频
+- [XDown](https://xdown.org)
+	- 支持 BT，做种等
+	- 浏览器插件有时候会自动安装，在这种情况下就不用再按照官网那样去手动安装插件了
 
 ## 桌面呈现
 
-- 按键显示 [keycastr](https://github.com/keycastr/keycastr) `brew install --cask keycastr`
+- 按键显示 [Keycastr](https://github.com/keycastr/keycastr) `brew install --cask keycastr`
 - 分屏工具 [Rectangle](https://rectangleapp.com/)
 
 ## 影视
@@ -124,4 +137,11 @@ description: 备份一下，以便后续设备迁移后能找到对应列表
 - [ToDesk](https://www.todesk.com/) (跨互联网，清晰度尚可，自带按键映射)
 - [Microsoft Remote Desktop](https://learn.microsoft.com/zh-cn/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac) (仅内网，清晰度高，速度快)
 
+## AI 工具
 
+- [Deepseek](https://deepseek.com)
+- [通义千问](https://tongyi.aliyun.com/)
+- [ChatGPT](https://chatgpt.com) 🚀
+- [Poe](https://poe.com) 🚀
+- [Flowith](https://flowith.io) 🚀
+- [Gemini](https://gemini.google.com) 🚀
