@@ -37,25 +37,75 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 
 - ✅ [VSCode](https://code.visualstudio.com/)
 	- 点击 Other platforms 下载 Apple Silicon Zip 版本，则不会下载完整的 Universal 版本，更瘦身，[详情](https://twitter.com/yetone/status/1886814901051777118).
-	- Continue 插件接入 Deepseek API，实现代码辅助编写
+	- Continue/Cline 插件接入 Deepseek API，实现代码辅助编写
 - ✅ [Zed](https://zed.dev)
 	- VSCode Icons Theme + Mariana Theme
 - [Sublime Text](https://www.sublimetext.com/download)
 - [Intellij IDEA](https://www.jetbrains.com.cn/idea/download/?section=mac) (Community)
-- [Helix](https://helix-editor.com/) 仅替代 vim
+- 类 Vim (仅高级选手使用，不建议其他人折腾，而是直接用系统自带 Vim)
+	- [Helix](https://helix-editor.com/) + [简单配置](https://github.com/widcardw/helix-config)
+	- [NeoVim](https://neovim.io/) + [LazyVim](https://www.lazyvim.org/) + [Neovide](https://neovide.dev/)
 
 ## 命令行工具
 
-- ✅ [ohmyzsh](https://ohmyz.sh/)
-	- theme
-		- amuse
-	- plugins
-		- git
-		- z
-		- zsh-syntax-highlighting
-		- zsh-autosuggestion
-- ✅ [Warp](https://warp.dev) (目前用这个，不支持接入第三方 AI)
-- ✅ [iTerm2](https://iterm2.com) (可接入 AI)
+- 让命令行具有更强的能力 (ohmyzsh 和 starship 选一个即可)
+
+✅ [ohmyzsh](https://ohmyz.sh/)
+
+```sh title="~/.zshrc"
+export ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="amuse"
+plugins = (
+  git
+  z
+  zsh-autosuggestion
+  zsh-syntax-highlighting
+)
+source $ZSH/oh-my-zsh.sh
+```
+
+✅ [Starship](https://starship.rs)
+
+安装 Starship
+
+```sh
+brew install starship
+```
+
+```sh title="~/.zshrc"
+eval "$(starship init zsh)"
+```
+
+```toml title="~/.config/starship.toml"
+format = "$all$time$line_break$character"
+
+[directory]
+truncation_symbol = "#/"
+
+[time]
+disabled = false
+# 其余的抄 https://starship.rs/zh-CN/presets/nerd-font
+```
+
+仅安装 zsh 相关插件
+
+```sh
+brew install z zsh-syntax-highlighting zsh-autosuggestion
+```
+
+```sh title="~/.zshrc"
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/etc/profile.d/z.sh
+```
+
+- 窗口软件
+	- ✅ [Warp](https://warp.dev) (目前用这个，不支持接入第三方 AI)
+		- 个人觉得可以搭配 `z` `zsh-syntax-highlighting` `zsh-autosuggestion` 这三个插件使用，且可以完全不装 starship/oh-my-zsh
+	- ✅ [iTerm2](https://iterm2.com) (可接入各种 AI，需要安装 iTerm AI 插件)
+		- 个人觉得最好搭配上面的 starship 或者 oh-my-zsh 使用
+	- [WezTerm](https://wezterm.org/) 
+		- 如果喜欢折腾，可以考虑用这个软件，配置方法参考[视频](https://www.bilibili.com/video/BV1miWMe9Esq)
 
 ## 开发环境
 
@@ -96,13 +146,14 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 - ✅ 快速打开终端或编辑器 [OpenInTerminal-Lite](https://github.com/Ji4n1ng/OpenInTerminal/blob/master/Resources/README-Lite.md)
 - ✅ 截图 [Shottr](https://shottr.cc)
 - ✅ Hidden Bar (App Store)
+- ✅ 图片压缩、转 PDF 等 [ImageMagick](https://imagemagick.org/) `brew install imagemagick`
 - 空间清理 Tencent Lemon (App Store)
 - 绘图
 	- ✅ [tldraw](https://tldraw.com)
 	- ✅ [Excalidraw](https://excalidraw.com) 有 Obsidian 插件
 	- InkScape (入门较困难)
-	- Ascii-d (forked version) (主分支长时间未维护)
 - 压缩软件 [MacZip](https://maczip.cn/)
+- 性能监控 RunCat (App Store)
 
 ## 外设软件适配
 
@@ -130,11 +181,12 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 
 ## 影视
 
-- ✅ [IINA](https://iina.io/)
-- ✅ [OBS Studio](https://obsproject.com/zh-cn/download)
-- ✅ [FFmpeg](https://ffmpeg.org) `brew install ffmpeg`
-- Davinci Resolve (App Store)
-- 剪映 (App Store)
+- ✅ 视频播放器 [IINA](https://iina.io/)
+- ✅ 录屏 [OBS Studio](https://obsproject.com/zh-cn/download)
+- ✅ 命令行视频处理工具 [FFmpeg](https://ffmpeg.org) `brew install ffmpeg`
+- 视频剪辑
+	- Davinci Resolve (App Store)
+	- 剪映 (App Store)
 
 ## 办公
 
