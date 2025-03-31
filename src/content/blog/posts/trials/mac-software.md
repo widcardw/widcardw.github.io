@@ -38,9 +38,9 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 - ✅ [VSCode](https://code.visualstudio.com/)
 	- 点击 Other platforms 下载 Apple Silicon Zip 版本，则不会下载完整的 Universal 版本，更瘦身，[详情](https://twitter.com/yetone/status/1886814901051777118).
 	- Continue/Cline 插件接入 Deepseek API，实现代码辅助编写
-- ✅ [Zed](https://zed.dev)
+- [Zed](https://zed.dev)
 	- VSCode Icons Theme + Mariana Theme
-- [Sublime Text](https://www.sublimetext.com/download)
+- [Sublime Text](https://www.sublimetext.com/download) 万能的文本编辑器
 - [Intellij IDEA](https://www.jetbrains.com.cn/idea/download/?section=mac) (Community)
 - 类 Vim (仅高级选手使用，不建议其他人折腾，而是直接用系统自带 Vim)
 	- [Helix](https://helix-editor.com/) + [简单配置](https://github.com/widcardw/helix-config)
@@ -99,6 +99,8 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /opt/homebrew/etc/profile.d/z.sh
 ```
 
+> Starship 配置结束
+
 - 窗口软件
 	- ✅ [Warp](https://warp.dev) (目前用这个，不支持接入第三方 AI)
 		- 个人觉得可以搭配 `z` `zsh-syntax-highlighting` `zsh-autosuggestion` 这三个插件使用，且可以完全不装 starship/oh-my-zsh
@@ -114,7 +116,7 @@ source /opt/homebrew/etc/profile.d/z.sh
 - Java
 	- ✅ [Zulu](https://www.azul.com/downloads/)
 	- [Oracle](https://www.oracle.com/java/technologies/downloads/#jdk23-mac)
-- ✅ [Cargo](https://rustwiki.org/zh-CN/cargo/getting-started/installation.html)
+- [Cargo](https://rustwiki.org/zh-CN/cargo/getting-started/installation.html) (Rust)
 - Node.js
 	- ✅ [官网](https://nodejs.org/)
 	- [nvm](https://github.com/nvm-sh/nvm) `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash`
