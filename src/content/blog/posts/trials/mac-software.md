@@ -52,6 +52,8 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 
 ✅ [ohmyzsh](https://ohmyz.sh/)
 
+配置文件
+
 ```sh title="~/.zshrc"
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="amuse"
@@ -72,28 +74,21 @@ source $ZSH/oh-my-zsh.sh
 brew install starship
 ```
 
-```sh title="~/.zshrc"
+```sh title="启动"
 eval "$(starship init zsh)"
 ```
 
-```toml title="~/.config/starship.toml"
-format = "$all$time$line_break$character"
+Starship 配置文件参考 [`~/.config/starship.toml`](https://gist.github.com/widcardw/5308091c3200e5019e55a42b20285adf)
 
-[directory]
-truncation_symbol = "#/"
-
-[time]
-disabled = false
-# 其余的抄 https://starship.rs/zh-CN/presets/nerd-font
-```
-
-仅安装 zsh 相关插件
+安装 zsh 相关插件（如果用的是 oh-my-zsh，那么就不用手动安装下面这些了）
 
 ```sh
 brew install z zsh-syntax-highlighting zsh-autosuggestion
 ```
 
 ```sh title="~/.zshrc"
+eval "$(starship init zsh)"   # 启动 starship
+
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/etc/profile.d/z.sh
@@ -102,10 +97,10 @@ source /opt/homebrew/etc/profile.d/z.sh
 > Starship 配置结束
 
 - 窗口软件
-	- ✅ [Warp](https://warp.dev) (目前用这个，不支持接入第三方 AI)
-		- 个人觉得可以搭配 `z` `zsh-syntax-highlighting` `zsh-autosuggestion` 这三个插件使用，且可以完全不装 starship/oh-my-zsh
 	- ✅ [iTerm2](https://iterm2.com) (可接入各种 AI，需要安装 iTerm AI 插件)
 		- 个人觉得最好搭配上面的 starship 或者 oh-my-zsh 使用
+	- ✅ [Warp](https://warp.dev) (目前用这个，不支持接入第三方 AI，每个月有免费额度)
+		- 个人觉得可以搭配 `z` `zsh-syntax-highlighting` `zsh-autosuggestion` 这三个插件使用，且可以完全不装 starship/oh-my-zsh
 	- [WezTerm](https://wezterm.org/) 
 		- 如果喜欢折腾，可以考虑用这个软件，配置方法参考[视频](https://www.bilibili.com/video/BV1miWMe9Esq)
 
@@ -122,6 +117,36 @@ source /opt/homebrew/etc/profile.d/z.sh
 	- [nvm](https://github.com/nvm-sh/nvm) `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash`
 	- [fnm](https://github.com/Schniz/fnm) `curl -fsSL https://fnm.vercel.app/install | bash`
 - ✅ [Postgresql](https://www.postgresql.org/download/macosx/) `brew install postgresql@15`
+
+### 换源
+
+#### uv
+
+```toml title="~/.config/uv/uv.toml"
+[[index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
+```
+
+#### npm
+
+```sh
+# 设置使用镜像
+npm config set registry https://registry.npmmirror.com
+# 恢复原始
+npm config set registry https://registry.npmjs.com
+```
+
+#### cargo
+
+```toml title="~/.cargo/config.toml"
+[source.crates-io]
+replace-with = 'ustc'
+[source.ustc]
+registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+[net]
+git-fetch-with-cli = true
+```
 
 ## 浏览器
 
@@ -151,8 +176,8 @@ source /opt/homebrew/etc/profile.d/z.sh
 - ✅ 图片压缩、转 PDF 等 [ImageMagick](https://imagemagick.org/) `brew install imagemagick`
 - 空间清理 Tencent Lemon (App Store)
 - 绘图
-	- ✅ [tldraw](https://tldraw.com)
-	- ✅ [Excalidraw](https://excalidraw.com) 有 Obsidian 插件
+	- ✅ [tldraw](https://tldraw.com) 在线版
+	- ✅ [Excalidraw](https://excalidraw.com) 在线版或 Obsidian 插件
 	- InkScape (入门较困难)
 - 压缩软件 [MacZip](https://maczip.cn/)
 - 性能监控 RunCat (App Store)
@@ -209,6 +234,7 @@ source /opt/homebrew/etc/profile.d/z.sh
 	- [火山引擎](https://console.volcengine.com/ark)
 	- ✅ [Kimi](https://kimi.moonshot.cn)
 	- [腾讯元宝](https://yuanbao.tencent.com)
+	- [OpenRouter](https://openrouter.ai)
 	- ✅ [ChatGPT](https://chatgpt.com) 🚀
 	- ✅ [Perplexity](https://pplx.ai) 🚀
 	- [Poe](https://poe.com) 🚀
@@ -216,6 +242,7 @@ source /opt/homebrew/etc/profile.d/z.sh
 	- [Gemini](https://gemini.google.com) 🚀
 - 本地版
 	- [ChatWise](https://chatwise.app)
+	- [Cherry Studio](https://cherry-ai.com)
 	- RayCast 插件接入 Deepseek API
 	- [ChatGPT](https://chatgpt.com) 🚀
 
