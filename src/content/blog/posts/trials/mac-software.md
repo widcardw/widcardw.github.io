@@ -11,6 +11,8 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 ## 原神
 
 - ✅ [Mihomo](https://mihomo.party)，启动！
+- [Clash-Verge-Rev](https://www.clashverge.dev/guide/quickstart.html)
+- Clash Nyanpasu
 
 ## 输入法
 
@@ -38,8 +40,11 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 - ✅ [VSCode](https://code.visualstudio.com/)
 	- 点击 Other platforms 下载 Apple Silicon Zip 版本，则不会下载完整的 Universal 版本，更瘦身，[详情](https://twitter.com/yetone/status/1886814901051777118).
 	- Continue/Cline 插件接入 Deepseek API，实现代码辅助编写
+	- 或者使用 Trae/CodeBuddy 插件辅助编写代码
 - [Zed](https://zed.dev)
 	- VSCode Icons Theme + Mariana Theme
+	- 可作为默认的文本编辑器，例如可以当作临时的 Markdown 打开器。然而针对 GBK 等不统一的文本编码可能还要等官方维护。
+	- AI Panel 功能在配置了 API Key 之后挺好用的
 - [Sublime Text](https://www.sublimetext.com/download) 万能的文本编辑器
 - [Intellij IDEA](https://www.jetbrains.com.cn/idea/download/?section=mac) (Community)
 - 类 Vim (仅高级选手使用，不建议其他人折腾，而是直接用系统自带 Vim)
@@ -99,9 +104,12 @@ source /opt/homebrew/etc/profile.d/z.sh
 - 窗口软件
 	- ✅ [iTerm2](https://iterm2.com) (可接入各种 AI，需要安装 iTerm AI 插件)
 		- 个人觉得最好搭配上面的 starship 或者 oh-my-zsh 使用
-	- ✅ [Warp](https://warp.dev) (目前用这个，不支持接入第三方 AI，每个月有免费额度)
+	- [Ghostty](https://ghostty.org/)
+		- 用 Zig 语言开发的一个终端，快捷键基本上也都与 iTerm2 类似
+		- 似乎不太适合用来 SSH 远程连接，还得写一些 xterm-256colors fallback 的配置
+	- [Warp](https://warp.dev) (不支持接入第三方 AI，每个月有免费额度)
 		- 个人觉得可以搭配 `z` `zsh-syntax-highlighting` `zsh-autosuggestion` 这三个插件使用，且可以完全不装 starship/oh-my-zsh
-	- [WezTerm](https://wezterm.org/) 
+	- [WezTerm](https://wezterm.org/)
 		- 如果喜欢折腾，可以考虑用这个软件，配置方法参考[视频](https://www.bilibili.com/video/BV1miWMe9Esq)
 
 ## 开发环境
@@ -193,7 +201,7 @@ git-fetch-with-cli = true
 	- 不支持资源嗅探，但是我本人对资源嗅探并不那么刚需
 	- 支持 BT，但在[配置](https://www.zhihu.com/question/489562853/answer/64776078424)后达到更好的效果
 	- FDM Elephant 插件可以解析并下载视频
-- [NDM](https://www.neatdownloadmanager.com/index.php/en/) 
+- ✅ [NDM](https://www.neatdownloadmanager.com/index.php/en/)
 	- 可进行资源嗅探
 	- 不支持 BT
 - Python you-get
@@ -230,8 +238,9 @@ git-fetch-with-cli = true
 
 - 在线版
 	- ✅ [Deepseek](https://deepseek.com)
-	- [通义千问](https://tongyi.aliyun.com/)
-	- [火山引擎](https://console.volcengine.com/ark)
+	- ✅ [千问](https://chat.qwen.ai/)
+	- ✅ [智谱](https://bigmodel.cn/) 需要自购 API
+	- ✅ [火山引擎](https://console.volcengine.com/ark) 价格比较便宜
 	- ✅ [Kimi](https://kimi.moonshot.cn)
 	- [腾讯元宝](https://yuanbao.tencent.com)
 	- [OpenRouter](https://openrouter.ai)
@@ -241,7 +250,8 @@ git-fetch-with-cli = true
 	- [Flowith](https://flowith.io) 🚀
 	- [Gemini](https://gemini.google.com) 🚀
 - 本地版
-	- [ChatWise](https://chatwise.app)
+	- [ChatWise](https://chatwise.app) 自己配置 API Key，作为一个本地的管理工具
+	- [Ollama](https://ollama.com) 有本地客户端
 	- [Cherry Studio](https://cherry-ai.com)
 	- RayCast 插件接入 Deepseek API
 	- [ChatGPT](https://chatgpt.com) 🚀
@@ -249,9 +259,9 @@ git-fetch-with-cli = true
 ## 字体
 
 - 编程
-	- ✅ [Maple Mono NF](https://github.com/subframe7536/maple-font/releases/tag/v7.0)
+	- ✅ [Maple Mono NF](https://github.com/subframe7536/maple-font/releases/)
 		- 设置变量 `calt`, `liga`, `cv01`, `cv35` 为 `true`
-	- ✅ [Fira Code](https://github.com/tonsky/FiraCode/releases/tag/6.2)
+	- ✅ [Fira Code](https://github.com/tonsky/FiraCode/releases/)
 	- ✅ [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 	- IBM Plex Mono
 - 文字工作
