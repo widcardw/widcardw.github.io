@@ -1,9 +1,12 @@
-import { mergeProps } from 'solid-js'
+import { createEffect, createSignal, mergeProps, onMount } from 'solid-js'
 import type { Component } from 'solid-js'
 import p5 from 'p5'
 
 const vs = `
     //standard vertex shader
+    #ifdef GL_ES
+    precision mediump float;
+    #endif
     attribute vec3 aPosition;
      
     void main() {
@@ -29,7 +32,9 @@ const GlSketch: Component<{
 }> = (props) => {
   const mp = mergeProps({ width: 200, height: 200 }, props)
   const deviceRatio = window.devicePixelRatio
-  mp.frag = `#ifdef GL_ES
+  const [el, setEl] = createSignal<HTMLElement>()
+  const finalFrag = `
+    #ifdef GL_ES
     precision mediump float;
     #endif
     uniform vec2 u_resolution;
@@ -39,28 +44,33 @@ const GlSketch: Component<{
       mp.fixUV?.enabled
         ? `float ratio = ${mp.fixUV.ratio.toFixed(3)};
          vec2 fixUV(in vec2 c) {
-           return ratio * ${(2 / deviceRatio).toFixed(2)} * (c - ${(deviceRatio / 2).toFixed(2)} * u_resolution.xy) / min(u_resolution.x, u_resolution.y);
+           return ratio * ${(2 / deviceRatio).toFixed(2)} * (c - ${(
+             deviceRatio / 2
+           ).toFixed(2)} * u_resolution.xy) / min(u_resolution.x, u_resolution.y);
          }`
         : ''
     }
     ${
       mp.fixUV?.enabled && mp.fixUV.mouse
         ? `vec2 fixMouse(in vec2 c) {
-           return (vec2(ratio * 2. * c.x - u_resolution.x, - ratio * 2. * c.y + ${(2 * mp.fixUV.ratio - 1).toFixed(3)} * u_resolution.y)) / min(u_resolution.x, u_resolution.y);
+           return (vec2(ratio * 2. * c.x - u_resolution.x, - ratio * 2. * c.y + ${(
+             2 * mp.fixUV.ratio - 1
+           ).toFixed(3)} * u_resolution.y)) / min(u_resolution.x, u_resolution.y);
          }`
         : ''
     }
     ${mp.frag}`
-  const createSketch = (ref: HTMLElement) => {
+
+  createEffect(async () => {
     let sd: p5.Shader
-    const sketch = (p: p5) => {
+    const mySketch = (p: p5) => {
       p.setup = () => {
         const canvas = p.createCanvas(mp.width, mp.height, p.WEBGL)
-        canvas.parent(ref)
+        // canvas.parent(ref)
         canvas.style('visibility:visible')
         p.background(0)
         p.noStroke()
-        sd = p.createShader(vs, mp.frag)
+        sd = p.createShader(vs, finalFrag)
       }
       p.draw = () => {
         sd.setUniform('u_resolution', [mp.width, mp.height])
@@ -72,9 +82,32 @@ const GlSketch: Component<{
         p.rect(0, 0, 400, 400)
       }
     }
-    new p5(sketch)
-  }
-  return <div ref={createSketch} />
+    new p5(mySketch, el()!)
+  })
+
+  // const createSketch = (ref: HTMLElement) => {
+  //   let sd: p5.Shader
+  //   new p5((p: p5) => {
+  //     p.setup = () => {
+  //       const canvas = p.createCanvas(mp.width, mp.height, p.WEBGL)
+  //       canvas.parent(ref)
+  //       canvas.style('visibility:visible')
+  //       p.background(0)
+  //       p.noStroke()
+  //       sd = p.createShader(vs, mp.frag)
+  //     }
+  //     p.draw = () => {
+  //       sd.setUniform('u_resolution', [mp.width, mp.height])
+  //       sd.setUniform('u_time', p.frameCount * 0.01)
+  //       if (p.mouseIsPressed) {
+  //         sd.setUniform('u_mouse', [p.pmouseX, p.pmouseY])
+  //       }
+  //       p.shader(sd)
+  //       p.rect(0, 0, 400, 400)
+  //     }
+  //   })
+  // }
+  return <div ref={(r) => setEl(r)} />
 }
 
 export { GlSketch as Sketch }

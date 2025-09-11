@@ -21,3 +21,4 @@ pnpm-debug.log*
 .DS_Store
 .obsidian/
 _Excalidraw/
+src/content/blog/copilot-custom-prompts

@@ -24,8 +24,8 @@ const {
 <div style={{ display: "flex", "justify-content": "center", 'margin': '1rem auto' }}>
   <Sketch
     frag={frag}
-    width={width}
-    height={height}
+    width={Number(width)}
+    height={Number(height)}
     fixUV={{
       enabled: Boolean(fixUVenabled),
       ratio: Number(fixUVratio),
