@@ -27,7 +27,7 @@
     "@iconify-json/vscode-icons": "^1.2.30",
     "@types/mdast": "^4.0.4",
     "@types/p5": "^1.7.6",
-    "@widcardw/rehype-asciimath": "^0.0.1",
+    "@widcardw/rehype-asciimath": "^0.0.2",
     "@widcardw/remark-callouts": "^0.1.7",
     "astro-auto-import": "^0.4.4",
     "astro-expressive-code": "^0.41.3",
