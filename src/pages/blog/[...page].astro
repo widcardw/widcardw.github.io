@@ -29,16 +29,21 @@ const meta = {
 const paginationProps = {
   ...(page.url.prev && {
     prevUrl: {
-      text: "Previous Page",
+      text: "Previous",
       url: page.url.prev,
     },
   }),
   ...(page.url.next && {
     nextUrl: {
-      text: "Next Page",
+      text: "Next",
       url: page.url.next,
     },
   }),
+  total: page.total,
+  size: page.size,
+  currentPage: page.currentPage,
+  lastPage: page.lastPage,
+  urls: page.url,
 };
 ---
 

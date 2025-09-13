@@ -1,65 +1,227 @@
 ---
-import type { PaginationLink } from '../utils/types'
-import { Icon } from 'astro-icon/components'
+import type { PaginationLink } from "../utils/types";
+import { Icon } from "astro-icon/components";
 
 interface Props {
-  nextUrl?: PaginationLink
-  prevUrl?: PaginationLink
+  nextUrl?: PaginationLink;
+  prevUrl?: PaginationLink;
+  total: number;
+  size: number;
+  currentPage: number;
+  lastPage: number;
+  urls: {
+    prev?: string;
+    next?: string;
+    current: string;
+    first?: string;
+    last?: string;
+  };
 }
 
-const { nextUrl, prevUrl } = Astro.props
+const { nextUrl, prevUrl, total, size, currentPage, lastPage, urls } =
+  Astro.props;
+
+interface ThisPageLink {
+  page: number | string;
+  url: string;
+  isCurrent?: boolean;
+  isEllipsis?: boolean;
+}
+
+// 生成页面链接的函数
+const generatePageLinks = () => {
+  const links: Array<ThisPageLink> = [];
+  const maxVisible = 5; // 最多显示的页面链接数
+  let url_base = urls.current.replace(/\d+$/, "");
+  if (!url_base.endsWith('/')) {
+    url_base += '/';
+  }
+
+  if (lastPage <= maxVisible) {
+    // 如果总页面数小于等于最大显示数，显示所有页面
+    for (let i = 1; i <= lastPage; i++) {
+      links.push({
+        page: i,
+        url:
+          i === 1
+            ? urls.first || ""
+            : `${url_base}${i}`,
+        isCurrent: i === currentPage,
+      });
+    }
+  } else {
+    // 总页面数大于最大显示数，需要智能显示
+    let startPage = Math.max(1, currentPage - 2);
+    const endPage = Math.min(lastPage, startPage + maxVisible - 1);
+
+    // 调整起始页，确保显示足够的页面数
+    if (endPage - startPage + 1 < maxVisible) {
+      startPage = Math.max(1, endPage - maxVisible + 1);
+    }
+
+    // 添加第一页
+    if (startPage > 1) {
+      links.push({
+        page: 1,
+        url: urls.first || "",
+        isCurrent: 1 === currentPage,
+      });
+
+      // 如果第一页和起始页之间有间隔，添加省略号
+      if (startPage > 2) {
+        links.push({ page: "...", url: "", isEllipsis: true });
+      }
+    }
+
+    // 添加中间的页面
+    for (let i = startPage; i <= endPage; i++) {
+      links.push({
+        page: i,
+        url:
+          i === 1
+            ? urls.first || ""
+            : `${urls.first?.replace(/\d+$/, String(i)) || i}`,
+        isCurrent: i === currentPage,
+      });
+    }
+
+    // 添加最后一页
+    if (endPage < lastPage) {
+      // 如果结束页和最后一页之间有间隔，添加省略号
+      if (endPage < lastPage - 1) {
+        links.push({ page: "...", url: "", isEllipsis: true });
+      }
+
+      links.push({
+        page: lastPage,
+        url: urls.last || "",
+        isCurrent: lastPage === currentPage,
+      });
+    }
+  }
+
+  return links;
+};
+
+const pageLinks = generatePageLinks();
+const isOnFirstPage = currentPage === 1;
+const isOnLastPage = currentPage === lastPage;
 ---
 
 {
-  (prevUrl || nextUrl) && (
-    <nav class="mt-8 flex items-center gap-x-4">
-      {prevUrl && (
-            <a
-                class="me-auto py-2 flex items-center space-x-1"
-                data-astro-prefetch
-                href={prevUrl.url}
-            >
-            <Icon name="ri:arrow-drop-left-line" />
-            {prevUrl.srLabel && <span class="sr-only">{prevUrl.srLabel}</span>}
-            {prevUrl.text ? prevUrl.text : "Previous"}
-            </a>
-      )}
-      {nextUrl && (
-        <a
-          class="ms-auto py-2 flex items-center space-x-1"
-          data-astro-prefetch
-          href={nextUrl.url}
-        >
-          {nextUrl.srLabel && <span class="sr-only">{nextUrl.srLabel}</span>}
-          {nextUrl.text ? nextUrl.text : "Next"}
-          <Icon name="ri:arrow-drop-right-line" />
-        </a>
-      )}
+  lastPage > 1 && (
+    <nav class="paginator">
+      {/* Previous button - always visible but disabled on first page */}
+      <a
+        class={`paginator-button ${isOnFirstPage ? "disabled" : ""}`}
+        data-astro-prefetch={!isOnFirstPage}
+        href={isOnFirstPage ? "" : prevUrl?.url || ""}
+        aria-disabled={isOnFirstPage}
+      >
+        <Icon name="ri:arrow-drop-left-line" />
+        {prevUrl?.srLabel && <span class="sr-only">{prevUrl.srLabel}</span>}
+      </a>
+
+      {/* Page links */}
+      {pageLinks.map((link) => {
+        if (link.page === "...") {
+          return <span class="paginator-ellipsis">{link.page}</span>;
+        }
+
+        return (
+          <a
+            class={`paginator-page ${link.isCurrent ? "current" : ""}`}
+            data-astro-prefetch
+            href={link.isCurrent ? "" : link.url}
+          >
+            {link.page}
+          </a>
+        );
+      })}
+
+      {/* Next button - always visible but disabled on last page */}
+      <a
+        class={`paginator-button ${isOnLastPage ? "disabled" : ""}`}
+        data-astro-prefetch={!isOnLastPage}
+        href={isOnLastPage ? "" : nextUrl?.url || ""}
+        aria-disabled={isOnLastPage}
+      >
+        {nextUrl?.srLabel && <span class="sr-only">{nextUrl.srLabel}</span>}
+        <Icon name="ri:arrow-drop-right-line" />
+      </a>
     </nav>
   )
 }
 
 <style>
-.mt-8 {
-    margin-top: 2rem;
-}
-.flex {
+  .paginator {
     display: flex;
-}
-.items-center {
     align-items: center;
-}
-.gap-x-4 {
-    column-gap: 1rem;
-}
-.me-auto {
-    margin-inline-end: auto;
-}
-.ms-auto {
-    margin-inline-start: auto;
-}
-.py-2 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-}
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .paginator-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.5rem;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: background-color 0.15s ease;
+  }
+
+  .paginator-button:hover:not(.disabled) {
+    background-color: var(--bg-secondary);
+  }
+
+  .paginator-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .paginator-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.15rem;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: background-color 0.15s ease;
+  }
+
+  .paginator-page:hover:not(.current) {
+    background-color: var(--bg-secondary);
+  }
+
+  .paginator-page.current {
+    background-color: rgb(37 99 235);
+    color: white;
+  }
+
+  .paginator-ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 </style>
