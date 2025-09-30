@@ -12,13 +12,13 @@
     "postbuild": "pagefind --site dist"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.5",
+    "@astrojs/mdx": "^4.3.6",
     "@astrojs/rss": "^4.0.12",
-    "@astrojs/sitemap": "^3.5.1",
+    "@astrojs/sitemap": "^3.6.0",
     "@astrojs/solid-js": "^5.1.1",
     "@solid-primitives/storage": "^4.3.3",
-    "astro": "^5.13.7",
-    "sharp": "^0.34.3",
+    "astro": "^5.14.1",
+    "sharp": "^0.34.4",
     "solid-js": "^1.9.9"
   },
   "devDependencies": {
@@ -45,7 +45,7 @@
     "rehype-external-links": "^3.0.0",
     "remark-mark-highlight": "^0.1.1",
     "remark-math": "^6.0.0",
-    "shiki": "^3.12.2",
+    "shiki": "^3.13.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0"
   }

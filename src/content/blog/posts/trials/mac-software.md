@@ -10,9 +10,10 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 
 ## 原神
 
-- ✅ [Mihomo](https://mihomo.party)，启动！
-- [Clash-Verge-Rev](https://www.clashverge.dev/guide/quickstart.html)
-- Clash Nyanpasu
+- [v2RayN](https://2dust.link/)
+- [Clash-Verge-Rev](https://www.clashverge.dev/guide/quickstart.html) (Tauri)
+- [Clash Party](https://mihomoparty.net) 或 [Sparkle](https://mihomoparty.net/sparkle/) (Electron)
+- [Clash Nyanpasu](https://nyanpasu.elaina.moe/zh-CN/) (Tauri)
 
 ## 输入法
 
@@ -23,7 +24,7 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 ## 云同步
 
 - ✅ [OneDrive](https://www.microsoft.com/en-us/microsoft-365/onedrive/download)
-	- 无法连接时，可使用 Mihomo 或 [Watt Toolkit](https://steampp.net) 加速
+	- 无法连接时，可使用《原神》或 [Watt Toolkit](https://steampp.net) 加速
 - iCloud (仅备忘录)
 
 ## 文献管理
@@ -39,25 +40,46 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 
 - ✅ [VSCode](https://code.visualstudio.com/)
 	- 点击 Other platforms 下载 Apple Silicon Zip 版本，则不会下载完整的 Universal 版本，更瘦身，[详情](https://twitter.com/yetone/status/1886814901051777118).
+	- Trae/CodeBuddy 插件辅助编写代码
 	- Continue/Cline 插件接入 Deepseek API，实现代码辅助编写
-	- 或者使用 Trae/CodeBuddy 插件辅助编写代码
 - [Zed](https://zed.dev)
 	- VSCode Icons Theme + Mariana Theme
 	- 可作为默认的文本编辑器，例如可以当作临时的 Markdown 打开器。然而针对 GBK 等不统一的文本编码可能还要等官方维护。
 	- AI Panel 功能在配置了 API Key 之后挺好用的
+	- 已支持 Claude Code
 - [Sublime Text](https://www.sublimetext.com/download) 万能的文本编辑器
 - [Intellij IDEA](https://www.jetbrains.com.cn/idea/download/?section=mac) (Community)
 - 类 Vim (仅高级选手使用，不建议其他人折腾，而是直接用系统自带 Vim)
 	- [Helix](https://helix-editor.com/) + [简单配置](https://github.com/widcardw/helix-config)
 	- [NeoVim](https://neovim.io/) + [LazyVim](https://www.lazyvim.org/) + [Neovide](https://neovide.dev/)
+- [Claude Code](https://docs.claude.com/zh-CN/docs/claude-code/overview)
+	- 可使用国内的模型，手动配置 Base URL 和 API Key，参考[智谱开发文档](https://docs.bigmodel.cn/cn/guide/develop/claude)
+
+```sh
+export ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic export ANTHROPIC_AUTH_TOKEN=YOUR_API_KEY
+```
 
 ## 命令行工具
 
-- 让命令行具有更强的能力 (ohmyzsh 和 starship 选一个即可)
+### 窗口工具
 
-✅ [ohmyzsh](https://ohmyz.sh/)
+- ✅ [iTerm2](https://iterm2.com) (可接入各种 AI，需要安装 iTerm AI 插件)
+	- 个人觉得最好搭配上面的 starship 或者 oh-my-zsh 使用
+- ✅ [Ghostty](https://ghostty.org/)
+	- 用 Zig 语言开发的一个终端，快捷键基本上也都与 iTerm2 类似
+	- 配置文件[参考](https://gist.github.com/widcardw/9436707cd6ed36fe45df51608656e364)
+- [Warp](https://warp.dev) (不支持接入第三方 AI，每个月有免费额度)
+	- 个人觉得可以搭配 `z` `zsh-syntax-highlighting` `zsh-autosuggestion` 这三个插件使用，且可以完全不装 starship/oh-my-zsh
+- [WezTerm](https://wezterm.org/)
+	- 如果喜欢折腾，可以考虑用这个软件，配置方法参考[视频](https://www.bilibili.com/video/BV1miWMe9Esq)
 
-配置文件
+### 命令行内的软件
+
+#### ohmyzsh
+
+[参考链接](https://ohmyz.sh/)
+
+参考配置文件
 
 ```sh title="~/.zshrc"
 export ZSH=$HOME/.oh-my-zsh
@@ -71,7 +93,9 @@ plugins = (
 source $ZSH/oh-my-zsh.sh
 ```
 
-✅ [Starship](https://starship.rs)
+#### starship
+
+[参考链接](https://starship.rs)
 
 安装 Starship
 
@@ -98,19 +122,6 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/etc/profile.d/z.sh
 ```
-
-> Starship 配置结束
-
-- 窗口软件
-	- ✅ [iTerm2](https://iterm2.com) (可接入各种 AI，需要安装 iTerm AI 插件)
-		- 个人觉得最好搭配上面的 starship 或者 oh-my-zsh 使用
-	- [Ghostty](https://ghostty.org/)
-		- 用 Zig 语言开发的一个终端，快捷键基本上也都与 iTerm2 类似
-		- 似乎不太适合用来 SSH 远程连接，还得写一些 xterm-256colors fallback 的配置
-	- [Warp](https://warp.dev) (不支持接入第三方 AI，每个月有免费额度)
-		- 个人觉得可以搭配 `z` `zsh-syntax-highlighting` `zsh-autosuggestion` 这三个插件使用，且可以完全不装 starship/oh-my-zsh
-	- [WezTerm](https://wezterm.org/)
-		- 如果喜欢折腾，可以考虑用这个软件，配置方法参考[视频](https://www.bilibili.com/video/BV1miWMe9Esq)
 
 ## 开发环境
 
@@ -159,7 +170,8 @@ git-fetch-with-cli = true
 ## 浏览器
 
 - ✅ Edge (Chromium) 觉得更好用，所以就不用 Google Chrome 了
-- Google Chrome
+	- Edge Drop 可以跨设备传消息、文件等
+- ✅ Google Chrome
 - Safari
 	- Darker
 	- JSONPeep
@@ -182,7 +194,10 @@ git-fetch-with-cli = true
 - ✅ 截图 [Shottr](https://shottr.cc)
 - ✅ Hidden Bar (App Store)
 - ✅ 图片压缩、转 PDF 等 [ImageMagick](https://imagemagick.org/) `brew install imagemagick`
-- 空间清理 Tencent Lemon (App Store)
+- 空间清理
+	- Tencent Lemon (App Store)
+	- Daisy Disk (App Store 付费)
+		- [Squirrel Disk](https://www.squirreldisk.com/) (免费开源代替)
 - 绘图
 	- ✅ [tldraw](https://tldraw.com) 在线版
 	- ✅ [Excalidraw](https://excalidraw.com) 在线版或 Obsidian 插件
