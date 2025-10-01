@@ -63,11 +63,11 @@ export ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic export ANTHROPI
 
 ### 窗口工具
 
-- ✅ [iTerm2](https://iterm2.com) (可接入各种 AI，需要安装 iTerm AI 插件)
-	- 个人觉得最好搭配上面的 starship 或者 oh-my-zsh 使用
 - ✅ [Ghostty](https://ghostty.org/)
 	- 用 Zig 语言开发的一个终端，快捷键基本上也都与 iTerm2 类似
-	- 配置文件[参考](https://gist.github.com/widcardw/9436707cd6ed36fe45df51608656e364)
+	- 配置文件[参考](https://gist.github.com/widcardw/9436707cd6ed36fe45df51608656e364)，尤其是需要使用 SSH 时，必备 `term = xterm-256color` 这个选项
+- ✅ [iTerm2](https://iterm2.com) (可接入各种 AI，需要安装 iTerm AI 插件)
+	- 个人觉得最好搭配上面的 starship 或者 oh-my-zsh 使用
 - [Warp](https://warp.dev) (不支持接入第三方 AI，每个月有免费额度)
 	- 个人觉得可以搭配 `z` `zsh-syntax-highlighting` `zsh-autosuggestion` 这三个插件使用，且可以完全不装 starship/oh-my-zsh
 - [WezTerm](https://wezterm.org/)
