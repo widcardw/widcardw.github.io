@@ -56,8 +56,11 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 	- 可使用国内的模型，手动配置 Base URL 和 API Key，参考[智谱开发文档](https://docs.bigmodel.cn/cn/guide/develop/claude)
 
 ```sh
-export ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic export ANTHROPIC_AUTH_TOKEN=YOUR_API_KEY
+export ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic
+export ANTHROPIC_AUTH_TOKEN=YOUR_API_KEY
 ```
+
+或者使用 [CC Mate](https://github.com/djyde/ccmate-release) 工具可视化的修改 Claude Code 的提供商
 
 ## 命令行工具
 
@@ -66,10 +69,10 @@ export ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic export ANTHROPI
 - ✅ [Ghostty](https://ghostty.org/)
 	- 用 Zig 语言开发的一个终端，快捷键基本上也都与 iTerm2 类似
 	- 配置文件[参考](https://gist.github.com/widcardw/9436707cd6ed36fe45df51608656e364)，尤其是需要使用 SSH 时，必备 `term = xterm-256color` 这个选项
-- ✅ [iTerm2](https://iterm2.com) (可接入各种 AI，需要安装 iTerm AI 插件)
-	- 个人觉得最好搭配上面的 starship 或者 oh-my-zsh 使用
+- ✅ [iTerm2](https://iterm2.com) (可接入各种 AI，需要安装 iTerm AI 插件) (iTerm2 已经开始支持内嵌浏览器，相当于是屈服于 AI 大潮了)
+	- 个人觉得最好搭配 starship 或者 oh-my-zsh 使用
 - [Warp](https://warp.dev) (不支持接入第三方 AI，每个月有免费额度)
-	- 个人觉得可以搭配 `z` `zsh-syntax-highlighting` `zsh-autosuggestion` 这三个插件使用，且可以完全不装 starship/oh-my-zsh
+	- 个人觉得可以搭配 `z`, `zsh-syntax-highlighting`, `zsh-autosuggestion` 这三个插件使用，且可以完全不装 starship/oh-my-zsh
 - [WezTerm](https://wezterm.org/)
 	- 如果喜欢折腾，可以考虑用这个软件，配置方法参考[视频](https://www.bilibili.com/video/BV1miWMe9Esq)
 
@@ -180,7 +183,7 @@ git-fetch-with-cli = true
 
 ## 效率
 
-- ✅ [RayCast](https://www.raycast.com/)
+- ✅ [RayCast](https://www.raycast.com/) Spotlight 替代品
 	- Search Web Font
 	- Search NPM
 	- Wikipedia
@@ -189,15 +192,16 @@ git-fetch-with-cli = true
 	- Unsplash
 	- Show IP Address
 - ✅ 卸载工具 [Pearcleaner](https://github.com/alienator88/Pearcleaner)
-- ✅ 安卓存储访问 [Axchange](https://github.com/Lakr233/Axchange)
-- ✅ 快速打开终端或编辑器 [OpenInTerminal-Lite](https://github.com/Ji4n1ng/OpenInTerminal/blob/master/Resources/README-Lite.md)
+- ✅ 安卓存储访问（现已收费） [Axchange](https://github.com/Lakr233/Axchange)
+- 👍 ✅ 快速打开终端或编辑器 [OpenInTerminal-Lite](https://github.com/Ji4n1ng/OpenInTerminal/blob/master/Resources/README-Lite.md)
 - ✅ 截图 [Shottr](https://shottr.cc)
 - ✅ Hidden Bar (App Store)
 - ✅ 图片压缩、转 PDF 等 [ImageMagick](https://imagemagick.org/) `brew install imagemagick`
 - 空间清理
 	- Tencent Lemon (App Store)
+	- [Mole](https://github.com/tw93/Mole)
 	- Daisy Disk (App Store 付费)
-		- [Squirrel Disk](https://www.squirreldisk.com/) (免费开源代替)
+		- [Squirrel Disk](https://www.squirreldisk.com/) (免费开源代替，但 UI 没那么好看)
 - 绘图
 	- ✅ [tldraw](https://tldraw.com) 在线版
 	- ✅ [Excalidraw](https://excalidraw.com) 在线版或 Obsidian 插件
@@ -261,9 +265,9 @@ git-fetch-with-cli = true
 	- [OpenRouter](https://openrouter.ai)
 	- ✅ [ChatGPT](https://chatgpt.com) 🚀
 	- ✅ [Perplexity](https://pplx.ai) 🚀
+	- [Gemini](https://gemini.google.com) 🚀
 	- [Poe](https://poe.com) 🚀
 	- [Flowith](https://flowith.io) 🚀
-	- [Gemini](https://gemini.google.com) 🚀
 - 本地版
 	- [ChatWise](https://chatwise.app) 自己配置 API Key，作为一个本地的管理工具
 	- [Ollama](https://ollama.com) 有本地客户端
