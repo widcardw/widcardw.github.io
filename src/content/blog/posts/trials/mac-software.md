@@ -1,7 +1,7 @@
 ---
 title: Mac 上常用的软件
 pubDate: 2024-12-29
-updatedDate: 2024-12-29
+updatedDate: 2025-11-05
 tags:
   - 软件
   - macOS
@@ -10,14 +10,14 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 
 ## 原神
 
-- [v2RayN](https://2dust.link/)
+- [v2RayN](https://2dust.link/) (C#)
 - [Clash-Verge-Rev](https://www.clashverge.dev/guide/quickstart.html) (Tauri)
 - [Clash Party](https://mihomoparty.net) 或 [Sparkle](https://mihomoparty.net/sparkle/) (Electron)
 - [Clash Nyanpasu](https://nyanpasu.elaina.moe/zh-CN/) (Tauri)
 
 ## 输入法
 
-- ✅ [Rime](https://rime.im) 小狼毫
+- ✅ [Rime](https://rime.im) 小狼毫/鼠须管
 - ✅ [rime-frost](https://github.com/gaboolic/rime-frost) 输入法方案
 - ✅ 自定义的部分配置，见 [gist](https://gist.github.com/widcardw/23005e112780fec16fb35e1fff221f4b)
 
@@ -40,8 +40,7 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 
 - ✅ [VSCode](https://code.visualstudio.com/)
 	- 点击 Other platforms 下载 Apple Silicon Zip 版本，则不会下载完整的 Universal 版本，更瘦身，[详情](https://twitter.com/yetone/status/1886814901051777118).
-	- Trae/CodeBuddy 插件辅助编写代码
-	- Continue/Cline 插件接入 Deepseek API，实现代码辅助编写
+	- Trae/Lingma/CodeBuddy 插件辅助编写代码
 - [Zed](https://zed.dev)
 	- VSCode Icons Theme + Mariana Theme
 	- 可作为默认的文本编辑器，例如可以当作临时的 Markdown 打开器。然而针对 GBK 等不统一的文本编码可能还要等官方维护。
@@ -54,13 +53,9 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 	- [NeoVim](https://neovim.io/) + [LazyVim](https://www.lazyvim.org/) + [Neovide](https://neovide.dev/)
 - [Claude Code](https://docs.claude.com/zh-CN/docs/claude-code/overview)
 	- 可使用国内的模型，手动配置 Base URL 和 API Key，参考[智谱开发文档](https://docs.bigmodel.cn/cn/guide/develop/claude)
-
-```sh
-export ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic
-export ANTHROPIC_AUTH_TOKEN=YOUR_API_KEY
-```
-
-或者使用 [CC Mate](https://github.com/djyde/ccmate-release) 工具可视化的修改 Claude Code 的提供商
+	- 使用 [Claude Code Router](https://github.com/musistudio/claude-code-router) (命令行) 配置转发器，白嫖 modelscope 每日 2000 次额度
+	- 或者使用 [CC Mate](https://github.com/djyde/ccmate-release) (闭源) 工具可视化的修改 Claude Code 的提供商
+	- 或者使用 [CC Switch](https://github.com/farion1231/cc-switch) (Tauri) 工具切换 Claude Code 或者 CodeX 的提供商
 
 ## 命令行工具
 
