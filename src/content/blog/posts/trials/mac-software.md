@@ -46,6 +46,7 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 	- 可作为默认的文本编辑器，例如可以当作临时的 Markdown 打开器。然而针对 GBK 等不统一的文本编码可能还要等官方维护。
 	- AI Panel 功能在配置了 API Key 之后挺好用的
 	- 已支持 Claude Code
+- Trae 字节出品的 AI 编辑器
 - [Sublime Text](https://www.sublimetext.com/download) 万能的文本编辑器
 - [Intellij IDEA](https://www.jetbrains.com.cn/idea/download/?section=mac) (Community)
 - 类 Vim (仅高级选手使用，不建议其他人折腾，而是直接用系统自带 Vim)
@@ -54,7 +55,7 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 - [Claude Code](https://docs.claude.com/zh-CN/docs/claude-code/overview)
 	- 可使用国内的模型，手动配置 Base URL 和 API Key，参考[智谱开发文档](https://docs.bigmodel.cn/cn/guide/develop/claude)
 	- 使用 [Claude Code Router](https://github.com/musistudio/claude-code-router) (命令行) 配置转发器，白嫖 modelscope 每日 2000 次额度
-	- 或者使用 [CC Mate](https://github.com/djyde/ccmate-release) (闭源) 工具可视化的修改 Claude Code 的提供商
+	- 或者使用 [CC Mate](https://github.com/djyde/ccmate-release) (Tauri) 工具可视化的修改 Claude Code 的提供商
 	- 或者使用 [CC Switch](https://github.com/farion1231/cc-switch) (Tauri) 工具切换 Claude Code 或者 CodeX 的提供商
 
 ## 命令行工具
@@ -64,7 +65,7 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 - ✅ [Ghostty](https://ghostty.org/)
 	- 用 Zig 语言开发的一个终端，快捷键基本上也都与 iTerm2 类似
 	- 配置文件[参考](https://gist.github.com/widcardw/9436707cd6ed36fe45df51608656e364)，尤其是需要使用 SSH 时，必备 `term = xterm-256color` 这个选项
-- ✅ [iTerm2](https://iterm2.com) (可接入各种 AI，需要安装 iTerm AI 插件) (iTerm2 已经开始支持内嵌浏览器，相当于是屈服于 AI 大潮了)
+- [iTerm2](https://iterm2.com) (可接入各种 AI，需要安装 iTerm AI 插件) (iTerm2 已经开始支持内嵌浏览器，相当于是屈服于 AI 大潮了)
 	- 个人觉得最好搭配 starship 或者 oh-my-zsh 使用
 - [Warp](https://warp.dev) (不支持接入第三方 AI，每个月有免费额度)
 	- 个人觉得可以搭配 `z`, `zsh-syntax-highlighting`, `zsh-autosuggestion` 这三个插件使用，且可以完全不装 starship/oh-my-zsh
@@ -179,6 +180,7 @@ git-fetch-with-cli = true
 ## 效率
 
 - ✅ [RayCast](https://www.raycast.com/) Spotlight 替代品
+	- 剪贴板工具
 	- Search Web Font
 	- Search NPM
 	- Wikipedia
@@ -187,7 +189,7 @@ git-fetch-with-cli = true
 	- Unsplash
 	- Show IP Address
 - ✅ 卸载工具 [Pearcleaner](https://github.com/alienator88/Pearcleaner)
-- ✅ 安卓存储访问（现已收费） [Axchange](https://github.com/Lakr233/Axchange)
+- ✅ 安卓存储访问（现已收费，自行编译免费） [Axchange](https://github.com/Lakr233/Axchange)
 - 👍 ✅ 快速打开终端或编辑器 [OpenInTerminal-Lite](https://github.com/Ji4n1ng/OpenInTerminal/blob/master/Resources/README-Lite.md)
 - ✅ 截图 [Shottr](https://shottr.cc)
 - ✅ Hidden Bar (App Store)
@@ -241,7 +243,7 @@ git-fetch-with-cli = true
 
 - ✅ [WPS 国际版](https://wps.com)（安装后界面会自动切换为中文）
 - Mac 自带三件套 Pages, Keynote, Numbers（这个用的人真的多吗？）
-- Microsoft 三件套（App Store）（主要是体积太大了）
+- Microsoft 三件套（App Store）（体积太大了，似乎是基于模拟器跑的）
 
 ## 远程连接
 
