@@ -1,19 +1,29 @@
 ---
 title: Mac 上常用的软件
 pubDate: 2024-12-29
-updatedDate: 2025-11-05
+updatedDate: 2026-1-1
 tags:
   - 软件
   - macOS
 description: 备份一下，以便后续设备迁移后能找到对应列表，打勾为常用
 ---
 
-## 原神
+## 游戏
 
-- [v2RayN](https://2dust.link/) (C#)
-- [Clash-Verge-Rev](https://www.clashverge.dev/guide/quickstart.html) (Tauri)
-- [Clash Party](https://mihomoparty.net) 或 [Sparkle](https://mihomoparty.net/sparkle/) (Electron)
-- [Clash Nyanpasu](https://nyanpasu.elaina.moe/zh-CN/) (Tauri)
+### 八音盒
+
+[sing-box](https://sing-box.sagernet.org/) (Go)
+
+社区有做 GUI，我 fork 了一下 [GUI.for.SingSox](https://github.com/widcardw/GUI.for.SingBox)，稍微改了改；可以在设置中下载内核
+
+### X 光
+
+- [2dust](https://2dust.link/) (C#)
+
+### 原神
+
+- [Verge-Rev](https://www.clashverge.dev/guide/quickstart.html) (Tauri)
+- [Nyanpasu](https://nyanpasu.elaina.moe/zh-CN/) (Tauri)
 
 ## 输入法
 
@@ -24,7 +34,7 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 ## 云同步
 
 - ✅ [OneDrive](https://www.microsoft.com/en-us/microsoft-365/onedrive/download)
-	- 无法连接时，可使用《原神》或 [Watt Toolkit](https://steampp.net) 加速
+	- 无法连接时，可使用《游戏》或 [Watt Toolkit](https://steampp.net) 加速
 - iCloud (仅备忘录)
 
 ## 文献管理
@@ -125,9 +135,9 @@ source /opt/homebrew/etc/profile.d/z.sh
 ## 开发环境
 
 - ✅ Python [uv](https://docs.astral.sh/uv/)
-	- 据说自从在 mac 上用过 uv 的都抛弃 conda 了，先试用一段时间
+	- 据说自从在 mac 上用过 uv 的都抛弃 conda 了，可直接使用 brew 自动安装的 Python
 - Java
-	- ✅ [Zulu](https://www.azul.com/downloads/)
+	- [Zulu](https://www.azul.com/downloads/)
 	- [Oracle](https://www.oracle.com/java/technologies/downloads/#jdk23-mac)
 - [Cargo](https://rustwiki.org/zh-CN/cargo/getting-started/installation.html) (Rust)
 - Node.js
@@ -195,8 +205,8 @@ git-fetch-with-cli = true
 - ✅ Hidden Bar (App Store)
 - ✅ 图片压缩、转 PDF 等 [ImageMagick](https://imagemagick.org/) `brew install imagemagick`
 - 空间清理
+	- 👍 ✅ [Mole](https://github.com/tw93/Mole)
 	- Tencent Lemon (App Store)
-	- [Mole](https://github.com/tw93/Mole)
 	- Daisy Disk (App Store 付费)
 		- [Squirrel Disk](https://www.squirreldisk.com/) (免费开源代替，但 UI 没那么好看)
 - 绘图
@@ -205,6 +215,7 @@ git-fetch-with-cli = true
 	- InkScape (入门较困难)
 - 压缩软件 [MacZip](https://maczip.cn/)
 - 性能监控 RunCat (App Store)
+- 端口查看工具 [PortKiller](https://github.com/productdevbook/port-killer)
 
 ## 外设软件适配
 
