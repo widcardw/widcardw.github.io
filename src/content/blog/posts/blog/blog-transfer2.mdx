@@ -81,10 +81,8 @@ function renderFunction() {
       ...vm?.attrs,
     })
     return svg
-  }
-  catch (e) {
-    if ((e as ReferenceError).message.trim() === 'document is not defined')
-      return ''
+  } catch (e) {
+    if ((e as ReferenceError).message.trim() === 'document is not defined') return ''
     throw e
   }
 }
@@ -126,7 +124,7 @@ const instance = getCurrentInstance()
 // 基于 pinia 的 storage
 const useGl = useGlStore()
 
-onMounted (async () => {
+onMounted(async () => {
   // @ts-expect-error type declaration
   const glsl = await import('vue-glsl')
   if (instance) {
@@ -137,4 +135,3 @@ onMounted (async () => {
 ```
 
 这样就基本上不会有错误和警告了。
-

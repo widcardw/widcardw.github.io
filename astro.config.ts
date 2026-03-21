@@ -8,10 +8,7 @@ import rehypeAsciimath from '@widcardw/rehype-asciimath'
 import { remarkWikiLink } from './src/plugins/wiki/remarkWikiLink'
 import rehypeExternalLinks from 'rehype-external-links'
 import solidJs from '@astrojs/solid-js'
-import {
-  remarkTransformGlSketch,
-  sketchAutoImport,
-} from './src/plugins/gl-preview/remark'
+import { remarkTransformGlSketch, sketchAutoImport } from './src/plugins/gl-preview/remark'
 import AutoImport from 'astro-auto-import'
 import { remarkCodeIcon } from './src/plugins/code-icon/remark'
 import { remarkMermaid } from './src/plugins/mermaid/remark'
@@ -38,11 +35,8 @@ export default defineConfig({
         // generate theme CSS selectors compatible with cactus-theme dark mode switch
         if (styleVariants.length >= 2) {
           const baseTheme = styleVariants[0]?.theme
-          const altTheme = styleVariants.find(
-            (v) => v.theme.type !== baseTheme?.type,
-          )?.theme
-          if (theme === baseTheme || theme === altTheme)
-            return `[data-theme='${theme.type}']`
+          const altTheme = styleVariants.find((v) => v.theme.type !== baseTheme?.type)?.theme
+          if (theme === baseTheme || theme === altTheme) return `[data-theme='${theme.type}']`
         }
         // return default selector
         return `[data-theme="${theme.name}"]`
@@ -58,7 +52,7 @@ export default defineConfig({
     solidJs(),
     pagefind(),
   ],
-  publicDir: 'src/content/blog/_public',
+  publicDir: 'src/content/docs/_public',
   markdown: {
     gfm: true,
     remarkPlugins: [

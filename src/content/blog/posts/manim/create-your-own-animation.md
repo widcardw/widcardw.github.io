@@ -99,8 +99,8 @@ def interpolate_submobject(
 
 实现方法其实也很简单，就是根据已有的参数 `submobject`, `starting_submobject`, `alpha` 参数，以及可能会用到的成员变量，更改 `submobject` 这个对象，让它成为动画过程中对应时间点理应成为的状态。
 
-> [!note] 
-> 
+> [!note]
+>
 > Grant 在这里巧妙地使用了 `*mobs` 将这个元组展开，简直就是黑魔法，在这里看上去是把一个==二元组==展开为 `submobject` 和 `starting_submobject` 两个元素，但是在函数重载之后，会有更加巧妙的用法。
 >
 > ```python {4}
@@ -134,8 +134,8 @@ class ExampleScene(Scene);
 - 调用父类 `Animation` 的构造函数
 - 将 `target_mobject` 加入到成员变量中，以便动画中操作
 - 初始化 `path_func`，会根据 `path_arc` 参数的值来计算
-	- 如果不指定 `path_arc`，那么路径将会是一条直线
-	- 如果指定了，那么路径将会是圆心角为 `path_arc` 的圆弧
+  - 如果不指定 `path_arc`，那么路径将会是一条直线
+  - 如果指定了，那么路径将会是圆心角为 `path_arc` 的圆弧
 
 ### 动画开始
 

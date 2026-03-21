@@ -56,7 +56,7 @@ int_0^(+oo) "e"^(-x) dx = 1
 >
 > 具体分类详见 https://github.com/widcardw/asciimath-parser/blob/main/src/symbols.ts#L1
 >
-> 其实我是没想到竟然需要分这么多类，但是 asciimath 确实有这么多种分类，根据这么多分类，才能在 Parse 阶段转换为合理的 AST ¯\\_(ツ)\_/¯
+> 其实我是没想到竟然需要分这么多类，但是 asciimath 确实有这么多种分类，根据这么多分类，才能在 Parse 阶段转换为合理的 AST ¯\\\_(ツ)\_/¯
 
 ### Parse
 
@@ -68,8 +68,8 @@ function parser(tokens: TokenizedValue[]) {
   let current = 0
   while (current < tokens.length) {
     const res = walk(tokens, current) // 读取并处理一个节点
-    root.body.push(res.node)          // 将读取到的节点加入序列中
-    current = res.current             // 更新当前指针
+    root.body.push(res.node) // 将读取到的节点加入序列中
+    current = res.current // 更新当前指针
   }
   return root
 }
@@ -178,11 +178,11 @@ function walk(tokens: TokenizedValue[], current: number) {
 ```ts
 enum NodeTypes {
   Root = 'Root',
-  Const = 'Const',       // 可直接生成目标代码的节点
+  Const = 'Const', // 可直接生成目标代码的节点
   ParamOne = 'ParamOne', // 带有一个参数的节点
   ParamTwo = 'ParamTwo', // 带有两个参数的节点
-  Matrix = 'Matrix',     // 矩阵
-  Flat = 'Flat',         // 包裹了一系列节点的节点
+  Matrix = 'Matrix', // 矩阵
+  Flat = 'Flat', // 包裹了一系列节点的节点
 }
 ```
 

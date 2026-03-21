@@ -16,13 +16,10 @@ function remarkWikiLink(opts: RemarkWikiLinkOptions = {}) {
 
   if (
     !warningIssued &&
-    (this.Parser?.prototype?.blockTokenizers ||
-      this.Compiler?.prototype?.visitors)
+    (this.Parser?.prototype?.blockTokenizers || this.Compiler?.prototype?.visitors)
   ) {
     warningIssued = true
-    console.warn(
-      '[remark-wiki-link] Warning: please upgrade to remark 13 to use this plugin',
-    )
+    console.warn('[remark-wiki-link] Warning: please upgrade to remark 13 to use this plugin')
   }
 
   // add extensions to packages used by remark-parse

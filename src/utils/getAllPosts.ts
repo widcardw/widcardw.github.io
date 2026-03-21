@@ -4,14 +4,10 @@ export async function getAllPosts(): Promise<Array<CollectionEntry<'blog'>>> {
   return await getCollection('blog')
 }
 
-export async function getSortedPosts(): Promise<
-  Array<CollectionEntry<'blog'>>
-> {
+export async function getSortedPosts(): Promise<Array<CollectionEntry<'blog'>>> {
   const posts = await getAllPosts()
   return posts.sort((a, b) => {
-    return (
-      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-    )
+    return new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
   })
 }
 

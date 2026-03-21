@@ -50,7 +50,7 @@ patch:
 ```yaml title="rime_ice.custom.yaml"
 patch:
   radical_lookup:
-    prefix: "uv"
+    prefix: 'uv'
 ```
 
 我们需要设置每页的候选词数目为 7 个，且使用“雾凇拼音”、“五笔 86”作为输入法方案，则做以下修改
@@ -71,16 +71,16 @@ patch:
 ```yaml title="rime_ice.custom.yaml" ins={5-12}
 switches:
   - name: ascii_mode
-    states: [ 中, En ]
+    states: [中, En]
   # ...
-  - options: [ _key_select_all ]
-    states: [ ^A ]
-  - options: [ _key_cut ]
-    states: [ ^X ]
-  - options: [ _key_copy ]
-    states: [ ^C ]
-  - options: [ _key_paste ]
-    states: [ ^V ]
+  - options: [_key_select_all]
+    states: [^A]
+  - options: [_key_cut]
+    states: [^X]
+  - options: [_key_copy]
+    states: [^C]
+  - options: [_key_paste]
+    states: [^V]
 ```
 
 ![](./imgs/rime_android.png)
@@ -94,7 +94,7 @@ preset_keyboards:
   default:
     author: 暖暖
     keys:
-      - {click: Return, swipe_up: Escape, long_click: Hide}
+      - { click: Return, swipe_up: Escape, long_click: Hide }
 ```
 
 上面的意义为，当上滑 Enter 键时，能触发按下 Esc 键，长按 Enter 键时，能触发隐藏输入法面板。
@@ -109,7 +109,7 @@ preset_keyboards:
 patch:
   reduce_english_filter:
     mode: all
-    idx: 4  # 英文单词从第 4 个开始提示
+    idx: 4 # 英文单词从第 4 个开始提示
 ```
 
 ## 个人配置参考
@@ -117,5 +117,3 @@ patch:
 在线版皮肤配置网站 https://gjrobert.github.io/Rime-See-Me-squirrel/
 
 我个人使用比较舒服的配置[链接](https://gist.github.com/widcardw/23005e112780fec16fb35e1fff221f4b)，由于放在了 GitHub Gist 上，因此需要一点手段才能访问。
-
-

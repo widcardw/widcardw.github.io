@@ -13,17 +13,15 @@ function visitBlock(ast: Root) {
     const match = value.match(/^\/ico (.*?);(.+)$/)
     if (!match) return
     let [, iconName, fileName] = match
-    if (!iconName || iconName.trim() === '')
-      iconName = 'vscode-icons:default-file'
+    if (!iconName || iconName.trim() === '') iconName = 'vscode-icons:default-file'
     const newNode = makeComponentNode(
       'span',
       { attributes: { className: 'code-icon' } },
       makeComponentNode('Icon', { attributes: { name: iconName } }),
-      makeComponentNode(
-        'span',
-        { attributes: { className: 'code-icon-text' } },
-        { type: 'text', value: fileName } as any,
-      ),
+      makeComponentNode('span', { attributes: { className: 'code-icon-text' } }, {
+        type: 'text',
+        value: fileName,
+      } as any),
     )
     parent?.children.splice(Number(index), 1, newNode)
   }

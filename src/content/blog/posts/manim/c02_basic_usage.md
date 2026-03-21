@@ -36,7 +36,7 @@ class BasicExample(Scene):
         # 将点和物件添加到场景中
         self.add(dot, text)
         # 让点绕原点旋转一周
-        self.play(Rotate(dot, PI * 2, about_point=ORIGIN), 
+        self.play(Rotate(dot, PI * 2, about_point=ORIGIN),
                   run_time=4.44)
 ```
 
@@ -128,7 +128,6 @@ b --> c
 b --> f
 ```
 
-
 ## 编写规范
 
 在 `add_updater` 方法中，传入的参数是一个函数，当然也可以查看它的类型定义，它接受一个 Mobject 作为参数。
@@ -164,7 +163,7 @@ mob.add_updater(my_updater)
 ![[_public/updater/PerpendicularBisectorExample.mp4]]
 
 > [!example] 参考解答
-> 
+>
 > ```python
 > class PerpendicularBisectorExample(Scene):
 >     def construct(self):
@@ -174,7 +173,7 @@ mob.add_updater(my_updater)
 >         bisector = line.copy().rotate(PI / 2).scale(5)
 >         bisector.set_color(RED)
 >         self.add(line, bisector)
-> 
+>
 >         bisector.add_updater(
 >             lambda m: m
 >                 # 设置角度
@@ -182,7 +181,7 @@ mob.add_updater(my_updater)
 >                 # 移动到线段的中点
 >                 .move_to(line.get_center())
 >         )
-> 
+>
 >         # 变换直线
 >         self.play(line.animate.put_start_and_end_on(
 >             np.array([0, 1, 0]), np.array([4, 2, 0])
@@ -191,38 +190,36 @@ mob.add_updater(my_updater)
 >         self.play(Rotate(line, PI / 2))
 > ```
 
-
 ##### 2. 绘制一段圆弧，使用两个 `ValueTracker` 分别控制它的弧度和半径。
 
 > 这个样例暂时没有办法写，在先前版本是可以实现的
 
 > [!example] 参考解答
+>
 > ```python
 > class ArcExample(Scene):
 >     def construct(self):
 >         arc = Arc(angle=PI / 2, radius=2)
 >         arc.set_color(YELLOW)
 >         self.add(arc)
-> 
+>
 >         radius = ValueTracker(2)
 >         angle = ValueTracker(PI / 2)
 >         arc.add_updater(lambda m: m.become(
 >             Arc(angle=angle.get_value(), radius=radius.get_value())
 >         ))
 >         self.add(radius, angle)
-> 
+>
 >         self.play(radius.animate.set_value(3))
 >         self.play(angle.animate.set_value(PI))
 > ```
-
 
 ##### 3. 绘制一条数轴，在上面添加一个点，使用 `ValueTracker` 类来控制点的位置，同时使用 `DecimalNumber` 来显示点所代表的数值。
 
 ![[_public/updater/NumberLineScene.mp4]]
 
-
 > [!example] 参考解答
-> 
+>
 > ```python
 > class NumberLineScene(Scene):
 >     def construct(self):
@@ -230,14 +227,14 @@ mob.add_updater(my_updater)
 >         number_line = NumberLine(x_range=[-5, 5, 1], width=10)
 >         number_line.add_numbers()
 >         self.add(number_line)
-> 
+>
 >         v = ValueTracker(0)
 >         # 点
 >         dot = Dot(number_line.n2p(v.get_value()), color=YELLOW)
 >         # 显示数值
 >         label = DecimalNumber(v.get_value(), num_decimal_places=2)
 >         self.add(dot, label)
-> 
+>
 >         dot.add_updater(
 >             lambda m: m.move_to(
 >                 number_line.n2p(v.get_value()) # 数轴上数值对映的实际坐标
@@ -248,7 +245,7 @@ mob.add_updater(my_updater)
 >                 .set_value(v.get_value())  # 设置数值
 >                 .next_to(dot, UP)          # 设置位置
 >         )
-> 
+>
 >         self.play(v.animate.set_value(5), run_time=2)
 >         self.play(v.animate.set_value(-4), run_time=3)
 > ```
@@ -258,23 +255,23 @@ mob.add_updater(my_updater)
 ![[_public/updater/SineGraphScene.mp4]]
 
 > [!example] 参考解答
-> 
+>
 > ```python
 > class SineGraphScene(Scene):
 >     def construct(self):
 >         # 坐标轴
 >         axes = Axes(x_range=[-10, 10, 1], y_range=[-2, 2, 0.25])
 >         self.add(axes)
->         
+>
 >         # 图像
 >         graph = axes.get_graph(
 >             lambda x: np.sin(x), x_range=[-9, 9, 0.1]
 >         )
 >         self.add(graph)
-> 
+>
 >         # phi 的值
 >         phi = ValueTracker(0)
->         
+>
 >         # 给 grahp 添加绑定
 >         graph.add_updater(
 >             lambda g: g.set_points(
@@ -284,24 +281,21 @@ mob.add_updater(my_updater)
 >                 ).get_points()
 >             )
 >         )
-> 
+>
 >         '''
 >         # 在编写该文档的时候 updater 和 become 一起用的方法坏掉了
 >         # 因此只能用 `set_points` 来暂时顶替一下
 >         # 如果什么时候修好了可以直接 become 一个新的 graph
 >         graph.add_updater(lambda g: g.become(
 >             axes.get_graph(
->                 lambda x: np.sin(x + phi.get_value()), 
+>                 lambda x: np.sin(x + phi.get_value()),
 >                 x_range=[-9, 9, 0.1]
 >             )
 >         ))
 >         '''
-> 
+>
 >         self.add(phi, graph)
 >         self.play(phi.animate.set_value(4), run_time=3)
 > ```
-> 
-> 
-> 
 
 如果上面的这些例子读者都能写出来，并且能够举一反三，那么 updater 的基础使用应当是没有什么问题的了。

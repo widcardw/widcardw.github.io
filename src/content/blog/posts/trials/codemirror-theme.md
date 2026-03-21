@@ -2,7 +2,7 @@
 title: Codemirror 主题更改问题
 pubDate: 2024-08-24
 updatedDate: 2024-08-24
-tags: 
+tags:
   - codemirror
   - theme
 description: 从各处挖来的代码，合并到一起做个整理。
@@ -36,7 +36,7 @@ import { highlightActiveLine, scrollPastEnd } from '@codemirror/view'
 let editor = new EditorView({
   extensions: [
     EditorView.theme({
-      "&.cm-focused": { outline: "none" },
+      '&.cm-focused': { outline: 'none' },
     }),
     EditorView.lineWrapping, // 自动换行
     scrollPastEnd(), // 底部空出一些空间
@@ -52,7 +52,7 @@ const themeConfig = new Compartment()
 let editor = new EditorView({
   extensions: [
     // 初始化时设定主题
-    themeConfig.of(EditorView.theme({}, { dark: isDark() }))
+    themeConfig.of(EditorView.theme({}, { dark: isDark() })),
   ],
 })
 ```

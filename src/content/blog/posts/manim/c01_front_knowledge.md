@@ -9,7 +9,6 @@ category: manim
 description: 从 Mobject 到 Animation 再到 Scene，分析 manim 是如何构建动画的
 ---
 
-
 > [!caution] 注意
 > 该文档为 widcardw 个人理解，如有任何描述不得体，或分析错误的地方，欢迎读者指出。\
 > 另外，欢迎读者到 B 站观看笔者在很早以前做的[讲解视频](https://space.bilibili.com/31976300/channel/collectiondetail?sid=79029&ctype=0)，或许对大家的理解有帮助

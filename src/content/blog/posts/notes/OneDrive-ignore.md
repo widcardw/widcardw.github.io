@@ -18,7 +18,7 @@ HKLM\SOFTWARE\Policies\Microsoft\OneDrive\EnableODIgnoreListFromGPO
 
 创建项目：
 
-| 数值名称           | 数值数据               |
+| 数值名称       | 数值数据           |
 | -------------- | ------------------ |
 | back_files     | `*.bak`            |
 | log_files      | `*.log`            |

@@ -2,7 +2,7 @@
 title: 如何使用 CloudFlare 和 GitHub 来给图片做 CDN
 pubDate: 2022-09-24
 category: 'software'
-tags: ['CDN','静态部署']
+tags: ['CDN', '静态部署']
 description: 本来标题应该是 “白嫖”，但是突然想到我是从 CloudFlare 买的域名，还是花了钱的，所以也不能算是白嫖了，呜呜
 ---
 
@@ -37,9 +37,9 @@ description: 本来标题应该是 “白嫖”，但是突然想到我是从 Cl
 
 在 _域名 > DNS_ 页面中，添加一条规则
 
-| 类型  | 名称 | 内容                 | 代理状态 | TTL |
-|:-----:|:----:|:--------------------:|:--------:|:---:|
-| CNAME | cdn  | widcardw.github.io | 已代理   | 自动    |
+| 类型  | 名称 |        内容        | 代理状态 | TTL  |
+| :---: | :--: | :----------------: | :------: | :--: |
+| CNAME | cdn  | widcardw.github.io |  已代理  | 自动 |
 
 其中，内容中填写的是自己开启 GitHub Pages 服务后所获得的 url
 
@@ -50,4 +50,3 @@ description: 本来标题应该是 “白嫖”，但是突然想到我是从 Cl
 等待片刻后，就可以通过 <https://cdn.widcard.win/manim/favicon.svg> 这个路径来访问资源了
 
 > 在添加 CNAME 后，仓库中会添加一个 _CNAME_ 文件，因此后期修改的时候，还需要 pull 后 merge 一下
-

@@ -1,7 +1,7 @@
 ---
 title: manim 中的矢量图
 pubDate: 2021-06-24
-tags: ['manim','教程','矢量图']
+tags: ['manim', '教程', '矢量图']
 category: manim
 description: 了解 Vectorized Math Object
 ---
@@ -22,7 +22,7 @@ description: 了解 Vectorized Math Object
 
 ### 介绍
 
-> *摘自百度百科*
+> _摘自百度百科_
 >
 > 矢量图，也称为**面向对象**的图像或绘图图像，在数学上定义为**一系列由点连接的线**。矢量文件中的图形元素称为对象。每个对象都是一个自成一体的实体，它具有**颜色**、**形状**、**轮廓**、**大小**和**屏幕位置**等属性。
 >
@@ -32,14 +32,10 @@ description: 了解 Vectorized Math Object
 
 ```html
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-  <path id="lineAB" d="M 100 350 l 150 -300" stroke="red"
-  stroke-width="3" fill="none" />
-  <path id="lineBC" d="M 250 50 l 150 300" stroke="red"
-  stroke-width="3" fill="none" />
-  <path d="M 175 200 l 150 0" stroke="green" stroke-width="3"
-  fill="none" />
-  <path d="M 100 350 q 150 -300 300 0" stroke="blue"
-  stroke-width="5" fill="none" />
+  <path id="lineAB" d="M 100 350 l 150 -300" stroke="red" stroke-width="3" fill="none" />
+  <path id="lineBC" d="M 250 50 l 150 300" stroke="red" stroke-width="3" fill="none" />
+  <path d="M 175 200 l 150 0" stroke="green" stroke-width="3" fill="none" />
+  <path d="M 100 350 q 150 -300 300 0" stroke="blue" stroke-width="5" fill="none" />
   <!-- Mark relevant points -->
   <g stroke="black" stroke-width="3" fill="black">
     <circle id="pointA" cx="100" cy="350" r="3" />
@@ -47,8 +43,7 @@ description: 了解 Vectorized Math Object
     <circle id="pointC" cx="400" cy="350" r="3" />
   </g>
   <!-- Label the points -->
-  <g font-size="30" font="sans-serif" fill="black" stroke="none"
-  text-anchor="middle">
+  <g font-size="30" font="sans-serif" fill="black" stroke="none" text-anchor="middle">
     <text x="100" y="350" dx="-30">A</text>
     <text x="250" y="50" dy="-10">B</text>
     <text x="400" y="350" dx="30">C</text>
@@ -89,6 +84,7 @@ $$
 基于贝塞尔曲线的知识，我们回到 svg 格式的路径，看到 `<path>` 标签的内容。
 
 > 下面的命令可用于路径数据[^2]：
+>
 > - M = moveto
 > - L = lineto
 > - H = horizontal lineto
@@ -174,7 +170,6 @@ $$B(t)=\sum_{i=0}^{n}\binom{n}{i}P_{i}(1-t)^{i}t^{n-i},t\in[0,1]$$
 
 曾有人说，直线就是不够弯的曲线。那么在 manim 中，直线就可以用 3 个在直线上**均匀分布**的锚点来构成。为什么说要均匀分布呢？虽然分布不均匀也可以构成直线，最多也不过加了一点*拉扯*，但为了运算方便，同时也为了减少 bug，在处理时就将这 3 个锚点等距的放在一条线上。
 
-
 ![[_public/posts-imgs/line.png]]
 
 > [!example] 关于在三个点在同一直线上 **拉扯** 的问题
@@ -185,13 +180,12 @@ $$B(t)=\sum_{i=0}^{n}\binom{n}{i}P_{i}(1-t)^{i}t^{n-i},t\in[0,1]$$
 >
 > 图中数字为锚点的位置和编号。
 >
-> ~~~python
+> ```python
 > v = VMobject()
 > v.set_points(np.array([[-1, 0, 0], [3, 0, 0], [1, 0, 0]]))
-> ~~~
+> ```
 >
 > ![[_public/posts-imgs/problem-of-handle.jpg]]
-
 
 ### 从直线到曲线
 
@@ -319,4 +313,5 @@ class AllPointsIndex(VGroup):
 ```
 
 [^1]: 菜鸟教程，详见 https://www.runoob.com/svg/svg-path.html
+
 [^2]: w3school, https://www.w3school.com.cn/svg/svg_path.asp

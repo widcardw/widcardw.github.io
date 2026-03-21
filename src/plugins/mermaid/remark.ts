@@ -11,10 +11,7 @@ interface Options {
  * @param {boolean} includeLoading
  * @returns {HTMLContent}
  */
-function createMermaidDiv(
-  contents: string,
-  includeLoading: boolean,
-): HTMLContent {
+function createMermaidDiv(contents: string, includeLoading: boolean): HTMLContent {
   return {
     type: 'html',
     value: `<div style="position: relative;"><div class="mermaid ${
@@ -41,9 +38,7 @@ function visitCodeBlock(ast: MdastRoot, includeLoading: boolean) {
     if (lang !== 'mermaid') return
 
     const newNode = createMermaidDiv(value, includeLoading)
-    parent &&
-      index !== null &&
-      parent.children.splice(Number(index), 1, newNode)
+    parent && index !== null && parent.children.splice(Number(index), 1, newNode)
   })
 }
 

@@ -15,7 +15,7 @@ draft: true
 
 前面提到了用 `visit` 方法来修改节点树，从而编写一个 remark 插件。本文将从之前所述的另一种方法，来阐述一下 micromark 生态以及用这一个模块来编写插件的方法。
 
-以下为 Unified 中处理 markdown 的一个整个流程，一个 processor 中包含 parser, transformer(s), compiler. 
+以下为 Unified 中处理 markdown 的一个整个流程，一个 processor 中包含 parser, transformer(s), compiler.
 
 ```
 | ........................ process ........................... |
@@ -77,21 +77,21 @@ unified
 如果参考 remark-gfm 插件，会发现这里面引用的关系有点过于复杂。所以还是从一个稍微简单一点的 remark-math 中来看这几位之间的关系吧。
 
 - [remark-math](https://github.com/remarkjs/remark-math/blob/main/packages/remark-math/lib/index.js)
-	- 引用了 mdast-util-math 中的 `mathFromMarkDown` 和 `mathToMarkdown` 方法
-	- 引用了 micromark-extension-math 的 `math`
-	- 将这些程序分别加入到 remark 程序中的 `fromMarkdownExtensions`, `toMarkdownExtensions`, `micromarkExtensions` 中
+  - 引用了 mdast-util-math 中的 `mathFromMarkDown` 和 `mathToMarkdown` 方法
+  - 引用了 micromark-extension-math 的 `math`
+  - 将这些程序分别加入到 remark 程序中的 `fromMarkdownExtensions`, `toMarkdownExtensions`, `micromarkExtensions` 中
 - [mdast-util-math](https://github.com/syntax-tree/mdast-util-math)
-	- fromMarkdown 返回了一个对象，其中包含了 `enter` 和 `exit` 对象
-		- `enter` 包含了进入某类节点的处理函数，过程中会指定对应语法树节点的一些属性
-		- `exit` 包含了退出某类节点的处理函数，当退出该节点时，在函数的成员方法中可以获取到节点内容的值
-	- toMarkdown 返回一个对象，其中包含了 `unsafe` 和 `handlers` 属性
-		- `unsafe` 包含了转换回 markdown 所需的字符和所属的阶段
-		- `handlers` 包含了转换回 markdown 的函数处理
-	- `/ico vscode-icons:file-type-typescript-official;index.d.ts` 类型说明文件中，指定了新规则的数据类型
+  - fromMarkdown 返回了一个对象，其中包含了 `enter` 和 `exit` 对象
+    - `enter` 包含了进入某类节点的处理函数，过程中会指定对应语法树节点的一些属性
+    - `exit` 包含了退出某类节点的处理函数，当退出该节点时，在函数的成员方法中可以获取到节点内容的值
+  - toMarkdown 返回一个对象，其中包含了 `unsafe` 和 `handlers` 属性
+    - `unsafe` 包含了转换回 markdown 所需的字符和所属的阶段
+    - `handlers` 包含了转换回 markdown 的函数处理
+  - `/ico vscode-icons:file-type-typescript-official;index.d.ts` 类型说明文件中，指定了新规则的数据类型
 - [micromark-extension-math](https://github.com/micromark/micromark-extension-math)
-	- `/ico vscode-icons:file-type-js-official;syntax.js` 指定了从 markdown 转换为 AST 的函数
-	- `/ico vscode-icons:file-type-js-official;html.js` 指定了从 AST 转换为 HTML 的函数
-	- `/ico vscode-icons:file-type-typescript-official;index.d.ts` 指定了新的 `TokenTypeMap`
+  - `/ico vscode-icons:file-type-js-official;syntax.js` 指定了从 markdown 转换为 AST 的函数
+  - `/ico vscode-icons:file-type-js-official;html.js` 指定了从 AST 转换为 HTML 的函数
+  - `/ico vscode-icons:file-type-typescript-official;index.d.ts` 指定了新的 `TokenTypeMap`
 
 ### Micromark[^2]
 
@@ -101,7 +101,7 @@ Micromark 可以提供直接从 markdown 转换为 HTML 的功能，也可以获
 
 Remark 是建立在 micromark 和 AST 上的，remark 支持所有 micromark 的扩展，因此有很多基于 micromark 的插件，都会包装到 remark 上。
 
-Micromark 的插件包含 Syntax Extension 和 Html Extension 两类，前者指定了 markdown 如何解析，后者指定了最终编译为什么样的 HTML. 
+Micromark 的插件包含 Syntax Extension 和 Html Extension 两类，前者指定了 markdown 如何解析，后者指定了最终编译为什么样的 HTML.
 
 #### 编写 remark 插件的其他思路 · remark-directive
 
@@ -151,8 +151,6 @@ export function toMarkdown() {
 ## 如何编写 remark 插件
 
 这里给出一个使用 micromark 生态编写的插件：[`remark-callout`](https://github.com/rk-terence/gz-remark-callout)，可以与上一篇文章中所提到的的插件 [`@widcardw/remark-callouts`](https://github.com/widcardw/remark-callouts) 进行一下对比。
-
-
 
 - https://github.com/micromark/micromark#architecture
 - https://github.com/micromark/micromark/blob/main/packages/micromark/dev/lib/constructs.js

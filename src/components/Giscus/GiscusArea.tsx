@@ -1,11 +1,4 @@
-import {
-  createSignal,
-  type Component,
-  onMount,
-  Show,
-  createEffect,
-  onCleanup,
-} from 'solid-js'
+import { createSignal, type Component, onMount, Show, createEffect, onCleanup } from 'solid-js'
 import { realTheme } from '../dark/ThemeToggle'
 
 interface GiscusProps {
@@ -52,10 +45,7 @@ const GiscusArea: Component<GiscusProps> = (props) => {
 
   return (
     <>
-      <div
-        ref={(r) => setTarget(r)}
-        style={{ margin: '4rem auto', 'max-width': '15rem' }}
-      />
+      <div ref={(r) => setTarget(r)} style={{ margin: '4rem auto', 'max-width': '15rem' }} />
       <Show when={mounted() && visible()}>
         {/* @ts-expect-error giscus web component type error */}
         <giscus-widget

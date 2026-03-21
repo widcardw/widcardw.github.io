@@ -11,7 +11,6 @@ description: MongoDB 基本使用的说明，大部分内容来自 runoob
 updatedDate: 2022-05-25
 ---
 
-
 ## 1. 关于 MongoDB 的启动和安全验证
 
 ### 1.1. 配置文件
@@ -42,7 +41,7 @@ mongod --config /opt/homebrew/etc/mongod.conf
 db.createUser({
   user: 'admin',
   pwd: '123456',
-  roles: [{ role: 'userAdminAnyDatabase', db: 'admin' }]
+  roles: [{ role: 'userAdminAnyDatabase', db: 'admin' }],
 })
 ```
 
@@ -53,7 +52,7 @@ db.createUser({
 db.createUser({
   user: 'admin',
   pwd: '123456',
-  roles: [{ role: 'dbOwner', db: 'test' }]
+  roles: [{ role: 'dbOwner', db: 'test' }],
 })
 ```
 
@@ -96,7 +95,6 @@ db.students.find({ name: 'Jack' })
 - insert：当没有冲突时插入，但有冲突时抛出异常
 - save：没有冲突时插入，有冲突时==替换==
 
-
 然而 insert 的效率据说要比 save 高，毕竟它只有一个插入的操作，如果 hash 冲突就会引发异常，这是比较明显的。而 save 这样操作就要去解决这样的冲突，而后去替换，这样操作听上去可能理所应当地，效率更低了。
 
 与此同时，还有一些例如 `insertMany` 之类的批量插入的方法，传入的就是列表了。
@@ -104,7 +102,7 @@ db.students.find({ name: 'Jack' })
 ```js
 db.students.insert({
   name: 'Milly',
-  age: 18
+  age: 18,
 })
 
 db.students.insertMany([
@@ -137,12 +135,12 @@ db.collection.update(
 ```js
 db.students.update(
   { name: 'Jack' },
-  { $set: { age: 20 } } // 只将年龄更新为 20
+  { $set: { age: 20 } }, // 只将年龄更新为 20
 )
 
 db.students.update(
   { name: 'Tim' },
-  { $inc: { salary: 2000 } } // 给 Tim 增加 2000 工资
+  { $inc: { salary: 2000 } }, // 给 Tim 增加 2000 工资
 )
 ```
 
@@ -203,17 +201,20 @@ db.collection.aggregate(AGGREGATE_OPERATION)
 AGGREGATE_OPERATION 为一个数组，包含了一系列处理的对象。这些对象被放到一个管道 (pipeline) 中，层层处理最后输出。如果没有指定 `$out` 输出到哪里，则会使用临时集合。
 
 ```js
-[
-  { // 跳过 100k 条数据
-    $skip: 100000
+;[
+  {
+    // 跳过 100k 条数据
+    $skip: 100000,
   },
-  { // 使用 group 聚合
+  {
+    // 使用 group 聚合
     $group: {
-      _id: { // 将下面这个 Object 作为 key
+      _id: {
+        // 将下面这个 Object 作为 key
         provinceName: '$provinceName',
         updateTime: {
-          $substr: ['$updateTime', 0, 10]
-        }
+          $substr: ['$updateTime', 0, 10],
+        },
       },
       // 以下作为其他的查询属性
       continentName: { $first: '$continentName' },
@@ -227,16 +228,18 @@ AGGREGATE_OPERATION 为一个数组，包含了一系列处理的对象。这些
       province_curedCount: { $first: '$province_curedCount' },
       province_suspectedCount: { $first: '$province_suspectedCount' },
       province_deadCount: { $first: '$province_deadCount' },
-      updateTime: { $first: '$updateTime' }
-    }
+      updateTime: { $first: '$updateTime' },
+    },
   },
-  { // 按照 _id.updateTime 升序排序
-    $sort: { '_id.updateTime': 1 }
+  {
+    // 按照 _id.updateTime 升序排序
+    $sort: { '_id.updateTime': 1 },
   },
-  { // 结果合并到集合中
+  {
+    // 结果合并到集合中
     // 使用 $out 覆盖到输出集合中
-    $merge: 'ProvinceData'
-  }
+    $merge: 'ProvinceData',
+  },
 ]
 ```
 

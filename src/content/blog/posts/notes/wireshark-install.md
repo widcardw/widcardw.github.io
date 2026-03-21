@@ -1,5 +1,5 @@
 ---
-title: macOS Ventura 重新安装 Wireshark　
+title: macOS Ventura 重新安装 Wireshark
 pubDate: 2023-02-04
 category: 'network'
 tags: ['network', 'wireshark']

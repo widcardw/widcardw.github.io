@@ -110,20 +110,14 @@ function html(opts: HtmlOptions = {}) {
       switch (cat) {
         case SupportedTypes.Unsupported: {
           this.tag(
-            `<a href="${hrefTemplate(
-              link + headingId,
-            )}" class="${classNames} transclusion">`,
+            `<a href="${hrefTemplate(link + headingId)}" class="${classNames} transclusion">`,
           )
           this.raw(displayName)
           this.tag('</a>')
           break
         }
         case SupportedTypes.Img: {
-          this.tag(
-            `<img src="${hrefTemplate(
-              link,
-            )}" alt="${displayName}" class="${classNames}" />`,
-          )
+          this.tag(`<img src="${hrefTemplate(link)}" alt="${displayName}" class="${classNames}" />`)
           break
         }
         case SupportedTypes.Video:
@@ -137,9 +131,7 @@ function html(opts: HtmlOptions = {}) {
         }
         case SupportedTypes.Pdf: {
           this.tag(
-            `<iframe width="100%" src="${hrefTemplate(
-              link,
-            )}#toolbar=0" class="${classNames}" />`,
+            `<iframe width="100%" src="${hrefTemplate(link)}#toolbar=0" class="${classNames}" />`,
           )
           break
         }
@@ -169,9 +161,7 @@ function html(opts: HtmlOptions = {}) {
         );
       }*/
     } else {
-      this.tag(
-        `<a href="${hrefTemplate(link + headingId)}" class="${classNames}">`,
-      )
+      this.tag(`<a href="${hrefTemplate(link + headingId)}" class="${classNames}">`)
       this.raw(displayName)
       this.tag('</a>')
     }

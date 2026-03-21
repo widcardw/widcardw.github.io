@@ -145,6 +145,7 @@ self.wait(10)
 ##### 1. 恒星行星模型：制作地球绕太阳公转，月球绕地球公转的动画。公转的速度、半径不做硬性要求。
 
 > [!example] 参考解答
+>
 > ```python
 > class StarPlantExample(Scene):
 >     def construct(self):
@@ -272,6 +273,7 @@ self.wait(10)
 ![[_public/updater/danmaku01.png]]
 
 > [!example] 参考解答
+>
 > ```python
 > # 子弹物件封装
 > class Bullet(ArrowTip):

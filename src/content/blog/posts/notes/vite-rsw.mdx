@@ -81,9 +81,7 @@ import { defineConfig } from 'vite'
 import ViteRsw from 'vite-plugin-rsw'
 
 export default defineConfig({
-  plugins: [
-    ViteRsw(),
-  ],
+  plugins: [ViteRsw()],
 })
 ```
 
@@ -144,16 +142,16 @@ link = true
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script type="module" src="/src/main.ts"></script>
     <div id="app"></div>
-</body>
+  </body>
 </html>
 ```
 
