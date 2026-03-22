@@ -52,7 +52,7 @@ export default defineConfig({
     solidJs(),
     pagefind(),
   ],
-  publicDir: 'src/content/docs/_public',
+  publicDir: 'src/content/blog/_public',
   markdown: {
     gfm: true,
     remarkPlugins: [
