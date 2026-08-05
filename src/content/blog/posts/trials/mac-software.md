@@ -71,6 +71,7 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 - [OpenCode](https://opencode.ai/)
     - 每天有免费次数，可用 Kimi / GLM / BigPickle 等
 - [Pi](https://pi.dev)
+	- 配合 Oh My Pi 应该能达到更好的效果
 	- 据说是 OpenClaw 底层使用的工具，优势自己找知乎吧
 	- 在官网的 Packages 中可以加一些插件，相当于是 Agent 的 VSCode 了
 - [Claude Code](https://docs.claude.com/zh-CN/docs/claude-code/overview)
@@ -94,19 +95,24 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
     - 配置文件[参考](https://gist.github.com/widcardw/9436707cd6ed36fe45df51608656e364)，尤其是需要使用 SSH 时，必备 `term = xterm-256color` 这个选项
 - ✅ [tty7](https://github.com/l0ng-ai/tty7)
 	- 使用 Zed 的 GPUI 库来做的一个工具，正在观望，看起来挺好的
+- [Kero](https://kero.sh/) by [@localhost_4173](https://x.com/localhost_4173)
+	- 开源且 Swift 原生的软件，能用自带的 Webview 在软件内开浏览器，正在观望
 - [Otty](https://otty.sh/)
 	- 是与 Typora 同一个公司出的，说是外观设计上非常好，而且自称是原生的，也正在观望
+- [ORCA](https://www.onorca.dev/) 功能非常丰富的 AI Coding 工具
 - [iTerm2](https://iterm2.com)
-    - 个人觉得最好搭配 starship 或者 oh-my-zsh 使用
+    - 老牌软件，也接入了 AI，能够打开浏览器，但是感觉用不着它的浏览器功能
 - [Warp](https://warp.dev)
 	- 不支持接入第三方 AI，每个月有免费额度
     - 个人觉得可以搭配 `z`, `zsh-syntax-highlighting`, `zsh-autosuggestion` 这三个插件使用，且可以完全不装 starship/oh-my-zsh
     - 支持打开文件夹，已经变成一个 Agent 的工具了
-- [Kero](https://kero.sh/) by [@localhost_4173](https://x.com/localhost_4173)
-	- 开源且 Swift 原生的软件，能用自带的 Webview 在软件内开浏览器，正在开发中
 - [WezTerm](https://wezterm.org/)
     - 如果喜欢折腾，可以考虑用这个软件，配置方法参考[视频](https://www.bilibili.com/video/BV1miWMe9Esq)
-    - 据说两年没更新了
+    - 默认无 AI 接入，据说两年没更新了
+- 其他
+	- [cmux](https://cmux.com/)
+	- [muxy](https://muxy.app/)
+	- [Nutty](https://github.com/xiangjs6/Nutty) (C/C++)
 
 ### 命令行内的软件
 
@@ -247,14 +253,15 @@ go env -w  GOPROXY=https://goproxy.io,direct
     - iTranslate
     - Unsplash
     - Show IP Address
-    - 👍 ✅ 如果 macOS 版本为 26 及以上可以换 [tinycast](https://abue-ammar.github.io/tinycast/)
-- 👍 ✅ 卸载工具 [Pearcleaner](https://github.com/alienator88/Pearcleaner)
+- 👍 ✅ 如果 macOS 版本为 26 及以上，可以将 Raycast 换成 [Tinycast](https://abue-ammar.github.io/tinycast/)，我也 [fork](https://github.com/widcardw/tinycast/tree/compat/macos15) 了一份，编译了 macOS 15 版本
+	- 一般可以添加 Custom Commands 来实现各种自定义的指令
 - 👍 ✅ 快速打开终端或编辑器 [OpenInTerminal-Lite](https://github.com/Ji4n1ng/OpenInTerminal/blob/master/Resources/README-Lite.md)
 - ✅ 截图 [Shottr](https://shottr.cc)
 - ✅ Hidden Bar (App Store)
 - ✅ 图片压缩、转 PDF 等 [ImageMagick](https://imagemagick.org/) `brew install imagemagick`
 - 空间清理
     - 👍 ✅ [Mole](https://github.com/tw93/Mole)
+	- 👍 ✅ 卸载工具 [Pearcleaner](https://github.com/alienator88/Pearcleaner)
     - Daisy Disk (App Store 付费)
     - [Squirrel Disk](https://www.squirreldisk.com/) (免费开源代替，但 UI 没那么好看)
 - 绘图
@@ -264,6 +271,28 @@ go env -w  GOPROXY=https://goproxy.io,direct
 - 压缩软件 [MacZip](https://maczip.cn/)
 - 性能监控 RunCat (App Store)
 - 端口查看工具 [PortKiller](https://github.com/productdevbook/port-killer)
+
+## 快捷指令
+
+打开 `Shortcut.app`，在其中添加快捷指令，能够通过 Raycast 或者 Tinycast 配置自定义命令快速打开
+
+### OCR
+
+[备份链接](https://www.icloud.com/shortcuts/fd393626c88747b0ad61e03ea7e2bb9c)
+
+- 从 `快速操作` 接收 `任一` 输入，如果没有输入 `继续`（该步可能可以忽略）
+
+以下的部分需要有中间线串联在一起
+
+- `交互` 截屏（所选内容 `自定义`）
+- 如果 `截屏` `有任何值`
+	- 从 `截屏` 中提取文本
+	- 使用 `新行` 合并 `图像中的文本`
+	- 将 `合并后的文本` 拷贝至剪贴板
+	- 显示 `合并后的文本` 通知
+- 结束如果
+
+命令行可使用 `shortcuts run "OCR"` 来运行这个快捷指令
 
 ## 外设软件适配
 
