@@ -322,7 +322,7 @@ const MarkdownItShiki: MarkdownIt.PluginWithOptions<Options> = (markdownit, opti
 
 像是 mermaid, custom container 等功能，也是基于已有的代码块 API 进行扩展，识别相应的语言，并作相应的处理。而参考别人的插件，发现实际上也就是更改原有的渲染函数。
 
-![[_public/md-plugins/fence-processor.excalidraw.svg]]
+![[fence-processor.excalidraw.svg]]
 
 一旦涉及到更改原有的函数，我们又不可能考虑的非常全面，因此就需要保存原生的渲染函数作为 fallback.
 
@@ -356,7 +356,7 @@ md.renderer.rules.fence = (tokens, index, options, env, slf) => {
 
 前面基于代码块的插件只需要修改代码生成器，也就是只需要将 token 转换为 HTML 代码。但是这种基于行内的插件还需要一些前驱的步骤，比如下图中出现的修改 tokenizer.
 
-![[_public/md-plugins/escape-processor.excalidraw.svg]]
+![[escape-processor.excalidraw.svg]]
 
 如果查看 `markdown-it-katex` 的代码，可以发现有这样两个语句
 

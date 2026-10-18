@@ -276,7 +276,7 @@ git branch -D patch-1
 
 合并分支。
 
-![[_public/learn-git/git-merge.excalidraw.svg]]
+![[git-merge.excalidraw.svg]]
 
 ```shell
 ~/Documents/project git:(feature)
@@ -289,7 +289,7 @@ git merge feature
 
 merge 会留下一切可追溯的信息，也基本上是最常用的合并方式。在[知乎的一条回答](https://zhuanlan.zhihu.com/p/75499871)中[^2]，rebase 的最大好处不是消除了 merge，而是避免与 merge 的交织。在下面的这个情况中，就有可能需要用到 rebase.
 
-![[_public/learn-git/rebase-2.excalidraw.svg]]
+![[rebase-2.excalidraw.svg]]
 
 仓库主更新非常勤快，以至于你 fork 之后，在 dev 分支做了修改，想要 pull request 的时候，仓库主已经又加了很多次提交。此时，你可以先切换到主分支，拉取已经提交的修改，然后将自己的修改 rebase 一下，以最新的 commit 为基准来提交贡献，避免把的冲突留给太多的人去解决。
 
@@ -322,7 +322,7 @@ git rebase main
 
 经过上面两条命令，git 做了这样的操作。它本身的含义叫作 “变基”，在图中就是把 feature 分支上的修改挪到了 main 分支上。
 
-![[_public/learn-git/git-rebase.excalidraw.svg]]
+![[git-rebase.excalidraw.svg]]
 
 适合 rebase 的情况通常为，当自己有多个分支，而想将某些分支合并在一起后再向主仓库 pull request，或者是当你想要 pull request 时，却发现 main 分支已经有了修改，为了避免冲突，你需要现将远程的 main 拉取下来合并，再将 feature 分支的修改变基到最新的节点上。
 
@@ -335,7 +335,7 @@ git merge feature
 
 在 merge 操作中，git 做了下面这样的操作。当然，在此处的 merge 过程中，或许也会有一些 conflicts，需要我们手动处理。从下图中来理解，那就是 main 分支接受了 main 上和 feature 上双方的修改，也就是说，它几乎保留了所有分支的记录。
 
-![[_public/learn-git/git-merge.excalidraw.svg]]
+![[git-merge.excalidraw.svg]]
 
 ## stash
 
@@ -351,7 +351,7 @@ Aborting
 
 因为此时，git 树（链表）的结构是这样的
 
-![[_public/learn-git/stash-1.excalidraw.svg]]
+![[stash-1.excalidraw.svg]]
 
 此时，如果直接切换分支，那么 dev 分支的修改应该何去何从？
 
@@ -404,13 +404,13 @@ git reset 052e34  # 回退到指定版本，版本号可以通过 git log 查看
 - `--soft` 会将提交信息回退到以前的版本，但是已经做出的修改不会被撤销
 - `--hard` 会撤销工作区中==所有未提交的修改内容==，将暂存区与工作区都回到指定的版本，并删除之前的所有信息提交
 
-![[_public/learn-git/git-reset.excalidraw.svg]]
+![[git-reset.excalidraw.svg]]
 
 ## revert
 
 revert 也能用于回退版本，它用来==重做==某一个 commit 提交的内容。这么说可能并不明白到底做了什么，还得是看图。
 
-![[_public/learn-git/git-revert.excalidraw.svg]]
+![[git-revert.excalidraw.svg]]
 
 ```shell
 git revert HEAD^
@@ -428,7 +428,7 @@ git revert HEAD^
 
 但是对于你自己开发的分支，发现提交错了，reset 也没事。
 
-![[_public/learn-git/reset-danger.excalidraw.svg]]
+![[reset-danger.excalidraw.svg]]
 
 ### 如何 pull request
 
@@ -440,7 +440,7 @@ git revert HEAD^
 
 最后，你应当基于这个 fork，==另开一个 branch 再进行修改==，而不是在你 fork 来的分支上直接修改。为什么？请看下图。
 
-![[_public/learn-git/pull-request-wrong.excalidraw.svg]]
+![[pull-request-wrong.excalidraw.svg]]
 
 发现问题了吗？
 
@@ -448,7 +448,7 @@ git revert HEAD^
 
 在这棵 git 树中，出现了 ==“你合我，我合你”== 的现象。如果你还看不出来，那么你可以看一下我曾经提过的一个 [PR](https://github.com/antfu/markdown-it-shiki/pull/13).
 
-![[_public/learn-git/mdit-shiki-pr.png]]
+![[mdit-shiki-pr.png]]
 
 我给 [markdown-it-shiki](https://github.com/antfu/markdown-it-shiki) 提过两次 PR，而且两次都是在 main 分支直接修改的。Antfu 好像使用了 rebase 来合并修改，而如果我想要继续提 PR，我想我应该先更新到最新的版本，然后再进行修改，这样应该是理所应当的。
 

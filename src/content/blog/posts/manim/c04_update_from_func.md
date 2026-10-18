@@ -30,7 +30,7 @@ def interpolate(start: T, end: T, alpha: float) -> T:
 
 我们再拿出之前的一张图，在动画的过程中，alpha 的值从 0 到 1 变化，而图形也由原来的方形变得越来越像变化之后的圆形。
 
-![[_public/updater/InterpolateExampleScene.png]]
+![[InterpolateExampleScene.png]]
 
 在这里，alpha 所做的就是在 $[0,1]$ 定义域上，对于每个==选到的值==，算出对应的物件状态。
 
@@ -87,7 +87,7 @@ Animation 的方法方法一层套一层，最终会到达 `interpolate_mobject`
 
 在这一过程中，==数据对齐==的作用就显得相当重要了。如果我们把这两个矩阵都进行扩展，使得新的矩阵大小都能覆盖两个矩阵，接着对一些缺失的数据进行修补，那么此时一个矩阵中的每一个值都能与另一个矩阵中的相应值形成==一一映射==，这样插值动画就可以畅通无阻了。
 
-![[_public/updater/MatrixReflect.png]]
+![[MatrixReflect.png]]
 
 ```mermaid
 graph LR
@@ -126,7 +126,7 @@ class UpdateFromAlphaFunc(Animation):
 
 我们可以在每一帧都==恢复初态==、==重新计算当前状态==、==提交==，这样来控制其实更加方便。例如下面一个旋转平移的效果（但是笔者当前版本是 1.6.1 之后的，却没有出现问题）
 
-![[_public/updater/ShiftRotateExample.mp4]]
+![[media/updater/ShiftRotateExample.mp4]]
 
 ```python
 class ShiftRotateExample(Scene):
@@ -290,7 +290,7 @@ self.play(
 
 > 如果使用 UpdateFromAlphaFunc ，那么旋转的角度、半径需要手动计算后写入。
 
-![[_public/updater/RollingCircleExample.mp4]]
+![[media/updater/RollingCircleExample.mp4]]
 
 > [!example] 参考解答
 >
@@ -329,7 +329,7 @@ self.play(
 
 ##### 3. 给定三个锚点，用贝塞尔曲线的定义来绘制这三个点生成的曲线。
 
-![[_public/updater/BezierExample.mp4]]
+![[media/updater/BezierExample.mp4]]
 
 > [!example] 参考解答
 >

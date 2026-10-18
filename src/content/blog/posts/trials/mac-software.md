@@ -66,10 +66,11 @@ description: 备份一下，以便后续设备迁移后能找到对应列表，�
 
 ### AI 编程工具
 
-- ✅ [Reasonix](https://reasonix.io/)
-	- 与 DeepSeek 适配性较好，有非常高的缓存命中率
+- [WorkBuddy](https://workbuddy.ai/)
+- [DeepSeek Harness](https://www.deepseek.com/harness/)
+- [CodeX](https://openai.com/zh-Hans-CN/codex/)
 - [OpenCode](https://opencode.ai/)
-    - 每天有免费次数，可用 Kimi / GLM / BigPickle 等
+    - 每天有免费次数
 - [Pi](https://pi.dev)
 	- 配合 Oh My Pi 应该能达到更好的效果
 	- 据说是 OpenClaw 底层使用的工具，优势自己找知乎吧

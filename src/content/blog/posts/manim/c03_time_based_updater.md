@@ -16,7 +16,7 @@ description: 从时间轴的角度，直接控制 manim 动画的流程
 > [!question] 试试看！
 > 编写一个时钟，使得秒针、分针、时针分别按照固定的角速度旋转。如果严格按照现实时间来写比较慢，可以适当增加角速度。
 
-![[_public/updater/ClockExampleScene.png]]
+![[ClockExampleScene.png]]
 
 如果上面的例子你能写出来，那么这一节就结束了。
 
@@ -177,7 +177,7 @@ self.wait(10)
 
 ##### 2. 李萨如曲线：让一个物件按照李撒如图形的轨迹持续运动。李萨如图形的参数可自己给定。
 
-![[_public/updater/LissajousExample.mp4]]
+![[media/updater/LissajousExample.mp4]]
 
 > [!example] 参考解答
 > 在这里同样也用了 `self.time` 这个变量，处理更加方便一些
@@ -215,7 +215,7 @@ self.wait(10)
 
 ##### 3. 追逐曲线：一个正三角形的三个顶点分别以一定速度靠近同一侧相邻的顶点，画出每一帧三角形的位置。
 
-![[_public/updater/TracingCurveExample.mp4]]
+![[media/updater/TracingCurveExample.mp4]]
 
 > [!example] 参考解答
 >
@@ -270,7 +270,7 @@ self.wait(10)
 
 ##### 4. 东方弹幕游戏：对手每一帧都会改变弹幕的发射角，但是当弹幕发射出去之后，只会进行匀速直线运动，直至飞出屏幕。你需要制作一张螺旋符卡，拥有至少 3 条伪线，且发射角匀速变化。
 
-![[_public/updater/danmaku01.png]]
+![[danmaku01.png]]
 
 > [!example] 参考解答
 >
@@ -313,7 +313,7 @@ self.wait(10)
 
 ##### 5. 东方弹幕游戏进阶：境符「波と粒の境界」可谓是观赏性极高的符卡之一，现在紫妈要求你用 manim 来实现它。
 
-![[_public/updater/danmaku02.png]]
+![[danmaku02.png]]
 
 > [!example] 参考解答
 > 其实只需要改第 6 行就可以了。只要发射角的变化是非线性的，就可以达到这样的效果。当然，如果觉得子弹还不够密集（因为 60 帧下每秒只有 60 颗）可以再加几组。

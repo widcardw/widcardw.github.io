@@ -7,6 +7,7 @@ import { remarkCallouts } from '@widcardw/remark-callouts'
 import remarkMath from 'remark-math'
 import rehypeAsciimath from '@widcardw/rehype-asciimath'
 import { remarkWikiLink } from './src/plugins/wiki/remarkWikiLink'
+import { remarkWikiImage } from './src/plugins/wiki/remarkWikiImage'
 import rehypeExternalLinks from 'rehype-external-links'
 import solidJs from '@astrojs/solid-js'
 import { remarkTransformGlSketch, sketchAutoImport } from './src/plugins/gl-preview/remark'
@@ -53,8 +54,8 @@ export default defineConfig({
     solidJs(),
     pagefind(),
   ],
-  publicDir: 'src/content/blog/_public',
-  // Astro v7 起 compressHTML 默认值变为 'jsx'，会按 JSX 规则剥掉内联元素之间的空白，
+  // 图片已随文章放在 posts/<分类>/assets/ 下，publicDir 回归 Astro 默认的 public/
+  // compressHTML: Astro v7 起默认值变为 'jsx'，会按 JSX 规则剥掉内联元素之间的空白，
   // 可能让「Last updated on <time>」这类文案粘连。这里显式保留 v6 行为。
   compressHTML: true,
   markdown: {
@@ -86,6 +87,9 @@ export default defineConfig({
             },
           },
         ],
+        // 必须排在 remarkWikiLink 之后：把图片嵌入节点转成标准 image 节点，
+        // 交给 Astro 的图片管线做 webp 转换、懒加载和宽高推断。
+        remarkWikiImage,
         remarkTransformGlSketch,
         remarkCodeIcon,
         [remarkMermaid, { includeLoading: true }],

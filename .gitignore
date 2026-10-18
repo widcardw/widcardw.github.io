@@ -22,3 +22,4 @@ pnpm-debug.log*
 .obsidian/
 _Excalidraw/
 src/content/blog/copilot-custom-prompts
+.workbuddy-ai/

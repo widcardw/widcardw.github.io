@@ -14,7 +14,7 @@ description: 从源码分析 manim 的动画逻辑
 
 之前的文章中，我们也稍微提到了一些 Animation 和 Scene 的细节，我们再来复习一下。
 
-![[_public/updater/animation-scene-play.excalidraw.svg]]
+![[animation-scene-play.excalidraw.svg]]
 
 ### 准备工作[^1]
 
@@ -40,7 +40,7 @@ description: 从源码分析 manim 的动画逻辑
 
 如果上一步我们指定了 `time_span`，也就是说在动画的 3 秒过程中，只有 1 秒的时间是给这个动画的，那么该怎么实现呢？答案是用 `rate_func`.
 
-![[_public/updater/squish-rate-func.excalidraw.svg]]
+![[squish-rate-func.excalidraw.svg]]
 
 我们将 `smooth` 函数变换到右边的时间轴上，缺失值分别用 `start` 和 `end` 所对应的值代替。之后的 `rate_func` 就使用这个变换后的了。
 
@@ -246,7 +246,7 @@ def interpolate(
 
 如果有看过我做过的视频教程的读者，应该对 [`turn_animation_into_updater`](https://github.com/3b1b/manim/blob/669182944da040c227ccfd018250ee2bbc49649d/manimlib/mobject/mobject_update_utils.py#L83) 还有印象，但这次我们不用它，而使用纯写动画的方法。
 
-![[_public/updater/RotateFadeInExample.mp4]]
+![[media/updater/RotateFadeInExample.mp4]]
 
 #### 初始化
 
@@ -325,7 +325,7 @@ class RotateFadeInExample(Scene):
 
 ### 一个复杂一点的例子
 
-![[_public/updater/Aniplex.mp4]]
+![[media/updater/Aniplex.mp4]]
 
 ——这真的是用 manim 写出来的吗？
 

@@ -18,7 +18,7 @@ description: 为什么贝塞尔曲线着色并不是扁的，而是有厚度的�
 
 有厚度这不是正合我意吗？这样就不会有旋转造成视觉上扁平的问题了呀。
 
-![[_public/updater/DifferenceBetweenLines.mp4]]
+![[media/updater/DifferenceBetweenLines.mp4]]
 
 ```python
 line1 = Line(
@@ -40,7 +40,7 @@ line2 = Rectangle(5, 0.1, stroke_width=0,
 
 让我们回顾一下[[posts/notes/quadratic_bezier_shader|二阶贝塞尔曲线上色机制]]中的着色流程。
 
-![[_public/gl/quadratic-bezier-stroke-shader.excalidraw.svg]]
+![[quadratic-bezier-stroke-shader.excalidraw.svg]]
 
 顶点着色器在 `position_point_into_frame` 这个方法中，将顶点乘上了一个相机的旋转，这一步应该是要为透视变换做一些准备。
 
@@ -204,7 +204,7 @@ if(degree == 1){
 }
 ```
 
-![[_public/gl/line-shader.excalidraw.svg]]
+![[line-shader.excalidraw.svg]]
 
 #### 处理曲线
 
@@ -219,9 +219,9 @@ find_intersection(corners[0], v01, corners[4], v21, corners[2]);
 return 5;
 ```
 
-![[_public/gl/pentagon-out.excalidraw.svg]]
+![[pentagon-out.excalidraw.svg]]
 
-![[_public/gl/pentagon-in.excalidraw.svg]]
+![[pentagon-in.excalidraw.svg]]
 
 果不其然，在计算出五边形顶点坐标之后，紧接着的就是顶点索引表。通过索引表的方式，用更少的内存单元，就能生成三个三角形，来填充为一个五边形。
 

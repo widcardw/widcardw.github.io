@@ -188,7 +188,7 @@ void main() {
 
 总体流程图
 
-![[_public/posts-imgs/opengl-progress.excalidraw.svg]]
+![[opengl-progress.excalidraw.svg]]
 
 #### 顶点数组
 
@@ -349,13 +349,13 @@ layout (triangle_strip, max_vertices = 5) out;  // 输出图元
 
 在以前的博客中也提到了，二阶贝塞尔曲线是由三个顶点生成的。而且由于其定义，它是由==插值==产生的，也就是说，==曲线段不可能逃得出这个三角形的范围==。当然，这是忽略了曲线的宽度才能考虑的，但我们所看到的曲线都是有==宽度==的，而就是因为这些“线宽”，它有一小部分无法被这个三角形覆盖。因此，我们可以考虑略微==扩展==这个三角形，使得它能够完全覆盖我们所想要画的曲线。
 
-![[_public/posts-imgs/curve_stroke_primitive.png]]
+![[curve_stroke_primitive.png]]
 
 这里的例子就是将三角形扩展成五边形，来完全覆盖这条带有宽度的曲线。当然，如果这里的曲线是一条直线段，那么只需要用一个矩形即可将它覆盖。具体的实现原理，只需计算出顶点处的垂线（或者说是法向量），而后计算扩展的距离即可。
 
 接下来我们要考虑的就是转接处。对于一个三角形（其他的一些也是类似的），我们想把它的拐角处变成尖尖的，而不是像几根粗木棍拼在一起。我们需要将矩形图元进一步扩展，补全它缺少的角落。
 
-![[_public/posts-imgs/quadratic_corner_stroke.png]]
+![[quadratic_corner_stroke.png]]
 
 转接处的逻辑，大概就是对已经生成的图元的顶点添加一些==偏移==，补成这样的尖角。
 
@@ -374,7 +374,7 @@ layout (triangle_strip, max_vertices = 5) out;  // 输出图元
 
 最后，我们把颜色的 alpha 通道乘上这个输出值，也就擦除了不需要的片段。
 
-![[_public/posts-imgs/curve_stroke_shader.png]]
+![[curve_stroke_shader.png]]
 
 > 其实还涉及一些抗锯齿效果的因素，因为对于宏观理解差别不大，因此不过多的阐述。
 
@@ -382,7 +382,7 @@ layout (triangle_strip, max_vertices = 5) out;  // 输出图元
 
 ### 流程图
 
-![[_public/gl/quadratic-bezier-stroke-shader.excalidraw.svg]]
+![[quadratic-bezier-stroke-shader.excalidraw.svg]]
 
 ## 5. 二阶贝塞尔曲边图形填充色
 
@@ -395,7 +395,7 @@ layout (triangle_strip, max_vertices = 5) out;  // 输出图元
 - 对于普通的直边多边形，我们可以将它剖分成一系列的三角形，从而用这些三角形带来覆盖多边形
 - 对于曲边的多边形，我们不妨先把这些曲边割掉，先只考虑==内部的多边形==，这一部分可以用上面相似的方法来操作。而对于边缘的一些==弓形==，我们需要额外处理：先用一个三角形将弓形==完全覆盖==，再将==多余的部分擦除==。
 
-![[_public/posts-imgs/example_trianglify.svg]]
+![[example_trianglify.svg]]
 
 其中，==三角剖分==就起了非常重要的作用，它负责把多边形划分成一系列三角形，将这一系列三角形（顶点和顶点索引）传入 OpenGL 进行上色操作。
 
@@ -422,7 +422,7 @@ layout (triangle_strip, max_vertices = 5) out;  // 输出图元
 
 我们不妨先来看一个圆的三角剖分
 
-![[_public/posts-imgs/circle_trianglify.png]]
+![[circle_trianglify.png]]
 
 三角剖分后的索引数组如下
 
@@ -442,7 +442,7 @@ layout (triangle_strip, max_vertices = 5) out;  // 输出图元
 
 片段着色器此处要做的工作，几乎可以认为是==只需把计算好的颜色涂到片段上==就可以了。然而如果我们真的仅仅这么做的话就会得到这样的结果。
 
-![[_public/posts-imgs/fill_without_sdf.png]]
+![[fill_without_sdf.png]]
 
 我们忘记把不需要的片段擦除了。此时还是请出 [sdf 符号距离函数](#sdf符号距离函数)，根据上一步的 orientation ，来判断给弓形的内部还是外部上色。接着计算出需要保留的片段（像素），对每个片段 sdf 都输出一个 float 值，根据这个浮点值的差异，传入 smoothstep 变换其输出值，使得满足下面的情况：
 
@@ -451,10 +451,10 @@ layout (triangle_strip, max_vertices = 5) out;  // 输出图元
 
 将这一输出值乘在 color 的 alpha 分量上，也就使得不需要的片段被擦除了。
 
-![[_public/posts-imgs/curve_shader.png]]
+![[curve_shader.png]]
 
 至此，贝塞尔曲线图形的填充色程序完成。
 
 ### 流程图
 
-![[_public/gl/quadratic-bezier-fill-shader.excalidraw.svg]]
+![[quadratic-bezier-fill-shader.excalidraw.svg]]

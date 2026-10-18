@@ -160,7 +160,7 @@ mob.add_updater(my_updater)
 
 ##### 1. 绘制一条线段 $AB$，并绘制它的垂直平分线，使得当线段 $AB$ 移动、旋转的时候，中垂线始终能够垂直平分这条线段。
 
-![[_public/updater/PerpendicularBisectorExample.mp4]]
+![[media/updater/PerpendicularBisectorExample.mp4]]
 
 > [!example] 参考解答
 >
@@ -216,7 +216,7 @@ mob.add_updater(my_updater)
 
 ##### 3. 绘制一条数轴，在上面添加一个点，使用 `ValueTracker` 类来控制点的位置，同时使用 `DecimalNumber` 来显示点所代表的数值。
 
-![[_public/updater/NumberLineScene.mp4]]
+![[media/updater/NumberLineScene.mp4]]
 
 > [!example] 参考解答
 >
@@ -252,7 +252,7 @@ mob.add_updater(my_updater)
 
 ##### 4. 在坐标系上绘制一条函数 $y=\sin(x+\varphi)$，使用你觉得方便的方法，使得改变 $\varphi$ 值的时候，图像也能动态改变。
 
-![[_public/updater/SineGraphScene.mp4]]
+![[media/updater/SineGraphScene.mp4]]
 
 > [!example] 参考解答
 >

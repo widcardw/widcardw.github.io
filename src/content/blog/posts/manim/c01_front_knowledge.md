@@ -140,7 +140,7 @@ class Animation(object):
 - `finish` 方法会做好动画结束的后处理，包括==将动画设置到结束的状态==，==关闭互斥锁==等等（其实还有将动画中无用物件清理的方法 `clean_up_from_scene`，也可以认为这是后处理）
 - `interpolate` 插值就是动画中最为核心的概念，它的作用是生成起止点中间过渡的画面
 
-![[_public/updater/InterpolateExampleScene.png]]
+![[InterpolateExampleScene.png]]
 
 > [!example] 源码
 >
@@ -240,7 +240,7 @@ class Animation(object):
 >
 > 此处实现了 `Animation` 的抽象方法 `interpolate_submobject`。`integer_interpolate` 函数将 `alpha` 从 $[0,1]$ 的定义域拆成两部分
 >
-> ![[_public/updater/updater_01interpolate.svg]]
+> ![[updater_01interpolate.svg]]
 >
 > - 当 index = 0 时，仅仅绘制轮廓
 > - 当到达两段动画的交界点时，做一些数据处理和效率优化

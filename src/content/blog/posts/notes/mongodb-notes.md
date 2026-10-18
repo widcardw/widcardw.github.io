@@ -251,7 +251,7 @@ AGGREGATE_OPERATION 为一个数组，包含了一系列处理的对象。这些
 
 老朋友了，用这个方法处理数据非常灵活。先上官方的流程图
 
-![[_public/posts-imgs/map-reduce.bakedsvg.svg]]
+![[map-reduce.bakedsvg.svg]]
 
 其实看流程图应该也就一目了然了。它主要就是这样几步骤
 

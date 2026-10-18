@@ -69,7 +69,7 @@ description: 了解 Vectorized Math Object
 
 但是用动画演示相对来说就更好理解了。
 
-![[_public/posts-imgs/bez.gif]]
+![[media/posts-imgs/bez.gif]]
 
 贝塞尔曲线的一般方程如下，其中 $P_i$ 为创建贝塞尔曲线的 $n$ 个点
 
@@ -146,11 +146,11 @@ v.set_points(np.array([
 ]))
 ```
 
-![[_public/posts-imgs/olive.jpg]]
+![[olive.jpg]]
 
 而其本质就是将两段贝塞尔拼接起来。下图即为加上锚点和手柄的图像。
 
-![[_public/posts-imgs/olive-withhandle.jpg]]
+![[olive-withhandle.jpg]]
 
 ### 为何使用二阶贝塞尔
 
@@ -170,7 +170,7 @@ $$B(t)=\sum_{i=0}^{n}\binom{n}{i}P_{i}(1-t)^{i}t^{n-i},t\in[0,1]$$
 
 曾有人说，直线就是不够弯的曲线。那么在 manim 中，直线就可以用 3 个在直线上**均匀分布**的锚点来构成。为什么说要均匀分布呢？虽然分布不均匀也可以构成直线，最多也不过加了一点*拉扯*，但为了运算方便，同时也为了减少 bug，在处理时就将这 3 个锚点等距的放在一条线上。
 
-![[_public/posts-imgs/line.png]]
+![[line.png]]
 
 > [!example] 关于在三个点在同一直线上 **拉扯** 的问题
 >
@@ -185,7 +185,7 @@ $$B(t)=\sum_{i=0}^{n}\binom{n}{i}P_{i}(1-t)^{i}t^{n-i},t\in[0,1]$$
 > v.set_points(np.array([[-1, 0, 0], [3, 0, 0], [1, 0, 0]]))
 > ```
 >
-> ![[_public/posts-imgs/problem-of-handle.jpg]]
+> ![[problem-of-handle.jpg]]
 
 ### 从直线到曲线
 
@@ -217,7 +217,7 @@ def create_quadratic_bezier_points(angle, start_angle=0, n_components=8):
     return points
 ```
 
-![[_public/posts-imgs/arc.gif]]
+![[media/posts-imgs/arc.gif]]
 
 ### 函数图像曲线
 
@@ -288,7 +288,7 @@ class Annulus(Circle):
 
 可以这么思考：圆的一圈点集，是按照逆时针分布的，那么这条路径也可以看作是有向的，而上色机制会将向量的左边进行填充。将内圈的圆点集反转，那么路径方向也会反转，而上色机制同样对向量的左边进行填充。两者同时成立，得到的就是外圆扣去内圆的形状了。~~请忽略填充不完整的 bug~~
 
-![[_public/posts-imgs/annulus.jpg]]
+![[annulus.jpg]]
 
 ## 总结
 
