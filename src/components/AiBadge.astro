@@ -1,0 +1,49 @@
+---
+type Props = {
+  label?: string
+}
+
+const { label = 'AI 生成' } = Astro.props
+---
+
+<span class="ai-badge" title="本文由 AI 辅助撰写">
+  <svg class="ai-badge__spark" viewBox="0 0 16 16" aria-hidden="true">
+    <path
+      fill="currentColor"
+      d="M8 1.2l1.55 4.35a2 2 0 0 0 1.2 1.2L15.1 8.3l-4.35 1.55a2 2 0 0 0-1.2 1.2L8 15.4l-1.55-4.35a2 2 0 0 0-1.2-1.2L.9 8.3l4.35-1.55a2 2 0 0 0 1.2-1.2z"
+    />
+  </svg>
+  {label}
+</span>
+
+<style>
+  .ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.12em 0.6em 0.12em 0.5em;
+    border-radius: 999px;
+    font-size: 0.68em;
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    vertical-align: middle;
+    color: #fff;
+    background-image: linear-gradient(135deg, #6366f1 0%, #8b5cf6 45%, #c084fc 100%);
+    /* 陷入型内阴影：顶部高光 + 底部压暗 + 整体内发光 */
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.55),
+      inset 0 -2px 5px rgba(67, 20, 133, 0.6),
+      inset 0 0 12px rgba(168, 85, 247, 0.35),
+      0 1px 3px rgba(99, 102, 241, 0.28);
+  }
+
+  .ai-badge__spark {
+    width: 0.85em;
+    height: 0.85em;
+    flex: none;
+    opacity: 0.95;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.6));
+  }
+</style>

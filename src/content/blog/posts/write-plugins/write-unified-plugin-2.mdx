@@ -1,14 +1,14 @@
 ---
 title: 如何编写 unified 插件 (2) remark
 pubDate: 2024-02-11
-updatedDate: 2024-02-12
+updatedDate: 2026-10-18
 tags:
   - remark
   - markdown
   - unified
   - mdx
+  - AI生成
 description: 接着上一篇，讲一讲 unified 生态，以及如何使用 enter & exit 方式来编写 remark 插件
-draft: true
 ---
 
 ## 回顾
@@ -140,22 +140,508 @@ export function toMarkdown() {
 }
 ```
 
-> TODO: 暂时还不知道这是干啥用的。
+这两个函数一个负责「读」，一个负责「写」，合起来才算一个完整的语法扩展。
+
+#### fromMarkdown：把 token 变成节点
+
+micromark 只负责把 markdown 切成一个个 token，真正把 token 组装成 mdast 节点的是 `mdast-util-from-markdown`。而 `fromMarkdown()` 返回的 `enter` / `exit` 就是挂给它的钩子：
+
+- `enter` 在某种 token **开始**时触发，通常在里面用 `this.enter(node, token)` 创建并压入一个新节点
+- `exit` 在该 token **结束**时触发，此时用 `this.exit(token)` 弹出节点，并且可以用 `this.sliceSerialize(token)` 拿到 token 的原始文本
+
+以 remark-math 为例，遇到 `mathFlow` token 时，`enter` 里创建一个 `{ type: 'math' }` 节点，`exit` 里再把公式内容写进节点的 `value` 字段。插件跑完，语法树里就多了一种 `math` 节点，下游的 rehype 插件才有东西可认。
+
+#### toMarkdown：把节点写回 markdown
+
+`toMarkdown()` 返回两个东西：
+
+- `handlers`：每种自定义节点该怎么序列化回 markdown。比如 `math` 节点要输出成 `$$ ... $$`
+- `unsafe`：声明哪些字符序列在输出时是「危险」的，需要转义，否则生成的 markdown 会被重新解析成别的结构
+
+这一步经常被忽略，因为大多数人只关心 `md → html`。但只要你的处理器还需要 `html → md`，或者要对 markdown 做 round-trip（格式化、批量迁移、自动修复），没有 `toMarkdown` 就意味着自定义节点在写回时会被整个丢掉。
+
+这也是为什么 unified 生态里的插件普遍同时提供 `fromMarkdown` 和 `toMarkdown`——它是这套体系「双向可逆」要付的代价。
 
 ### remark
 
 在 wooorm 维护的插件中，通常是将上述声明的 micromark 插件和 mdast-util 都 push 到插件列表中。
 
-> TODO: 这部分也不是很懂，待完善
+这里的「push 到插件列表」其实是在往 processor 的 `data` 里登记，remark-math 的实现就很典型：
+
+```ts ins={9,10,11}
+export function remarkMath(options) {
+  const data = this.data()
+  const add = (field: string, value: unknown) => {
+    if (data[field]) data[field].push(value)
+    else data[field] = [value]
+  }
+
+  add('micromarkExtensions', math(options))
+  add('fromMarkdownExtensions', mathFromMarkdown())
+  add('toMarkdownExtensions', mathToMarkdown(options))
+}
+```
+
+三个字段分别对应三个下游消费者：
+
+| 字段 | 谁来读 | 作用 |
+| --- | --- | --- |
+| `micromarkExtensions` | `remark-parse` | 告诉 micromark 怎么切 token |
+| `fromMarkdownExtensions` | `mdast-util-from-markdown` | 告诉它 token 怎么变成节点 |
+| `toMarkdownExtensions` | `remark-stringify` | 告诉它节点怎么写回 markdown |
+
+所以一个「完整」的 remark 插件看起来只有十几行，是因为真正干活的逻辑都在 micromark 和 mdast-util 那两个包里，插件本身只是个登记处。理解了这一点，再去看 remark-gfm 那种引用关系复杂的插件，就不会觉得无从下手了——它无非是把更多的 construct 和 handler 塞进了同样的三个数组。
 
 ## 如何编写 remark 插件
 
-这里给出一个使用 micromark 生态编写的插件：[`remark-callout`](https://github.com/rk-terence/gz-remark-callout)，可以与上一篇文章中所提到的的插件 [`@widcardw/remark-callouts`](https://github.com/widcardw/remark-callouts) 进行一下对比。
+前面几节讲的都是「生态长什么样」。但真正坐下来写的时候，第一个问题永远是：**从哪个文件开始**。
 
-- https://github.com/micromark/micromark#architecture
-- https://github.com/micromark/micromark/blob/main/packages/micromark/dev/lib/constructs.js
-- https://github.com/micromark/micromark-extension-math/blob/main/dev/lib/math-flow.js
-- https://github.com/micromark/micromark-extension-gfm-strikethrough/blob/main/dev/lib/syntax.js
-- https://github.com/syntax-tree/mdast-util-math/blob/main/index.d.ts
-- https://github.com/micromark/common-markup-state-machine/tree/main/build
-- https://github.com/micromark/micromark/blob/main/packages/micromark/dev/lib/constructs.js
+这一节按实际动手的顺序走一遍：定位 → tokenize → resolve → mdast-util → 类型 → 装配。最后拿本站的 wikilink 插件当完整示例——它就是照这个流程写的。
+
+### 第 1 步：定位 —— construct 挂在哪一层
+
+micromark 的扩展点本质上是几张「首字符 → construct」的映射表。原生语法在 `constructs.js` 里的注册就是最好的模板：
+
+```js
+// micromark/dev/lib/constructs.js（节选）
+export const document = {
+  [codes.greaterThan]: blockQuote,
+  [codes.dash]: list,
+  // ...
+}
+
+export const flow = {
+  [codes.numberSign]: headingAtx,
+  [codes.dash]: [setextUnderline, thematicBreak],
+  [codes.graveAccent]: codeFenced,
+  [codes.tilde]: codeFenced
+}
+
+export const text = {
+  [codes.asterisk]: attention,
+  [codes.lessThan]: [autolink, htmlText],
+  [codes.leftSquareBracket]: labelStartLink,
+  [codes.backslash]: [hardBreakEscape, characterEscape]
+}
+
+export const insideSpan = { null: [attention, resolveText] }
+export const attentionMarkers = { null: [codes.asterisk, codes.underscore] }
+```
+
+从这张表能读出三条规则：
+
+- **键是字符码，不是字符**。`codes.tilde` 就是 `~` 的 charCode。
+- **值可以是数组**，按顺序试，前一个 `nok` 才轮得到后一个。`~` 在 `flow` 里是 `codeFenced`，在 `text` 里被删除线扩展占用，靠的就是分层互不干扰。
+- **`null` 作键表示「不按首字符挑」**，整段内容都会跑一遍。`insideSpan` 和 `attentionMarkers` 都是这种。
+
+至于挂哪张表，看语法的粒度：
+
+| 层级 | 何时触发 | 典型语法 |
+| --- | --- | --- |
+| `document` | 整篇文档，可嵌套其他容器 | 列表、引用块 |
+| `flow` | 每行行首 | 标题、围栏代码、分割线 |
+| `text` | 行内任意位置 | 强调、行内代码、链接 |
+| `string` | 只处理字符串型 token 内部 | 字符转义、HTML 实体 |
+| `insideSpan` | 行内内容解析完成后 | 强调配对、删除线配对 |
+
+`$$...$$` 这种独占一行的公式挂在 `flow`，`![[...]]` 这种行内嵌入挂在 `text`。**挂错位置的话 tokenize 压根不会被调用**——这是新手最常见的「写完了但没反应」。
+
+### 第 2 步：tokenize —— 手写一个状态机
+
+一个 construct 至少要有 `tokenize`，其余字段按需：
+
+```ts
+const construct = {
+  tokenize,          // 必填：状态机入口
+  name: 'mathFlow',  // 可选：便于按名字 disable
+  concrete: true,    // 可选：不允许被其他容器打断
+  resolve,           // 可选：解析后修正 token
+  resolveAll,        // 可选：整段内容解析完后统一修正
+  partial: true,     // 可选：只能被别的 construct 调用，不能单独注册
+}
+```
+
+`tokenize` 的签名是 `(effects, ok, nok) => State`。它自己不被逐个字符调用，只负责**返回第一个状态函数**。之后 micromark 把字符一个个喂进去：
+
+```ts
+function tokenize(effects, ok, nok) {
+  return start
+
+  function start(code) {
+    // code 是当前字符的字符码
+  }
+}
+```
+
+每个 `State` 收到一个 `code`，只能做三件事之一：
+
+1. **`return 下一个状态函数`** —— 继续
+2. **`return ok(code)`** —— 成功，从当前位置交还给上层
+3. **`return nok(code)`** —— 失败，**回滚 tokenize 开始后的所有 token**，从当前位置换别的 construct 再试
+
+`code` 有几个特殊值：`null` 是文件结束，`codes.lineFeed` 这类是负数（虚拟字符，不对应原文），普通字符就是正常的 charCode。
+
+`effects` 一共六个方法：
+
+| 方法 | 作用 |
+| --- | --- |
+| `enter(type, fields?)` | 压入一个 token，`fields` 可挂自定义字段 |
+| `exit(type)` | 弹出 token |
+| `consume(code)` | 吃掉当前字符并前进 |
+| `attempt(c, ok, nok)` | 尝试子 construct，失败则回滚 |
+| `check(c, ok, nok)` | 只做前瞻，无论成败都回滚 |
+| `interrupt(c, ok, nok)` | 内容行之后的打断检查 |
+
+关键约束：**`enter` 和 `exit` 必须严格配对**。token 的嵌套关系会原封不动传给 mdast-util 的 `enter` / `exit`，配不平的话症状是节点内容整体错位，而且很难查。
+
+拿 math 的围栏公式看，`start` 只做三件事：
+
+```js
+function start(code) {
+  assert(code === codes.dollarSign, 'expected `$`')
+  effects.enter('mathFlow')
+  effects.enter('mathFlowFence')
+  effects.enter('mathFlowFenceSequence')
+  return sequenceOpen(code)
+}
+```
+
+三个 `enter` 就是三层嵌套：整个公式 → 围栏 → 围栏上的 `$` 序列。mdast-util 那边对 `mathFlow` 和 `mathFlowFence` 都写了 handler，`mathFlowFenceSequence` 却没人管——**没有 handler 的 token 会被静默跳过**，不报错也不留痕。所以 token 切得细一点没关系，用不上就当没看见。
+
+接着 `sequenceOpen` 数 `$` 的个数，**不够两个就 `nok`**——这就是「单个 `$` 不算公式」的实现方式：
+
+```js
+function sequenceOpen(code) {
+  if (code === codes.dollarSign) {
+    effects.consume(code)
+    sizeOpen++
+    return sequenceOpen
+  }
+  if (sizeOpen < 2) return nok(code) // 单个 $，不是公式，交还给上层
+  effects.exit('mathFlowFenceSequence')
+  return factorySpace(effects, metaBefore, types.whitespace)(code)
+}
+```
+
+注意 `return sequenceOpen`——返回的是**它自己**。连续的 `$` 会一直被这个函数吃掉，直到遇到别的字符才往下走。这是状态机最典型的写法：一个状态函数里既有自环，也有出口。
+
+写状态机最麻烦的是「记不清现在处理到哪」。两个技巧：
+
+- 状态用**闭包变量**记（`sizeOpen`、`alias`、`startMarkerCount`），不要试图塞进 token
+- 在状态函数上方用 `^` 标出光标位置。micromark 自己的源码全是这么写的，照着抄能省一半调试时间：
+
+```js
+/**
+ * In opening fence sequence.
+ *
+ * ```markdown
+ * > | $$
+ *      ^
+ *   | \frac{1}{2}
+ *   | $$
+ * ```
+ */
+```
+
+### 第 3 步：resolve —— 只在「配对不确定」时需要
+
+块级语法通常不需要 `resolve`：`$$` 出现时就知道要开始，闭合 `$$` 出现时就知道要结束。
+
+行内语法就不一样了。`~~a~~` 里的两个 `~`，tokenize 是**分两次**被调用的——第一次遇到 `~` 时不知道它是开还是闭，只能先切一个临时 token，打上「可能开」「可能闭」的标记，等整段行内内容解析完再回头配对。
+
+`gfm-strikethrough` 就是这么做的：
+
+```js
+// tokenize 阶段：先切出临时 token 并标记 _open / _close
+function tokenizeStrikethrough(effects, ok, nok) { /* ... */ }
+
+// 解析完后统一配对
+function resolveAllStrikethrough(events, context) {
+  let index = -1
+  while (++index < events.length) {
+    if (
+      events[index][0] === 'enter' &&
+      events[index][1].type === 'strikethroughSequenceTemporary' &&
+      events[index][1]._close
+    ) {
+      let open = index
+      while (open--) {
+        if (
+          events[open][0] === 'exit' &&
+          events[open][1].type === 'strikethroughSequenceTemporary' &&
+          events[open][1]._open &&
+          // 开闭长度必须一致，~~ 不能配 ~
+          events[index][1].end.offset - events[index][1].start.offset ===
+            events[open][1].end.offset - events[open][1].start.offset
+        ) {
+          events[index][1].type = 'strikethroughSequence'
+          events[open][1].type = 'strikethroughSequence'
+          // ... 再 splice 一个 strikethrough token 把两边包起来
+        }
+      }
+    }
+  }
+}
+```
+
+`events` 是扁平的 `[kind, token][]` 数组，`kind` 只有 `'enter'` 和 `'exit'` 两种。所以 `resolve` 干的活就是**在这个数组上做括号匹配**：找到能闭合的，往回找能打开的，改类型，再 `splice` 插入一对包裹 token。
+
+顺带一提，`gfmStrikethrough` 返回的扩展里除了 `text` 还声明了两个：
+
+```js
+return {
+  text: { [codes.tilde]: tokenizer },
+  insideSpan: { null: [tokenizer] },
+  attentionMarkers: { null: [codes.tilde] }
+}
+```
+
+`attentionMarkers` 是告诉强调算法「`~` 也算边界标记」。少了这一行，`~~a~~` 出现在 `**bold**` 里时配对会错乱。
+
+> [!tip] 什么时候可以跳过 resolve
+> 如果定界符自带方向性——比如 `[[` 和 `]]`——tokenize 读到第一个 `[` 时就已经知道这是开头了，不需要配对。本站的 wikilink 插件就完全没写 `resolve`。
+
+### 第 4 步：mdast-util —— 把 token 变成节点
+
+token 只是「切分结果」，还不是 mdast 节点。转换交给 `mdast-util-from-markdown`，你的扩展只需要提供 `enter` / `exit` 两张表，键是 **token 类型名**：
+
+```js
+export function mathFromMarkdown() {
+  return {
+    enter: {
+      mathFlow: enterMathFlow,
+      mathFlowFenceMeta: enterMathFlowMeta,
+      mathText: enterMathText,
+    },
+    exit: {
+      mathFlow: exitMathFlow,
+      mathFlowFence: exitMathFlowFence,
+      mathFlowFenceMeta: exitMathFlowMeta,
+      mathFlowValue: exitMathData,
+      mathText: exitMathText,
+      mathTextData: exitMathData,
+    },
+  }
+}
+```
+
+四个上下文方法最常用：
+
+| 方法 | 作用 |
+| --- | --- |
+| `this.enter(node, token)` | 建节点并压栈 |
+| `this.exit(token)` | 弹栈 |
+| `this.sliceSerialize(token)` | 取 token 对应的**原始文本** |
+| `this.buffer()` / `this.resume()` | 开始攒 / 取出中间的文本（跨多个 token 时用） |
+
+`enterMathFlow` 里有一处值得停下来看：
+
+```js
+function enterMathFlow(token) {
+  const code = {
+    type: 'element',
+    tagName: 'code',
+    properties: { className: ['language-math', 'math-display'] },
+    children: [],
+  }
+  this.enter(
+    {
+      type: 'math',
+      meta: null,
+      value: '',
+      data: { hName: 'pre', hChildren: [code] },
+    },
+    token,
+  )
+}
+```
+
+`data.hName` 和 `data.hProperties`——上一篇「节点编辑」里讲过的字段，在这里出现了。这就是 mdast 和 hast 之间的暗号：`remark-rehype` 看到 `hName` 就不走默认映射，直接把节点渲染成 `<pre><code class="language-math math-display">`。
+
+换句话说，**你可以在 micromark 阶段就把最终 HTML 的形状定好**，后面连 rehype 插件都省了。
+
+然后 `exitMathFlow` 把攒到的文本写进 `value`：
+
+```js
+function exitMathFlow(token) {
+  const data = this.resume().replace(/^(\r?\n|\r)|(\r?\n|\r)$/g, '')
+  const node = this.stack[this.stack.length - 1]
+  this.exit(token)
+  node.value = data
+  node.data.hChildren[0].children.push({ type: 'text', value: data })
+}
+```
+
+`this.resume()` 取的是从 `exitMathFlowFence` 里 `this.buffer()` 开始攒的全部内容——中间那些 `mathFlowValue` token 的 `exit` 转给了默认的 `data` handler（`exitMathData`），由它自动追加。
+
+### 第 5 步：补类型声明
+
+token 类型名是字符串，TypeScript 默认不认识。在包的入口加一段声明合并：
+
+```ts
+declare module 'micromark-util-types' {
+  interface TokenTypeMap {
+    mathFlow: 'mathFlow'
+    mathFlowFence: 'mathFlowFence'
+    mathFlowFenceSequence: 'mathFlowFenceSequence'
+    mathFlowValue: 'mathFlowValue'
+    mathText: 'mathText'
+  }
+}
+```
+
+`interface` 合并是自动的，只要这个 `.d.ts` 被加载过就生效。不写也能跑，但 `effects.enter('mathFlow')` 会一路飘红。
+
+### 第 6 步：装配
+
+上文 `### remark` 已经讲过，这里只补一句：三个扩展包各自对应 `data` 里的一个数组，插件本身不需要知道它们怎么被消费。**先写 micromark 扩展，再写 mdast-util 扩展，最后用一个十几行的 remark 插件把它们登记进去**——这个顺序不要反过来。
+
+## 完整示例：本站的 wikilink 插件
+
+拆开讲还是有点抽象。这个博客对 `[[...]]` / `![[...]]` 的支持就是按上面六步写的，代码在 `src/plugins/wiki/` 下：
+
+```
+src/plugins/wiki/
+├── syntax.ts          # construct + tokenize 状态机
+├── fromMarkdown.ts    # token → mdast 节点
+└── remarkWikiLink.ts  # 装配
+```
+
+### syntax.ts：一个不需要 resolve 的状态机
+
+`[[...]]` 的定界符自带方向，所以只写 tokenize：
+
+```ts ins={18,19}
+function tokenize(effects, ok, nok) {
+  let data = false
+  let alias = false
+  let startMarkerCount = 0
+  let endMarkerCount = 0
+
+  return start
+
+  function start(code) {
+    if (code === startMarker) {
+      // [
+      effects.enter('wikiLink')
+      effects.enter('wikiLinkMarker')
+      return consumeStart(code)
+    }
+    if (code === embedStartMarker) {
+      // !
+      effects.enter('wikiLink', { isType: 'embed' })
+      effects.enter('wikiLinkMarker', { isType: 'embed' })
+      return consumeStart(code)
+    }
+    return nok(code)
+  }
+
+  function consumeStart(code) {
+    if (startMarkerCount === 2) {
+      // 已经吃掉 [[
+      effects.exit('wikiLinkMarker')
+      return consumeData(code)
+    }
+    if (code === startMarker || code === embedStartMarker) {
+      if (code === startMarker) startMarkerCount++
+      effects.consume(code)
+      return consumeStart
+    }
+    return nok(code)
+  }
+
+  function consumeTarget(code) {
+    if (code === aliasMarker) {
+      // |
+      if (!data) return nok(code)
+      effects.exit('wikiLinkTarget')
+      effects.enter('wikiLinkAliasMarker')
+      return consumeAliasMarker(code)
+    }
+    if (code === endMarker) {
+      // ]
+      if (!data) return nok(code)
+      effects.exit('wikiLinkTarget')
+      effects.exit('wikiLinkData')
+      effects.enter('wikiLinkMarker')
+      return consumeEnd(code)
+    }
+    if (isEndOfLineOrFile(code)) return nok(code)
+    data = true
+    effects.consume(code)
+    return consumeTarget
+  }
+
+  // consumeAlias / consumeAliasMarker / consumeEnd 略
+}
+
+const wikiLinkConstruct = { tokenize }
+
+return {
+  text: {
+    [codes.leftSquareBracket]: wikiLinkConstruct,
+    [codes.exclamationMark]: wikiLinkConstruct,
+  },
+}
+```
+
+几处值得注意的地方：
+
+- **`{ isType: 'embed' }`** —— `effects.enter` 的第二个参数可以挂任意字段，这里用它区分 `[[x]]` 和 `![[x]]`。这些字段会原样出现在 token 上，mdast-util 那边能读回来。
+- **`!` 也要注册** —— `![[...]]` 的首字符是 `!`。不注册 `text[codes.exclamationMark]`，embed 语法永远不会被触发。而 `!` 原生是 `labelStartImage`，所以这里实际是「先试 wikilink，失败再退回图片」——`nok` 回滚的机制正好保证了这个顺序。
+- **`data` / `alias` 两个布尔量** —— 用来拒绝 `[[]]` 和 `[[a|]]` 这种空内容。在状态机里做校验，比事后在树上检查干净得多。
+
+### fromMarkdown.ts：节点长什么样
+
+```ts
+function enterWikiLink(token) {
+  node = {
+    type: 'wikiLink',
+    data: {
+      isEmbed: token.isType === 'embed', // ← 就是上面挂上去的字段
+      target: null,
+      alias: null,
+      hName: null,
+      hProperties: null,
+      hChildren: null,
+    },
+  }
+  this.enter(node, token)
+}
+
+function exitWikiLinkTarget(token) {
+  this.stack[this.stack.length - 1].data.target = this.sliceSerialize(token)
+}
+```
+
+最后 `exitWikiLink` 里根据 `isEmbed` 和文件后缀决定 `hName`：图片给 `img`，视频给 `video`，PDF 给 `iframe`，普通链接给 `a`。**整棵树的 HTML 形态在 mdast 阶段就定完了**，`remark-rehype` 只是照着念。
+
+### 这个插件的遗留问题
+
+它有个绕不过去的缺陷：`hName: 'img'` 生成的是「原生」`<img>`，走不到 Astro 的图片管线——没有 webp 转换，没有宽高推断，也没有懒加载。
+
+所以本站后来补了一个 `remarkWikiImage`，排在 wikilink 之后，把图片嵌入节点换成标准的 `image` 节点：
+
+```ts
+parent.children[i] = {
+  type: 'image',
+  url: rel,
+  alt: node.data.alias || path.basename(target),
+  title: null,
+  position: node.position,
+}
+```
+
+这也是 micromark 插件的通病：**它在语法层面做得越彻底，就越容易绕过框架的约定**。什么时候该自己写语法、什么时候该在后面补一个 `visit` 插件兜底，是这套生态里最需要经验判断的地方。
+
+## 延伸阅读
+
+按「从哪读起」的顺序排，每条后面说明该看什么：
+
+- [micromark#Architecture](https://github.com/micromark/micromark#architecture) —— 先读这个。搞清 preprocess / parse / postprocess / compile 四段，后面才不会迷路。
+- [micromark/dev/lib/constructs.js](https://github.com/micromark/micromark/blob/main/packages/micromark/dev/lib/constructs.js) —— 第 1 步那张映射表的全文，一百行不到，值得逐行看完。
+- [micromark-extension-math/dev/lib/math-flow.js](https://github.com/micromark/micromark-extension-math/blob/main/dev/lib/math-flow.js) —— **最好的状态机范本**。围栏、meta、内容、闭合四段写得极清楚，注释里的 `^` 光标图就是上面推荐的写法。
+- [micromark-extension-gfm-strikethrough/dev/lib/syntax.js](https://github.com/micromark/micromark-extension-gfm-strikethrough/blob/main/dev/lib/syntax.js) —— 想学 `resolveAll` 就只看这个，它是「行内配对」的最小完整实现。
+- [mdast-util-math/index.js](https://github.com/syntax-tree/mdast-util-math/blob/main/lib/index.js) —— `fromMarkdown` 和 `toMarkdown` 的实战，`buffer()` / `resume()` 的用法在这里最清楚。
+- [common-markup-state-machine](https://github.com/micromark/common-markup-state-machine) —— 一堆状态机积木（`factorySpace`、`factoryLabel` 之类）。自己从头搓之前先翻一遍，大概率有现成的。
+- [remark-callout](https://github.com/rk-terence/gz-remark-callout) —— 一个用 micromark 生态写的完整插件，可以和上一篇提到的 [`@widcardw/remark-callouts`](https://github.com/widcardw/remark-callouts) 对照着看：同样是 callout，一个走 `visit`，一个走 tokenize，工作量差距一目了然。

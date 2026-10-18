@@ -16,6 +16,17 @@ const shownPosts = sortedPosts.slice(0, MAX_POSTS)
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      /* 与 /blog 列表保持一致：不要项目符号，也不要浏览器默认的 40px 缩进 */
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul li {
+        margin-bottom: 0.25rem;
+      }
+    </style>
   </head>
   <body>
     <Header title={SITE_TITLE} />

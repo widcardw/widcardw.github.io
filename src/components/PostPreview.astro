@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import FormattedDate from './FormattedDate.astro'
+import AiBadge from './AiBadge.astro'
 
 type Props = {
   post: CollectionEntry<'blog'>
@@ -10,17 +11,28 @@ type Props = {
 
 const { post, withTags = false, withDesc = false } = Astro.props
 const postDate = post.data.updatedDate ?? post.data.pubDate
+
+/** 复用 tags 里的这个值作为「AI 生成」标识，避免额外新增 frontmatter 字段 */
+const AI_TAG = 'AI生成'
+const allTags = post.data.tags ?? []
+const isAiGenerated = allTags.includes(AI_TAG)
+const displayTags = allTags.filter((tag) => tag !== AI_TAG)
 ---
 
 <div>
   {post.data.draft && <span class="draft">(Draft)</span>}
+  {isAiGenerated && (
+    <span class="ai-slot">
+      <AiBadge />
+    </span>
+  )}
   <a href={`/blog/${post.id}/`}>{post.data.title.trim()}</a> ·
   <FormattedDate date={postDate} style={{ opacity: 0.4, fontSize: "0.85em" }} />
   {withDesc && <i>{post.data.description}</i>}
   {
-    withTags && post.data.tags && (
+    withTags && displayTags.length > 0 && (
       <div>
-        {post.data.tags.map((tag) => (
+        {displayTags.map((tag) => (
           <>
             <code>#{tag}</code>{" "}
           </>
@@ -40,6 +52,10 @@ const postDate = post.data.updatedDate ?? post.data.pubDate
   .draft {
     font-size: 0.85em;
     color: var(--accent);
+  }
+
+  .ai-slot {
+    margin-right: 0.45em;
   }
 
   code {

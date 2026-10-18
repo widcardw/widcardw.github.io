@@ -6,9 +6,9 @@ export async function getAllPosts(): Promise<Array<CollectionEntry<'blog'>>> {
 
 export async function getSortedPosts(): Promise<Array<CollectionEntry<'blog'>>> {
   const posts = await getAllPosts()
-  return posts.sort((a, b) => {
-    return new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-  })
+  // 与列表上展示的日期保持一致：优先用 updatedDate，没有才退回 pubDate。
+  // 之前按 pubDate 排、却显示 updatedDate，会让「最近更新」的文章排在中段。
+  return sortMDByDate(posts)
 }
 
 export function sortMDByDate(posts: Array<CollectionEntry<'blog'>>) {

@@ -1,10 +1,74 @@
-table {
+/* 表格：圆角外框 + 表头浅底 + 行分割线，明暗主题共用一套变量 */
+.prose table {
   width: 100%;
-  margin: 1rem auto;
-  border-top: 2px solid var(--text-color-sec);
-  border-bottom: 2px solid var(--text-color-sec);
+  margin: 1.5rem auto;
+  border: 1px solid var(--table-border);
+  border-radius: 8px;
+  /* separate 才能让圆角生效；border-spacing 归零，避免单元格之间出现缝隙 */
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9375em;
+  line-height: 1.6;
 }
 
-th {
-  border-bottom: 1px dashed var(--text-color-sec);
+.prose thead th {
+  padding: 0.62em 0.9em;
+  font-weight: 600;
+  text-align: left;
+  color: var(--link-color);
+  background-color: var(--table-head-bg);
+  border-bottom: 1px solid var(--table-border);
+}
+
+/* 表头背景不会被表格圆角裁掉，所以两端单独补圆角 */
+.prose thead th:first-child {
+  border-top-left-radius: 7px;
+}
+
+.prose thead th:last-child {
+  border-top-right-radius: 7px;
+}
+
+.prose tbody td {
+  padding: 0.55em 0.9em;
+  vertical-align: top;
+}
+
+/* 行线只画在「行与行之间」，首行不会和表头那条重复 */
+.prose tbody tr + tr td {
+  border-top: 1px solid var(--table-row-border);
+}
+
+/* 悬停高亮，最后一行也补圆角，免得色块顶出边框 */
+.prose tbody tr:hover td {
+  background-color: var(--table-hover-bg);
+}
+
+.prose tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 7px;
+}
+
+.prose tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 7px;
+}
+
+/* 支持 GFM 的 :--: / --: 对齐写法（输出为 align 属性） */
+.prose :is(th, td)[align='center'] {
+  text-align: center;
+}
+
+.prose :is(th, td)[align='right'] {
+  text-align: right;
+}
+
+/* 窄屏：收紧留白和字号，避免列被挤成一条窄缝 */
+@media (max-width: 720px) {
+  .prose table {
+    font-size: 0.85em;
+  }
+
+  .prose thead th,
+  .prose tbody td {
+    padding: 0.5em 0.6em;
+  }
 }

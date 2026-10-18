@@ -1,2 +1,14 @@
+# Vercel 等平台可能用 pnpm 9 安装（它按项目创建日期推断版本），
+# 而 pnpm 9 要求 workspace 文件里必须有 packages 字段，否则报
+# "packages field missing or empty"。单包项目写 '.' 即可。
+packages:
+  - '.'
+
+# 允许 esbuild 的安装脚本运行（pnpm 10+ 默认阻止依赖的 postinstall）
+# pnpm 12 的写法
 allowBuilds:
   esbuild: true
+
+# pnpm 10 / 11 的写法，保留以兼容
+onlyBuiltDependencies:
+  - esbuild
