@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config'
+import { unified } from '@astrojs/markdown-remark'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import { remarkMark } from 'remark-mark-highlight'
@@ -53,45 +54,53 @@ export default defineConfig({
     pagefind(),
   ],
   publicDir: 'src/content/blog/_public',
+  // Astro v7 起 compressHTML 默认值变为 'jsx'，会按 JSX 规则剥掉内联元素之间的空白，
+  // 可能让「Last updated on <time>」这类文案粘连。这里显式保留 v6 行为。
+  compressHTML: true,
   markdown: {
-    gfm: true,
-    remarkPlugins: [
-      remarkMark,
-      remarkCallouts,
-      remarkMath,
-      // used for math
-      // remarkAsciiMath,
-      // used for math
-      [
-        remarkWikiLink,
-        {
-          // wikiLinkResolver: wikilinkPageResolver
-          pathFormat: 'obsidian-absolute',
-          wikiLinkResolver: (target: string) => {
-            // for [[#heading]] links
-            if (!target) return []
-            let permalink = target.replace(/\/index$/, '')
-            // TODO what to do with [[index]] link?
-            if (permalink.length === 0) permalink = '/'
-            permalink = permalink.replace('_public/', '')
-            return [permalink]
+    // v7 默认处理器换成了 Rust 实现的 Sätteri，不再支持 remark/rehype 插件生态。
+    // 本项目重度依赖 remark 插件（wikilink、callouts、math、mermaid、gl-preview 等），
+    // 因此显式切回 unified 处理器，插件配置从 markdown.remarkPlugins 迁入此处。
+    processor: unified({
+      gfm: true,
+      remarkPlugins: [
+        remarkMark,
+        remarkCallouts,
+        remarkMath,
+        // used for math
+        // remarkAsciiMath,
+        // used for math
+        [
+          remarkWikiLink,
+          {
+            // wikiLinkResolver: wikilinkPageResolver
+            pathFormat: 'obsidian-absolute',
+            wikiLinkResolver: (target: string) => {
+              // for [[#heading]] links
+              if (!target) return []
+              let permalink = target.replace(/\/index$/, '')
+              // TODO what to do with [[index]] link?
+              if (permalink.length === 0) permalink = '/'
+              permalink = permalink.replace('_public/', '')
+              return [permalink]
+            },
           },
-        },
+        ],
+        remarkTransformGlSketch,
+        remarkCodeIcon,
+        [remarkMermaid, { includeLoading: true }],
       ],
-      remarkTransformGlSketch,
-      remarkCodeIcon,
-      [remarkMermaid, { includeLoading: true }],
-    ],
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        {
-          target: '_blank',
-          rel: 'nofollow',
-        },
+      rehypePlugins: [
+        [
+          rehypeExternalLinks,
+          {
+            target: '_blank',
+            rel: 'nofollow',
+          },
+        ],
+        rehypeAsciimath,
       ],
-      rehypeAsciimath,
-    ],
+    }),
     shikiConfig: {
       theme: 'nord',
     },

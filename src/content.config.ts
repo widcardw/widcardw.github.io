@@ -1,6 +1,15 @@
-import { defineCollection, z } from 'astro:content'
+import { defineCollection } from 'astro:content'
+import { glob } from 'astro/loaders'
+import { z } from 'astro/zod'
 
 const blog = defineCollection({
+  // Content Layer API：v6 起旧版集合已移除，必须显式声明 loader。
+  // 旧版集合会隐式忽略以 `_` 开头的文件/目录（如 _templates、_Excalidraw），
+  // 新 loader 不会，所以这里用负向模式把这条规则显式补回来。
+  loader: glob({
+    base: './src/content/blog',
+    pattern: ['**/*.{md,mdx}', '!**/_*/**', '!**/_*'],
+  }),
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),

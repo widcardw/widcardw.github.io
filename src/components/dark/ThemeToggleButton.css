@@ -19,23 +19,41 @@
   height: 1.5rem;
 }
 
-/** Animated Theme Toggle */
+/**
+ * Animated Theme Toggle —— 整页淡变
+ *
+ * 旧快照保持不透明垫在底层、不做任何动画；新快照叠在上层从 0 淡入。
+ * 这样任何一帧都是完整画面，不会像交叉淡变那样在中途透出背景造成闪烁。
+ */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation: none;
   mix-blend-mode: normal;
 }
 
-.dark::view-transition-old(root) {
+::view-transition-old(root) {
+  animation: none;
+  opacity: 1;
   z-index: 1;
-}
-.dark::view-transition-new(root) {
-  z-index: 999;
 }
 
-::view-transition-old(root) {
-  z-index: 999;
-}
 ::view-transition-new(root) {
-  z-index: 1;
+  z-index: 2;
+  animation: theme-fade-in 360ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes theme-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 尊重系统「减少动态效果」偏好 */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
 }

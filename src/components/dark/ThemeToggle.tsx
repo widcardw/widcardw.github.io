@@ -46,6 +46,9 @@ const [theme, setTheme] = makePersisted(
 
 const [realTheme, setRealTheme] = createSignal('light')
 
+/** 主题切换动效：'fade' = 整页渐变，'instant' = 直接切换 */
+const THEME_TRANSITION: 'fade' | 'instant' = 'fade'
+
 const ThemeToggle: Component = () => {
   onMount(() => {
     const root = document.documentElement
@@ -98,30 +101,20 @@ const ThemeToggle: Component = () => {
     }
   }
 
-  function cycleTheme(event: MouseEvent) {
-    // toggleDark()
-
-    const x = event?.clientX ?? window.innerWidth
-    const y = event?.clientY ?? 0
-
-    const transition = document.startViewTransition(() => {
+  function cycleTheme() {
+    // 直接切换：用户显式选择、浏览器不支持 View Transitions，或偏好减少动效
+    if (
+      THEME_TRANSITION === 'instant' ||
+      typeof document.startViewTransition !== 'function' ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
       toggleDark()
-    })
+      return
+    }
 
-    const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
-    void transition.ready.then(() => {
-      const clipPath = [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`]
-      document.documentElement.animate(
-        {
-          clipPath: realTheme() === 'dark' ? clipPath : [...clipPath].reverse(),
-        },
-        {
-          duration: 500,
-          easing: 'ease-in',
-          pseudoElement:
-            realTheme() === 'dark' ? '::view-transition-new(root)' : '::view-transition-old(root)',
-        },
-      )
+    // 整页淡变：旧快照垫底不动，新快照在上层淡入（动画细节见 ThemeToggleButton.css）
+    document.startViewTransition(() => {
+      toggleDark()
     })
   }
 

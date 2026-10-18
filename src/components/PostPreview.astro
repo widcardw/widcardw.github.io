@@ -14,7 +14,7 @@ const postDate = post.data.updatedDate ?? post.data.pubDate
 
 <div>
   {post.data.draft && <span class="draft">(Draft)</span>}
-  <a href={`/blog/${post.slug}/`}>{post.data.title.trim()}</a> ·
+  <a href={`/blog/${post.id}/`}>{post.data.title.trim()}</a> ·
   <FormattedDate date={postDate} style={{ opacity: 0.4, fontSize: "0.85em" }} />
   {withDesc && <i>{post.data.description}</i>}
   {
